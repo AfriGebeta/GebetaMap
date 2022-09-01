@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.bg {
+  background: white url("./assets/icons/bg.png") repeat;
+  background-position: 40% 100%;
+  background-size: 1300px;
+}
+.bg-bg {
+  background: url("./assets/icons/bg-polygon.png") no-repeat;
+  background-size: 100vw 150vh;
+  background-position: top 0 right;
+  /* background-attachment: local; */
+}
+
+
+@layer base {
+
+
+  .active_btn {
+    @apply bg-opacity-40 bg-black/20 rounded-md p-4 py-1;
+  }
+
+  button,
+  .btn,
+  input[type='button'],
+  input[type='submit'] {
+    @apply bg-dark p-1 px-3 text-white uppercase text-sm text-center;
+  }  
+
+  h1 {
+    @apply text-4xl font-black;
+  }
+  h2 {
+    @apply text-2xl font-black;
+  }
+
+  p {
+    @apply text-gray-500 py-2;
+  }
+
+
+  .sw {
+    width: 83%;
+  }
+
+  .theme-light {
+    @apply bg-white text-dark;
+  }
+  
+  .text-shadow {
+    text-shadow: 1px 0 3px black;
+  }
+
+  input,
+  textarea {
+    @apply border px-2 py-1 border-grey;
+  }
+
+  
+}
+
+
+@layer components {
+
+
+
+.card {
+  @apply bg-white text-dark p-3 shadow-md;
+}
+
+
+
+}
