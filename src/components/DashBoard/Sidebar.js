@@ -2,20 +2,24 @@ import React, { useEffect, useRef, useState } from "react";
 import {Outlet} from 'react-router-dom';
 import Header from "./Header";
 // import {ReactComponent as BGPolygon} from '../assets/icons/bg-polygon.svg'
-
+import { useSelector, useDispatch } from "react-redux"
+import { setSideBar } from "../../redux/reducers/sidebar";
 function Sidebar() {
   const [url,setUrl] = useState("Dashboard");
-  const [open,setOpen] = useState(true);
-
+  const dispatch = useDispatch()
+  const { userData } = useSelector((state) => state.user)
+  const open = useSelector((state) => state.sidebar.open)
   var openClass = useRef(" w-60 ");
   var btnClass = useRef(" open ");
 
   useEffect(() => {
     openClass.current = open ? " w-0 " : " w-60 ";
     btnClass.current = open ? "" : " open ";
-    console.log([open,openClass.current,btnClass.current]);
+    console.log(open)
+    
+     
   },[open]);
-  
+
   return (
     <div className="bg overflow-hidden">
       <div className='flex flex-row items-stretch h-screen overflow-auto relative'>
@@ -28,11 +32,11 @@ function Sidebar() {
         <div className="relative z-0 w-full flex flex-col items-start">
           <div className=" self-stretch h-14 flex items-center p-4">
             <div className="relative z-30 py-3 pr-3 ">
-              <label className={"menu-btn "+btnClass.current} onClick={() => setOpen(!open)}><span></span></label>
+              <label className={"menu-btn "+btnClass.current} onClick={() => dispatch (setSideBar(!open)) }><span></span></label>
             </div>
             <div className="flex justify-between flex-1 font-bold uppercase">
               <h3 className="">{url}</h3>
-              <div className="px-3">[Company]</div>
+              <div className="px-3">{userData.companyname}</div>
             </div>
           </div>
           <div className="p-4 w-full scroll-auto">
