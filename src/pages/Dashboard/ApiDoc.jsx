@@ -11,7 +11,7 @@ export default function ApiDoc() {
       <h2 className=""><span className="text-primary">Gebeta</span>Maps Routing  API</h2>
       <p>Proudly Made In Ethiopia By Proud Ethiopians</p>
       <br />
-      <Link to="#" className="btn inline-block">API DOCUMENATION</Link>
+      <Link to="/documentation" className="btn inline-block">API DOCUMENATION</Link>
           </div>
           </div>
   )

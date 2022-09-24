@@ -27,7 +27,7 @@ function Signin({ footer }) {
   const submit = async  () => {
 
        try {
-            const login = await fetch(`http://localhost:8080/api/v1/user/login` , {
+            const login = await fetch(`http://localhost:8080/api/v1/users/login` , {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json, text/plain, */*',
@@ -47,10 +47,12 @@ function Signin({ footer }) {
             }
             else {
                 const data = await login.json()
-                dispatch(setUser(data))   
+                
+                dispatch(setUser(data.data))   
                 navigate('/dashboard');
             }
-      } catch (err) {
+       } catch (err) {
+         console.log(err)
             setMessage("Error Occured Please Try Again")
       }
  

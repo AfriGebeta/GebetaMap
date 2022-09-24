@@ -7,47 +7,27 @@ import { setUser} from "./../../redux/reducers/user"
 export default function Token() {
      const { userData } = useSelector((state) => state.user)
     const dispatch = useDispatch();
-     useEffect(() => {
-         try {
-      
-            // fetch(`http://localhost:8080/api/v1/user/getToken/?id=${userData.id}`).
-            //     then((data) => { return data.json() })
-            //     .then((data) => {
-            //         console.log(data)
-            //         setToken(data.token)
-            //     })
-                
-        } catch (err) {
-            
-        }
-     }, [])
+  
     const deleteToken = () => {
         
-         fetch(`http://localhost:8080/api/v1/user/deleteToken/?id=${userData.id}` , {
-             method: 'DELETE',
+            fetch(`http://localhost:8080/api/v1/users/setToken` , {
+             method: 'PUT',
+             headers: {
+                'Content-type': 'application/json; charset=UTF-8' // Indicates the content 
+            },
+            body: JSON.stringify({ id : userData.id , token  : "token"})
+            
         }).
-                then((data) => { return data.json() })
-             .then((data) => {
-                 if (data.msg = "ok") {
-                     console.log(data)
-                     dispatch(setUser({
-                         companyname: userData.companyname,
-                         email: userData.email,
-                         username : userData.username,
-                         id: userData.id,
-                         token: "null",
-                         
-                    }))
-                     
-                    }
-                 
+        then((data) => { return data.json() })
+        .then((data) => {
+                dispatch(setUser(data.data))
                 })
     }
 
 
      const updateToken = () => {
        
-         fetch(`http://localhost:8080/api/v1/user/setToken` , {
+         fetch(`http://localhost:8080/api/v1/users/setToken` , {
              method: 'PUT',
              headers: {
                 'Content-type': 'application/json; charset=UTF-8' // Indicates the content 
@@ -55,11 +35,9 @@ export default function Token() {
             body: JSON.stringify({ id : userData.id})
             
         }).
-                then((data) => { return data.json() })
-             .then((data) => {
-                  
+        then((data) => { return data.json() })
+        .then((data) => {
                 dispatch(setUser(data.data))
-                    
                 })
     }
   return (
@@ -76,7 +54,7 @@ export default function Token() {
                   <p className="font-bold text-xl">apikey</p>
                   <p className="font-bold text-xl">options</p>
               </div>
-            { userData.token != "null" ?  <div className="flex justify-between">
+            { userData.token != null ?  <div className="flex justify-between">
                   <p className="w-[80%] overflow-x-scroll px-[2%]">{ userData.token}</p>
                   <button onClick={(event) => { event.preventDefault();  deleteToken()}} type="button" className=" w-[150px] rounded-md bg-orange-200 text-black px-3 py-2 mt-1 mb-5 transition duration-200 hover:bg-orange-500 text-white w-full py-2.5  text-sm shadow-sm hover:shadow-md font-semibold text-center inline-block">
                   <span className="inline-block ">Delete</span>

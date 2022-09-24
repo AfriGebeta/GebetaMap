@@ -7,7 +7,7 @@ import { useSelector, useDispatch } from "react-redux"
 export default function ClientDetails() {
     const { userData } = useSelector((state) => state.user)
   return (
-     <div className="flex flex-col  mx-[5%] ">
+     <div className="flex flex-col  mx-[5%]  ">
     
     <div className="card">
       <h2 className="uppercase">Client Details</h2>

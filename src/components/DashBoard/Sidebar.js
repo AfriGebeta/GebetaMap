@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import {Outlet} from 'react-router-dom';
 import Header from "./Header";
-// import {ReactComponent as BGPolygon} from '../assets/icons/bg-polygon.svg'
+
 import { useSelector, useDispatch } from "react-redux"
 import { setSideBar } from "../../redux/reducers/sidebar";
 function Sidebar() {
@@ -9,12 +9,13 @@ function Sidebar() {
   const dispatch = useDispatch()
   const { userData } = useSelector((state) => state.user)
   const open = useSelector((state) => state.sidebar.open)
-  var openClass = useRef(" w-60 ");
-  var btnClass = useRef(" open ");
+    const currentRoute = useSelector((state) => state.currentRoute.currentRoute)
+    var openClass = useRef(" w-60 ");
+    var btnClass = useRef(" open ");
 
   useEffect(() => {
     openClass.current = open ? " w-0 " : " w-60 ";
-    btnClass.current = open ? "" : " open ";
+    btnClass.current = open ? " w-0 " : " w-60 ";
     console.log(open)
     
      
@@ -23,9 +24,9 @@ function Sidebar() {
   return (
     <div className="bg overflow-hidden">
       <div className='flex flex-row items-stretch h-screen overflow-auto relative'>
-        {/* <BGPolygon className="-z-10 h-fit w-fit absolute" /> */}
+      
         <div className={"z-20 h-screen flex max-w-[80%] sticky top-0"}>
-          <div className={"max-w-full bg-primary sm:relative flex justify-end transition-all duration-500 "+openClass.current}>
+          <div className={"max-w-full bg-primary sm:relative flex justify-end  "}>
             <Header />
           </div>
         </div>
@@ -35,7 +36,7 @@ function Sidebar() {
               <label className={"menu-btn "+btnClass.current} onClick={() => dispatch (setSideBar(!open)) }><span></span></label>
             </div>
             <div className="flex justify-between flex-1 font-bold uppercase">
-              <h3 className="">{url}</h3>
+              <h3 className="">{currentRoute}</h3>
               <div className="px-3">{userData.companyname}</div>
             </div>
           </div>

@@ -1,7 +1,7 @@
 
 
 const direction =  async (start , newMarker , apiKey) => {
-    const url = "https://mapapi.gebeta.app/api/v1/route/driving/direction/?la1=" + start.lat + "&lo1=" + start.lon + "&la2=" + newMarker.lat + "&lo2=" + newMarker.lng + "&apiKey="+apiKey
+    const url = "http://localhost:8080/api/v1/route/driving/direction/?la1=" + start.lat + "&lo1=" + start.lon + "&la2=" + newMarker.lat + "&lo2=" + newMarker.lng + "&apiKey="+apiKey
     try {
         const response = await fetch(url);
         const json = await response.json();
@@ -40,7 +40,7 @@ const tss = async (gmarker, apiKey) => {
       startpoint.push(en)
     }
 
-  const url = "https://mapapi.gebeta.app/api/v1/route/driving/tss/?start=" + startpoint + "&apiKey=" + apiKey   
+  const url = "http://localhost:8080/api/v1/route/driving/tss/?start=" + startpoint + "&apiKey=" + apiKey   
     try {
         const response = await fetch(url);
         const json = await response.json();
@@ -56,7 +56,7 @@ const oneToMany = async (start, endpoints, apiKey) => {
       let en = endpoints[i].lat +"/"+ endpoints[i].lng;
       _endpoints.push(en)
   }
-  const url = "https://mapapi.gebeta.app/api/v1/route/driving/onm/?la1=" + start.lat + "&lo1=" + start.lon + "&json=" + _endpoints + "&apiKey=" + apiKey
+  const url = "http://localhost:8080/api/v1/route/driving/onm/?la1=" + start.lat + "&lo1=" + start.lon + "&json=" + _endpoints + "&apiKey=" + apiKey
   try {
         const response = await fetch(url);
         const json = await response.json();
@@ -67,7 +67,7 @@ const oneToMany = async (start, endpoints, apiKey) => {
 }
 
 const geocoding = async (name, apiKey) => {
-  const url = "https://mapapi.gebeta.app/api/v1/route/geocoding?name=" + name + "&apiKey=" + apiKey;
+  const url = "http://localhost:8080/api/v1/route/geocoding?name=" + name + "&apiKey=" + apiKey;
   try {
       const response = await fetch(url);
     const json = await response.json();

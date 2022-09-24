@@ -26,9 +26,7 @@ function Dashboard() {
       <Token  className=""/>
 </div>
   
-//       <div className="grid grid-cols-3 gap-4 mx-[10%]">
-      
-// </div>
+
    
   )
 }
@@ -36,4 +34,3 @@ function Dashboard() {
 
 
 export default Dashboard;
-//http://localhost:8080/api/v1/choosedplan/getById/?id=d916c25f076aba3bcee7e1fc9b528e9f
