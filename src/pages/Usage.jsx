@@ -18,7 +18,8 @@ import Matrix from "./Dashboard/CallMeter/Matrix";
 import Tss from "./Dashboard/CallMeter/Tss";
 import { CategoryScale } from 'chart.js'; 
 import Chart from 'chart.js/auto';
-import {setMetrics} from "./../redux/reducers/metrics"
+import { setMetrics } from "./../redux/reducers/metrics"
+import {url} from "./../data/url"
 Chart.register(CategoryScale);
 function Usage() {
 
@@ -30,7 +31,7 @@ function Usage() {
   useEffect(() => {
 
   
-    fetch(`http://localhost:8080/api/v1/route/apicalls/getUserMetrics?id=${userData.id}`).
+    fetch(`${url}/api/v1/route/apicalls/getUserMetrics?id=${userData.id}`).
                 then((data) => { return data.json() })
               .then((data) => {
                 if (data.msg == "ok") {
@@ -40,7 +41,7 @@ function Usage() {
                   
               })
     
-     fetch(`http://localhost:8080/api/v1/route/apicalls/getDataForGraph?id=${userData.id}`).
+     fetch(`${url}/api/v1/route/apicalls/getDataForGraph?id=${userData.id}`).
                 then((data) => { return data.json() })
               .then((data) => {
                 if (data.msg == "ok") {

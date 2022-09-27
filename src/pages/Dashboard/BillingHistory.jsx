@@ -6,7 +6,7 @@ import { Polygon } from "./../../features/Object/Polygon";
 import {ReactComponent as MyLocation} from './../../assets/icons/My location.svg';
 import { useSelector, useDispatch } from "react-redux"
 import { setBilling } from "../../redux/reducers/billing";
-
+import {url} from "./../../data/url"
 
 
 export default function BillingHistory() {
@@ -21,7 +21,7 @@ export default function BillingHistory() {
       try {
            
   
-            fetch(`http://localhost:8080/api/v1/billingHistory/?id=${userData.id}`).
+            fetch(`${url}/api/v1/billingHistory/?id=${userData.id}`).
                 then((data) => { return data.json() })
               .then((data) => {
                 if (data.msg == "ok") {

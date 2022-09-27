@@ -7,7 +7,7 @@ import red from './red.png';
 import green from './green.png';
 import L from 'leaflet';
 import { setUser} from "./../../redux/reducers/user"
-
+import { useSelector, useDispatch } from "react-redux"
 const default_latitude = 9.02151;
 const default_longitude = 38.80115;
 

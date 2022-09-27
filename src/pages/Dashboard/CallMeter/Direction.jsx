@@ -4,7 +4,8 @@ import React , {useEffect , useState} from "react";
 import { Link, Navigate } from "react-router-dom";
 
 import { useSelector, useDispatch } from "react-redux"
-import { setUser} from "./../../../redux/reducers/user"
+import { setUser } from "./../../../redux/reducers/user"
+
 export default function Direction() {
 
   const { metrics } = useSelector((state) => state.metrics)

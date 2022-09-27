@@ -3,14 +3,17 @@ import { Link, Navigate } from "react-router-dom";
 import { Polygon } from "./../../features/Object/Polygon";
 import {ReactComponent as MyLocation} from './../../assets/icons/My location.svg';
 import { useSelector, useDispatch } from "react-redux"
-import { setUser} from "./../../redux/reducers/user"
+import { setUser } from "./../../redux/reducers/user"
+import {url} from "./../../data/url"
+
+
 export default function Token() {
      const { userData } = useSelector((state) => state.user)
     const dispatch = useDispatch();
   
     const deleteToken = () => {
         
-            fetch(`http://localhost:8080/api/v1/users/setToken` , {
+            fetch(`${url}/api/v1/users/setToken` , {
              method: 'PUT',
              headers: {
                 'Content-type': 'application/json; charset=UTF-8' // Indicates the content 
@@ -27,7 +30,7 @@ export default function Token() {
 
      const updateToken = () => {
        
-         fetch(`http://localhost:8080/api/v1/users/setToken` , {
+         fetch(`${url}/api/v1/users/setToken` , {
              method: 'PUT',
              headers: {
                 'Content-type': 'application/json; charset=UTF-8' // Indicates the content 

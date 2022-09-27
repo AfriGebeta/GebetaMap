@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux"
 
 import { setUser } from "./../redux/reducers/user"
 import { useNavigate } from 'react-router-dom';
-
+import {url} from "./../data/url"
 function Signin({ footer }) {
   
   const [username, setUserName] = useState("")
@@ -27,7 +27,7 @@ function Signin({ footer }) {
   const submit = async  () => {
 
        try {
-            const login = await fetch(`http://localhost:8080/api/v1/users/login` , {
+            const login = await fetch(`${url}/api/v1/users/login` , {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json, text/plain, */*',

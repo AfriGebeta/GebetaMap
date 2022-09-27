@@ -4,6 +4,8 @@ import { Polygon } from "./../../features/Object/Polygon";
 import {ReactComponent as MyLocation} from './../../assets/icons/My location.svg';
 import { useSelector, useDispatch } from "react-redux"
 import { setChoosedPlan } from "../../redux/reducers/choosedplans";
+import {url} from "./../../data/url"
+
 
 export default function ChoosedPlan() {
   const { userData } = useSelector((state) => state.user)
@@ -12,7 +14,7 @@ export default function ChoosedPlan() {
     useEffect(() => {
       try {
       
-             fetch(` http://localhost:8080/api/v1/route/choosedplan/getUsersPlan/?id=${userData.id}`).
+             fetch(`${url}/api/v1/route/choosedplan/getUsersPlan/?id=${userData.id}`).
                 then((data) => { return data.json() })
                 .then((data) => {
                   if (data.msg == "ok") {

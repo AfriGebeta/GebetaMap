@@ -4,7 +4,10 @@ import React , {useEffect , useState} from "react";
 import { useSelector, useDispatch } from "react-redux"
 import { setPlan } from "../../redux/reducers/plan";
 import {setChoosedPlan} from "../../redux/reducers/choosedplans"
-import  Slider from 'antd/lib/slider'
+import Slider from 'antd/lib/slider'
+import {url} from "./../../data/url"
+
+
 export default function BusinessPackage() {
     const { userData } = useSelector((state) => state.user)
     const plans = useSelector((state) => state.plan.plan)
@@ -20,7 +23,7 @@ export default function BusinessPackage() {
         try {
 
             if (plans.length == 0) {
-                 fetch(`http://localhost:8080/api/v1/plan/getAll`).
+                 fetch(`${url}/api/v1/plan/getAll`).
                 then((data) => { return data.json() })
                 .then((data) => {
                     if (data.msg == "ok") {
@@ -43,7 +46,7 @@ export default function BusinessPackage() {
     
         
     
-        fetch(`http://localhost:8080/api/v1/route/choosedplan/add` , {
+        fetch(`${url}/api/v1/route/choosedplan/add` , {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json, text/plain, */*',
