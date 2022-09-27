@@ -32,9 +32,9 @@ function Sidebar() {
         </div>
         <div className="relative z-0 w-full flex flex-col items-start">
           <div className=" self-stretch h-14 flex items-center p-4">
-            <div className="relative z-30 py-3 pr-3 ">
+            {/* <div className="relative z-30 py-3 pr-3 ">
               <label className={"menu-btn "+btnClass.current} onClick={() => dispatch (setSideBar(!open)) }><span></span></label>
-            </div>
+            </div> */}
             <div className="flex justify-between flex-1 font-bold uppercase">
               <h3 className="">{currentRoute}</h3>
               <div className="px-3">{userData.companyname}</div>

@@ -3,7 +3,7 @@ import { MapContainer, TileLayer, Polyline , useMapEvents , Marker , Popup , Pol
 import { useState } from 'react';
 import red from './red.png';
 import L from 'leaflet';
-import {tss} from 'gebetamap'
+import {tss} from './../../data/index'
 const default_latitude = 9.02151;
 const default_longitude = 38.80115;
 
@@ -73,7 +73,7 @@ const GreenIcon = L.icon({
       try {
         async function getData() {
           console.log(gmarker)
-          const ts = await tss(gmarker , "eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJkMTQyNmJjZTg3MzU4ZmEzYTc1NjRjMjY1YTA5MzZjYyIsImlhdCI6MTY2MjAxODUyMCwic3ViIjoidGFraXMiLCJpc3MiOiJ0YWtpIn0.xfH2ME-LYJ1enQpKMrPI4B-vnFZPGaEsg4rUEp95VqY")
+          const ts = await tss(gmarker , "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjb21wYW55bmFtZSI6ImdlYmV0YSIsImlkIjoiYjAxOWYzOTEtMGU3OS00YTI0LWJjZjktZDc2NzM1YmQ4ZTdiIiwidXNlcm5hbWUiOiJnZWJldGEifQ.zZJxoBCU5oqOuS7ozsKC-_jECnKtqLzKuJtOLYOCyZM")
           console.log(ts)
           setPos(ts.direction);
          }

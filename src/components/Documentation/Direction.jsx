@@ -2,7 +2,7 @@
 
 import { MapContainer, TileLayer, Polyline , useMapEvents , Marker , Popup , Polygon , FeatureGroup , EditControl} from 'react-leaflet';
 import { useState } from 'react';
-import { direction } from 'gebetamap';
+import { direction } from './../../data/index';
 import red from './red.png';
 import green from './green.png';
 import L from 'leaflet';
@@ -57,8 +57,9 @@ const GreenIcon = L.icon({
       else
       {
         try {
-            let data = await direction({lat : l1 , lon : lo1} , newMarker , "eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJkMTQyNmJjZTg3MzU4ZmEzYTc1NjRjMjY1YTA5MzZjYyIsImlhdCI6MTY2MjAxODUyMCwic3ViIjoidGFraXMiLCJpc3MiOiJ0YWtpIn0.xfH2ME-LYJ1enQpKMrPI4B-vnFZPGaEsg4rUEp95VqY")       
-            let _rmarker = [];
+            let data = await direction({lat : l1 , lon : lo1} , newMarker , "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjb21wYW55bmFtZSI6ImdlYmV0YSIsImlkIjoiYjAxOWYzOTEtMGU3OS00YTI0LWJjZjktZDc2NzM1YmQ4ZTdiIiwidXNlcm5hbWUiOiJnZWJldGEifQ.zZJxoBCU5oqOuS7ozsKC-_jECnKtqLzKuJtOLYOCyZM")       
+          let _rmarker = [];
+          
             _rmarker.push(e.latlng);
             redMarker(_rmarker);
             setPos(data.direction);
