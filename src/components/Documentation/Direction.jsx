@@ -6,11 +6,13 @@ import { direction } from './../../data/index';
 import red from './red.png';
 import green from './green.png';
 import L from 'leaflet';
+import { setUser} from "./../../redux/reducers/user"
 
 const default_latitude = 9.02151;
 const default_longitude = 38.80115;
 
 
+     
 function AddMarkerToClick() {
 
 
@@ -20,7 +22,7 @@ function AddMarkerToClick() {
   const [pos, setPos] = useState([]);
   const [l1, setL1] = useState("");
   const [lo1, setLO1] = useState("");
-
+const { userData } = useSelector((state) => state.user)
   const RedIcon = L.icon({
   iconUrl:  require('./red.png'), 
   iconRetinaUrl:  require('./red.png'),  
@@ -57,7 +59,7 @@ const GreenIcon = L.icon({
       else
       {
         try {
-            let data = await direction({lat : l1 , lon : lo1} , newMarker , "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjb21wYW55bmFtZSI6ImdlYmV0YSIsImlkIjoiYjAxOWYzOTEtMGU3OS00YTI0LWJjZjktZDc2NzM1YmQ4ZTdiIiwidXNlcm5hbWUiOiJnZWJldGEifQ.zZJxoBCU5oqOuS7ozsKC-_jECnKtqLzKuJtOLYOCyZM")       
+            let data = await direction({lat : l1 , lon : lo1} , newMarker , userData.token)       
           let _rmarker = [];
           
             _rmarker.push(e.latlng);

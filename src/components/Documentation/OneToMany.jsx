@@ -4,6 +4,7 @@ import L from 'leaflet';
 import { oneToMany } from './../../data/index';
 const default_latitude = 9.02151;
 const default_longitude = 38.80115;
+import { setUser} from "./../../redux/reducers/user"
 
 
 
@@ -16,7 +17,7 @@ function AddMarkerToClick(props) {
   const [lo1, setLO1] = useState("");
   const [endPoints, setEndPoints] = useState([])
   const [pos , setPos] = useState([])
-
+const { userData } = useSelector((state) => state.user)
   const RedIcon = L.icon({
   iconUrl:  require('./red.png'), 
   iconRetinaUrl:  require('./red.png'),  
@@ -44,7 +45,7 @@ const GreenIcon = L.icon({
   async function callOnm(start , gmarker) {
     try {
     
-      const data = await oneToMany(start,gmarker, "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjb21wYW55bmFtZSI6ImdlYmV0YSIsImlkIjoiYjAxOWYzOTEtMGU3OS00YTI0LWJjZjktZDc2NzM1YmQ4ZTdiIiwidXNlcm5hbWUiOiJnZWJldGEifQ.zZJxoBCU5oqOuS7ozsKC-_jECnKtqLzKuJtOLYOCyZM")
+      const data = await oneToMany(start,gmarker, userData.token)
  
       setPos(data.directions)
     } catch (err) {

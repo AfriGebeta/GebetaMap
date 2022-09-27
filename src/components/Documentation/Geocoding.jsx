@@ -1,16 +1,20 @@
 
 import React , {useState , useEffect} from 'react'
 import { geocoding } from 'gebetamap';
+
+import { setUser} from "./../../redux/reducers/user"
+
 export default function Geocoding() {
     const [searchText , setSearchText] = useState("")
     const [searchResult, setSearchResult] = useState([])
     const [onSearch , setOnSearch] = useState(false)
     const handleSearchText = (event) => { setSearchText(event.target.value) };
-     function callSearch() {
+    const { userData } = useSelector((state) => state.user)
+    function callSearch() {
 
          try {
             setOnSearch(!onSearch)
-            geocoding(searchText, "eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJkMTQyNmJjZTg3MzU4ZmEzYTc1NjRjMjY1YTA5MzZjYyIsImlhdCI6MTY2MjAxODUyMCwic3ViIjoidGFraXMiLCJpc3MiOiJ0YWtpIn0.xfH2ME-LYJ1enQpKMrPI4B-vnFZPGaEsg4rUEp95VqY")
+            geocoding(searchText, userData.token)
                 .then((data) => {
              let _searchResult = []
                     data.data.map((n, index) => {

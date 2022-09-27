@@ -7,6 +7,7 @@ import green from './green.png';
 const default_latitude = 9.02151;
 const default_longitude = 38.80115;
 
+import { setUser} from "./../../redux/reducers/user"
 
 
 function AddMarkerToClick(props) {
@@ -18,7 +19,7 @@ function AddMarkerToClick(props) {
   const [lo1, setLO1] = useState("");
   const [endPoints, setEndPoints] = useState([])
   const [pos , setPos] = useState([])
-
+const { userData } = useSelector((state) => state.user)
   const RedIcon = L.icon({
   iconUrl:  require('./red.png'), 
   iconRetinaUrl:  require('./red.png'),  
@@ -71,7 +72,7 @@ const GreenIcon = L.icon({
  
     try {
       async function getData() {
-          const data = await matrix( gmarker , "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjb21wYW55bmFtZSI6ImdlYmV0YSIsImlkIjoiYjAxOWYzOTEtMGU3OS00YTI0LWJjZjktZDc2NzM1YmQ4ZTdiIiwidXNlcm5hbWUiOiJnZWJldGEifQ.zZJxoBCU5oqOuS7ozsKC-_jECnKtqLzKuJtOLYOCyZM")
+          const data = await matrix( gmarker , userData.token)
       
         let array = []
           for (let i = 0; i < data.response.length; i++) {

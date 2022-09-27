@@ -18,7 +18,7 @@ const default_longitude = 38.80115;
   const [lo1, setLO1] = useState("");
   const [endPoints, setEndPoints] = useState([])
   const [pos , setPos] = useState([])
-
+const { userData } = useSelector((state) => state.user)
   const RedIcon = L.icon({
   iconUrl:  require('./red.png'), 
   iconRetinaUrl:  require('./red.png'),  
@@ -73,7 +73,7 @@ const GreenIcon = L.icon({
       try {
         async function getData() {
           console.log(gmarker)
-          const ts = await tss(gmarker , "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjb21wYW55bmFtZSI6ImdlYmV0YSIsImlkIjoiYjAxOWYzOTEtMGU3OS00YTI0LWJjZjktZDc2NzM1YmQ4ZTdiIiwidXNlcm5hbWUiOiJnZWJldGEifQ.zZJxoBCU5oqOuS7ozsKC-_jECnKtqLzKuJtOLYOCyZM")
+          const ts = await tss(gmarker , userData.token)
           console.log(ts)
           setPos(ts.direction);
          }
