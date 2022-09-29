@@ -20,14 +20,17 @@ import { CategoryScale } from 'chart.js';
 import Chart from 'chart.js/auto';
 import { setMetrics } from "./../redux/reducers/metrics"
 import {url} from "./../data/url"
+
+
 Chart.register(CategoryScale);
 function Usage() {
 
   const dispatch = useDispatch()
   const { userData } = useSelector((state) => state.user)
-  
+
   const [labels, setLabels] = useState([])
    const [data , setData] = useState([])
+
   useEffect(() => {
 
   
@@ -47,7 +50,7 @@ function Usage() {
                 if (data.msg == "ok") {
                       let _data = []
                       let _label = []
-                  for (let i = 0; i < data.data.length; i++){
+                  for (let i = data.data.length - 1; i >=0 ; i--){
                     try {
                       let str = data.data[i][0].substring(0, 4) + "-" + data.data[i][0].substring(4, 6) + "-" + data.data[i][0].substring(6, 8)
                       _label.push(str)  
@@ -102,6 +105,10 @@ const datas = {
 };
 
   return (
+
+
+
+
     <div className="h-full w-full">
       <div className="grid grid-cols-2 gap-x-2 gap-y-3 mx-[10%] ">
             <Direction />
@@ -114,7 +121,7 @@ const datas = {
          <div className=" h-full">
           {data.length > 0 ?  <Line  options={options} data={datas}  />  : null}
     </div>
-          
+
           </div>
       </div>
     </div>

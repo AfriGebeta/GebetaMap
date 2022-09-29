@@ -35,7 +35,7 @@ export default function Geocoding() {
                 })
             
         } catch (err) {
-            console.log("the error arrise from")
+            console.log("the error arise from")
             console.log(err)
             setOnSearch(!onSearch)
         }

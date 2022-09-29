@@ -6,7 +6,7 @@ import { setPlan } from "../../redux/reducers/plan";
 import {setChoosedPlan} from "../../redux/reducers/choosedplans"
 import Slider from 'antd/lib/slider'
 import {url} from "./../../data/url"
-
+import ClipLoader from "react-spinners/ClipLoader";
 
 export default function BusinessPackage() {
     const { userData } = useSelector((state) => state.user)
@@ -16,7 +16,7 @@ export default function BusinessPackage() {
     const [business, setBusiness] = useState(100001 )
     const [professional, setProfessional] = useState(500001)
     const [premium, setPremium] = useState(1000001)
-  
+  const [showLoading , setShowLoading] = useState(false)
   
     const dispatch = useDispatch()
     useEffect(() => {
@@ -42,39 +42,44 @@ export default function BusinessPackage() {
   const buyPackage = (planname, selected) => {
     let value = selected == 0 ? starter : selected == 1 ? business : selected == 2 ? professional : premium
 
-      
-    
-        
-    
-        fetch(`${url}/api/v1/route/choosedplan/add` , {
-                method: 'POST',
-                headers: {
-                    'Accept': 'application/json, text/plain, */*',
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    "choosedplan": planname,
-                    "userid": userData.id,
-                    "remainingrequest": value
-            })
-            }).then((data) => { return data.json() })
-            .then((data) => {
-                 if (data.msg == "ok") {
-                            alert("Success")                            
-                            dispatch(setChoosedPlan([...choosedPlan , data.data]))
-                 } else {
-                     alert(data.msg)
-                    }
-                    
-            })
+        try{
+                  setShowLoading(true)
+                     fetch(`${url}/api/v1/route/choosedplan/add` , {
+                            method: 'POST',
+                            headers: {
+                                'Accept': 'application/json, text/plain, */*',
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({
+                                "choosedplan": planname,
+                                "userid": userData.id,
+                                "remainingrequest": value
+                    })
+                    }).then((data) => { return data.json() })
+                    .then((data) => {
+                         if (data.msg == "ok") {
+                                    alert("Success")
+                                    dispatch(setChoosedPlan([...choosedPlan , data.data]))
+                         } else {
+                             alert(data.msg)
+                         }
+                     })
+
+                     setShowLoading(false)
+                 }catch(err){
+                    setShowLoading(false)
+                 }
          
     }
 
     return (
-      <div className="flex flex-col  mx-[5%]   ">
-        
-        
 
+    showLoading ?
+         <div className="flex flex-col  mx-[5%]   ">
+                <div className="card px-5 flex justify-center"><ClipLoader color="#36d7b7" />
+            </div>
+         </div> :
+      <div className="flex flex-col  mx-[5%]   ">
 
 
     <div className="card px-5">

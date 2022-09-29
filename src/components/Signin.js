@@ -4,11 +4,16 @@ import { useSelector, useDispatch } from "react-redux"
 import { setUser } from "./../redux/reducers/user"
 import { useNavigate } from 'react-router-dom';
 import {url} from "./../data/url"
+
+import ClipLoader from "react-spinners/ClipLoader";
+
+
 function Signin({ footer }) {
   
   const [username, setUserName] = useState("")
   const [password, setPassword] = useState("")
   const [errorMessage, setMessage] = useState("")
+  const [showLoading , setShowLoading] = useState(false)
   const { userData } = useSelector((state) => state.user)
   const dispatch = useDispatch()
   const navigate = useNavigate();
@@ -27,6 +32,7 @@ function Signin({ footer }) {
   const submit = async  () => {
 
        try {
+        setShowLoading(true)
             const login = await fetch(`${url}/api/v1/users/login` , {
                 method: 'POST',
                 headers: {
@@ -37,22 +43,24 @@ function Signin({ footer }) {
                     username : username,
                     password : password
                 })
-            
+
             })
 
             if (login.status != 200) {
                 const data = await login.json()
+                console.log(data)
                 setMessage(data.msg)
-              
+
             }
             else {
                 const data = await login.json()
-                
-                dispatch(setUser(data.data))   
+
+                dispatch(setUser(data.data))
                 navigate('/dashboard');
             }
+             setShowLoading(false)
        } catch (err) {
-         console.log(err)
+          setShowLoading(false)
             setMessage("Error Occured Please Try Again")
       }
  
@@ -68,15 +76,34 @@ function Signin({ footer }) {
         <input type="password" className="border px-3 py-2 mt-1 mb-5 text-sm w-full text-black" value={password} onChange={handlePassword}/>
         
          <div className=' py-7'>
-          <button type="button" className="px-3 py-2 mt-1 mb-5 transition duration-200 bg-blue-500 hover:bg-blue-600 focus:bg-blue-700 focus:shadow-sm focus:ring-4 focus:ring-blue-500 focus:ring-opacity-50 text-white w-full py-2.5  text-sm shadow-sm hover:shadow-md font-semibold text-center inline-block"
-            onClick={(event) => {
-              event.preventDefault()
-              submit()
-            }}
-          >
-            <span className="inline-block ">Sign In</span>
-            
-        </button>
+         {
+         showLoading ?
+
+         <button type="button" className="px-3 py-2 mt-1 mb-5 transition duration-200 bg-blue-500 hover:bg-blue-600 focus:bg-blue-700 focus:shadow-sm focus:ring-4 focus:ring-blue-500 focus:ring-opacity-50 text-white w-full py-2.5  text-sm shadow-sm hover:shadow-md font-semibold text-center inline-block "
+                          disabled
+                                      onClick={(event) => {
+                                        event.preventDefault()
+                                        submit()
+                                      }}
+                                    >
+                                      <span className="inline-block ">Sign In</span>
+
+                                  </button>
+                                  :
+         <button type="button" className="px-3 py-2 mt-1 mb-5 transition duration-200 bg-blue-500 hover:bg-blue-600 focus:bg-blue-700 focus:shadow-sm focus:ring-4 focus:ring-blue-500 focus:ring-opacity-50 text-white w-full py-2.5  text-sm shadow-sm hover:shadow-md font-semibold text-center inline-block"
+                     onClick={(event) => {
+                       event.preventDefault()
+                       submit()
+                     }}
+                   >
+                     <span className="inline-block ">Sign In</span>
+
+                 </button>
+
+
+         }
+
+
         <span className="text-black">{footer}</span>
       </div>
       </div>

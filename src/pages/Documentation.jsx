@@ -8,6 +8,7 @@ import Matrix from "./../components/Documentation/Matrix";
 import OneToMany  from "./../components/Documentation/OneToMany";
 import Tss from "./../components/Documentation/Tss";
 import Geocoding from "./../components/Documentation/Geocoding"
+import { useSelector, useDispatch } from "react-redux"
 const openstreetmap = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
 
 const Documentation = () => {
@@ -17,7 +18,7 @@ const Documentation = () => {
   const [onmStart, setOnmStart] = useState(false)
   const [onmStop, setOnmStop] = useState(false)
   const [onmCalculate, setOnmCalculate] = useState(false)
-
+const { userData } = useSelector((state) => state.user)
   //for the routeOptimization
   const [routeOptimizationStart, setRouteOptimizationStart] = useState(false)
       const [routeOptimizationCalculate , setRouteOptimizationCalculate] = useState(false)
@@ -109,11 +110,17 @@ const Documentation = () => {
             <li>Contact us</li>
           </ol>
 
-          
+
+          {userData.token != null ?
+          <div>
           <p className="mt-[5%] font-bold text-3xl mb-[1%]">
             Geocoding Endpoint
           </p>
-         <Geocoding/>       
+         <Geocoding/>
+          </div>
+          : ""}
+
+
           <p className="mt-[5%] font-bold text-3xl mb-[1%]">
             Direction Endpoint
           </p>
@@ -140,9 +147,11 @@ const Documentation = () => {
             />
             <ResponseSample responseCodes200={ responseSampleForDirection200} responseCodes400={responseSampleForDirection400 } responseCodes500={responseSampleForDirection500 }      />
           </div>
+
+          {userData.token != null ?
           <div className=' w-[90%] h-[500px] bg-red-200' >
              <Direction/>
-          </div>
+          </div> : ""}
           
           
           {/*Route Optimization problem*/}
@@ -182,9 +191,10 @@ const Documentation = () => {
             setRouteOptimizationStart(false)
               }, 300);
           }}>Calculate</button>
+          {userData.token != null ?
         <div className=' w-[90%] h-[500px] mb-[200px] ' >
              <Tss routeOptimizationStart={routeOptimizationStart} routeOptimizationCalculate = {routeOptimizationCalculate} />
-        </div>
+        </div> : ""}
           <p className="mt-[5%] font-bold text-3xl mb-[5%]">
             Matrix Endpoint
           </p>
@@ -284,9 +294,10 @@ The most simple example is a people trying to decide which bus restoursant is cl
               }, 3000);
           
           }}>Calculate</button>
+          {userData.token != null ?
           <div className=' w-[90%] h-[500px] mb-[200px] ' >
              <Matrix matrixStart={matrixStart} matrixCalculate = {matrixCalculate} />
-          </div>
+          </div> : ""}
 
             <p className="mt-[5%] font-bold text-3xl mb-[1%]">
             One-to-Many Endpoint
@@ -357,10 +368,10 @@ The most simple example is a people trying to decide which bus restoursant is cl
                 setOnmCalculate(false)
             }, 3000);
             }}>Calculate</button>
-         
+{userData.token != null ?
           <div className=' w-[90%] h-[500px] bg-red-200 mb-[10%]' >
              <OneToMany  start={onmStart} stop = {onmStop} calculate = {onmCalculate}/>
-          </div>
+          </div> : ""}
           
 
         

@@ -1,24 +1,159 @@
-import React from "react";
+import React , {useState} from "react";
+import { useSelector, useDispatch } from "react-redux"
+
+import { setUser } from "./../redux/reducers/user"
+import { useNavigate } from 'react-router-dom';
+import {url} from "./../data/url"
+
+import ClipLoader from "react-spinners/ClipLoader";
 
 
 function Signup({footer}) {
+
+  const [username , setUsername] = useState("")
+  const [password , setPassword] = useState("")
+  const [companyname , setCompanyName] = useState("")
+  const [email , setEmail] = useState("")
+  const [errorMessage, setMessage] = useState("")
+  const [showLoading , setShowLoading] = useState(false)
+  const { userData } = useSelector((state) => state.user)
+
+  const dispatch = useDispatch()
+  const navigate = useNavigate();
+  const handleUsername = (event) => {
+    setUsername(event.target.value)
+  }
+  const  handlePassword = (event) => {
+    setPassword(event.target.value)
+  }
+
+  const handleCompanyName = (event) => {
+    setCompanyName(event.target.value)
+  }
+  const handleEmail = (event) => {
+    setEmail(event.target.value)
+  }
+
+  const  empty = (str) =>
+      {
+          if (typeof str == 'undefined' || !str || str.length === 0 || str === "" || !/[^\s]/.test(str) || /^\s*$/.test(str) || str.replace(/\s/g,"") === "")
+              return true;
+          else
+              return false;
+      }
+
+
+  const submit = async  () => {
+
+  try{
+
+   setShowLoading(true)
+    let data = { }
+    if(!empty(username)){
+           Object.assign(data, {"username":username})
+    }else{
+           setMessage('username should not be empty')
+            throw 'username should not be empty!'
+    }
+    if(!empty(password)){
+             Object.assign(data, {"password":password})
+    }else{
+               setMessage('password should not be empty')
+                throw 'username should not be empty!'
+    }
+    if(!empty(companyname)){
+             Object.assign(data, {"companyname":companyname})
+    }else{
+                setMessage('companyname should not be empty')
+                 throw 'username should not be empty!'
+    }
+    if(!empty(email )){
+                   Object.assign(data, {"email":email})
+                   let regEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                   if (!regEmail.test(email)) {
+                           setMessage('Invalid Email Address')
+                            throw 'Parameter is not a number!'
+                   }
+    }else{
+                                    setMessage('email should not be empty')
+                                     throw 'username should not be empty!'
+    }
+                  const login = await fetch(`${url}/api/v1/users/signup` , {
+                      method: 'POST',
+                      headers: {
+                          'Accept': 'application/json, text/plain, */*',
+                          'Content-Type': 'application/json'
+                      },
+                      body: JSON.stringify(data)
+
+                  })
+
+                  if (login.status != 200) {
+                      const data = await login.json()
+
+                      setMessage(data.msg)
+
+                  }
+                  else {
+                      const data = await login.json()
+
+                      dispatch(setUser(data.data))
+                      navigate('/dashboard');
+                  }
+
+
+   setShowLoading(false)
+  }catch(err){
+  setShowLoading(false)
+   setMessage("Error Occured Please Try Again")
+  }
+
+
+  }
   return (
     <div className="card bg self-end flex justify-center content-between p-10 ">
       <div className="">
       <div className="p-5 flex flex-col gap-2">
         <div className="">Company Name</div>
-        <div className=""><input className='w-full' type='text' placeholder="your company's name" /></div>
+        <div className=""><input value={companyname} onChange={handleCompanyName} className='w-full' type='text' placeholder="company name" /></div>
+        <div className="">username</div>
+        <div className=""><input value={username} onChange={handleUsername} className='w-full' type='text' placeholder="username" /></div>
         <div className="">Email</div>
-        <div className=""><input className='w-full' type='email' placeholder="your email" /></div>
-        <div className="">Phone Number</div>
-        <div className=""><input className='w-full' type='phone' placeholder="your phone number" /></div>
+        <div className=""><input value={email} onChange={handleEmail} className='w-full' type='email' placeholder="email" /></div>
         <div className="">Password</div>
-        <div className=""><input className='w-full' type='password' placeholder="At least 8 characters" /></div>
+        <div className=""><input value={password} onChange={handlePassword} className='w-full' type='password' placeholder="password" /></div>
       </div>
-      <div className='p-5'>
-        <input className="w-full" type='submit' value='Sign up' />
-        {footer}
-      </div>
+        <div className=' py-7'>
+               {
+               showLoading ?
+
+               <button type="button" className="px-3 py-2 mt-1 mb-5 transition duration-200 bg-blue-500 hover:bg-blue-600 focus:bg-blue-700 focus:shadow-sm focus:ring-4 focus:ring-blue-500 focus:ring-opacity-50 text-white w-full py-2.5  text-sm shadow-sm hover:shadow-md font-semibold text-center inline-block "
+                                disabled
+                                            onClick={(event) => {
+                                              event.preventDefault()
+                                              submit()
+                                            }}
+                                          >
+                                            <span className="inline-block ">Sign In</span>
+
+                                        </button>
+                                        :
+               <button type="button" className="px-3 py-2 mt-1 mb-5 transition duration-200 bg-blue-500 hover:bg-blue-600 focus:bg-blue-700 focus:shadow-sm focus:ring-4 focus:ring-blue-500 focus:ring-opacity-50 text-white w-full py-2.5  text-sm shadow-sm hover:shadow-md font-semibold text-center inline-block"
+                           onClick={(event) => {
+                             event.preventDefault()
+                             submit()
+                           }}
+                         >
+                           <span className="inline-block ">Sign Up</span>
+
+                       </button>
+
+
+               }
+
+
+              <span className="text-black">{footer}</span>
+            </div>
     </div>
     </div>
   )

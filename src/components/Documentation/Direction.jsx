@@ -22,7 +22,7 @@ function AddMarkerToClick() {
   const [pos, setPos] = useState([]);
   const [l1, setL1] = useState("");
   const [lo1, setLO1] = useState("");
-const { userData } = useSelector((state) => state.user)
+    const { userData } = useSelector((state) => state.user)
   const RedIcon = L.icon({
   iconUrl:  require('./red.png'), 
   iconRetinaUrl:  require('./red.png'),  
@@ -64,7 +64,12 @@ const GreenIcon = L.icon({
           
             _rmarker.push(e.latlng);
             redMarker(_rmarker);
-            setPos(data.direction);
+            console.log(data)
+            if(data.msg == "Ok"){
+                setPos(data.direction);
+            }
+
+
         } catch (err) {
           console.log(err)
         } 

@@ -5,45 +5,64 @@ import {ReactComponent as MyLocation} from './../../assets/icons/My location.svg
 import { useSelector, useDispatch } from "react-redux"
 import { setUser } from "./../../redux/reducers/user"
 import {url} from "./../../data/url"
-
+import ClipLoader from "react-spinners/ClipLoader";
 
 export default function Token() {
      const { userData } = useSelector((state) => state.user)
     const dispatch = useDispatch();
-  
+   const [showLoading , setShowLoading] = useState(false)
     const deleteToken = () => {
-        
-            fetch(`${url}/api/v1/users/setToken` , {
-             method: 'PUT',
-             headers: {
-                'Content-type': 'application/json; charset=UTF-8' // Indicates the content 
-            },
-            body: JSON.stringify({ id : userData.id , token  : "token"})
-            
-        }).
-        then((data) => { return data.json() })
-        .then((data) => {
-                dispatch(setUser(data.data))
-                })
+        try{
+          setShowLoading(true)
+          fetch(`${url}/api/v1/users/setToken` , {
+                     method: 'PUT',
+                     headers: {
+                        'Content-type': 'application/json; charset=UTF-8' // Indicates the content
+                    },
+                    body: JSON.stringify({ id : userData.id , token  : "token"})
+
+                }).
+                then((data) => { return data.json() })
+                .then((data) => {
+                        dispatch(setUser(data.data))
+                        })
+                          setShowLoading(false)
+        }catch(err){
+        setShowLoading(false)
+        }
+
     }
 
 
      const updateToken = () => {
-       
+        try{
+        setShowLoading(true)
          fetch(`${url}/api/v1/users/setToken` , {
-             method: 'PUT',
-             headers: {
-                'Content-type': 'application/json; charset=UTF-8' // Indicates the content 
-            },
-            body: JSON.stringify({ id : userData.id})
-            
-        }).
-        then((data) => { return data.json() })
-        .then((data) => {
-                dispatch(setUser(data.data))
-                })
+                     method: 'PUT',
+                     headers: {
+                        'Content-type': 'application/json; charset=UTF-8' // Indicates the content
+                    },
+                    body: JSON.stringify({ id : userData.id})
+
+                }).
+                then((data) => { return data.json() })
+                .then((data) => {
+                        dispatch(setUser(data.data))
+                        })
+
+
+          setShowLoading(false)
+
+          }catch(err){
+                    setShowLoading(false)
+                 }
+
     }
   return (
+   showLoading ?
+    <div className="   col-span-2  mx-[2%]">  <div className="card flex justify-center"><ClipLoader color="#36d7b7" /></div></div>
+
+     :
      <div className="   col-span-2  mx-[2%]">
           <div className="card ">
               <div className="flex justify-between w-full">
