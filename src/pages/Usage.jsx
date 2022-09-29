@@ -50,7 +50,8 @@ function Usage() {
                 if (data.msg == "ok") {
                       let _data = []
                       let _label = []
-                  for (let i = data.data.length - 1; i >=0 ; i--){
+
+                  for (let i = data.data.length - 1; i >=0 ; i--) {
                     try {
                       let str = data.data[i][0].substring(0, 4) + "-" + data.data[i][0].substring(4, 6) + "-" + data.data[i][0].substring(6, 8)
                       _label.push(str)  
@@ -59,9 +60,12 @@ function Usage() {
                     } catch (err) {
                        
                     }
-                       
-                        
+
+
                   }
+
+
+
                 
                       setLabels(_label)
                       setData(_data)
