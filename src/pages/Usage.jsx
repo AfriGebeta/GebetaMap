@@ -51,7 +51,7 @@ function Usage() {
                       let _data = []
                       let _label = []
 
-                  for (let i = data.data.length - 1; i >=0 ; i--) {
+                  for (let i = 0 ; i < data.data.length ; i++) {
                     try {
                       let str = data.data[i][0].substring(0, 4) + "-" + data.data[i][0].substring(4, 6) + "-" + data.data[i][0].substring(6, 8)
                       _label.push(str)  

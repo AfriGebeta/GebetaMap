@@ -21,8 +21,8 @@ function Intro() {
         <br />
         Routing & Direction API
       </h1>
-      <p className="text-white md:textShadow-[transparent] textShadow-[#000]">
-      Reliable, fast and effcient routing system, and also this is where we write important 
+      <p className="text-lg text-white md:textShadow-[transparent] textShadow-[#000]">
+      Reliable, fast and effcient routing system
       </p>
       <div className="flex whitespace-nowrap gap-4">
         <Link to="/" className='btn p-2 px-4 theme-light'>Get Started</Link>
@@ -41,32 +41,53 @@ function Intro() {
 function Services() {
   return (
     <div className='flex justify-center max-w-full'>
-    <div className="sw flex gap-2 md:overflow-x-visible overflow-x-scroll snap-x snap-mandatory">
-      <ServiceBox title='one-to-one' color='orange' icon={<LocationOn className='w-full h-full' />}>
+      <div className="grid grid-cols-3">
+        
+        {/* direction api */}
+      <ServiceBox title='Direction' color='orange' icon={<LocationOn className='w-full h-full' />}>
         <p className="py-4 text-gray-600">
-          Reliable, fast and effcient routing 
-            and also this is where we
-          write important
-            Reliable, fast and effcient 
-          routing system,
+                You can find directions to your destination using the Gebeta Directions API. Using the Directions API, you can determine the best route to take.
         </p>
         <div className="flex justify-center">
-          <Link to="/" className="text-blue-800 font-bold">Read More</Link>
+          <Link to="/document" className="text-blue-800 font-bold">Read More</Link>
         </div>
-      </ServiceBox>
-      <ServiceBox title='one-to-one' color='rgb(29,76,216)' icon={<MyLocation className='w-full h-full' />}>
+        </ServiceBox>
+        
+      {/* matrix api  */}
+      <ServiceBox title='one-to-many' color='rgb(29,76,216)' icon={<MyLocation className='w-full h-full' />}>
         <p className="py-4 text-gray-600">
-          Reliable, fast and effcient routing 
-            and also this is where we
-          write important
-            Reliable, fast and effcient 
-          routing system,
+         By using the Gebeta Matrix API, you may choose the most efficient path from one place to  several places.
         </p>
         <div className="flex justify-center">
-          <Link to="/" className="text-blue-800 font-bold">Read More</Link>
+          <Link to="/document" className="text-blue-800 font-bold">Read More</Link>
         </div>
-      </ServiceBox>
-      <ServiceBox title='one-to-one' color='rgb(22,162,74)' icon={<MapMarker className='w-full h-full' />}>
+        </ServiceBox>
+        
+        {/* many to many api */}
+      <ServiceBox title='many-to-many' color='rgb(22,162,74)' icon={<MapMarker className='w-full h-full' />}>
+        <p className="py-4 text-gray-600 ">
+          By using the Gebeta Matrix API, you may choose the most efficient path between several places.
+        </p>
+        <div className="flex justify-center">
+          <Link to="/document" className="text-blue-800 font-bold">Read More</Link>
+        </div>
+        </ServiceBox>
+
+        {/* optimization  */}
+        <ServiceBox title='Optimization' color='rgb(22,162,74)' icon={<MapMarker className='w-full h-full' />}>
+              <p className="py-4 text-gray-600 ">
+                  The Gebeta Optimization API returns a path between the
+                  input coordinates that is optimized.
+                  Planning the route for delivery in a city is a common
+                  use case for the Optimization API.
+              </p>
+            <div className="flex justify-center">
+              <Link to="/document" className="text-blue-800 font-bold">Read More</Link>
+          </div>
+          
+          {/* geocoding */}
+        </ServiceBox>
+            <ServiceBox title='Geocoding' color='rgb(22,162,74)' icon={<MapMarker className='w-full h-full' />}>
         <p className="py-4 text-gray-600 ">
           Reliable, fast and effcient routing 
             and also this is where we
@@ -75,7 +96,7 @@ function Services() {
           routing system,
         </p>
         <div className="flex justify-center">
-          <Link to="/" className="text-blue-800 font-bold">Read More</Link>
+          <Link to="/document" className="text-blue-800 font-bold">Read More</Link>
         </div>
       </ServiceBox>
     </div>
@@ -89,7 +110,7 @@ function StepLine(props) {
       <div className="flex-1 self-start relative">
         <Polygon className="sm:min-w-full min-w-[200px] -rotate-12 absolute sm:relative" color='#fcc652'/>
       </div>
-      <p className="flex-1 self-stretch min-w-[250px] text-center flex justify-center items-center p-6 z-10">
+      <p className="text-lg  font-bold flex-1 self-stretch min-w-[250px] text-center flex justify-center items-center p-6 z-10">
           {children}
       </p>
     </div>
@@ -98,20 +119,14 @@ function StepLine(props) {
 function Steps() {
   return (
     <div className="sw">
-      <StepLine>
+      <StepLine >
         Reliable, fast and effcient routing 
         and also this is where we write important 
-        Reliable, fast and effcient routing 
-        and also this is where we write important
-        Reliable, fast and effcient routing system,
+      
       </StepLine>
       <div className='md:h-4 h-14'>&nbsp;</div>
       <StepLine className='flex flex-row-reverse'>
-        Reliable, fast and effcient routing 
-        and also this is where we write important 
-        Reliable, fast and effcient routing 
-        and also this is where we write important
-        Reliable, fast and effcient routing system,
+        Large Collection of Geocoding data customized to Ethiopian Context
       </StepLine>
       <div className='md:h-4 h-14'>&nbsp;</div>
     </div>
@@ -162,11 +177,11 @@ function PricePlans() {
 }
 function Home() {
   return (
-    <div className="w-full flex flex-col items-center">
+    <div className="w-full flex flex-col items-center ">
       <Intro />
       <Services />
       <Steps />
-      <PricePlans />
+      {/* <PricePlans /> */}
       <div className="h-52">&nbsp;</div>
     </div>
   )

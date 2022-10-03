@@ -21,6 +21,23 @@ export const responseSampleForDirection200 = [
                 <span className=''>&#125;</span>
 ]
 
+export const responseSampleGeocoding = [
+    <span>&#123;</span>,
+
+                
+                <span className='pl-[3%]'>msg:ok,</span> ,
+                <span className='pl-[3%]'>"data":[</span>  ,  
+                <span className='pl-[6%]'>&#123;</span>,
+                <span className='pl-[9%]'>"latitude": "8.995250424605612",</span>,
+                <span className='pl-[9%]'>"name": "Doctor Mulu Dental Medium Clinic",</span>,
+                <span className='pl-[9%]'>"longitude": "38.76969781653905"</span>,
+                <span > &#125;,</span >,
+ 
+                <span className='pl-[3%]'>]</span>,
+                <span className=''>&#125;</span>
+
+]
+
 export const responseSampleForDirection400 = [
     <span>&#123;</span>,
                 <span className='px-[3%]'>"hints" :  &#123;</span>,

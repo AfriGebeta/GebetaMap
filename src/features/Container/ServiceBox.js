@@ -13,9 +13,9 @@ function ServiceBox(props) {
         </div>
       </div>
       <div className="py-4">
-        <h2 className="text-base">{title}</h2>
+        <h2 className=" text-xl font-bold">{title}</h2>
       </div>
-      <div className="text-center">
+      <div className="text-base">
         {children}
       </div>
     </div>

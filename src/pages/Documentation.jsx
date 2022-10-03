@@ -2,7 +2,7 @@ import React, { useEffect, useState , useRef} from "react";
 
 import RequestSample from "./../components/Documentation/RequestSample";
 import ResponseSample from "./../components/Documentation/ResponseSample";
-import { direction, responseSampleForDirection200, responseSampleForDirection400,responseSampleForOnm, responseSampleForDirection500 , tssreponse200 , matrixResponse200 } from "./../data/responsecode";
+import {responseSampleGeocoding ,  direction, responseSampleForDirection200, responseSampleForDirection400,responseSampleForOnm, responseSampleForDirection500 , tssreponse200 , matrixResponse200 } from "./../data/responsecode";
 import Direction from "./../components/Documentation/Direction";
 import Matrix from "./../components/Documentation/Matrix";
 import OneToMany  from "./../components/Documentation/OneToMany";
@@ -85,38 +85,35 @@ const { userData } = useSelector((state) => state.user)
             .{" "}
           </p>
          
-          <p className="mt-[5%] text-2xl font-black">Postman</p>
-          <p className="mt-[5%]">
-            To explore our APIs with Postman, follow these steps:{" "}
-          </p>
-          <div className="ml-[2%]">
-            <ol>
-              <li>
-                Import our request collections as well as our environment file.
-              </li>
-              <li>
-                Specify your API key in your environment: "api_key": your API key
-              </li>
-              <li>Start exploring</li>
-            </ol>
-          </div>
-          <p className="mt-[5%] font-bold text-3xl mb-[5%]">Contact Us</p>
-          <p>
-            If you have problems or questions, please read the following
-            information:
-          </p>
-          <ol className="ml-[5%]">
-            <li>Follow us on Twitter</li>
-            <li>Contact us</li>
-          </ol>
+        
+       
 
 
           {userData.token != null ?
           <div>
           <p className="mt-[5%] font-bold text-3xl mb-[1%]">
             Geocoding Endpoint
-          </p>
-         <Geocoding/>
+              </p>
+              <p>You can forward geocode using the Gebeta Geocoding API, which converts text queries like "Bole Edna Mall" into longitude and latitude coordinates.</p>
+         
+                    <div className="w-full bg-[#263238] text-white mb-[5%] flex flex-col">
+            <div className="bg-[#11171a] mx-[5%] mt-[2%] py-[1%]">
+              <p className="mx-[2%] space-x-2 ">
+                <span className="bg-green-200 px-2 py-1">GET</span>
+                <span className="mx-[2%]">
+                  http://mapapi.gebeta.app/api/v1/route/geocoding
+                  
+                </span>
+              </p>
+            </div>
+            {/* request sample here */}
+            <RequestSample
+              curl='curl https://mapapi.gebeta.app/api/v1/route/geocoding?name=doctor mulu&apiKey=apiKey'
+              js={direction}
+            />
+            <ResponseSample responseCodes200={ responseSampleGeocoding} responseCodes400={responseSampleForDirection400 } responseCodes500={responseSampleForDirection500 }      />
+          </div>
+              <Geocoding />
           </div>
           : ""}
 
@@ -124,7 +121,7 @@ const { userData } = useSelector((state) => state.user)
           <p className="mt-[5%] font-bold text-3xl mb-[1%]">
             Direction Endpoint
           </p>
-          <p className="mt-[1%]   mb-[5%]">Use this url on your map provider and start routing {openstreetmap}</p>
+          <p className="  ">You can find directions to your destination using the Gebeta Directions API. Using the Directions API, you can determine the best route to take.</p>
           <p>
             The GET request is the most simple one: just specify the parameter
             in the URL and you are done. Can be tried directly in every browser.
@@ -142,7 +139,7 @@ const { userData } = useSelector((state) => state.user)
             </div>
             {/* request sample here */}
             <RequestSample
-              curl='curl "https://mapapi.gebeta.app/api/v1/route/driving/direction/?point=" + l1 + "&point=" + lo1 + "&point=" + la2 + "&point=" + lo2 + "&apiKey=" + apiKey'
+              curl='curl https://mapapi.gebeta.app/api/v1/route/bike/direction/?la1=9.022528936095531&lo1=38.80400061607361&la2=9.021755421022991&lo2=38.79883468151093&apiKey=apiKey'
               js={direction}
             />
             <ResponseSample responseCodes200={ responseSampleForDirection200} responseCodes400={responseSampleForDirection400 } responseCodes500={responseSampleForDirection500 }      />
@@ -159,8 +156,10 @@ const { userData } = useSelector((state) => state.user)
             Route Optimization EndPoint
           </p>
           <p>
-            The GET request is the most simple one: just specify the parameter
-            in the URL and you are done. Can be tried directly in every browser.
+           The Gebeta Optimization API returns a path between the
+                  input coordinates that is optimized.
+                  Planning the route for delivery in a city is a common
+                  use case for the Optimization API.
           </p>
           {/* code component */}
           <div className="w-full bg-[#263238] text-white mb-[5%] flex flex-col">
@@ -304,7 +303,7 @@ The most simple example is a people trying to decide which bus restoursant is cl
           </p>
         
           <p>
-            The One-To-Many EndPoint  is part of the GebetaMaps Directions API and with it, you can calculate one-to-many distances and times a lot more efficient than calling the Routing API multiple times.
+             By using the Gebeta Matrix API, you may choose the most efficient path from one place to  several places.
           </p>
 
 
@@ -346,7 +345,7 @@ The most simple example is a people trying to decide which bus restoursant is cl
             </div>
             {/* request sample here */}
             <RequestSample
-              curl='curl  "https://mapapi.gebeta.app/api/v1/route/driving/onm/?la1=" + start.lat + &lo1= + start.lon + &endpoint= + _endpoints + &apiKey= apiKey"'
+              curl='curl  https://mapapi.gebeta.app/api/v1/route/driving/onm/?la1=9.022528936095531&lo1=38.80400061607361&json=[[9.005980058445639,38.785734616513466],[9.01166345564756,38.789008246478424]]&apiKey=token'
               js={direction}
             />
             <ResponseSample responseCodes200={ responseSampleForOnm} responseCodes400={responseSampleForDirection400 } responseCodes500={responseSampleForDirection500 }      />

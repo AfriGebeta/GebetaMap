@@ -17,12 +17,16 @@ function Header() {
               <span className="text-dark font-black">maps</span>
             </h2>
           </Link>
-        </div>
+      </div>
+      
+       
+        
+        
         <div className="hidden md:flex text-white grow justify-end items-center gap-4 flex-wrap">
-          <Link to="/">features</Link>
-          <Link to="/">pricing</Link>
-          <Link to="/">documenation</Link>
-          <Link to="/">contact us</Link>
+          <Link to="/features" className="uppercase">features</Link>
+          <Link to="/pricing" className="uppercase">pricing</Link>
+          <Link to="/document" className="uppercase">documentation</Link>
+          <Link to="/contact" className="uppercase">contact us</Link>
           <div className="flex gap-4 ">
             <Modal open={signupModal} close={() => {setSignupModal(false)}} elem={<Signup 
               footer={

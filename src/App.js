@@ -9,6 +9,10 @@ import Billing from './pages/Billing';
 import Usage from './pages/Usage';
 import Profile from './pages/Profile';
 import Documentation from './pages/Documentation';
+import Pricing from "./pages/Pricing";
+import Features from './pages/Features';
+import Contact from './pages/Contact';
+
 function App() {
   return (
     <Router>
@@ -35,6 +39,25 @@ function App() {
          <Route path="/documentation" element={<Sidebar />}>
           <Route index element={<Documentation />} />
         </Route>
+        
+      <Route path="/document" >
+          <Route index element={<Documentation />} />
+      </Route>
+
+        
+      <Route path="/pricing" >
+          <Route index element={<Pricing />} />
+      </Route>
+       
+      <Route path="/features" >
+          <Route index element={<Features />} />
+      </Route>
+        
+
+      <Route path="/contact" >
+          <Route index element={<Contact />} />
+      </Route>
+        
       </Routes>
     </Router>
   );
