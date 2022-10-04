@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useSelector, useDispatch } from "react-redux"
 import red from './red.png';
 import L from 'leaflet';
-import { matrix } from './../../data/index';
+import  matrix  from './../../data/index';
 import green from './green.png';
 import { setUser} from "./../../redux/reducers/user"
 
