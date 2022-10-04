@@ -1,6 +1,6 @@
 //const urls = "http://localhost:8080"
 const urls = "https://mapapi.gebeta.app"
-const direction =  async (start , newMarker , apiKey) => {
+export defaut const direction =  async (start , newMarker , apiKey) => {
     const url = urls + "/api/v1/route/driving/direction/?la1=" + start.lat + "&lo1=" + start.lon + "&la2=" + newMarker.lat + "&lo2=" + newMarker.lng + "&apiKey="+apiKey
     try {
         const response = await fetch(url);
@@ -11,7 +11,7 @@ const direction =  async (start , newMarker , apiKey) => {
       }
 }
 
-const matrix = async (gmarker, apiKey) => {
+export defaut const matrix = async (gmarker, apiKey) => {
 
 
    let startpoint = []
@@ -37,7 +37,7 @@ const matrix = async (gmarker, apiKey) => {
 
 
 
-const tss = async (gmarker, apiKey) => {
+export default const tss = async (gmarker, apiKey) => {
   let startpoint = []
   for (let i = 0; i < gmarker.length; i++){
     let points = []
@@ -57,7 +57,7 @@ const tss = async (gmarker, apiKey) => {
       }
 }
 
-const oneToMany = async (start, gmarker, apiKey) => {
+export default const oneToMany = async (start, gmarker, apiKey) => {
  let startpoint = []
   for (let i = 0; i < gmarker.length; i++){
     let points = []
@@ -77,7 +77,7 @@ const oneToMany = async (start, gmarker, apiKey) => {
   }
 }
 
-const geocoding = async (name, apiKey) => {
+const default geocoding = async (name, apiKey) => {
   const url = urls + "/api/v1/route/geocoding?name=" + name + "&apiKey=" + apiKey;
   try {
       const response = await fetch(url);
@@ -89,5 +89,5 @@ const geocoding = async (name, apiKey) => {
 }
 
 
-module.exports = { direction: direction,  matrix: matrix,  oneToMany: oneToMany,  tss: tss,  geocoding: geocoding }
+//module.exports = { direction: direction,  matrix: matrix,  oneToMany: oneToMany,  tss: tss,  geocoding: geocoding }
 
