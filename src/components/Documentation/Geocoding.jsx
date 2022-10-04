@@ -1,6 +1,6 @@
 
 import React , {useState , useEffect} from 'react'
-import { geocoding } from 'gebetamap';
+import  geocoding  from 'gebetamap';
 
 import { setUser} from "./../../redux/reducers/user"
 import { useSelector, useDispatch } from "react-redux"
