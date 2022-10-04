@@ -2,7 +2,7 @@
 
 import { MapContainer, TileLayer, Polyline , useMapEvents , Marker , Popup , Polygon , FeatureGroup , EditControl} from 'react-leaflet';
 import { useState } from 'react';
-import { direction } from './../../data/index';
+import  direction  from './../../data/index';
 import red from './red.png';
 import green from './green.png';
 import L from 'leaflet';
