@@ -37,7 +37,7 @@ export default function ChoosedPlan() {
       
       </div>
       <div className="flex">
-        <div className="flex-grow">
+        <div className="flex-grow ">
                     <div className="flex justify-between mx-[5%]">
                           <p className="font-bold">Plan</p>
                           <p className="font-bold"> Remaining Request</p>

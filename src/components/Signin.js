@@ -79,7 +79,7 @@ function Signin({ footer }) {
          {
          showLoading ?
 
-         <button type="button" className="px-3 py-2 mt-1 mb-5 transition duration-200 bg-blue-500 hover:bg-blue-600 focus:bg-blue-700 focus:shadow-sm focus:ring-4 focus:ring-blue-500 focus:ring-opacity-50 text-white w-full py-2.5  text-sm shadow-sm hover:shadow-md font-semibold text-center inline-block "
+         <button type="button" className="rounded-md bg-orange-200 text-black px-3 py-2 mt-1 mb-5 transition duration-200 bg-blue-500 hover:bg-orange-500  focus:ring-opacity-50 text-white w-full py-2.5  text-sm shadow-sm hover:shadow-md font-semibold text-center inline-block "
                           disabled
                                       onClick={(event) => {
                                         event.preventDefault()
@@ -90,7 +90,7 @@ function Signin({ footer }) {
 
                                   </button>
                                   :
-         <button type="button" className="px-3 py-2 mt-1 mb-5 transition duration-200 bg-blue-500 hover:bg-blue-600 focus:bg-blue-700 focus:shadow-sm focus:ring-4 focus:ring-blue-500 focus:ring-opacity-50 text-white w-full py-2.5  text-sm shadow-sm hover:shadow-md font-semibold text-center inline-block"
+         <button type="button" className="rounded-md bg-orange-200 text-black px-3 py-2 mt-1 mb-5 transition duration-200 bg-blue-500 hover:bg-orange-500  focus:ring-opacity-50 text-white w-full py-2.5  text-sm shadow-sm hover:shadow-md font-semibold text-center inline-block"
                      onClick={(event) => {
                        event.preventDefault()
                        submit()

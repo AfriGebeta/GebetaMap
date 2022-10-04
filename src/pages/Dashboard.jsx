@@ -17,7 +17,7 @@ function Dashboard() {
   //userData
   return (
 
-    <div className="grid grid-cols-3 gap-x-2 gap-y-3 ">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-x-2 gap-y-3 ">
 
            <ApiDoc class=" "/> 
       <ChoosedPlan/>
