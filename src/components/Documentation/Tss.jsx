@@ -3,7 +3,7 @@ import { MapContainer, TileLayer, Polyline , useMapEvents , Marker , Popup , Pol
 import { useState } from 'react';
 import red from './red.png';
 import L from 'leaflet';
-import { tss } from './../../data/index'
+import  tss  from './../../data/index'
 import { useSelector, useDispatch } from "react-redux"
 
 const default_latitude = 9.02151;
