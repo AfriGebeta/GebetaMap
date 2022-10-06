@@ -121,12 +121,12 @@ function Steps() {
     <div className="sw">
       <StepLine >
         Reliable, fast and effcient routing 
-        and also this is where we write important 
+        Solution.
       
       </StepLine>
       <div className='md:h-4 h-14'>&nbsp;</div>
       <StepLine className='flex flex-row-reverse'>
-        Large Collection of Geocoding data customized to Ethiopian Context
+        Large Collection of Geocoding data customized to the Context of the Country.
       </StepLine>
       <div className='md:h-4 h-14'>&nbsp;</div>
     </div>
