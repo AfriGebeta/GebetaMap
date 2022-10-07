@@ -24,10 +24,10 @@ function Intro() {
       <p className="text-lg text-white md:textShadow-[transparent] textShadow-[#000]">
       Reliable, fast and effcient routing system
       </p>
-      <div className="flex whitespace-nowrap gap-4">
+      {/* <div className="flex whitespace-nowrap gap-4">
         <Link to="/" className='btn p-2 px-4 theme-light'>Get Started</Link>
         <Link to="/" className='btn p-2 px-4'>Contact Us</Link>
-      </div>
+      </div> */}
     </div>
     <div className=" grow flex flex-col w-1/2 ">
       <div className="relative w-full h-full -z-10">
