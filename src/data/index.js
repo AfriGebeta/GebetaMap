@@ -1,5 +1,5 @@
-//const urls = "http://localhost:8080"
-const urls = "https://mapapi.gebeta.app"
+const urls = "http://localhost:8080"
+//const urls = "https://mapapi.gebeta.app"
 export  const direction =  async (start , newMarker , apiKey) => {
     const url = urls + "/api/v1/route/driving/direction/?la1=" + start.lat + "&lo1=" + start.lon + "&la2=" + newMarker.lat + "&lo2=" + newMarker.lng + "&apiKey="+apiKey
     try {
