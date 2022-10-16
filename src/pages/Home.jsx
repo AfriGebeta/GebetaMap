@@ -15,7 +15,7 @@ function Intro() {
   return (
     <div className="flex sw">
       <div className="my-32 flex flex-col gap-2 grow w-1/2 ">
-      <h1 className="uppercase sm:whitespace-nowrap ">
+      <h1 className="uppercase sm:whitespace-nowrap font-black">
         <span className="text-white">Gebeta</span>
         Maps
         <br />
@@ -40,8 +40,8 @@ function Intro() {
 }
 function Services() {
   return (
-    <div className='flex justify-center max-w-full'>
-      <div className="grid grid-cols-3">
+    <div className='flex justify-center max-w-full p-2'>
+      <div className="gap-2 grid sm:grid-cols-2 md:grid-cols-3 ">
         
         {/* direction api */}
       <ServiceBox title='Direction' color='orange' icon={<LocationOn className='w-full h-full' />}>

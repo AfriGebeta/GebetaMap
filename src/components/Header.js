@@ -5,24 +5,27 @@ import Signup from "./Signup";
 import Signin from "./Signin";
 
 
-function Header() {
+function Header(props) {
   const [signupModal,setSignupModal] = useState(false);
   const [signinModal,setSigninModal] = useState(false);
+
+  const type2 = props.type === 'col';
+
   return (
-    <div className="flex items-center py-5 sw relative z-10">
-        <div className="">
+    <div className={!type2 ? "flex w-full" 
+      : 'overflow-hidden '
+    }>
+        <div className={""+(type2 ? 'hidden' : '')}>
           <Link to="/">
-            <h2 className="mr-6 self-start">
+            <h2 className="mr-6 self-start m-0">
               <span className="text-white font-black">gebeta</span>
               <span className="text-dark font-black">maps</span>
             </h2>
           </Link>
-      </div>
-      
-       
-        
-        
-        <div className="hidden md:flex text-white grow justify-end items-center gap-4 flex-wrap">
+        </div>
+        <div className={!type2 ? "hidden md:flex text-white grow justify-end items-center gap-4 flex-wrap"
+          : 'flex flex-col gap-4 text-white grow '
+        }>
 
           <Link to="/document" className="uppercase">documentation</Link>
           {/* <Link to="/features" className="uppercase">features</Link>
@@ -50,7 +53,7 @@ function Header() {
             </Modal>
           </div>
         </div>
-        <div className="md:hidden gap-4 grow flex items-cneter justify-end">Menu</div>
+        {/* <div className="md:hidden gap-4 grow flex items-cneter justify-end">Menu</div> */}
       </div>
   )
 }
