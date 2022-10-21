@@ -100,36 +100,36 @@ export default function Profile() {
   <div class="grid h-screen place-items-center">  <ClipLoader color="#36d7b7" /></div>
 
    :
-    <div className="w-full h-full flex flex-col justify-center items-center">
-        <div className="w-[50%] h-[70%] mt-[5%]">
+    <div className="w-full min-h-full flex flex-col  items-center">
+        <div className="w-[90%] sm:w-[50%] h-[70%] mt-[5%] ">
 
              <div className="grid w-[90%] place-items-center">
                   <p className="text-red-600">{message}</p>
              </div>
-            <div className="flex flex-row justify-between ">
+            <div className="flex flex-row  flex-wrap sm:flex-nowrap justify-center ">
 
-                <div className=" w-[50%] mx-[2%]">
+                <div className=" w-[70%] sm:w-[50%] mx-[2%]">
                     <label className="font-semibold text-sm  pb-1 block font-bold">username </label>
                      <input type="text" className="border  px-3 py-2 mt-1 mb-5 text-sm w-full text-black" value={username} onChange={handleUsername} />
                 </div>
-                <div className=" w-[50%] mx-[2%] ">
+                <div className=" w-[70%] sm:w-[50%] mx-[2%] ">
                     <label className="font-semibold text-sm  pb-1 block font-bold">Company Name</label>
                     <input type="text" className="border px-3 py-2 mt-1 mb-5 text-sm w-full text-black" value={companyname} onChange={handleCompanyName}/>
                 </div>
             </div>
-            <div className="flex flex-row justify-between mt-[5%]">
-                    <div className=" w-[50%] mx-[2%]">
+            <div className="flex flex-row  flex-wrap sm:flex-nowrap justify-center mt-[5%]">
+                    <div className=" w-[70%] sm:w-[50%] mx-[2%]">
                                 <label className="font-semibold text-sm  pb-1 block font-bold">Email</label>
                                  <input type="email" className="border  px-3 py-2 mt-1 mb-5 text-sm w-full text-black" value={email} onChange={handleEmail} />
                     </div>
-                    <div className="w-[50%] mx-[2%]">
+                    <div className="w-[70%] sm:w-[50%] mx-[2%]">
                                 <label className="font-semibold text-sm  pb-1 block font-bold">Password</label>
                                 <input type="text" className="border px-3 py-2 mt-1 mb-5 text-sm w-full text-black" value={password} onChange={handlePassword}/>
                     </div>
 
             </div>
         </div>
-        <button type="button" className=" mt-[10%] px-[5%] py-2 mt-1 mb-5 transition duration-200 bg-black  text-white  py-2  text-sm shadow-sm font-semibold text-center inline-block"
+        <button type="button" className=" mt-[50px] px-[5%] py-2 mt-1 mb-5 transition duration-200 bg-black  text-white  py-2  text-sm shadow-sm font-semibold text-center inline-block"
                     onClick={(event) => {
                       event.preventDefault()
                       submit()

@@ -24,11 +24,12 @@ function Navbar() {
             <div className="md:hidden gap-4 grow flex items-cneter justify-end cursor-pointer" onClick={() => setOpen(!open)}>Menu</div>
           </div>
 
-          <div className='flex flex-row items-stretch overflow-auto relative w-full '>
+          <div className={'flex flex-row items-stretch overflow-auto relative w-full '+ (open ? ' h-screen' : '')}>
             <div className="relative z-0 w-full flex flex-col items-center overflow-hidden">
               <Outlet />
             </div>
-            <div className={"z-20 h-screen flex sticky top-0 "}>
+            {/* The Mobile View Slide Header   */}
+            <div className={"z-20 h-auto flex sticky top-0 "}>
               <div className={"max-w-full bg-primary sm:relative overflow-hidden flex transition-all duration-500 "+openClass.current
                 + (open ? ' p-4 ' : '')}>
                 <Header type='col' />

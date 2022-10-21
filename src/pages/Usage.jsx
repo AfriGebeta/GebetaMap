@@ -114,7 +114,7 @@ const datas = {
 
 
     <div className="h-full w-full">
-      <div className="grid grid-cols-2 gap-x-2 gap-y-3 mx-[10%] ">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-2 gap-y-3 mx-[10%] ">
             <Direction />
             <Onm />
             <Tss/>

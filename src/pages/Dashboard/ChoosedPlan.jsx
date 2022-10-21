@@ -30,20 +30,21 @@ export default function ChoosedPlan() {
     }, [])
 
     return (
-  <div className="flex flex-col  mx-[5%]   ">
-    <div className="card px-5">
-      <div className="flex gap-3 justify-between items-center">
-        <h2>Current Plan</h2>
-      
-      </div>
-      <div className="flex">
-        <div className="flex-grow ">
-                    <div className="flex justify-between mx-[5%]">
-                          <p className="font-bold">Plan</p>
-                          <p className="font-bold"> Remaining Request</p>
-                            <p className="font-bold">Status</p>
-                        </div>     
-                        {
+  <div>
+    <div className="flex flex-col  mx-[5%]   ">
+      <div className="card px-5">
+        <div className="flex gap-3 justify-between items-center">
+          <h2>Current Plan</h2>
+        
+        </div>
+        <div className="flex">
+          <div className="flex-grow ">
+            <div className="flex justify-between mx-[5%]">
+              <p className="font-bold">Plan</p>
+              <p className="font-bold"> Remaining Request</p>
+              <p className="font-bold">Status</p>
+            </div>     
+              {
                 choosedPlan.map((n) => {
                     return <div className="flex justify-between mx-[5%]">
                       <p className="font-bold">{n.choosedplan}</p>
@@ -51,14 +52,11 @@ export default function ChoosedPlan() {
                             <p className="font-bold">{n.status}</p>
                         </div>    
                 })
-          }
-            
+              }
+          </div>
         </div>
-       
       </div>
-
     </div>
-  
   </div>
 
   )

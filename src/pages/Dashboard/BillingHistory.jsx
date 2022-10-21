@@ -41,21 +41,22 @@ export default function BillingHistory() {
 
 
     return (
-      <div className="flex flex-col  mx-[5%]  ">
+      <div>
+        <div className="flex flex-col  mx-[5%]  ">
     
-
-    <div className="card p-0 ">
-      <h2 className="p-3 px-5 ">Billing History</h2>
-      {bililng.map((bill,i) => {
-        return (
-          <div className={"px-5 py-1 flex justify-between items-center gap-4 "+(i%2===0?"bg-[#F3C651]/30":"")}>
-            <p>{bill.date.substring(0, 4) + "-" + bill.date.substring(4, 6) + "-" + bill.date.substring(6, 8)}</p>
-            <b>ETB&nbsp;{bill.totalmoney}</b>
-          </div>  
-        )
-      })}
+          <div className="card p-0 ">
+            <h2 className="p-3 px-5 ">Billing History</h2>
+            {bililng.map((bill,i) => {
+              return (
+                <div className={"px-5 py-1 flex justify-between items-center gap-4 "+(i%2===0?"bg-[#F3C651]/30":"")}>
+                  <p>{bill.date.substring(0, 4) + "-" + bill.date.substring(4, 6) + "-" + bill.date.substring(6, 8)}</p>
+                  <b>ETB&nbsp;{bill.totalmoney}</b>
+                </div>  
+              )
+            })}
       
-            </div>
-              </div>
-  )
+          </div>
+        </div>
+      </div>
+    )
 }
