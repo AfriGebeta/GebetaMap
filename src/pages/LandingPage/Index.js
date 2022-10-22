@@ -72,11 +72,12 @@ tabindex="-1" aria-labelledby="drawer-right-label">
         setSigninModal(true)}} class="bg-blue  text-white font-bold py-2 px-4 rounded-full px-[5%] ">
           Sign In
       </button>
-      <button onClick={() => {
+      
+       {/* <button onClick={() => {
          setSideBarShow(false)
         setSignupModal(true)}} class="bg-blue  text-white font-semibold hover:text-white py-2 px-4 border border-white  rounded-full px-[5%] ">
           Sign Up
-      </button>
+      </button>  */}
 
    </div>
    
@@ -115,7 +116,7 @@ tabindex="-1" aria-labelledby="drawer-right-label">
                      ROUTING & MAP API SERVICE
                 </h3>
                 <div className="mt-[2%]">
-                    <a href="/#" className="btn theme-light px-[5%] py-[3%] border border-[#ccc]">GET STARTED</a>
+                    <a href="/#" onClick={() => setSignupModal(true)}  className="btn theme-light px-[5%] py-[3%] border border-[#ccc]">GET STARTED</a>
                 </div>
               
               </div>
@@ -138,9 +139,9 @@ tabindex="-1" aria-labelledby="drawer-right-label">
                       </button>
                    
 
-                      <button onClick={() => setSignupModal(true)}  class="bg-transparent hover:bg-white hover:text-[#1A1F32]  text-white font-semibold hover:text-white py-2 px-4 border border-white  rounded-full px-[5%] lg:mr-[15%]">
+                      {/* <button onClick={() => setSignupModal(true)}  class="bg-transparent hover:bg-white hover:text-[#1A1F32]  text-white font-semibold hover:text-white py-2 px-4 border border-white  rounded-full px-[5%] lg:mr-[15%]">
                           SIGN UP
-                      </button>
+                      </button> */}
                    
           
           </div> 
