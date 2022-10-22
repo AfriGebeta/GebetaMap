@@ -14,8 +14,13 @@ import Features from './pages/Features';
 import Contact from './pages/Contact';
 import Index from './pages/LandingPage/Index';
 
-import NewDashboard from './pages/New/Dashboard/Index';
 import NewNavbar from './components/New/Navbar';
+import NewDashboard from './pages/New/Dashboard/Index';
+import NewTokens from './pages/New/Tokens/Index';
+import NewUsage from './pages/New/Usage/Index';
+import NewProfile from './pages/New/Settings/Profile';
+import NewPassword from './pages/New/Settings/ChangePassword';
+
 
 function App() {
   return (
@@ -66,6 +71,12 @@ function App() {
         
         <Route path="/account" element={<NewNavbar /> }>
           <Route path="dashboard" element={<NewDashboard />} />
+          <Route path="tokens" element={<NewTokens />} />
+          <Route path="usage" element={<NewUsage />} />
+          <Route path="settings">
+            <Route index element={<NewProfile />} />
+            <Route path='password' element={<NewPassword />} />
+          </Route>
         </Route>
 
       </Routes>

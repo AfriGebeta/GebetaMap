@@ -1,5 +1,5 @@
 import React from "react";
-import {Link} from 'react-router-dom';
+import {Link, useLocation} from 'react-router-dom';
 import {CaretDownFilled, CaretLeftFilled, UserOutlined} from '@ant-design/icons';
 import ProfilePopup from "./ProfilePopup";
 import { useState } from "react";
@@ -7,6 +7,8 @@ import { useState } from "react";
 function Header(props) {
   const [profilePopupOpened,setProfilePopupOpened] = useState(false);
   const type2 = props.type === 'col';
+  const location = useLocation();
+  const url = location.pathname.split("/")[2];
 
   return (
     <div className={!type2 ? "flex w-full" 
@@ -24,11 +26,11 @@ function Header(props) {
           : 'flex flex-col gap-6 text-white grow '
         }>
 
-          <Link to="/document" className=" text-white active_link">Dashboard</Link>
-          <Link to="/features" className=" text-white">Tokens</Link>
-          <Link to="/pricing" className=" text-white">Usage</Link>
-          <Link to="/contact" className=" text-white">Price Plans</Link>
-          <Link to="/contact" className=" text-white">Settings</Link>
+          <Link to="/account/dashboard" className={" text-white " + (url === "dashboard" ? " active_link " : '')}>Dashboard</Link>
+          <Link to="/account/tokens" className={" text-white " + (url === "tokens" ? ' active_link ' : '')}>Tokens</Link>
+          <Link to="/account/usage" className={" text-white " + (url === "usage" ? ' active_link ' : '')}>Usage</Link>
+          <Link to="/account/plans" className={" text-white " + (url === "plans" ? ' active_link ' : '')}>Price Plans</Link>
+          <Link to="/account/settings" className={" text-white " + (url === "settings" ? ' active_link ' : '')}>Settings</Link>
           <span className="flex items-center gap-2 cursor-pointer relative"
             onClick={() => setProfilePopupOpened(!profilePopupOpened)}
           >

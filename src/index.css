@@ -43,16 +43,16 @@ code {
   .child-text-white * {
     @apply text-white;
   }
-  
+
   button,
   .btn,
   input[type='button'],
   input[type='submit'] {
-    @apply bg-black p-1 px-3 !text-white uppercase text-sm text-center border border-black ;
+    @apply bg-black p-1 px-3 text-white uppercase text-sm text-center border border-black ;
   }
 
   .btn-sty1 {
-    @apply bg-white text-black rounded-full p-1 px-4 inline-block font-bold text-[13px] ;
+    @apply bg-white text-black rounded-full p-1 px-4 inline-block !font-bold !text-[13px];
   }
 
   h1 {
@@ -75,7 +75,7 @@ code {
   }
 
   .theme-light {
-    @apply bg-white text-dark !important;
+    @apply bg-white text-black !important;
   }
   
   .text-shadow {

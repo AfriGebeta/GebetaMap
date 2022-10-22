@@ -3,12 +3,13 @@ import {Outlet} from 'react-router-dom';
 import Header from "./Header";
 // import {ReactComponent as BGPolygon} from '../assets/icons/bg-polygon.svg'
 
-function Navbar() {
+function Navbar(props) {
   const [open,setOpen] = useState(false);
 
   var openClass = useRef(" w-0 ");
   var btnClass = useRef(" open ");
 
+  
   useEffect(() => {
     openClass.current = open ? " w-0 " : " w-96 ";
     btnClass.current = open ? "" : " open ";

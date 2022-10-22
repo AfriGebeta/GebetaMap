@@ -4,8 +4,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 
-const {TextArea} = Input;
-
 function Sidebar() {
   return (
     <div className="hidden sm:flex flex-col gap-3 text-white min-w-[200px] ">
