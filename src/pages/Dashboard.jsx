@@ -17,17 +17,14 @@ function Dashboard() {
   //userData
   return (
 
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-x-2 gap-y-3 ">
-
-           <ApiDoc class=" "/> 
-              <ChoosedPlan/>
-      <BillingHistory className="  "/>
-      <ClientDetails className="" />
-      <Token  className=""/>
-</div>
-  
-
-   
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-2 gap-y-3 w-full">
+      <ApiDoc /> 
+      <ChoosedPlan  />
+      <BillingHistory />
+      <ClientDetails />
+      <Token  />
+    </div>
+    
   )
 }
 

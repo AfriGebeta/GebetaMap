@@ -24,6 +24,8 @@ function App() {
           <Route index element={<Dashboard />} />
         </Route>
 
+        <Route path='/LandingPage' element={<Index />} />
+
          <Route path="/billing" element={<Sidebar />}>
           <Route index element={<Billing />} />
         </Route>

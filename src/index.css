@@ -40,7 +40,7 @@ code {
   .btn,
   input[type='button'],
   input[type='submit'] {
-    @apply bg-dark p-1 px-3 text-white uppercase text-sm text-center;
+    @apply bg-black p-1 px-3 !text-white uppercase text-sm text-center border border-black ;
   }  
 
   h1 {
@@ -60,7 +60,7 @@ code {
   }
 
   .theme-light {
-    @apply bg-white text-dark;
+    @apply bg-white text-dark !important;
   }
   
   .text-shadow {

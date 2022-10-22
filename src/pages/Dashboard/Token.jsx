@@ -124,10 +124,10 @@ export default function Token() {
   }
   return (
    showLoading ?
-    <div className="    mx-[2%]">  <div className="card flex justify-center"><ClipLoader color="#36d7b7" /></div></div>
+    <div className="  mx-[2%]">  <div className="card flex justify-center"><ClipLoader color="#36d7b7" /></div></div>
 
      :
-     <div className=" col-span-2    mx-[2%]">
+     <div className=" col-span-1 sm:col-span-2  mx-[2%]">
           <div className="card ">
               <div className="flex justify-between w-full">
                       <p className="font-bold">Manage your API Key</p>

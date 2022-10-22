@@ -88,13 +88,13 @@ function Billing() {
 
       <div class=" w-[100%] "><BusinessPackage /></div>
 
-      <div className="flex w-[100%]  justify-between mt-[3%] ">
-        <div className="flex flex-col w-[50%] space-y-5 ml-[2.4%]">
+      <div className="flex w-[100%] flex-wrap justify-between mt-[3%] ">
+        <div className="flex flex-col w-full sm:w-[50%] space-y-5 ">
             <div class=" "><ChoosedPlan /></div>
           
           <div ><BillingHistory/></div>
         </div>
-        <div class=" w-[50%] mr-[5%]  ">
+        <div class="w-[100%] sm:w-[50%] ">
           <div className=" card h-full w-full" >
               <div className=" h-full">
                   {data.length > 0 ?  <Line  options={options} data={datas}  />  : null}
