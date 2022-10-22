@@ -12,6 +12,7 @@ import Documentation from './pages/Documentation';
 import Pricing from "./pages/Pricing";
 import Features from './pages/Features';
 import Contact from './pages/Contact';
+import Index from './pages/LandingPage/Index';
 
 function App() {
   return (
@@ -23,6 +24,8 @@ function App() {
         <Route path="/dashboard" element={<Sidebar />}>
           <Route index element={<Dashboard />} />
         </Route>
+
+        <Route path='/LandingPage' element={<Index />} />
 
          <Route path="/billing" element={<Sidebar />}>
           <Route index element={<Billing />} />
