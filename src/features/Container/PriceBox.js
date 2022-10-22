@@ -6,7 +6,7 @@ function PriceBox(props) {
   const {obj} = props;
   const color0 = obj.colors[0] ? "bg-"+obj.colors[0]+"-700":null;
   return (
-    <div className="flex flex-col max-w-xs bg-white drop-shadow-lg m-1 min-w-[170px] snap-always snap-center">
+    <div className="flex flex-col  bg-white drop-shadow-lg my-[5%] mx-[5%] md:mx-[10%]">
       {
         !obj.description 
         ?
@@ -19,12 +19,12 @@ function PriceBox(props) {
             <div className="absolute bottom-0 flex justify-center">
               <div className="relative flex justify-center items-center translate-y-1/2 w-2/3">
                 <Polygon color={obj.colors[1]} />
-                <div className="absolute z-10">
+                {/* <div className="absolute z-10">
                   <div className="relative flex justify-center">
                     <h2>{obj.price}</h2>
                     <sub className="absolute text-[8px] bottom-0 whitespace-nowrap">per month</sub>
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>

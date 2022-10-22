@@ -133,14 +133,8 @@ function Steps() {
   )
 }
 function PricePlans() {
-  const obj = {
-    title: "Our Plans",
-    description: "Our plans uge uigbkjb sufgiugf dfu udfh ubdfu dfdufhd uidfubw bfeobw dbudifb bfewoubf iobiob Our plans uge uigbkjbv sufgiugf dfu udfh ubdfu dfdufhd uidfubw bfeobw dbudifb bfewoubf iobiob",
-    features: ["feature 1","feature 2","feature 3","feature 4"],
-    footer: <button className="theme-light ">1 Week Trial</button>,
-    colors: ["white","white"]
-  }
-  const obj2 = {
+
+  const Starter = {
     title: "Starter",
     features: ["little","","10","slow"],
     footer: <button>Select Plan</button>,
@@ -148,15 +142,7 @@ function PricePlans() {
     colors: ["blue","orange"],
     icon: <MyLocation  className="w-full h-full" />
   }
-  const obj3 = {
-    title: "Buisness",
-    features: ["some","5000","100","Mid"],
-    footer: <button>Select Plan</button>,
-    price: 200,
-    colors: ["green","blue"],
-    icon: <ServiceIcon  className="w-full h-full" />
-  }
-  const obj4 = {
+  const Premium = {
     title: "Premium",
     features: ["A Lot","10000","1000","Fast AH"],
     footer: <button>Select Plan</button>,
@@ -164,13 +150,31 @@ function PricePlans() {
     colors: ["orange","green"],
     icon: <BestSellerIcon className="w-full h-full" />
   }
+
+  const Buisness = {
+    title: "Buisness",
+    features: ["some","5000","100","Mid"],
+    footer: <button>Select Plan</button>,
+    price: 200,
+    colors: ["green","blue"],
+    icon: <ServiceIcon  className="w-full h-full" />
+  }
+  const Professional = {
+    title: "Professional",
+    features: ["A Lot","10000","1000","Fast AH"],
+    footer: <button>Select Plan</button>,
+    price: 300,
+    colors: ["orange","green"],
+    icon: <BestSellerIcon className="w-full h-full" />
+  }
   return (
-    <div className="flex justify-center max-w-full">
-      <div className="flex items-start px-10 md:overflow-x-visible overflow-x-scroll snap-x snap-mandatory">
-        <PriceBox obj={obj}/>
-        <PriceBox obj={obj2}/>
-        <PriceBox obj={obj3}/>
-        <PriceBox obj={obj4}/>
+    <div className='flex justify-center w-full '>
+    <div className=" grid grid-cols-2 md:grid-cols-4 w-full md:w-[80%]  ">
+     
+        <PriceBox obj={Starter}/>
+        <PriceBox obj={Buisness}/>
+        <PriceBox obj={Professional}/>
+        <PriceBox obj={Premium}/>
       </div>
     </div>
   )
@@ -181,7 +185,7 @@ function Home() {
       <Intro />
       <Services />
       <Steps />
-      {/* <PricePlans /> */}
+       <PricePlans /> 
       <div className="h-52">&nbsp;</div>
     </div>
   )

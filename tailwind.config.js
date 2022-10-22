@@ -6,6 +6,9 @@ module.exports = {
   content: ["./src/**/*.{js,jsx,tx,tsx}"],
   theme: {
     extend: {
+      backgroundImage: {
+        'full-back': "url('/src/assets/images/full.png')",
+      },
       colors: {
         transparent: 'transparent',
         current: 'currentColor',

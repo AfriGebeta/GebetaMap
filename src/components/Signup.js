@@ -111,7 +111,7 @@ function Signup({footer}) {
 
   }
   return (
-    <div className="card bg self-end flex justify-center content-between p-10 ">
+    <div className="card bg-full-back self-end flex justify-center content-between p-10  ">
       <div className="">
       <div className="p-5 flex flex-col gap-2">
         <div className="">Company Name</div>
@@ -126,8 +126,8 @@ function Signup({footer}) {
         <div className=' py-7'>
                {
                showLoading ?
-
-               <button type="button" className="rounded-md bg-orange-200 text-black px-3 py-2 mt-1 mb-5 transition duration-200 bg-blue-500 hover:bg-orange-500  focus:ring-opacity-50 text-white w-full py-2.5  text-sm shadow-sm hover:shadow-md font-semibold text-center inline-block "
+               
+               <button type="button" className="rounded-md bg-[#1A1F32]  px-3 py-2 mt-1 mb-5 transition duration-200 bg-blue-500 hover:bg-[#1A1F32]  focus:ring-opacity-50 text-white w-full py-2.5  text-sm shadow-sm hover:shadow-md font-semibold text-center inline-block "
                                 disabled
                                             onClick={(event) => {
                                               event.preventDefault()
@@ -138,7 +138,7 @@ function Signup({footer}) {
 
                                         </button>
                                         :
-               <button type="button" className="rounded-md bg-orange-200 text-black px-3 py-2 mt-1 mb-5 transition duration-200 bg-blue-500 hover:bg-orange-500  focus:ring-opacity-50 text-white w-full py-2.5  text-sm shadow-sm hover:shadow-md font-semibold text-center inline-block"
+               <button type="button" className=" text-white rounded-md bg-[#1A1F32] px-3 py-2 mt-1 mb-5 transition duration-200 bg-blue-500 hover:bg-[#1A1F32]  focus:ring-opacity-50 text-white w-full py-2.5  text-sm shadow-sm hover:shadow-md font-semibold text-center inline-block"
                            onClick={(event) => {
                              event.preventDefault()
                              submit()
