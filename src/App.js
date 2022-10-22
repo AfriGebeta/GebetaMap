@@ -14,6 +14,9 @@ import Features from './pages/Features';
 import Contact from './pages/Contact';
 import Index from './pages/LandingPage/Index';
 
+import NewDashboard from './pages/New/Dashboard/Index';
+import NewNavbar from './components/New/Navbar';
+
 function App() {
   return (
     <Router>
@@ -43,24 +46,28 @@ function App() {
           <Route index element={<Documentation />} />
         </Route>
         
-      <Route path="/document" >
-          <Route index element={<Documentation />} />
-      </Route>
+        <Route path="/document" >
+            <Route index element={<Documentation />} />
+        </Route>
 
+          
+        <Route path="/pricing" >
+            <Route index element={<Pricing />} />
+        </Route>
         
-      <Route path="/pricing" >
-          <Route index element={<Pricing />} />
-      </Route>
-       
-      <Route path="/features" >
-          <Route index element={<Features />} />
-      </Route>
-        
+        <Route path="/features" >
+            <Route index element={<Features />} />
+        </Route>
+          
 
-      <Route path="/contact" >
-          <Route index element={<Contact />} />
-      </Route>
+        <Route path="/contact" >
+            <Route index element={<Contact />} />
+        </Route>
         
+        <Route path="/account" element={<NewNavbar /> }>
+          <Route path="dashboard" element={<NewDashboard />} />
+        </Route>
+
       </Routes>
     </Router>
   );

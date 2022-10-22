@@ -36,18 +36,33 @@ code {
     @apply bg-opacity-40 bg-black/20 rounded-md p-4 py-1;
   }
 
+  .active_link {
+    @apply !text-orange-400;
+  }
+
+  .child-text-white * {
+    @apply text-white;
+  }
+  
   button,
   .btn,
   input[type='button'],
   input[type='submit'] {
     @apply bg-black p-1 px-3 !text-white uppercase text-sm text-center border border-black ;
-  }  
+  }
+
+  .btn-sty1 {
+    @apply bg-white text-black rounded-full p-1 px-4 inline-block font-bold text-[13px] ;
+  }
 
   h1 {
-    @apply text-4xl font-black ;
+    @apply text-4xl font-black !important;
   }
   h2 {
-    @apply text-2xl font-black ;
+    @apply text-2xl font-black !important;
+  }
+  h3 {
+    @apply text-lg font-black !important;
   }
 
   p {
@@ -73,11 +88,23 @@ code {
   }
 
   
+  .uparrow {
+    border: 0;
+    border-left: 13px solid transparent;
+    border-right: 13px solid transparent;
+    border-bottom: 15px solid white;
+  }
+  
+  .leaflet-container {
+    width: 100%;
+    height: 100%;
+  } 
+
+
+
+
 }
-.leaflet-container {
-  width: 100%;
-  height: 100%;
-} 
+
 
 @layer components {
 
@@ -85,6 +112,14 @@ code {
 
 .card {
   @apply bg-white text-dark p-3 shadow-md;
+}
+
+.card2 {
+  @apply border border-[#a3a3a3] p-8 rounded-md;
+}
+
+.icon {
+  @apply rounded-full bg-blue-400 p-2 flex justify-center items-center w-7 h-7 inline-block;
 }
 
 
