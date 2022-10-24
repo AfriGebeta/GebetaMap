@@ -10,7 +10,7 @@ function Nav(props) {
       <Link className={'text-white '+(url === 'profile' ? ' active_link ' : '')} to="/account/settings/">Profile</Link>
       <Link className={'text-white '+(url === 'password' ? ' active_link ' : '')} to="/account/settings/password">Change Password</Link>
       <Link className={'text-white '+(url === 'plans' ? ' active_link ' : '')} to="/account/settings/plans">Price Plans</Link>
-      <Link className={'text-white '+(url === 'apps' ? ' active_link ' : '')} to="/account/settings/apps">Connected Apps</Link>
+     
     </div>
   )
 }
