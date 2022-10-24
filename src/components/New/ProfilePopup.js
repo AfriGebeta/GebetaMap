@@ -1,7 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import { useSelector, useDispatch } from "react-redux"
+import { setUser } from "./../../redux/reducers/user";
+import {setPlan} from "./../../redux/reducers/plan"
+import {setChoosedPlan} from "./../../redux/reducers/choosedplans"
 function ProfilePopup() {
+  const dispatch = useDispatch()
   return (
     <div className="flex flex-col ">
       <div className="flex justify-end px-4">
@@ -14,7 +18,14 @@ function ProfilePopup() {
           <Link to="/" className="text-white">Usage</Link>
           <hr className="border-gray-500" />
           <span className="text-gray-500">username</span>
-          <Link to="/" className="bg-white btn-sty1 self-start theme-light whitespace inline-block">SIGN OUT</Link>
+            
+          <Link to="/"  onClick = {()=>{
+                dispatch(setUser({}))
+                dispatch(setPlan([]))
+                dispatch(setChoosedPlan([]))
+           
+              
+            }} className="bg-white btn-sty1 self-start theme-light whitespace inline-block">SIGN OUT</Link>
         </div>
       </div>
     </div>

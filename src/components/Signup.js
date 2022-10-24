@@ -98,7 +98,7 @@ function Signup({footer}) {
                       const data = await login.json()
 
                       dispatch(setUser(data.data))
-                      navigate('/dashboard');
+                      navigate('/account/dashboard');
                   }
 
 

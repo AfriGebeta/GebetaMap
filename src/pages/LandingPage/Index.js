@@ -134,7 +134,7 @@ tabindex="-1" aria-labelledby="drawer-right-label">
                     <a href='/#' className="text-white text-lg">Features</a>
                       <a href='/#' className="text-white text-lg">Pricing</a>
                       <a href='/#'></a>
-                      <button onClick={() => setSigninModal(true)} class="bg-transparent hover:bg-transparent hover:text-white border border-white  text-[#1A1F32] font-bold py-2 px-4 rounded-full px-[5%] lg:ml-[5%]">
+                      <button onClick={() => setSigninModal(true)} class="bg-transparent hover:bg-transparent hover:text-white border border-white  text-white font-bold py-2 px-4 rounded-full px-[5%] lg:ml-[5%]">
                            SIGN IN
                       </button>
                    

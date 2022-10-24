@@ -28,11 +28,12 @@ function App() {
       <Routes>
     
         <Route path='/' element={<Index />} />
+{/* 
         <Route path="/dashboard" element={<Sidebar />}>
           <Route index element={<Dashboard />} />
         </Route>
 
-        <Route path='/LandingPage' element={<Index />} />
+       
 
          <Route path="/billing" element={<Sidebar />}>
           <Route index element={<Billing />} />
@@ -66,8 +67,9 @@ function App() {
 
         <Route path="/contact" >
             <Route index element={<Contact />} />
-        </Route>
+        </Route> */}
         
+        <Route path='/LandingPage' element={<Index />} />
         <Route path="/account" element={<NewNavbar /> }>
           <Route path="dashboard" element={<NewDashboard />} />
           <Route path="tokens" element={<NewTokens />} />

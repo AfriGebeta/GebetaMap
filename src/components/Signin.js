@@ -17,9 +17,7 @@ function Signin({ footer }) {
   const { userData } = useSelector((state) => state.user)
   const dispatch = useDispatch()
   const navigate = useNavigate();
-  useEffect(() => {
-    console.log("the user is " , userData)
-  } , [])
+
   
   const handleUsername = (event) => {
     setUserName(event.target.value)
@@ -56,7 +54,7 @@ function Signin({ footer }) {
                 const data = await login.json()
 
                 dispatch(setUser(data.data))
-                navigate('/dashboard');
+                navigate('/account/dashboard');
             }
              setShowLoading(false)
        } catch (err) {
