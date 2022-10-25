@@ -103,8 +103,8 @@ tabindex="-1" aria-labelledby="drawer-right-label">
                   <a href='/#' className="text-[#1A1F32] text-lg mx-[5%] ">Documentation</a>
           
           </div>   
-       
-           <div className=" h-[50%] text-right  flex justify-end items-center mt-[40%] md:mt-[30%] pl-4   mr-[22%]">
+       <div className=" hidden md:flex px-10 py-7 w-full justify-between"></div>
+           <div className=" h-[50%] text-right  flex justify-end items-center mt-[80%] md:mt-[30%] pl-4   mr-[22%]">
                 <span className="sm:text-4xl md:text-7xl tracking-[.2em] tracking-wide ">GE</span>
           </div> 
 
