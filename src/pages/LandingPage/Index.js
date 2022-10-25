@@ -91,17 +91,17 @@ tabindex="-1" aria-labelledby="drawer-right-label">
           {/* <img src={require('../../assets/images/full.jpg')} className="w-full h-full "/> */}
         
 
-  <div className=" flex px-10 py-7 w-full justify-between">
-              <div className=" flex gap-3 items-center">
-                <Logo className="w-5 h-6" />
-            
-                <span className="border-[#1A1F32] border h-full"></span>
-                <img className='h-5' src={require('../../assets/images/logotext.png')} alt='logo' /> 
-            </div>
-            <p></p>
-                <a href='/#' className="hidden md:flex text-[#1A1F32] text-lg ml-[5%]  ">Contact Us</a>
-                  <a href='/#' className="hidden md:flex text-[#1A1F32] text-lg mx-[5%] ">Documentation</a>
-          
+          <div className=" flex px-10 py-7 w-full justify-between">
+                      <div className=" flex gap-3 items-center">
+                        <Logo className="w-5 h-6" />
+                    
+                        <span className="border-[#1A1F32] border h-full"></span>
+                        <img className='h-5' src={require('../../assets/images/logotext.png')} alt='logo' /> 
+                    </div>
+                    <p></p>
+                        <a href='/#' className="hidden md:flex text-[#1A1F32] text-lg ml-[5%]  ">Contact Us</a>
+                          <a href='/#' className="hidden md:flex text-[#1A1F32] text-lg mx-[5%] ">Documentation</a>
+                  
           </div>   
       
            <div className="  text-right  flex justify-end items-center mr-[25%] mt-[35%] md:mt-[5%]">
@@ -151,7 +151,7 @@ tabindex="-1" aria-labelledby="drawer-right-label">
               
      
      </div> 
-     <div className=" w-full md:hidden flex justify-between">
+     <div className=" w-full md:hidden flex justify-between px-10 py-7">
             <div></div>
         
                 <span onClick={()=>{setSideBarShow(!sidebarShow)}} className="text-white mr-[5%] md:hidden">Menu</span>
@@ -161,7 +161,7 @@ tabindex="-1" aria-labelledby="drawer-right-label">
 
           
       
-           <div className="  text-right  flex justify-start items-center ml-[25%] text-white mt-[35%] md:mt-[5%]">
+           <div className="  text-right  flex justify-start items-center ml-[25%] text-white mt-[18%] md:mt-[5%]">
                 <span className="sm:text-4xl md:text-7xl tracking-[.2em] tracking-wide ">TA</span>
           </div> 
 
