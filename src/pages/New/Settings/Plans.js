@@ -12,7 +12,7 @@ function Plans() {
   useEffect(() => {
     let marks = {};
     
-    for(let i=minMark;i<=maxMark;i+=parseInt(maxMark/4)) {
+    for(let i=minMark;i<=maxMark;i+=parseInt(maxMark/2)) {
       marks[i] = {
         style: {
           color: 'white'
@@ -49,13 +49,13 @@ function Plans() {
         <div className='w-full md:flex-1  flex flex-col gap-3 py-3 pb-6'>
           <div className='flex gap-2 items-center'>
             <h2 className='text-white uppercase my-auto !self-center'>Starter Package</h2>
-            <Link to="/documentation#" className='btn-sty2'>Doc</Link>
+            {/* <Link to="/documentation#" className='btn-sty2'>Doc</Link> */}
           </div>
           <div className='flex gap-2'>
             <div className='text-white border-l-2 border-white p-2'>
               <span>ETB80 PER Thousand Calls</span>
             </div>
-            <Link to="/" className='btn-sty2'>Choose Plan</Link>
+            {/* <Link to="/" className='btn-sty2'>Choose Plan</Link> */}
           </div>
         </div>
 
@@ -74,18 +74,18 @@ function Plans() {
       </div>
 
       <hr className=' border-gray-500' />
-      <div className='flex'>
-        <div className='flex-1 flex flex-col gap-3 py-3 pb-6'>
+      <div className='flex flex-wrap '>
+        <div className='w-full md:flex-1  flex flex-col gap-3 py-3 pb-6'>
           <div className='flex gap-2 items-center'>
             <h2 className='text-white uppercase my-auto !self-center'>Business Package</h2>
-            <Link to="/documentation#" className='btn-sty2'>Doc</Link>
+            {/* <Link to="/documentation#" className='btn-sty2'>Doc</Link> */}
           </div>
           <div className='flex gap-2'>
             <div className='text-white border-l-2 border-white p-2'>
               <span>ETB68 PER Thousand Calls</span>
             </div>
-            <Link to="/" className='btn-sty2'>Choose Plan</Link>
-            <Link to="/" className='btn-sty2 !bg-green-500'>15% OFF</Link>
+            {/* <Link to="/" className='btn-sty2'>Choose Plan</Link> */}
+            {/* <Link to="/" className='btn-sty2 !bg-green-500'>15% OFF</Link> */}
           </div>
         </div>
 
@@ -98,24 +98,24 @@ function Plans() {
           </div>
         </div>
 
-        <div className='bg-[#252B43] flex items-center justify-center p-8 w-[10%]'>
+        <div className='bg-[#252B43] flex items-center justify-center p-8 w-[86px]'>
           ETB_123123
         </div>
       </div>
 
       <hr className=' border-gray-500' />
-      <div className='flex'>
-        <div className='flex-1 flex flex-col gap-3 py-3 pb-6'>
+      <div className='flex flex-wrap '>
+        <div className='w-full md:flex-1  flex flex-col gap-3 py-3 pb-6'>
           <div className='flex gap-2 items-center'>
             <h2 className='text-white uppercase my-auto !self-center'>Professional Package</h2>
-            <Link to="/documentation#" className='btn-sty2'>Doc</Link>
+            {/* <Link to="/documentation#" className='btn-sty2'>Doc</Link> */}
           </div>
           <div className='flex gap-2'>
             <div className='text-white border-l-2 border-white p-2'>
               <span>ETB52 PER Thousand Calls</span>
             </div>
-            <Link to="/" className='btn-sty2'>Choose Plan</Link>
-            <Link to="/" className='btn-sty2 bg-green-500'>30% OFF</Link>
+            {/* <Link to="/" className='btn-sty2'>Choose Plan</Link> */}
+            {/* <Link to="/" className='btn-sty2 bg-green-500'>30% OFF</Link> */}
           </div>
         </div>
 
@@ -128,24 +128,24 @@ function Plans() {
           </div>
         </div>
 
-        <div className='bg-[#252B43] flex items-center justify-center p-8 w-[10%]'>
+        <div className='bg-[#252B43] flex items-center justify-center p-8 w-[86px]'>
           ETB_123123
         </div>
       </div>
 
       <hr className=' border-gray-500' />
-      <div className='flex'>
-        <div className='flex-1 flex flex-col gap-3 py-3 pb-6'>
+      <div className='flex flex-wrap '>
+        <div className='w-full md:flex-1  flex flex-col gap-3 py-3 pb-6'>
           <div className='flex gap-2 items-center'>
             <h2 className='text-white uppercase my-auto !self-center'>Premium Package</h2>
-            <Link to="/documentation#" className='btn-sty2'>Doc</Link>
+            {/* <Link to="/documentation#" className='btn-sty2'>Doc</Link> */}
           </div>
           <div className='flex gap-2'>
             <div className='text-white border-l-2 border-white p-2'>
               <span>ETB 40 PER Thousand Calls</span>
             </div>
-            <Link to="/" className='btn-sty2'>Choose Plan</Link>
-            <Link to="/" className='btn-sty2 bg-green-500'>50% OFF</Link>
+            {/* <Link to="/" className='btn-sty2'>Choose Plan</Link> */}
+            {/* <Link to="/" className='btn-sty2 bg-green-500'>50% OFF</Link> */}
           </div>
         </div>
 
@@ -158,7 +158,7 @@ function Plans() {
           </div>
         </div>
 
-        <div className='bg-[#252B43] flex items-center justify-center p-8 w-[10%]'>
+        <div className='bg-[#252B43] flex items-center justify-center p-8 w-[86px]'>
           ETB_123123
         </div>
       </div>
