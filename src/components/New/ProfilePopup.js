@@ -10,10 +10,10 @@ function ProfilePopup() {
   const { userData } = useSelector((state) => state.user)
   return (
     <div className="flex flex-col ">
-      <div className="flex justify-end px-4">
-        <div className="uparrow -mb-[.5px]"></div>
+      <div className="flex justify-start md:justify-end px-4">
+        <div className="uparrow -mb-[.5px] hidden md:block"></div>
       </div>
-      <div className="border border-white rounded-md p-4 px-6 bg-[#1A1F32]">
+      <div className="border border-white rounded-md p-4 px-6 bg-bgprimary">
         <div className="flex flex-col gap-2">
           <Link to="/account/settings" className="text-white">Profile Settings</Link>
           <Link to="/" className="text-white">Contact Support</Link>

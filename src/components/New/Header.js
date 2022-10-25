@@ -12,7 +12,7 @@ function Header(props) {
 
   return (
     <div className={!type2 ? "flex w-full" 
-      : 'overflow-hidden '
+      : 'overflow-hidden w-full'
     }>
         <div className={""+(type2 ? 'hidden' : '')}>
           <Link to="/">
@@ -39,8 +39,8 @@ function Header(props) {
             </span>
             {
               profilePopupOpened ? <CaretLeftFilled /> : <CaretDownFilled />}
-            <div className={"absolute z-10 top-full right-0 py-3 min-w-[200px] " +
-              (profilePopupOpened ? ' block ' : ' hidden ')
+            <div className={"absolute z-10 top-full w-full sm:right-0 py-3 min-w-[200px] " +
+              (profilePopupOpened ? ' block ' : ' block md:hidden ')
               }
             >
               <ProfilePopup />
