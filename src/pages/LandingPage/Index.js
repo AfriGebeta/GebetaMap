@@ -39,7 +39,7 @@ function Index() {
           </div>
 
               {/* <h1 className="translatee-x-1/2 h-[70%] "> */}
-                <img className="absolute h-full h-[40%] w-[30%] md:h-[50%] md:w-[20%] top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" src={require('../../assets/images/comp.png')} alt='be' />
+                <img className="absolute h-full h-[20%] w-[20%] md:h-[50%] md:w-[20%] top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" src={require('../../assets/images/comp.png')} alt='be' />
               {/* </h1> */}
               <div class="text-center">
   
@@ -69,7 +69,7 @@ tabindex="-1" aria-labelledby="drawer-right-label">
                       
       <button onClick={() => {
         setSideBarShow(false)
-        setSigninModal(true)}} class="bg-blue  text-white font-bold py-2 px-4 rounded-full px-[5%] ">
+        setSigninModal(true)}} class="  text-white font-bold py-2 px-4 rounded-full px-[5%] ">
           Sign In
       </button>
       
@@ -86,25 +86,29 @@ tabindex="-1" aria-labelledby="drawer-right-label">
       <div className="w-full min-h-screen flex font-bold">
 
         {/* Gebeta Kitchens */}
-        <div className="w-[50%]   flex flex-col justify-between text-[#1A1F32] bg-full-back">
-           <div className="flex px-10 py-7 justify-between">
-            <div className=" flex gap-3 items-center">
-              <Logo className="w-5 h-6" />
-           
-              <span className="border-[#1A1F32] border h-full"></span>
-              <img className='h-5' src={require('../../assets/images/logotext.png')} alt='logo' /> 
-            </div>
-            <div className="hidden md:flex justify-between font-normal w-[50%] lg:w-[30%]">
-                <a href='/#' className="text-[#1A1F32] text-lg mx-[5%]">Contact Us</a>
-                  <a href='/#' className="text-[#1A1F32] text-lg mx-[5%] ">Documentation</a>
-            </div>
-          </div> 
-       
-          <div className=" h-[50%] text-right  flex justify-end items-center mt-[40%] md:mt-[30%] pl-4   mr-[22%]">
-                <h1 className="text-[100px] tracking-[.2em]">GE</h1>
-          </div>
+        {/*  bg-full-back */}
+        <div className="w-[50%] flex flex-col justify-between text-[#1A1F32]    ">
+          {/* <img src={require('../../assets/images/full.jpg')} className="w-full h-full "/> */}
+        
 
-          <div className=" pl-10  flex mb-[3%] md:mb-[3%] ml-[5%] md:ml-[10%]">
+  <div className="hidden md:flex px-10 py-7 w-full justify-between">
+              <div className=" flex gap-3 items-center">
+                <Logo className="w-5 h-6" />
+            
+                <span className="border-[#1A1F32] border h-full"></span>
+                <img className='h-5' src={require('../../assets/images/logotext.png')} alt='logo' /> 
+            </div>
+            <p></p>
+                <a href='/#' className="text-[#1A1F32] text-lg ml-[5%]  ">Contact Us</a>
+                  <a href='/#' className="text-[#1A1F32] text-lg mx-[5%] ">Documentation</a>
+          
+          </div>   
+       
+           <div className=" h-[50%] text-right  flex justify-end items-center mt-[40%] md:mt-[30%] pl-4   mr-[22%]">
+                <span className="sm:text-4xl md:text-7xl tracking-[.2em] tracking-wide ">GE</span>
+          </div> 
+
+           <div className=" pl-10  flex mb-[3%] md:mb-[10%] ">
               <div className="flex-1 flex flex-col  mb-[2%]">
                 
                 
@@ -121,7 +125,9 @@ tabindex="-1" aria-labelledby="drawer-right-label">
               
               </div>
 
-          </div>
+          </div> 
+         
+          
 
         
         </div>
@@ -149,28 +155,28 @@ tabindex="-1" aria-labelledby="drawer-right-label">
           </div> 
           <div className="w-full flex justify-between">
             <div></div>
-            <h1 onClick={()=>{setSideBarShow(!sidebarShow)}} class="text-white justify-end w-[20%] md:hidden text-white font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" >
+            <h1 onClick={()=>{setSideBarShow(!sidebarShow)}} class="text-white justify-end w-[20%] md:hidden text-white font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2" >
                 <img src={require("./../../assets/icons/hamburger.png")} className="text-white w-10 h-5" />
             </h1>
           </div>
           
 
           <div className=" h-[50%] text-right  flex justify-start items-center mt-[40%] md:mt-[10%] pl-4   ml-[25%]">
-          <h1 className="text-[100px] tracking-[.2em] text-white">TA</h1>
+          <span className="sm:text-4xl md:text-7xl  tracking-[.2em] text-white">TA</span>
           </div>
 
          
 
           <div className="flex flex-row-reverse gap-5 px-10 py-7 list-none mb-[5%]">
-               {/* <li><a href='/#'>
+                <li><a href='https://twitter.com/GebetaApp?t=NVJ-T3z3jm0Jn74Pnou9iQ&s=35'>
                   <img className="w-10 h-10" src={require('../../assets/icons/social/twitter.png')} alt='twitter' />
-                </a></li>*/}
+                </a></li>
                 <li><a href='https://www.linkedin.com/company/gebetaapp/'>
                   <img className="w-10 h-10" src={require('../../assets/icons/social/linkedIn.png')} alt='linkedin' />
                 </a></li>
-                <li><a href='https://www.facebook.com/profile.php?id=100069915782189'>
+                {/* <li><a href='https://www.facebook.com/profile.php?id=100069915782189'>
                   <img className="w-10 h-10" src={require('../../assets/icons/social/facebook.png')} alt='facebook' />
-                </a></li>
+                </a></li> */}
           </div>
 
         

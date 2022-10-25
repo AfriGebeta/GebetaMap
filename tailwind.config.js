@@ -7,7 +7,7 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        'full-back': "url('/src/assets/images/full.png')",
+        'full-back': "url('/src/assets/images/full.jpg')",
       },
       colors: {
         transparent: 'transparent',
