@@ -52,7 +52,10 @@ code {
   }
 
   .btn-sty1 {
-    @apply bg-white text-black rounded-full p-1 px-4 inline-block !font-bold !text-[13px];
+    @apply bg-white text-black rounded-full p-1 px-4 inline-block !font-bold !text-[13px] !self-center;
+  }
+  .btn-sty2 {
+    @apply bg-[#6C6AD7] rounded-sm p-1 px-3 uppercase text-white text-center self-center !text-[10px];
   }
 
   h1 {
@@ -115,7 +118,7 @@ code {
 }
 
 .card2 {
-  @apply border border-[#a3a3a3] p-8 rounded-md;
+  @apply border border-[#a3a3a3] p-8 rounded-md min-w-[200px];
 }
 
 .icon {

@@ -20,6 +20,7 @@ import NewTokens from './pages/New/Tokens/Index';
 import NewUsage from './pages/New/Usage/Index';
 import NewProfile from './pages/New/Settings/Profile';
 import NewPassword from './pages/New/Settings/ChangePassword';
+import NewPlans from './pages/New/Settings/Plans';
 
 
 function App() {
@@ -76,6 +77,7 @@ function App() {
           <Route path="settings">
             <Route index element={<NewProfile />} />
             <Route path='password' element={<NewPassword />} />
+            <Route path='plans' element={<NewPlans />} />
           </Route>
         </Route>
 

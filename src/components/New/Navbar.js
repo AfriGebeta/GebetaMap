@@ -17,7 +17,7 @@ function Navbar(props) {
   },[open]);
 
   return (
-    <div className="min-h-screen bg-[#1A1F32]">
+    <div className="min-h-screen bg-bgprimary">
         <div className='flex flex-col items-center relative'>
           {/* <BGPolygon className="-z-10 h-fit w-fit absolute" /> */}
           <div className="flex items-center py-5 sw relative z-10 ">
@@ -30,8 +30,8 @@ function Navbar(props) {
               <Outlet />
             </div>
             {/* The Mobile View Slide Header   */}
-            <div className={"z-20 h-auto flex sticky top-0 "}>
-              <div className={"max-w-full bg-[#1A1F32] sm:relative overflow-hidden flex transition-all duration-500 "+openClass.current
+            <div className={"z-20 h-auto flex md:hidden sticky top-0 "}>
+              <div className={"max-w-full  bg-bgprimary sm:relative overflow-hidden flex transition-all duration-500 "+openClass.current
                 + (open ? ' p-4 ' : '')}>
                 <Header type='col' />
               </div>
