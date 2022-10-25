@@ -68,7 +68,9 @@ function App() {
         <Route path="/contact" >
             <Route index element={<Contact />} />
         </Route> */}
-        
+        <Route path="/documentation" >
+          <Route index element={<Documentation />} />
+        </Route>
         <Route path='/LandingPage' element={<Index />} />
         <Route path="/account" element={<NewNavbar /> }>
           <Route path="dashboard" element={<NewDashboard />} />
