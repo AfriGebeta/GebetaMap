@@ -49,8 +49,8 @@ function Index() {
 <div 
  class={  
   sidebarShow ?
-  "bg-full-back fixed z-40 h-screen p-4 overflow-y-auto bg-white w-80 dark:bg-gray-800 right-0 border border-l-[#1A1F32] " :
-  "bg-full-back fixed z-40 h-screen p-4 overflow-y-auto bg-white w-80 dark:bg-gray-800  hidden" }
+  " fixed z-40 h-screen p-4 overflow-y-auto bg-white w-80 dark:bg-gray-800 right-0 border border-l-[#1A1F32] " :
+  " fixed z-40 h-screen p-4 overflow-y-auto bg-white w-80 dark:bg-gray-800  hidden" }
 
   
 
@@ -61,11 +61,11 @@ tabindex="-1" aria-labelledby="drawer-right-label">
    </button>
 
    <div className="flex  flex-col  mt-[20%] space-y-3 text-center ">
-      <p className="text-xl font-bold">Contact Us</p>
-      <p className="text-xl font-bold">Documentation</p>
-      <p className="text-xl font-bold">Features</p>
-      <p className="text-xl font-bold">Pricing</p>
-      
+        <a href='/#' className="text-xl font-bold">Contact Us</a>
+        <a href='/#' className="text-xl font-bold">Documentation</a>
+        <a href='/#' className="text-xl font-bold">Features</a>
+        <a href='/#' className="text-xl font-bold">Pricing</a> 
+            
                       
       <button onClick={() => {
         setSideBarShow(false)
@@ -91,7 +91,7 @@ tabindex="-1" aria-labelledby="drawer-right-label">
           {/* <img src={require('../../assets/images/full.jpg')} className="w-full h-full "/> */}
         
 
-  <div className="hidden md:flex px-10 py-7 w-full justify-between">
+  <div className=" flex px-10 py-7 w-full justify-between">
               <div className=" flex gap-3 items-center">
                 <Logo className="w-5 h-6" />
             
@@ -99,19 +99,17 @@ tabindex="-1" aria-labelledby="drawer-right-label">
                 <img className='h-5' src={require('../../assets/images/logotext.png')} alt='logo' /> 
             </div>
             <p></p>
-                <a href='/#' className="text-[#1A1F32] text-lg ml-[5%]  ">Contact Us</a>
-                  <a href='/#' className="text-[#1A1F32] text-lg mx-[5%] ">Documentation</a>
+                <a href='/#' className="hidden md:flex text-[#1A1F32] text-lg ml-[5%]  ">Contact Us</a>
+                  <a href='/#' className="hidden md:flex text-[#1A1F32] text-lg mx-[5%] ">Documentation</a>
           
           </div>   
-       <div className=" hidden md:flex px-10 py-7 w-full justify-between"></div>
-           <div className=" h-[50%] text-right  flex justify-end items-center mt-[80%] md:mt-[30%] pl-4   mr-[22%]">
+      
+           <div className="  text-right  flex justify-end items-center mr-[25%] mt-[35%] md:mt-[5%]">
                 <span className="sm:text-4xl md:text-7xl tracking-[.2em] tracking-wide ">GE</span>
           </div> 
 
-           <div className=" pl-10  flex mb-[3%] md:mb-[10%] ">
-              <div className="flex-1 flex flex-col  mb-[2%]">
-                
-                
+           <div className=" pl-10  flex flex-col space-y-5 mb-[5%]   ">
+              <div className=" flex flex-col  ">
                 <h3 className=" text-xl md:text-4xl  lg:text-7xl font-bold ">
                   GEBETA<span className="text-[#F29D38]">MAPS</span> <br /></h3>
             
@@ -119,11 +117,66 @@ tabindex="-1" aria-labelledby="drawer-right-label">
                   <b className="text-black">GEOLOCATION</b><br />
                      ROUTING & MAP API SERVICE
                 </h3>
-                <div className="mt-[2%]">
-                    <a href="/#" onClick={() => setSignupModal(true)}  className="btn theme-light px-[5%] py-[3%] border border-[#ccc]">GET STARTED</a>
-                </div>
+                
               
               </div>
+              <div className="">
+                    <a href="/#" onClick={() => setSignupModal(true)}  className="btn theme-light px-[5%] py-[3%] border border-[#ccc]">GET STARTED</a>
+                </div>
+
+          </div> 
+         
+          
+
+        
+        </div>
+
+        {/* other side */}
+
+        <div className="w-[50%] flex flex-col justify-between  bg-[#1A1F32] text-white">
+          {/* <img src={require('../../assets/images/full.jpg')} className="w-full h-full "/> */}
+          <div className="hidden md:flex px-10 py-7 w-full justify-between">
+               
+               <a href='/#' className="text-white text-lg">Features</a>
+                 <a href='/#' className="text-white text-lg">Pricing</a>
+                 <a href='/#'></a>
+
+                 <button onClick={() => setSigninModal(true)} class="bg-transparent text-white hover:bg-transparent hover:text-white border border-white   font-bold py-2 px-4 rounded-full px-[5%] lg:ml-[5%]">
+
+                      SIGN IN
+                 </button>
+              
+
+             
+              
+     
+     </div> 
+     <div className=" w-full md:hidden flex justify-between">
+            <div></div>
+        
+                <span onClick={()=>{setSideBarShow(!sidebarShow)}} className="text-white mr-[5%] md:hidden">Menu</span>
+            
+          </div>
+
+
+          
+      
+           <div className="  text-right  flex justify-start items-center ml-[25%] text-white mt-[35%] md:mt-[5%]">
+                <span className="sm:text-4xl md:text-7xl tracking-[.2em] tracking-wide ">TA</span>
+          </div> 
+
+           <div className=" pl-10  flex flex-col space-y-5   mb-[5%]">
+              <div className=" flex flex-row-reverse gap-5 px-10 py-7 list-none   ">
+              <li><a href='https://twitter.com/GebetaApp?t=NVJ-T3z3jm0Jn74Pnou9iQ&s=35'>
+                  <img className="w-10 h-10" src={require('../../assets/icons/social/twitter.png')} alt='twitter' />
+                </a></li>
+                <li><a href='https://www.linkedin.com/company/gebetaapp/'>
+                  <img className="w-10 h-10" src={require('../../assets/icons/social/linkedIn.png')} alt='linkedin' />
+                </a></li>
+              
+              </div>
+              <div className="">
+                </div>
 
           </div> 
          
@@ -134,6 +187,7 @@ tabindex="-1" aria-labelledby="drawer-right-label">
 
 
         {/* Gebeta Maps */}
+{/*    
         <div className="w-[50%]  flex flex-col justify-between bg-[#1A1F32] text-white">
            <div className="hidden md:flex px-10 py-7 w-full justify-between">
                
@@ -149,15 +203,16 @@ tabindex="-1" aria-labelledby="drawer-right-label">
 
                       {/* <button onClick={() => setSignupModal(true)}  class="bg-transparent hover:bg-white hover:text-[#1A1F32]  text-white font-semibold hover:text-white py-2 px-4 border border-white  rounded-full px-[5%] lg:mr-[15%]">
                           SIGN UP
-                      </button> */}
+                      </button> 
                    
           
           </div> 
-          <div className="w-full flex justify-between">
+          <div className="hiddne w-full flex justify-between">
             <div></div>
-            <h1 onClick={()=>{setSideBarShow(!sidebarShow)}} class="text-white justify-end w-[20%] md:hidden text-white font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2" >
-                <img src={require("./../../assets/icons/hamburger.png")} className="text-white w-10 h-5" />
-            </h1>
+            {/* <h1  class="text-white justify-end w-[20%] md:hidden text-white font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2" > */}
+                {/* <img src={require("./../../assets/icons/hamburger.png")} className="text-white w-10 h-5" /> 
+                <span onClick={()=>{setSideBarShow(!sidebarShow)}} className="text-white mr-[5%] md:hidden">Menu</span>
+            {/* </h1> 
           </div>
           
 
@@ -176,11 +231,11 @@ tabindex="-1" aria-labelledby="drawer-right-label">
                 </a></li>
                 {/* <li><a href='https://www.facebook.com/profile.php?id=100069915782189'>
                   <img className="w-10 h-10" src={require('../../assets/icons/social/facebook.png')} alt='facebook' />
-                </a></li> */}
+                </a></li> 
           </div>
 
         
-        </div>
+        </div> */}
     
 
       </div>
