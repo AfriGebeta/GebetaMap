@@ -179,65 +179,11 @@ tabindex="-1" aria-labelledby="drawer-right-label">
               <div className="">
                 </div>
 
-          </div> 
-         
-          
-
-        
+          </div>        
         </div>
 
 
-        {/* Gebeta Maps */}
-{/*    
-        <div className="w-[50%]  flex flex-col justify-between bg-[#1A1F32] text-white">
-           <div className="hidden md:flex px-10 py-7 w-full justify-between">
-               
-                    <a href='/#' className="text-white text-lg">Features</a>
-                      <a href='/#' className="text-white text-lg">Pricing</a>
-                      <a href='/#'></a>
 
-                      <button onClick={() => setSigninModal(true)} class="bg-transparent text-white hover:bg-transparent hover:text-white border border-white   font-bold py-2 px-4 rounded-full px-[5%] lg:ml-[5%]">
-
-                           SIGN IN
-                      </button>
-                   
-
-                      {/* <button onClick={() => setSignupModal(true)}  class="bg-transparent hover:bg-white hover:text-[#1A1F32]  text-white font-semibold hover:text-white py-2 px-4 border border-white  rounded-full px-[5%] lg:mr-[15%]">
-                          SIGN UP
-                      </button> 
-                   
-          
-          </div> 
-          <div className="hiddne w-full flex justify-between">
-            <div></div>
-            {/* <h1  class="text-white justify-end w-[20%] md:hidden text-white font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2" > */}
-                {/* <img src={require("./../../assets/icons/hamburger.png")} className="text-white w-10 h-5" /> 
-                <span onClick={()=>{setSideBarShow(!sidebarShow)}} className="text-white mr-[5%] md:hidden">Menu</span>
-            {/* </h1> 
-          </div>
-          
-
-          <div className=" h-[50%] text-right  flex justify-start items-center mt-[40%] md:mt-[10%] pl-4   ml-[25%]">
-          <span className="sm:text-4xl md:text-7xl  tracking-[.2em] text-white">TA</span>
-          </div>
-
-         
-
-          <div className="flex flex-row-reverse gap-5 px-10 py-7 list-none mb-[5%]">
-                <li><a href='https://twitter.com/GebetaApp?t=NVJ-T3z3jm0Jn74Pnou9iQ&s=35'>
-                  <img className="w-10 h-10" src={require('../../assets/icons/social/twitter.png')} alt='twitter' />
-                </a></li>
-                <li><a href='https://www.linkedin.com/company/gebetaapp/'>
-                  <img className="w-10 h-10" src={require('../../assets/icons/social/linkedIn.png')} alt='linkedin' />
-                </a></li>
-                {/* <li><a href='https://www.facebook.com/profile.php?id=100069915782189'>
-                  <img className="w-10 h-10" src={require('../../assets/icons/social/facebook.png')} alt='facebook' />
-                </a></li> 
-          </div>
-
-        
-        </div> */}
-    
 
       </div>
     </div>

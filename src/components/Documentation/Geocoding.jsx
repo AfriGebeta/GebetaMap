@@ -17,6 +17,7 @@ export default function Geocoding() {
             setOnSearch(!onSearch)
             geocoding(searchText, userData.token)
                 .then((data) => {
+                    console.log(data)
              let _searchResult = []
                     data.data.map((n, index) => {
                 if (index < 10) {

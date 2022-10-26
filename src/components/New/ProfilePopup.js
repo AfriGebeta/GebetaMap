@@ -15,8 +15,8 @@ function ProfilePopup() {
       </div>
       <div className="border border-white rounded-md p-4 px-6 bg-bgprimary">
         <div className="flex flex-col gap-2">
-          {/* <Link to="/account/settings" className="text-white">Profile Settings</Link>
-          <Link to="/" className="text-white">Contact Support</Link>
+          <Link to="/documentation" className="text-white">Documentation</Link>
+        {/*   <Link to="/" className="text-white">Contact Support</Link>
           <Link to="/account/usage" className="text-white">Usage</Link>
           <hr className="border-gray-500" /> */}
           <span className="text-gray-500">{userData.username}</span>

@@ -6,7 +6,7 @@ const RequestSample = (props) => {
     const handlerequestLanguage = (i) => setRequestLanguage(i)
     return (<>
      <p className='mt-[2%] mx-[5%] font-bold text-xl'>Request samples</p>
-            <div className='flex mx-[5%] space-x-2 mt-[1%]'>
+      <div className='flex mx-[5%] space-x-2 mt-[1%]'>
               <p className={requestLanguage === 0 ? 'bg-white px-2 py-1 text-black rounded-md' : 'bg-[#11171a] px-2 py-1 rounded-md'  } onClick={() => { handlerequestLanguage(0) }}>Curl</p>
               <p className={requestLanguage === 1 ? 'bg-white px-2 py-1 text-black rounded-md' : 'bg-[#11171a] px-2 py-1 rounded-md'} onClick={() => handlerequestLanguage(1)}>JavaScript</p>
 

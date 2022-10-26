@@ -55,7 +55,7 @@ const { userData } = useSelector((state) => state.user)
   }
   return (
     <>
-      <div class="flex w-full bg-white">
+      <div class=" w-full bg-white">
        
 
         <main className="ml-[5%] mt-[3%]">
@@ -101,7 +101,8 @@ const { userData } = useSelector((state) => state.user)
               <p className="mx-[2%] space-x-2 ">
                 <span className="bg-green-200 px-2 py-1">GET</span>
                 <span className="mx-[2%]">
-                  http://mapapi.gebeta.app/api/v1/route/geocoding
+                https://mapapi.gebeta.app/api/v1/route/geocoding
+           
                   
                 </span>
               </p>

@@ -143,6 +143,13 @@ function Index() {
 
        responsive:true,
     maintainAspectRatio: false,
+    scales: {
+      y: {
+        ticks: { color: 'white', beginAtZero: true }
+      },
+      x: {
+        ticks: { color: 'white', beginAtZero: true }
+      }},
   plugins: {
     legend: {
       position: 'top',
@@ -162,9 +169,10 @@ const datas = {
       // label: "First dataset",
       data: data,
       fill: true,
-      
+      fontColor: '#fff',
       backgroundColor: "rgba(75,192,192,0.2)",
-      borderColor: "rgba(75,192,192,1)"
+      borderColor: "rgba(75,192,192,1)",
+      pointBorderColor: '#fff',
     },
    
   ]
@@ -244,8 +252,7 @@ const datas = {
 
             
 
-                console.log(_label)
-                console.log(_data)
+          
                 
             
                   setLabels(_label)
@@ -266,7 +273,7 @@ const datas = {
       <div className="text-white  ">
         {/* <h2 className="text-white mb-0">Sep, 09 - 22 2022</h2>
         <span className="lowercase mb-4 inline-block">ALL DATES START AT 00:00 ETHIOPIAN LT</span> */}
-        <div className="border border-dashed rounded-md border-white p-10 flex items-center justify-center sm:h-[200px] md:h-[200px] lg:h-[600px]">
+        <div className="border border-dashed rounded-md border-white p-10 flex items-center justify-center sm:h-[600px] md:h-[400px] lg:h-[600px]">
 
         {data.length > 0 ?  <Line  options={options} data={datas}  />  : <h3 className="text-white">
             You don't have any account activity for the selected period and API key.

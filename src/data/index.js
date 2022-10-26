@@ -82,6 +82,7 @@ export const  geocoding = async (name, apiKey) => {
   try {
       const response = await fetch(url);
         const json = await response.json();
+        return json
   } catch (error) {
     return error
   }

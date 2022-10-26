@@ -130,6 +130,15 @@ function ApiKeys(props) {
 
 }
 
+const copyToClipBoard = async copyMe => {
+  try {
+    await navigator.clipboard.writeText(copyMe);
+    alert('Copied!');
+    
+  } catch (err) {
+    alert('Failed T Copy');
+  }
+};
 
     return (
       <div className={"card2  uppercase "+props.className}>
@@ -154,7 +163,7 @@ function ApiKeys(props) {
           <Input placeholder="API Key"
             value={userData.token}
             className="resize-none rounded-md"
-            suffix={<CopyOutlined className="cursor-pointer" />}
+            suffix={<CopyOutlined className="cursor-pointer" onClick={() => copyToClipBoard(userData.token)}/>}
             autoSize
           />
         </div>

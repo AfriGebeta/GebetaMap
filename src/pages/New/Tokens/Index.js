@@ -60,7 +60,7 @@ function Index() {
         You need an API access token to configure GebetaMaps GL JS, Mobile, and GebetaMaps web services like routing and geocoding.
         Read more about API access tokens in our documentation.
       </p>
-      <input type='button' value='+ Create Tokens' className="btn-sty1 theme-light my-4" />
+      <input type='button' value='+ Create Token' className="btn-sty1 theme-light my-4" />
       <hr />
       <Table columns={columns} dataSource={dataSource} />
     </div>
