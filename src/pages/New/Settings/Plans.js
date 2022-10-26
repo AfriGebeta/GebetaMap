@@ -139,19 +139,19 @@ function Plans() {
   const returnApiCost = (position) => {
     if (position == 0) {
                                                                                     
-      return (<div> ETB { (starter * (40/1000)).toFixed(2)}</div> )
+      return (<div> ETB { (starter * (80/1000)).toFixed(2)}</div> )
       }
       else if (position == 1) {
        
-        return (<div> ETB { (business * (36/1000)).toFixed(2)}</div> )
+        return (<div> ETB { (business * (68/1000)).toFixed(2)}</div> )
         
       } else if (position == 2) {
        
-        return (<div> ETB { (professional * (30/1000)).toFixed(2) }</div> )
+        return (<div> ETB { (professional * (52/1000)).toFixed(2) }</div> )
       }
       else if (position == 3) {
         
-        return (<div> ETB {(premium * (26/1000)).toFixed(2) }</div> )
+        return (<div> ETB {(premium * (40/1000)).toFixed(2) }</div> )
       }
 
   }
