@@ -21,7 +21,7 @@ function Index() {
   function Sidebar() {
     return (
       <div className="hidden sm:flex flex-col gap-3 text-white min-w-[200px] ">
-        <div className="flex  justify-between">
+        {/* <div className="flex  justify-between">
           <div>
             <h3 className="text-white m-0">Account</h3>
             <small>username</small>
@@ -39,7 +39,7 @@ function Index() {
             </small>
           </div>
           <Link to="/">Premium Plan</Link>
-        </div>
+        </div> */}
       </div>
     )
   }

@@ -76,11 +76,12 @@ function App() {
         <Route path="/account" element={<NewNavbar /> }>
           <Route path="dashboard" element={<NewDashboard />} />
           <Route path="tokens" element={<NewTokens />} />
+          <Route path='plans' element={<NewPlans />} />
           <Route path="usage" element={<NewUsage />} />
           <Route path="settings">
             <Route index element={<NewProfile />} />
             <Route path='password' element={<NewPassword />} />
-            <Route path='plans' element={<NewPlans />} />
+            
           </Route>
         </Route>
 

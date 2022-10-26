@@ -6,8 +6,12 @@ module.exports = {
   content: ["./src/**/*.{js,jsx,tx,tsx}"],
   theme: {
     extend: {
+      fontFamily: {
+       
+        rubik: ["Rubik"],
+      },
       backgroundImage: {
-        'full-back': "url('/src/assets/images/full.jpg')",
+        'full-back': "url('/src/assets/images/full.png')",
       },
       colors: {
         transparent: 'transparent',

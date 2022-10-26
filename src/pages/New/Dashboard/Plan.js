@@ -30,10 +30,46 @@ function Plan() {
     
     return (
       <div className="card2 uppercase child-text-white">
-        <h3> { userData.companyname}</h3>
-        <h3>Current Plan : <span className="text-[#00AF3C]">{choosedPlan.length > 0 ? choosedPlan[0].choosedplan : ""}</span></h3>
-        <h3>Remaining Request : <span className="text-[#00AF3C]">{choosedPlan.length > 0 ? choosedPlan[0].remainingrequest : ""} </span></h3>
-        <h3>Status : <span className="text-[#00AF3C]">{choosedPlan.length > 0 ? choosedPlan[0].status : ""}</span></h3>
+
+                          <div className='flex flex-wrap my-[2%] '>
+                                    <div className='flex-1 flex items-center px-4 gap-3'>
+                                        <span className=''>Choosed Plan </span>
+                                    </div>
+                                    <div className='flex-1 flex items-center px-4 gap-3'>
+                                          <span>Remaining</span>
+                                    </div>
+                                    {/* Range */}
+                                    <div className='flex-1 flex items-center px-4 gap-3'>
+                                        status
+                                    </div>
+                                  </div>
+{
+choosedPlan.map((n , i) => {
+                                
+                                  return  (
+                                  <>
+                               
+                                  <div className='flex flex-wrap my-[2%] '>
+                                    <div className='flex-1 flex items-center px-4 gap-3'>
+                                        <span className=''>{n.choosedplan} </span>
+                                    </div>
+                                    <div className='flex-1 flex items-center px-4 gap-3'>
+                                          <span>{n.remainingrequest}</span>
+                                    </div>
+                                    {/* Range */}
+                                    <div className='flex-1 flex items-center px-4 gap-3'>
+                                      {n.status}
+                                    </div>
+                                  </div>
+                                  </>
+                                  )
+                                  
+                                  
+                                   
+                              })
+}
+
+     
       </div>
     )
   }

@@ -105,7 +105,7 @@ tabindex="-1" aria-labelledby="drawer-right-label">
           </div>   
       
            <div className="  text-right  flex justify-end items-center mr-[25%] mt-[35%] md:mt-[5%]">
-                <span className="sm:text-4xl md:text-7xl tracking-[.2em] tracking-wide ">GE</span>
+                <span className="sm:text-4xl md:text-7xl tracking-[.2em] tracking-wide font-rubik">GE</span>
           </div> 
 
            <div className=" pl-10  flex flex-col space-y-5 mb-[5%]   ">
@@ -162,7 +162,7 @@ tabindex="-1" aria-labelledby="drawer-right-label">
           
       
            <div className="  text-right  flex justify-start items-center ml-[25%] text-white mt-[18%] md:mt-[5%]">
-                <span className="sm:text-4xl md:text-7xl tracking-[.2em] tracking-wide ">TA</span>
+                <span className="sm:text-4xl md:text-7xl tracking-[.2em] tracking-wide font-rubik">TA</span>
           </div> 
 
            <div className=" pl-10  flex flex-col space-y-5   mb-[5%]">

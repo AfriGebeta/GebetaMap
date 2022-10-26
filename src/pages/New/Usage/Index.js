@@ -12,19 +12,29 @@ import { CategoryScale } from 'chart.js';
 import Chart from 'chart.js/auto';
 import {  Line } from 'react-chartjs-2'
 import { setMetrics } from "./../../../redux/reducers/metrics"
+import Card from "./Card"
 const {Option} = Select;
 const {RangePicker} = DatePicker;
 
 function Index() {
   const dispatch = useDispatch()
   const { userData } = useSelector((state) => state.user)
-
+  const { metrics } = useSelector((state) => state.metrics)
   const [labels, setLabels] = useState([])
    const [data , setData] = useState([])
    const [selectedGraph , setSelected] = useState("All")
 
 
    useEffect(() => {
+    fetch(`${url}/api/v1/route/apicalls/getUserMetrics?id=${userData.id}`).
+    then((data) => { return data.json() })
+  .then((data) => {
+    if (data.msg == "ok") {
+  
+          dispatch(setMetrics(data.data))
+      }
+      
+  })
     fetch(`${url}/api/v1/route/apicalls/getDataForGraph?id=${userData.id}`).
         then((data) => { return data.json() })
         .then((data) => {
@@ -32,7 +42,7 @@ function Index() {
        
               let _data = []
               let _label = []
-           console.group(data.data)
+      
               let dataa = getAll(data.data)
               
                   for (let i = 0 ; i < dataa.length ; i++) {
@@ -48,7 +58,7 @@ function Index() {
 
 
                   }
-                 console.log(_data)
+                 
                 setLabels(_label)
                 setData(_data)
           }
@@ -162,6 +172,15 @@ const datas = {
 
   return (
     <div className="sw py-4 flex flex-col gap-10  h-full">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <Card metricsname={"Direction API CALL METER"} metricsnumber={metrics.direction}/>
+      <Card metricsname={"One to Many API CALL METER"} metricsnumber={metrics.onm}/>
+      <Card metricsname={"Route Optimization API CALL METER"} metricsnumber={metrics.tss}/>
+      <Card metricsname={"Matrix API CALL METER"} metricsnumber={metrics.matrix}/>
+   
+      </div>
+      
+      
       <div>
         <h2 className="text-white">Usage Statistics</h2>
         <div className="flex items-center text-white gap-3">
@@ -185,11 +204,9 @@ const datas = {
     </Select> 
           <span>From</span>
           <RangePicker  onChange={(value, dateString)=>{
-            
-            // const [labels, setLabels] = useState([])
-            // const [data , setData] = useState([])
+         
 
-     
+          
             let starter = dateString[0].split('-')
             let end = dateString[1].split('-')
 
@@ -198,17 +215,17 @@ const datas = {
               var from = new Date(starter[0], parseInt(starter[1])-1, starter[2]);  // -1 because months are from 0 to 11
               var to   = new Date(end[0], parseInt(end[1])-1, end[2]);
 
-
+          
             fetch(`${url}/api/v1/route/apicalls/getDataForGraph?id=${userData.id}`).
             then((data) => { return data.json() })
             .then((data) => {
             if (data.msg == "ok") {
-             
+               
                   let _data = []
                   let _label = []
 
                   let dataa = getAll(data.data)
-              
+             
                   for (let i = 0 ; i < dataa.length ; i++) {
                     try {
                     let str = dataa[i][0].substring(0, 4) + "-" + dataa[i][0].substring(4, 6) + "-" + dataa[i][0].substring(6, 8)
@@ -217,7 +234,7 @@ const datas = {
                     if(  check > from && check < to){
                     
                         _label.push(str)  
-                      _data.push(dataa[1])
+                      _data.push(dataa[i][1])
                       }
 
                     } catch (err) {
@@ -227,8 +244,9 @@ const datas = {
 
             
 
-
-                  console.log(_data)
+                console.log(_label)
+                console.log(_data)
+                
             
                   setLabels(_label)
                   setData(_data)
