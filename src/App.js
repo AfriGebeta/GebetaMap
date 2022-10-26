@@ -21,7 +21,7 @@ import NewUsage from './pages/New/Usage/Index';
 import NewProfile from './pages/New/Settings/Profile';
 import NewPassword from './pages/New/Settings/ChangePassword';
 import NewPlans from './pages/New/Settings/Plans';
-
+import ComingSoon from "./pages/New/ComingSoon"
 
 function App() {
   return (
@@ -56,19 +56,21 @@ function App() {
             <Route index element={<Documentation />} />
         </Route>
 
-          
+  */}
         <Route path="/pricing" >
-            <Route index element={<Pricing />} />
+            <Route index element={<ComingSoon />} />
         </Route>
         
         <Route path="/features" >
-            <Route index element={<Features />} />
+            <Route index element={<ComingSoon />} />
         </Route>
           
 
         <Route path="/contact" >
-            <Route index element={<Contact />} />
-        </Route> */}
+            <Route index element={<ComingSoon />} />
+        </Route> 
+
+
         <Route path="/documentation" >
           <Route index element={<Documentation />} />
         </Route>
