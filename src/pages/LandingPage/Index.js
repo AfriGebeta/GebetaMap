@@ -3,7 +3,7 @@ import {ReactComponent as Logo} from '../../assets/images/mapslogo.svg';
 import {ReactComponent as MapsLogo} from '../../assets/images/mapslogo.svg';
 import {ReactComponent as Hamburger} from "./../../assets/icons/hamburger.svg"
 import {Link} from 'react-router-dom';
-
+import {ArrowRightIcon} from '@heroicons/react/24/solid'
 import Signup from "./../../components/Signup";
 import Signin from "./../../components/Signin";
 
@@ -14,7 +14,7 @@ function Index() {
   const [signupModal,setSignupModal] = useState(false);
   const [signinModal,setSigninModal] = useState(false);
   return (
-    <div className="w-full min-h-screen  overflow-hidden ">
+    <div className="w-full min-h-screen  overflow-hidden bg-[#1A1F32] ">
 
 <div className="flex gap-4 ">
             <Modal open={signupModal} close={() => {setSignupModal(false)}} elem={<Signup 
@@ -87,7 +87,7 @@ tabindex="-1" aria-labelledby="drawer-right-label">
 
         {/* Gebeta Kitchens */}
         {/*  bg-full-back */}
-        <div className="w-[50%] flex flex-col justify-between text-[#1A1F32]    ">
+        <div className="w-[50%] bg-white flex flex-col justify-between text-[#1A1F32]    ">
           {/* <img src={require('../../assets/images/full.jpg')} className="w-full h-full "/> */}
         
 
@@ -183,6 +183,135 @@ tabindex="-1" aria-labelledby="drawer-right-label">
         </div>
 
 
+
+
+      </div>
+
+      <div className="bg-[#1A1F32]">
+       <div className="card3 rounded-lg bg-[#1A1F32] mx-[5%] my-[10%] relative min-w-[200px]">
+       <img className=" absolute w-[12%]  right-0 bottom-0"src={require("./../../assets/images/landing.png")} />
+           <div className=" pt-[5%] ">
+     
+         <h2 className="text-white mx-[10%] ">
+            <span className="text-primary">GEOCODING</span>ENDPOINTS</h2>
+            <div className="w-[60%] mx-[10%]"><p className="text-white text-2xl">You can forward geocode using the Gebeta Geocoding API, which converts text queries like "Bole Edna Mall" into longitude and latitude coordinates.</p></div>
+           
+            <div className="mx-[10%] flex text-white justify-between ">
+              <p></p>
+                <div className="  relative border border-white  rounded-lg  flex   px-[1%] py-[1%] mb-[5%] ">
+                     
+                      <Link to="/documentation "  > <span className="text-white">Documentation</span></Link>
+                      <ArrowRightIcon className=" mx-[5%] h-6 w-6 text-white"/>
+    
+                </div>
+
+            </div>
+          </div>
+        </div> 
+
+
+
+        <div className="card3 rounded-lg bg-[#1A1F32] mx-[5%] my-[10%] relative min-w-[200px]">
+       <img className=" absolute w-[12%]  left-0 bottom-0"src={require("./../../assets/images/landing.png")} />
+           <div className=" pt-[5%] ">
+     
+         <h2 className="text-white mx-[10%] flex justify-end">
+            <span className="text-primary">Direction</span>ENDPOINTS</h2>
+            <p className="text-white text-2xl flex justify-end  ml-[30%] mr-[10%]">
+            You can find directions to your destination using the Gebeta Directions API. Using the Directions API, you can determine the best route to take.
+              </p>
+           
+            <div className="mx-[10%] flex text-white justify-between ">
+           
+                <div className="  relative border border-white  rounded-lg  flex   px-[1%] py-[1%] mb-[5%] ">
+                     
+                      <Link to="/documentation "  > <span className="text-white">Documentation</span></Link>
+                      <ArrowRightIcon className=" mx-[5%] h-6 w-6 text-white"/>
+    
+                </div>
+                <p></p>
+
+            </div>
+          </div>
+        </div> 
+
+
+        <div className="card3 rounded-lg bg-[#1A1F32] mx-[5%] my-[10%] relative min-w-[200px]">
+       <img className=" absolute w-[12%]  right-0 bottom-0"src={require("./../../assets/images/landing.png")} />
+           <div className=" pt-[5%] ">
+     
+         <h2 className="text-white mx-[10%] ">
+            <span className="text-primary">Optimization</span>ENDPOINTS</h2>
+            <div className="w-[60%] mx-[10%]"><p className="text-white text-2xl">
+              
+            The Gebeta Optimization API returns a path between the
+                  input coordinates that is optimized.
+                  Planning the route for delivery in a city is a common
+                  use case for the Optimization API.
+              
+              </p></div>
+           
+            <div className="mx-[10%] flex text-white justify-between ">
+              <p></p>
+                <div className="  relative border border-white  rounded-lg  flex   px-[1%] py-[1%] mb-[5%] ">
+                     
+                      <Link to="/documentation "  > <span className="text-white">Documentation</span></Link>
+                      <ArrowRightIcon className=" mx-[5%] h-6 w-6 text-white"/>
+    
+                </div>
+
+            </div>
+          </div>
+        </div> 
+        
+        <div className="card3 rounded-lg bg-[#1A1F32] mx-[5%] my-[10%] relative min-w-[200px]">
+       <img className=" absolute w-[12%]  left-0 bottom-0"src={require("./../../assets/images/landing.png")} />
+           <div className=" pt-[5%] ">
+     
+         <h2 className="text-white mx-[10%] flex justify-end">
+            <span className="text-primary">One To Many </span>ENDPOINTS</h2>
+            <p className="text-white text-2xl flex justify-end  ml-[30%] mr-[10%]">
+            By using the Gebeta One to many API, you can calculate the distance between one to many places at once.
+              
+              </p>
+           
+            <div className="mx-[10%] flex text-white justify-between ">
+           
+                <div className="  relative border border-white  rounded-lg  flex   px-[1%] py-[1%] mb-[5%] ">
+                     
+                      <Link to="/documentation "  > <span className="text-white">Documentation</span></Link>
+                      <ArrowRightIcon className=" mx-[5%] h-6 w-6 text-white"/>
+    
+                </div>
+                <p></p>
+
+            </div>
+          </div>
+        </div> 
+
+        <div className="card3 rounded-lg bg-[#1A1F32] mx-[5%] my-[10%] relative min-w-[200px]">
+       <img className=" absolute w-[12%]  right-0 bottom-0"src={require("./../../assets/images/landing.png")} />
+           <div className=" pt-[5%] ">
+     
+         <h2 className="text-white mx-[10%] ">
+            <span className="text-primary">Matrix</span>ENDPOINTS</h2>
+            <div className="w-[60%] mx-[10%]"><p className="text-white text-2xl">
+            By using the Gebeta Matrix API, you may choose the most efficient path between several places.
+              </p></div>
+           
+            <div className="mx-[10%] flex text-white justify-between ">
+              <p></p>
+                <div className="  relative border border-white  rounded-lg  flex   px-[1%] py-[1%] mb-[5%] ">
+                     
+                      <Link to="/documentation "  > <span className="text-white">Documentation</span></Link>
+                      <ArrowRightIcon className=" mx-[5%] h-6 w-6 text-white"/>
+    
+                </div>
+
+            </div>
+          </div>
+        </div> 
+       
 
 
       </div>

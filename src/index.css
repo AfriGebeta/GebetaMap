@@ -128,6 +128,10 @@ code {
   @apply border border-[#a3a3a3] p-8 rounded-md min-w-[200px];
 }
 
+.card3 {
+  @apply border border-[#6C6AD7] rounded-lg ;
+}
+
 .icon {
   @apply rounded-full bg-blue-400 p-2 flex justify-center items-center w-7 h-7 inline-block;
 }
