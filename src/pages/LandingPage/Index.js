@@ -63,7 +63,7 @@ tabindex="-1" aria-labelledby="drawer-right-label">
    <div className="flex  flex-col  mt-[20%] space-y-3 text-center ">
         <a href='/contact' className="text-xl font-bold">Contact Us</a>
         <a href='/documentation' className="text-xl font-bold">Documentation</a>
-        <a href='/features' className="text-xl font-bold">Features</a>
+        <a href='/about' className="text-xl font-bold">About</a>
         <a href='/pricing' className="text-xl font-bold">Pricing</a> 
             
                       
@@ -138,7 +138,7 @@ tabindex="-1" aria-labelledby="drawer-right-label">
           <div className="hidden md:flex px-10 py-7 w-full justify-between">
    
          
-               <a href='/features' className="text-white text-lg">Features</a>
+               <a href='/about' className="text-white text-lg">About</a>
                  <a href='/pricing' className="text-white text-lg">Pricing</a>
                  <a href='/#'></a>
 
@@ -311,6 +311,44 @@ tabindex="-1" aria-labelledby="drawer-right-label">
             </div>
           </div>
         </div> 
+
+        <div className="w-full flex items-center justify-center mb-[3%]">
+          <div className="w-[80%]   flex justify-between">
+            <div className="">
+              
+              <span className="text-white text-xl  ">
+                <span className="text-primary text-2xl ">Gebeta</span>Maps
+                <br />
+                PRODUCTS
+            </span>
+        
+              <div className="flex flex-col mt-[1%]">
+                <Link to="/documentation "  > <span className="text-[#A0A0A2]">Geocoding</span></Link>
+                <Link to="/documentation "  > <span className="text-[#A0A0A2]">Direction</span></Link>
+                <Link to="/documentation "  > <span className="text-[#A0A0A2]">Matrix</span></Link>
+                <Link to="/documentation "  > <span className="text-[#A0A0A2]">Optimization</span></Link>
+                <Link to="/documentation "  > <span className="text-[#A0A0A2]">ONM</span></Link>
+              </div>
+              
+            
+            </div>
+            <div>
+                <span className="text-white text-xl  ">
+                   
+                    COMPANY
+                </span>
+            
+                  <div className="flex flex-col mt-[1%]">
+                    <Link to="/contact "  > <span className="text-[#A0A0A2]">Contact</span></Link>
+                    <Link to="/about "  > <span className="text-[#A0A0A2]">About</span></Link>
+                    <Link to="/contact "  > <span className="text-[#A0A0A2]">Leave Feedback</span></Link>
+    
+                  </div>
+            </div>
+          </div>
+          
+
+        </div>
        
 
 

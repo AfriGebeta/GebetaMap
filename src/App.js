@@ -61,7 +61,7 @@ function App() {
             <Route index element={<ComingSoon />} />
         </Route>
         
-        <Route path="/features" >
+        <Route path="/about" >
             <Route index element={<ComingSoon />} />
         </Route>
           

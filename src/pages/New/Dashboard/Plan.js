@@ -33,7 +33,7 @@ function Plan() {
 
                           <div className='flex flex-wrap my-[2%] '>
                                     <div className='flex-1 flex items-center px-4 gap-3'>
-                                        <span className=''>Choosed Plan </span>
+                                        <span className=''>Choosed  </span>
                                     </div>
                                     <div className='flex-1 flex items-center px-4 gap-3'>
                                           <span>Remaining</span>
@@ -45,6 +45,7 @@ function Plan() {
                                   </div>
 {
 choosedPlan.map((n , i) => {
+  console.log(n)
                                 
                                   return  (
                                   <>
@@ -57,7 +58,7 @@ choosedPlan.map((n , i) => {
                                           <span>{n.remainingrequest}</span>
                                     </div>
                                     {/* Range */}
-                                    <div className='flex-1 flex items-center px-4 gap-3'>
+                                    <div className= {n.status == "granted"  ?  'flex-1 flex items-center px-4 gap-3 text-green-500' :  'flex-1 flex items-center px-4 gap-3' }>
                                       {n.status}
                                     </div>
                                   </div>
