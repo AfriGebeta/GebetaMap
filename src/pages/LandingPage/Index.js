@@ -61,10 +61,11 @@ tabindex="-1" aria-labelledby="drawer-right-label">
    </button>
 
    <div className="flex  flex-col  mt-[20%] space-y-3 text-center ">
-        <a href='/contact' className="text-xl font-bold">Contact Us</a>
+   <a href='/' className="text-xl font-bold">Home</a> 
         <a href='/documentation' className="text-xl font-bold">Documentation</a>
         <a href='/about' className="text-xl font-bold">About</a>
-        <a href='/pricing' className="text-xl font-bold">Pricing</a> 
+  
+        <a href='/contact' className="text-xl font-bold">Contact Us</a>
             
                       
       <button onClick={() => {
@@ -99,9 +100,10 @@ tabindex="-1" aria-labelledby="drawer-right-label">
                         <img className='h-5' src={require('../../assets/images/logotext.png')} alt='logo' /> 
                     </div>
                     <p></p>
-                        <a href='/contact' className="hidden md:flex text-[#1A1F32] text-lg ml-[5%]  ">Contact Us</a>
-                          <a href='/documentation' className="hidden md:flex text-[#1A1F32] text-lg mx-[5%] ">Documentation</a>
-                  
+              
+                    <a href='/' className="hidden md:flex text-[#1A1F32] text-lg mx-[5%] ">Home</a>
+                    <a href='/documentation' className="hidden md:flex text-[#1A1F32] text-lg mx-[5%] ">Documentation</a>
+                      
           </div>   
       
            <div className="  text-right  flex justify-end items-center mr-[25%] mt-[35%] md:mt-[5%]">
@@ -139,7 +141,9 @@ tabindex="-1" aria-labelledby="drawer-right-label">
    
          
                <a href='/about' className="text-white text-lg">About</a>
-                 <a href='/pricing' className="text-white text-lg">Pricing</a>
+               <a href='/contact' className="text-white text-lg">Contact Us</a>
+         
+                
                  <a href='/#'></a>
 
                  <button onClick={() => setSigninModal(true)} class="bg-transparent text-white hover:bg-transparent hover:text-white border border-white   font-bold py-2 px-4 rounded-full px-[5%] lg:ml-[5%]">
