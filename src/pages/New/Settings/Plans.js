@@ -49,7 +49,8 @@ function Plans() {
   
 
   const returnMarks = (minMark  , maxMark) => {
-
+  
+    const ret = 700000
     let marks = {};
     marks[minMark] = {
       style: {
@@ -58,12 +59,19 @@ function Plans() {
       label: <span className='text-white'>{minMark}</span>
     };
 
-    marks[parseInt(maxMark/2)] = {
+    
+      
+    marks[parseInt((minMark+maxMark)/2)] = {
       style: {
         color: 'white'
       },
-      label: <span className='text-white'>{parseInt(maxMark/2)}</span>
+      label: <span className='text-white'>{
+        
+         parseInt((minMark+maxMark)/2) 
+        }</span>
     };
+  
+
 
     marks[maxMark] = {
       style: {
@@ -155,7 +163,7 @@ function Plans() {
       }
 
   }
-
+  const percentOff = ["15% off" , "35% off" , "50% off"]
   return (
     <div className='sw py-10 text-white'>
       <div className='flex justify-around'>
@@ -178,16 +186,17 @@ function Plans() {
                                   <>
                                   <hr className=' border-gray-500' />
                                   <div className='flex flex-wrap '>
-                                    <div className='w-full md:flex-1  flex flex-col gap-3 py-3 pb-6'>
+                                    <div className='w-full md:w-[30%] lg:w-[35%] flex flex-col gap-3 py-3 pb-6 '>
                                       <div className='flex gap-2 items-center'>
                                         <h2 className='text-white uppercase my-auto !self-center'>{n.planname} </h2>
-                                        {/* <Link to="/documentation#" className='btn-sty2'>Doc</Link> */}
+                                       <Link to="/documentation#" className='btn-sty2'>Doc</Link> 
                                       </div>
                                       <div className='flex gap-2'>
                                         <div className='text-white border-l-2 border-white p-2'>
-                                          <span>{n.planprice}</span>
+                                          <span className='font-bold'>{n.planprice.split("per")[0]} per <br/>{n.planprice.split("per")[1]}</span>
                                         </div>
-                                        {/* <Link to="/" className='btn-sty2'>Choose Plan</Link> */}
+                                       <Link to="/" className='btn-sty2'>Choose Plan</Link>
+                                       {(i != 0) ? <span  className='btn-sty2 !bg-green-500 font-bold '>{percentOff[i-1]}</span> : ""}
                                       </div>
                                     </div>
                             
@@ -223,14 +232,27 @@ function Plans() {
                                       </div>
                                     </div>
                             
-                                    <div className='bg-[#252B43] flex items-center justify-center p-8 w-[86px]'>
-                                     {returnApiCost(i)}
-                                    </div>
-                                    <div className='bg-[#252B43] flex items-center justify-center p-8 w-[86px]'>
-                                    <button onClick={(event) => { event.preventDefault(); buyPackage(n.planname, i) }} class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                                        Buy 
-                                      </button>
-                                    </div>
+                               
+                                      <div className='bg-[#252B43] flex items-center justify-center p-8 hidden md:flex md:w-[86px] '>
+                                      {returnApiCost(i)}
+                                      </div>
+                                      <div className='bg-[#252B43] flex items-center justify-center p-8 hidden md:flex md:w-[86px]'>
+                                        <button onClick={(event) => { event.preventDefault(); buyPackage(n.planname, i) }} class="bg-[#6C6AD7]  text-white font-bold py-2 px-4 rounded">
+                                          Buy 
+                                        </button>
+                                      </div>
+                                      <div className='w-full flex justify-between md:hidden'>
+                                          <div className=' flex items-center justify-center   w-[86px] '>
+                                              {returnApiCost(i)}
+                                          </div>
+                                        <div className=' flex  p-8 w-[86px]'>
+                                          <button onClick={(event) => { event.preventDefault(); buyPackage(n.planname, i) }} class="bg-[#6C6AD7]  text-white font-bold py-2 px-4 rounded">
+                                            Buy 
+                                          </button>
+                                        </div>
+                                      </div>
+                                      
+                             
                                   </div>
                                   </>
                                   )
