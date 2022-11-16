@@ -13,10 +13,11 @@ function Plans() {
   const plans = useSelector((state) => state.plan.plan)
   const choosedPlan = useSelector((state) => state.choosedPlan.choosed)
   
-  const [starter, setStarter] = useState(0)
-  const [business, setBusiness] = useState(100001 )
-  const [professional, setProfessional] = useState(500001)
-  const [premium, setPremium] = useState(1000001)
+  // change this everytime price changed
+  const [starter, setStarter] = useState(100000)
+  const [business, setBusiness] = useState(500001 )
+  const [professional, setProfessional] = useState(1000001)
+  const [premium, setPremium] = useState(1500001)
   
   const [showLoading , setShowLoading] = useState(false)
   const dispatch = useDispatch()
