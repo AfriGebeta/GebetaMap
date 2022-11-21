@@ -181,7 +181,10 @@ const { userData } = useSelector((state) => state.user)
             <ResponseSample responseCodes200={ tssreponse200} responseCodes400={responseSampleForDirection400 } responseCodes500={responseSampleForDirection500 }      />
           </div>
           {/*  */}
-           <button style={{ background : routeOptimizationStart ? "green" : "red"}} onClick={(e) => { handleRouteOptimizationStart(e); }}>nodes</button>
+         
+          {userData.token != null ?
+        <div className=' w-[90%] h-[500px] mb-[200px] ' >
+            <button style={{ background : routeOptimizationStart ? "green" : "red"}} onClick={(e) => { handleRouteOptimizationStart(e); }}>nodes</button>
           <button style={{ background: routeOptimizationCalculate ? "green" : "red" }} onClick={(e) => {
             handleRouteOptimizationCalculate(e);
          
@@ -190,8 +193,6 @@ const { userData } = useSelector((state) => state.user)
             setRouteOptimizationStart(false)
               }, 300);
           }}>Calculate</button>
-          {userData.token != null ?
-        <div className=' w-[90%] h-[500px] mb-[200px] ' >
              <Tss routeOptimizationStart={routeOptimizationStart} routeOptimizationCalculate = {routeOptimizationCalculate} />
         </div> : ""}
           <p className="mt-[5%] font-bold text-3xl mb-[5%]">
@@ -282,7 +283,10 @@ The most simple example is a people trying to decide which bus restoursant is cl
             
    
           </div>
-             <button style={{ background :matrixStart ? "green" : "red"}} onClick={() => { handleMatrixStart() }}>nodes</button>
+             
+          {userData.token != null ?
+          <div className=' w-[90%] h-[500px] mb-[200px] ' >
+            <button style={{ background :matrixStart ? "green" : "red"}} onClick={() => { handleMatrixStart() }}>nodes</button>
           <button style={{ background: matrixCalculate ? "green" : "red" }} onClick={() => {
             handleMatrixCalculate()
             
@@ -293,8 +297,6 @@ The most simple example is a people trying to decide which bus restoursant is cl
               }, 3000);
           
           }}>Calculate</button>
-          {userData.token != null ?
-          <div className=' w-[90%] h-[500px] mb-[200px] ' >
              <Matrix matrixStart={matrixStart} matrixCalculate = {matrixCalculate} />
           </div> : ""}
 
@@ -353,7 +355,10 @@ The most simple example is a people trying to decide which bus restoursant is cl
 
            
 
-          <button style={{ background: onmStart ? "green" : "red" }}
+         
+{userData.token != null ?
+          <div className=' w-[90%] h-[500px] bg-red-200 mb-[10%]' >
+              <button style={{ background: onmStart ? "green" : "red" }}
           onClick={() => {handleOnmStart()}}
           >Start node</button>
           <button className="ml-[1%]" style={{ background: onmStop ? "green" : "red" }}
@@ -367,8 +372,6 @@ The most simple example is a people trying to decide which bus restoursant is cl
                 setOnmCalculate(false)
             }, 3000);
             }}>Calculate</button>
-{userData.token != null ?
-          <div className=' w-[90%] h-[500px] bg-red-200 mb-[10%]' >
              <OneToMany  start={onmStart} stop = {onmStop} calculate = {onmCalculate}/>
           </div> : ""}
           

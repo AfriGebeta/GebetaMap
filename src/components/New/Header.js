@@ -27,7 +27,7 @@ function Header(props) {
         }>
 
           <Link to="/account/dashboard" className={" text-white " + (url === "dashboard" ? " active_link " : '')}>Dashboard</Link>
-          <Link to="/account/tokens" className={" text-white " + (url === "tokens" ? ' active_link ' : '')}>Tokens</Link>
+          {/* <Link to="/account/tokens" className={" text-white " + (url === "tokens" ? ' active_link ' : '')}>Tokens</Link> */}
           <Link to="/account/usage" className={" text-white " + (url === "usage" ? ' active_link ' : '')}>Usage</Link>
           <Link to="/account/plans" className={" text-white " + (url === "plans" ? ' active_link ' : '')}>Price Plans</Link>
           <Link to="/account/settings" className={" text-white " + (url === "settings" ? ' active_link ' : '')}>Settings</Link>

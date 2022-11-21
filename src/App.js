@@ -3,7 +3,7 @@ import './App.css';
 import { BrowserRouter as Router,Routes,Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
-import Sidebar from './components/DashBoard/Sidebar';
+  import Sidebar from './components/DashBoard/Sidebar';
 import Dashboard from './pages/Dashboard';
 import Billing from './pages/Billing';
 import Usage from './pages/Usage';
@@ -27,14 +27,14 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Navbar />}>
-          <Route index element={<Home />} />
-        </Route>
+    
+        <Route path='/' element={<Index />} />
+{/* 
         <Route path="/dashboard" element={<Sidebar />}>
           <Route index element={<Dashboard />} />
         </Route>
 
-        <Route path='/LandingPage' element={<Index />} />
+       
 
          <Route path="/billing" element={<Sidebar />}>
           <Route index element={<Billing />} />
@@ -68,8 +68,11 @@ function App() {
 
         <Route path="/contact" >
             <Route index element={<Contact />} />
+        </Route> */}
+        <Route path="/documentation" >
+          <Route index element={<Documentation />} />
         </Route>
-        
+        <Route path='/LandingPage' element={<Index />} />
         <Route path="/account" element={<NewNavbar /> }>
           <Route path="dashboard" element={<NewDashboard />} />
           <Route path="tokens" element={<NewTokens />} />
