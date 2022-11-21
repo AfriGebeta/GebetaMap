@@ -21,6 +21,7 @@ import NewUsage from './pages/New/Usage/Index';
 import NewProfile from './pages/New/Settings/Profile';
 import NewPassword from './pages/New/Settings/ChangePassword';
 import NewPlans from './pages/New/Settings/Plans';
+import About from './pages/About';
 
 
 function App() {
@@ -66,9 +67,11 @@ function App() {
         </Route>
           
 
-        <Route path="/contact" >
-            <Route index element={<Contact />} />
-        </Route> */}
+      */}
+        <Route path="/" element={<NewNavbar />}>
+            <Route path="contact" element={<Contact />} />
+            <Route path="about" element={<About />} />
+        </Route>
         <Route path="/documentation" >
           <Route index element={<Documentation />} />
         </Route>
