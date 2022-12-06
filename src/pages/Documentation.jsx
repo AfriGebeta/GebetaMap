@@ -146,7 +146,7 @@ const { userData } = useSelector((state) => state.user)
             <ResponseSample responseCodes200={ responseSampleForDirection200} responseCodes400={responseSampleForDirection400 } responseCodes500={responseSampleForDirection500 }      />
           </div>
 
-          {userData.token != null ?
+          {userData.token == null ?
           <div className=' w-[90%] h-[500px] bg-red-200' >
              <Direction/>
           </div> : ""}
