@@ -29,34 +29,7 @@ function App() {
       <Routes>
     
         <Route path='/' element={<Index />} />
-{/* 
-        <Route path="/dashboard" element={<Sidebar />}>
-          <Route index element={<Dashboard />} />
-        </Route>
 
-       
-
-         <Route path="/billing" element={<Sidebar />}>
-          <Route index element={<Billing />} />
-        </Route>
-
-         <Route path="/usage" element={<Sidebar />}>
-          <Route index element={<Usage />} />
-        </Route>
-
-         <Route path="/profile" element={<Sidebar />}>
-          <Route index element={<Profile />} />
-        </Route>
-
-         <Route path="/documentation" element={<Sidebar />}>
-          <Route index element={<Documentation />} />
-        </Route>
-        
-        <Route path="/document" >
-            <Route index element={<Documentation />} />
-        </Route>
-
-  */}
         <Route path="/pricing" >
             <Route index element={<ComingSoon />} />
         </Route>
