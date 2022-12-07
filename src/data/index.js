@@ -50,6 +50,7 @@ export  const tss = async (gmarker, apiKey) => {
 
   const url = urls + "/api/v1/route/driving/tss/?start=" + startpoint + "&apiKey=" + apiKey
     try {
+        console.log(url)
         const response = await fetch(url);
         const json = await response.json();
         return json;
@@ -69,6 +70,7 @@ export  const oneToMany = async (start, gmarker, apiKey) => {
     }
   const url = urls + "/api/v1/route/driving/onm/?la1=" + start.lat + "&lo1=" + start.lon + "&json=" + startpoint + "&apiKey=" + apiKey
   try {
+    console.log(url)
         const response = await fetch(url);
     const json = await response.json();
     return json
