@@ -174,7 +174,7 @@ const { userData } = useSelector((state) => state.user)
             </div>
             {/* request sample here */}
             <RequestSample
-                curl='curl http://mapapi.gebeta.app/api/v1/route/driving/tss/?start=19.23,38.232,19.23,38.232&apiKey=key'
+                curl='curl http://mapapi.gebeta.app/api/v1/route/driving/tss/?start=[[19.23,38.232],[19.23,38.232]]&apiKey=key'
               
            
               js={direction}
@@ -348,7 +348,7 @@ The most simple example is a people trying to decide which bus restoursant is cl
             </div>
             {/* request sample here */}
             <RequestSample
-              curl='curl  https://mapapi.gebeta.app/api/v1/route/driving/onm/?la1=9.022528936095531&lo1=38.80400061607361&json=9.005980058445639,38.785734616513466,9.01166345564756,38.789008246478424&apiKey=token'
+              curl='curl  https://mapapi.gebeta.app/api/v1/route/driving/onm/?la1=9.022528936095531&lo1=38.80400061607361&json=[[9.005980058445639,38.785734616513466],[9.01166345564756,38.789008246478424]]&apiKey=token'
               js={direction}
             />
             <ResponseSample responseCodes200={ responseSampleForOnm} responseCodes400={responseSampleForDirection400 } responseCodes500={responseSampleForDirection500 }      />
