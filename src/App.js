@@ -1,18 +1,8 @@
 import React from 'react';
 import './App.css';
+import './v2.css';
 import { BrowserRouter as Router,Routes,Route } from 'react-router-dom';
-import Navbar from './components/Navbar';
-import Home from './pages/Home';
-  import Sidebar from './components/DashBoard/Sidebar';
-import Dashboard from './pages/Dashboard';
-import Billing from './pages/Billing';
-import Usage from './pages/Usage';
-import Profile from './pages/Profile';
 import Documentation from './pages/Documentation';
-import Pricing from "./pages/Pricing";
-import Features from './pages/Features';
-import Contact from './pages/Contact';
-import Index from './pages/LandingPage/Index';
 
 import NewNavbar from './components/New/Navbar';
 import NewDashboard from './pages/New/Dashboard/Index';
@@ -22,14 +12,33 @@ import NewProfile from './pages/New/Settings/Profile';
 import NewPassword from './pages/New/Settings/ChangePassword';
 import NewPlans from './pages/New/Settings/Plans';
 import About from './pages/About';
+import Contact from './pages/Contact';
 
+import Navbar from './v2/components/NavBar';
+import Index from './v2/pages/Landing Page/Index';
+import SideBar from './v2/components/Account/SideBar';
+import {default as BeIndex} from './pages/LandingPage/Index';
 
 function App() {
   return (
     <Router>
       <Routes>
     
-        <Route path='/' element={<Index />} />
+        <Route path='/' element={<BeIndex />} />
+
+        <Route path="/v2" element={<Navbar />}>
+            <Route index element={<Index />} />
+        </Route>
+        <Route path="/v2/account" element={<SideBar />}>
+          <Route index element={<NewDashboard />} />
+          <Route path="usage" element={<NewUsage />} />
+          <Route path="tokens" element={<NewTokens />} />
+          <Route path='plans' element={<NewPlans />} />
+          <Route path='profile' element={<NewProfile />} />
+          <Route path='password' element={<NewPassword />} />
+          <Route path='contact' element={<Contact />} />
+        </Route>
+
 {/* 
         <Route path="/dashboard" element={<Sidebar />}>
           <Route index element={<Dashboard />} />
@@ -68,6 +77,8 @@ function App() {
           
 
       */}
+
+
         <Route path="/" element={<NewNavbar />}>
             <Route path="contact" element={<Contact />} />
             <Route path="about" element={<About />} />
@@ -77,13 +88,14 @@ function App() {
         </Route>
         <Route path='/LandingPage' element={<Index />} />
         <Route path="/account" element={<NewNavbar /> }>
+          <Route index element={<NewDashboard />} />
           <Route path="dashboard" element={<NewDashboard />} />
           <Route path="tokens" element={<NewTokens />} />
           <Route path="usage" element={<NewUsage />} />
+          <Route path='plans' element={<NewPlans />} />
           <Route path="settings">
             <Route index element={<NewProfile />} />
             <Route path='password' element={<NewPassword />} />
-            <Route path='plans' element={<NewPlans />} />
           </Route>
         </Route>
 

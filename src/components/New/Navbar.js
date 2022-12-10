@@ -30,7 +30,7 @@ function Navbar(props) {
               <Outlet />
             </div>
             {/* The Mobile View Slide Header   */}
-            <div className={"z-20 h-auto flex md:hidden sticky top-0 "}>
+            <div className={"z-20 h-auto flex md:hidden sticky top-0 shadow-xl shadow-black"}>
               <div className={"max-w-full  bg-bgprimary sm:relative overflow-hidden flex transition-all duration-500 "+openClass.current
                 + (open ? ' p-4 ' : '')}>
                 <Header type='col' />

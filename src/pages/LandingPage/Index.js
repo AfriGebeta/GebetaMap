@@ -95,8 +95,8 @@ tabindex="-1" aria-labelledby="drawer-right-label">
               <img className='h-5' src={require('../../assets/images/logotext.png')} alt='logo' /> 
             </div>
             <div className="hidden md:flex justify-between font-normal w-[50%] lg:w-[30%]">
-                <a href='/#' className="text-[#1A1F32] text-lg mx-[5%]">Contact Us</a>
-                  <a href='/#' className="text-[#1A1F32] text-lg mx-[5%] ">Documentation</a>
+                <a href='/contact' className="text-[#1A1F32] text-lg mx-[5%]">Contact Us</a>
+                  <a href='/documentation' className="text-[#1A1F32] text-lg mx-[5%] ">Documentation</a>
             </div>
           </div> 
        
