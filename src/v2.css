@@ -10,9 +10,25 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+.sw {
+  width: 90%;
+}
 
 
 @layer base {
+
+  * {
+    @apply text-[12px];
+  }
+  h1 {
+    @apply !text-5xl !font-black;
+  }
+  h2 {
+    @apply !text-2xl !font-black;
+  }
+  h3 {
+    @apply !text-lg !font-black;
+  }
 
   .text-child h1,
   .text-child h2,
@@ -25,7 +41,7 @@ body {
   input[type='button'],
   input[type='submit'],
   button {
-    letter-spacing: 2px;
+    letter-spacing: 1.3px;
   }
 
   .bg1 {
@@ -57,10 +73,10 @@ body {
 @layer components {
 
   .btn_sty1 {
-    @apply border border-secondary rounded-sm px-6 py-1 uppercase text-secondary;
+    @apply border border-secondary rounded-sm px-6 py-2 uppercase text-secondary hover:shadow-lg hover:shadow-black;
   }
   .btn_sty2 {
-    @apply border border-secondary bg-secondary rounded-sm px-6 py-1 uppercase text-white;
+    @apply border border-secondary bg-secondary rounded-sm px-6 py-2 uppercase text-white hover:shadow-lg hover:shadow-black;
   }
 
 

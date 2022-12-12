@@ -5,7 +5,7 @@ import Intro from "./Intro";
 
 function Index() {
   return (
-    <div className=" ">
+    <div className=" w-full">
       <Intro />
       <DocsPreview />
       <div className="flex justify-center bg_rain">

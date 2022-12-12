@@ -4,9 +4,9 @@ import { Link } from "react-router-dom";
 
 function DirectionEndPoint() {
   return (
-    <div className="p-4 flex gap-3">
-      <div className="flex-1 grow">
-        <div className="bg-white w-[400px] h-52"></div>
+    <div className="p-4 flex flex-wrap gap-3">
+      <div className="max-w-full">
+        <div className="bg-white max-w-full w-[400px] h-52"></div>
         <h3 className="bg-[#19191a] p-2 !text-gray-400 border border-gray-800">
           Direction Endpoint
         </h3>
@@ -22,9 +22,9 @@ function DirectionEndPoint() {
 }
 function GeoCodingEndPoint() {
   return (
-    <div className="p-4 flex flex-row-reverse gap-3">
-      <div className="flex-1 grow">
-        <div className="bg-white w-[400px] h-52"></div>
+    <div className="p-4 flex flex-wrap flex-row-reverse gap-3">
+      <div className="max-w-full">
+        <div className="bg-white max-w-full w-[400px] h-52"></div>
         <h3 className="bg-[#19191a] p-2 !text-gray-400 border border-gray-800">
           GeoCoding Endpoint
         </h3>
@@ -40,9 +40,9 @@ function GeoCodingEndPoint() {
 }
 function RouteOptimization() {
   return (
-    <div className="p-4 flex gap-3">
-      <div className="flex-1 grow">
-        <div className="bg-white w-[400px] h-52"></div>
+    <div className="p-4 flex flex-wrap gap-3">
+      <div className="max-w-full">
+        <div className="bg-white max-w-full w-[400px] h-52"></div>
         <h3 className="bg-[#19191a] p-2 !text-gray-400 border border-gray-800">
           Route Optimization Endpoint
         </h3>
@@ -58,9 +58,9 @@ function RouteOptimization() {
 }
 function MatrixEndPoint() {
   return (
-    <div className="p-4 flex flex-row-reverse gap-3">
-      <div className="flex-1 grow">
-        <div className="bg-white w-[400px] h-52"></div>
+    <div className="p-4 flex flex-wrap flex-row-reverse gap-3">
+      <div className="max-w-full">
+        <div className="bg-white max-w-full w-[400px] h-52"></div>
         <h3 className="bg-[#19191a] p-2 !text-gray-400 border border-gray-800">
           Matrix Endpoint
         </h3>
@@ -81,7 +81,7 @@ function DocsPreview() {
     <div className="">
       <div className="flex flex-col bg1 items-center">
         <div className="sw flex justify-center text-white text-child">
-          <div className="flex flex-col  gap-44">
+          <div className="flex flex-col max-w-full gap-44">
             <DirectionEndPoint />
             <GeoCodingEndPoint />
             <RouteOptimization />
@@ -90,7 +90,7 @@ function DocsPreview() {
         </div>
       </div>
       <div className="p-4 flex justify-center gap-3">
-        <div className="sw relative bg_locVector h-[350px]">
+        <div className="sw relative bg_locVector h-[200px] sm:h-[350px]">
           {/* <img src={LocVector} className="inline-flex !w-full !h-full" alt='Location Vector' /> */}
         </div>
       </div>

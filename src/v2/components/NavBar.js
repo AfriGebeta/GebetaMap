@@ -12,7 +12,7 @@ function Navbar() {
           </div>
 
           <div className={'flex flex-row items-stretch overflow-auto relative w-full '}>
-            <div className="relative z-0 w-full flex flex-col items-center overflow-hidden">
+            <div className="relative z-0 w-full flex flex-col items-center overflow-hidden ">
               <Outlet />
             </div>
           </div>
