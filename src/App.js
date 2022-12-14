@@ -1,6 +1,5 @@
 import React from 'react';
 import './App.css';
-import './v2.css';
 import { BrowserRouter as Router,Routes,Route } from 'react-router-dom';
 import Documentation from './pages/Documentation';
 
@@ -18,6 +17,8 @@ import Navbar from './v2/components/NavBar';
 import Index from './v2/pages/Landing Page/Index';
 import SideBar from './v2/components/Account/SideBar';
 import {default as BeIndex} from './pages/LandingPage/Index';
+import Dashboard from './v2/pages/Account/DashBoard';
+import Usage from './v2/pages/Account/Usage';
 
 function App() {
   return (
@@ -30,8 +31,8 @@ function App() {
             <Route index element={<Index />} />
         </Route>
         <Route path="/v2/account" element={<SideBar />}>
-          <Route index element={<NewDashboard />} />
-          <Route path="usage" element={<NewUsage />} />
+          <Route index element={<Dashboard />} />
+          <Route path="usage" element={<Usage />} />
           <Route path="tokens" element={<NewTokens />} />
           <Route path='plans' element={<NewPlans />} />
           <Route path='profile' element={<NewProfile />} />

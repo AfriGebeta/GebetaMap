@@ -44,6 +44,10 @@ body {
     letter-spacing: 1.3px;
   }
 
+  input[type='radio'] {
+    @apply inline-block bg-black;
+  }
+
   .bg1 {
     background: url('./assets/images/bg\ group.png') no-repeat;
     background-size: contain;
