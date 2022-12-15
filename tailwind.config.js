@@ -13,7 +13,7 @@ module.exports = {
         transparent: 'transparent',
         current: 'currentColor',
         'primary': '#F3C651',
-        'dark': '#000',
+        'dark': '#111',
         'white': '#fff',
         'grey': '#333',
         'prime': '#219653',
