@@ -18,7 +18,8 @@ module.exports = {
         'grey': '#333',
         'prime': '#219653',
         'secondary': '#F2994A',
-        'bgprimary': '#1A1F32'
+        'bgprimary': '#1A1F32',
+        'btnprimary': '#e79057'
       },  
     },
   },
