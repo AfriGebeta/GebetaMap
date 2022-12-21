@@ -20,6 +20,7 @@ import {default as BeIndex} from './pages/LandingPage/Index';
 import Dashboard from './v2/pages/Account/DashBoard';
 import Usage from './v2/pages/Account/Usage';
 import PricePlans from './v2/pages/Account/PricePlans';
+import OnDemand from './v2/pages/Account/OnDemand';
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
           <Route path='plans' element={<PricePlans />} />
           <Route path='profile' element={<NewProfile />} />
           <Route path='password' element={<NewPassword />} />
+          <Route path='ondemand' element={<OnDemand />} />
           <Route path='contact' element={<Contact />} />
         </Route>
 

@@ -1,24 +1,49 @@
 import React, { createContext, useState } from "react";
 import { Link, Outlet, useLocation } from "react-router-dom";
 import TextLogo from '../../../assets/images/logowithtext.png';
-import Icon, {BellOutlined,MenuOutlined,HomeOutlined,MailOutlined,EditFilled,UserOutlined,SecurityScanOutlined,DollarCircleFilled} from '@ant-design/icons';
+import Icon, {BellOutlined,MenuOutlined,HomeOutlined,MailOutlined,EditFilled,UserOutlined,SecurityScanOutlined,DollarCircleFilled, DownOutlined, RightOutlined, SettingFilled} from '@ant-design/icons';
 import avatar from '../../../assets/images/maleavatar.png';
 import '../../../v2.css';
 
 
 const LinkContext = createContext('linkDisp');
 
-function SideLink({label,iconComp,to,active}) {
+function SideLink({label,iconComp,to,active,children}) {
+  const [dropped,setDropped] = useState('hidden');
+
+  function handleClick(ev) {
+    if(children) {
+      ev.preventDefault();
+      setDropped(dropped === 'hidden' ? '' : 'hidden');
+    }
+  }
   return (
     <LinkContext.Consumer>
       {
         (type) => (
-          <Link to={to} className={"flex gap-1 items-center mt-2 text-white hover:!text-[#ffa81d] relative w_hvr "+(active?'!text-secondary':'')}>
-            {active ? <div className="border-0 h-full border-r-[5px] !drop-shadow-lg !shadow-black rounded-r-md border-[#FF971D]"></div> 
-            : <div className="border-r-[6px]"></div>}
-            <Icon component={iconComp} className=" px-[5px] py-3" />
-            <span className={"inline-block pr-5"+(type==='hidden'?' hvr_trgt p-0 absolute left-12 shadow-xl shadow-black whitespace-nowrap bg-[#1e1e1e] ':'')}>{label}</span>
-          </Link>
+          <div>
+            <Link to={to} onClick={handleClick} className={"flex gap-1  items-center mt-2 text-white hover:!text-[#ffa81d] relative w_hvr "+(active?'!text-secondary':'')}>
+              {active ? <div className="border-0 h-full relative border-r-[5px] !drop-shadow-lg !shadow-black rounded-r-md border-[#FF971D] w-0">&nbsp;</div> 
+              : <div className="border-r-[5px]"></div>}
+              <Icon component={iconComp} className=" px-[5px] py-3" />
+              <span className={"inline-block flex-1 "+(type==='hidden'?' hvr_trgt p-0 absolute left-12 shadow-xl shadow-black whitespace-nowrap bg-[#1e1e1e] ':'')}>{label}</span>
+              {children && (type !== 'hidden') ?
+                dropped ? (
+                  <span className="-mt-1 px-2 mx-2 flex justify-end w-5 border-transparent border overflow-hidden"><RightOutlined className="!font-extrabold" /></span>
+                ):(
+                  <span className="mt-1 px-2 flex items-end h-3 border-transparent border overflow-hidden "><DownOutlined className="!font-extrabold  inline-block" /></span>
+                )
+              : null}
+            </Link>
+            {children && (dropped!=='hidden')  ? (
+              <div className="flex gap-1 text-white items-center relative">
+                <div className="w-5 "></div>
+                <div className="">
+                  {children}
+                </div>
+              </div>
+            ):null}
+          </div>
         )
       }
     </LinkContext.Consumer>
@@ -69,10 +94,13 @@ function SideBar() {
           <div className="h-full min-h-screen flex flex-col pr-2 sticky top-0 shadow-xl shadow-black z-10 bg-dark py-5">
             <SideLink label='Dashboard' iconComp={HomeOutlined} to="/v2/account" active={url === 'dashboard'} />
             <SideLink label='Usage' iconComp={UserOutlined} to="/v2/account/usage" active={url === 'usage'}/>
-            <SideLink label='Account & Security' iconComp={SecurityScanOutlined} to="/v2/account/tokens" active={url === 'tokens'}/>
+            <SideLink label='Account & Security' iconComp={SecurityScanOutlined} to="/v2/account/tokens" active={url === 'tokens'}>
+              <SideLink label='Change Password' iconComp={EditFilled} to="/v2/account/password" active={url === 'password'} />
+            </SideLink>
             <SideLink label='Edit Profile' iconComp={EditFilled} to="/v2/account/profile" active={url === 'profile'}/>
             <SideLink label='Price Plan' iconComp={DollarCircleFilled} to="/v2/account/plans" active={url === 'plans'}/>
-            <SideLink label='Contact Us' iconComp={MailOutlined} to="/v2/account/contact" active={url === 'contact'}/>
+            <SideLink label='On Demand' iconComp={SettingFilled} to="/v2/account/ondemand" active={url === 'ondemand'}/>
+            
 
           </div>
           <div className="flex-1 overflow-hidden relative">
