@@ -31,8 +31,8 @@ function Cards() {
 
       <div className="flex-1 flex flex-wrap gap-7 justify-evenly">
         {
-          objs.map((data) => (
-            <div className="p-4 bg-[#202022] flex-1 min-w-[40%] text-[#777] rounded-xl flex justify-between">
+          objs.map((data,i) => (
+            <div key={i} className="p-4 bg-[#202022] flex-1  text-[#777] rounded-xl flex justify-between">
               <div className="leading-3">
                 <h2 className="p-0 m-0">{data.package}</h2>
                 <p className="m-0 p-0">endpoint</p>

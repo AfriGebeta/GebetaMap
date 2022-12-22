@@ -31,7 +31,7 @@ function BillingHistory() {
       <div className="mt-10 flex flex-col gap-3">
         {
           objs.map((obj,i) => (
-            <div>
+            <div key={i}>
               <div className="flex gap-3 p-0 items-center ">
                 <h2 className="m-0 ">{obj.package}</h2>
                 <p className="m-0">{obj.date}</p>

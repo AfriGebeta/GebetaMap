@@ -31,6 +31,7 @@ function App() {
 
         <Route path="/v2" element={<Navbar />}>
             <Route index element={<Index />} />
+            <Route path="documentation" element={<Documentation />} />
         </Route>
         <Route path="/v2/account" element={<SideBar />}>
           <Route index element={<Dashboard />} />
