@@ -3,11 +3,16 @@ import React from "react";
 import { useState } from "react";
 import {Link} from 'react-router-dom';
 import LogoText from '../../assets/images/logowithtext.png'
+import Signin from "../../components/Signin";
+import Signup from "../../components/Signup";
 import Modal from "../../features/Modal";
 
 
 function Header() {
   const [menu,setMenu] = useState(false);
+  const [signupModal,setSignupModal] = useState(false);
+  const [signinModal,setSigninModal] = useState(false);
+
 
   return (
     <div className="w-full py-3">
@@ -17,17 +22,34 @@ function Header() {
           </Link>
           <div className="hidden md:flex flex-1 gap-4 text-white text-child uppercase">
             <Link to="/">About</Link>
-            <Link to="/">Documentation</Link>
+            <Link to="/v2/documentation">Documentation</Link>
             <Link to="/">Contact Us</Link>
           </div>
+          <Modal open={signupModal} close={() => {setSignupModal(false)}} elem={<Signup 
+              footer={
+                <div className="px-10 p-2">
+                  <Link to="#" onClick={() => {setSigninModal(true); setSignupModal(false)}}>Already have an account? <span className="text-primary">Login</span></Link>
+                </div>
+              }
+            
+          />}>
+          </Modal>
+          <Modal open={signinModal} close={() => setSigninModal(false)} elem={<Signin
+              footer={
+                <div className="px-10 p-2">
+                  <Link to="#" onClick={() => {setSigninModal(false); setSignupModal(true)}}>Dont Have an account? <span className="text-primary">Create One</span></Link>
+                </div>
+              }
+              />}>
+          </Modal>
           <div className="hidden md:flex gap-4 items-center">
-            <button className="btn_sty1">Sign in</button>
-            <button className="btn_sty2">Sign up</button>
+            <button className="btn_sty2" onClick={() => setSignupModal(true)}>Sign up</button>
+            <button className="btn_sty1" onClick={() => setSigninModal(true)}>Sign in</button>
           </div>
           <div className="w-full flex gap-4 md:hidden items-center text-white justify-end">
-            <div className="hidden sm:flex gap-4 items-center">
-              <button className="btn_sty1">Sign in</button>
-              <button className="btn_sty2">Sign up</button>
+            <div className="sm:flex md:hidden gap-4 items-center">
+              <button className="btn_sty2" onClick={() => setSignupModal(true)}>Sign up</button>
+              <button className="btn_sty1" onClick={() => setSigninModal(true)}>Sign in</button>
             </div>
             <MenuOutlined onClick={() => setMenu(true)} className="p-2 cursor-pointer" />
           </div>

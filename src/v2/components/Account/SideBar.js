@@ -36,8 +36,8 @@ function SideLink({label,iconComp,to,active,children}) {
               : null}
             </Link>
             {children && (dropped!=='hidden')  ? (
-              <div className="flex gap-1 text-white items-center relative">
-                <div className="w-5 "></div>
+              <div className="flex text-white items-center relative">
+                <div className={type !== 'hidden' ? "w-5": ''}></div>
                 <div className="">
                   {children}
                 </div>
@@ -96,8 +96,8 @@ function SideBar() {
             <SideLink label='Usage' iconComp={UserOutlined} to="/v2/account/usage" active={url === 'usage'}/>
             <SideLink label='Account & Security' iconComp={SecurityScanOutlined} to="/v2/account/tokens" active={url === 'tokens'}>
               <SideLink label='Change Password' iconComp={EditFilled} to="/v2/account/password" active={url === 'password'} />
+              <SideLink label='Edit Profile' iconComp={EditFilled} to="/v2/account/profile" active={url === 'profile'}/>
             </SideLink>
-            <SideLink label='Edit Profile' iconComp={EditFilled} to="/v2/account/profile" active={url === 'profile'}/>
             <SideLink label='Price Plan' iconComp={DollarCircleFilled} to="/v2/account/plans" active={url === 'plans'}/>
             <SideLink label='On Demand' iconComp={SettingFilled} to="/v2/account/ondemand" active={url === 'ondemand'}/>
             
