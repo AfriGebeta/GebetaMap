@@ -18,7 +18,7 @@ function ApiDetail() {
     }
   );
   return (
-    <div className="flex gap-10 items-center px-4 py-3 bg-[#202022] ">
+    <div className="flex flex-wrap md:flex-nowrap gap-10 items-center px-4 py-3 bg-[#202022] ">
       <div className="leading-3 flex flex-row-rev flex-wrap items-center gap-2 ">
         <h4 className="m-0">API Token Status</h4>
         <span className="text-green-500">{detail.status}</span>

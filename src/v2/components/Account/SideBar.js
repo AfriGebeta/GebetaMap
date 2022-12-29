@@ -73,8 +73,8 @@ function SideBar() {
           </div>
           <div className="flex items-center ">
             <div className="flex gap-4">
-              <span><BellOutlined /></span>
-              <span><MailOutlined /></span>
+              <Link to="/v2/account/notification"><BellOutlined className="cursor-pointer" /></Link>
+              {/* <span><MailOutlined /></span> */}
             </div>
             <div className="flex items-center  mx-10">
               <div className="w-12 h-12 overflow-hidden rounded-full ">
@@ -108,8 +108,8 @@ function SideBar() {
               <Outlet />
             </div>
             <div className="bg-[#222] p-1 px-4 flex gap-6 w-full bottom-0 text-[#ddd] text-child">
-              <Link to="/"><small>Privacy Policy</small></Link>
-              <Link to="/"><small>Terms of Use</small></Link>
+              <Link to="/v2/account/privacypolicy"><small>Privacy Policy</small></Link>
+              <Link to="/v2/account/termsofuse"><small>Terms of Use</small></Link>
             </div>
           </div>
         </div>

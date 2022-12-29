@@ -1,4 +1,5 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import ApiDetail from "../../components/Account/ApiDetail";
 import APIToken from "../../components/Account/ApiToken";
 import APIUsage from "../../components/Account/ApiUsage";
@@ -7,22 +8,24 @@ import DocCard from "../../components/Account/DocCard";
 
 
 function Cards() {
+  const { metrics } = useSelector((state) => state.metrics)
+
   const objs = [
     {
       package: 'ONM',
-      calls: 1002
+      calls: metrics.onm
     },
     {
       package: 'Matrix',
-      calls: 1002
+      calls: metrics.matrix
     },
     {
       package: 'Direction',
-      calls: 1002
+      calls: metrics.direction
     },
     {
       package: 'Tss',
-      calls: 1002
+      calls: metrics.tss
     }
   ]
   return (
