@@ -34,9 +34,14 @@ body {
   .text-child h2,
   .text-child h3,
   .text-child h4,
+  .text-child div,
   .text-child a {
     @apply text-inherit;
   }
+  .text-child.force * {
+    @apply !text-inherit;
+  }
+
   a,
   input[type='button'],
   input[type='submit'],
@@ -77,10 +82,14 @@ body {
 @layer components {
 
   .btn_sty1 {
-    @apply border border-secondary rounded-sm px-6 py-2 uppercase text-secondary hover:shadow-lg hover:shadow-black;
+    @apply border border-secondary rounded-sm px-6 py-2 uppercase text-secondary hover:text-secondary hover:shadow-lg hover:shadow-black;
   }
   .btn_sty2 {
-    @apply border border-secondary bg-secondary rounded-sm px-6 py-2 uppercase text-white hover:shadow-lg hover:shadow-black;
+    @apply border border-secondary bg-secondary rounded-sm px-6 py-2 uppercase text-white hover:text-secondary hover:shadow-lg hover:shadow-black;
+  }
+  .btn_sty1.sml,
+  .btn_sty2.sml {
+    @apply p-1 px-2 text-sm;
   }
 
 

@@ -21,6 +21,12 @@ import Dashboard from './v2/pages/Account/DashBoard';
 import Usage from './v2/pages/Account/Usage';
 import PricePlans from './v2/pages/Account/PricePlans';
 import OnDemand from './v2/pages/Account/OnDemand';
+import {default as DocIndex} from './v2/pages/Documentation/Index';
+import {default as DocDesign} from './v2/pages/Documentation/Documentation';
+import PrivacyPolicy from './v2/pages/Account/PrivacyPolicy';
+import TermsOfUse from './v2/pages/Account/TermsOfUse';
+import Notification from './v2/pages/Account/Notification';
+
 
 function App() {
   return (
@@ -31,8 +37,9 @@ function App() {
 
         <Route path="/v2" element={<Navbar />}>
             <Route index element={<Index />} />
-            <Route path="documentation" element={<Documentation />} />
+            {/* <Route path="documentation" element={<DocIndex />} /> */}
         </Route>
+        <Route path="/v2/documentation" element={<DocDesign />} />
         <Route path="/v2/account" element={<SideBar />}>
           <Route index element={<Dashboard />} />
           <Route path="usage" element={<Usage />} />
@@ -42,6 +49,9 @@ function App() {
           <Route path='password' element={<NewPassword />} />
           <Route path='ondemand' element={<OnDemand />} />
           <Route path='contact' element={<Contact />} />
+          <Route path='notification' element={<Notification />} />
+          <Route path='privacypolicy' element={<PrivacyPolicy />} />
+          <Route path='termsofuse' element={<TermsOfUse />} />
         </Route>
 
 {/* 
