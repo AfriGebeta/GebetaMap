@@ -39,9 +39,9 @@ function Cards() {
     </div>
     
     {/* Manual Entry */}
-    <div className="flex gap-4 items-start">
+    <div className="flex gap-4 items-start flex-wrap">
       <div className="flex flex-col flex-1 gap-4">
-        <div className="flex gap-4">
+        <div className="flex gap-4 flex-wrap">
           <div className="leading-3 flex-1 flex gap-3 p-4 rounded-xl bg-[#202022]">
             <div className="">
               <h2 className="p-0 m-0 uppercase ">Manual</h2>
@@ -67,7 +67,7 @@ function Cards() {
           <input type='submit' value='+' className="btn_sty1 !font-extrabold !text-2xl !px-6 rounded-md !bg-btnprimary/40 !text-btnprimary !border-btnprimary/10" />
         </div>
 
-        <div className="flex gap-4">
+        <div className="flex gap-4 flex-wrap">
           <div className="leading-3 flex-1 flex gap-3 p-4 rounded-xl bg-[#202022]">
             <div className="">
               <h2 className="p-0 m-0 uppercase ">Manual</h2>
@@ -94,7 +94,7 @@ function Cards() {
 
         </div>
 
-        <div className="flex gap-4">
+        <div className="flex gap-4 flex-wrap">
           <div className="leading-3 flex-1 flex gap-3 p-4 rounded-xl bg-[#202022]">
             <div className="">
               <h2 className="p-0 m-0 uppercase ">Manual</h2>

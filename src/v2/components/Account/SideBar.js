@@ -4,6 +4,7 @@ import TextLogo from '../../../assets/images/logowithtext.png';
 import Icon, {BellOutlined,MenuOutlined,HomeOutlined,MailOutlined,EditFilled,UserOutlined,SecurityScanOutlined,DollarCircleFilled, DownOutlined, RightOutlined, SettingFilled} from '@ant-design/icons';
 import avatar from '../../../assets/images/maleavatar.png';
 import '../../../v2.css';
+import Notification from "./Notification";
 
 
 const LinkContext = createContext('linkDisp');
@@ -77,7 +78,7 @@ function SideBar() {
             <div className="flex gap-4 relative ">
               <BellOutlined className="cursor-pointer" onClick={() => setNotifyModal(notifyModal === 'hidden' ? '' : 'hidden')} />
               <div className={"absolute right-0 shadow-lg border border-[#333] shadow-black p-4 bg-[#202022] top-[250%] !z-50 w-[400px] h-[300px] "+notifyModal}>
-                Notification
+                <Notification />
               </div>
               {/* <span><MailOutlined /></span> */}
             </div>
