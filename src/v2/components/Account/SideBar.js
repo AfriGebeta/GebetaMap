@@ -4,6 +4,7 @@ import TextLogo from '../../../assets/images/logowithtext.png';
 import Icon, {BellOutlined,MenuOutlined,HomeOutlined,MailOutlined,EditFilled,UserOutlined,SecurityScanOutlined,DollarCircleFilled, DownOutlined, RightOutlined, SettingFilled} from '@ant-design/icons';
 import avatar from '../../../assets/images/maleavatar.png';
 import '../../../v2.css';
+import Notification from "./Notification";
 
 
 const LinkContext = createContext('linkDisp');
@@ -53,6 +54,8 @@ function SideBar() {
   const [type,setType] = useState('hidden');
   const location = useLocation();
   const url = (location.pathname.split("/")[3] || "dashboard").toLowerCase();
+  const [notifyModal,setNotifyModal] = useState('hidden');
+
 
 
   function handleMenu() {
@@ -61,7 +64,7 @@ function SideBar() {
   return (
     <div className="!bg-dark ">
       <div className="flex flex-col min-h-screen ">
-        <div className="flex items-center text-white text-child border-b border-gray-700 shadow-md py-2 z-0">
+        <div className="flex items-center text-white text-child border-b border-gray-700 shadow-md py-2 ">
           <div className="flex items-center w-56 ">
             <MenuOutlined className="py-2 px-4 cursor-pointer" onClick={handleMenu}/>
             <Link to="/v2"> <img src={TextLogo} alt='Gebeta Maps' className="" /></Link>
@@ -72,8 +75,11 @@ function SideBar() {
             </h3>
           </div>
           <div className="flex items-center ">
-            <div className="flex gap-4">
-              <Link to="/v2/account/notification"><BellOutlined className="cursor-pointer" /></Link>
+            <div className="flex gap-4 relative ">
+              <BellOutlined className="cursor-pointer" onClick={() => setNotifyModal(notifyModal === 'hidden' ? '' : 'hidden')} />
+              <div className={"absolute right-0 shadow-lg border border-[#333] shadow-black p-4 bg-[#202022] top-[250%] !z-50 w-[400px] h-[300px] "+notifyModal}>
+                <Notification />
+              </div>
               {/* <span><MailOutlined /></span> */}
             </div>
             <div className="flex items-center  mx-10">
