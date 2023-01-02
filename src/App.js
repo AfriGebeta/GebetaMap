@@ -31,10 +31,17 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<BeIndex />} />
-        <Route path="/v2" element={<Navbar />}>
+        {/* <Route path="/" element={<BeIndex />} /> */}
+        {/* <Route path="/pricing">
+          <Route index element={<ComingSoon />} />
+        </Route>
+        <Route path="/about">
+          <Route index element={<ComingSoon />} />
+        </Route> */}
+
+        {/* above are unshure commented lines*/}
+        <Route path="/" element={<Navbar />}>
           <Route index element={<Index />} />
-          {/* <Route path="documentation" element={<DocIndex />} /> */}
         </Route>
         <Route path="/v2/documentation" element={<DocDesign />} />
         <Route path="/v2/account" element={<SideBar />}>
@@ -49,40 +56,6 @@ function App() {
           <Route path="notification" element={<Notification />} />
           <Route path="privacypolicy" element={<PrivacyPolicy />} />
           <Route path="termsofuse" element={<TermsOfUse />} />
-        </Route>
-        {/* 
-        <Route path="/dashboard" element={<Sidebar />}>
-          <Route index element={<Dashboard />} />
-        </Route>
-
-       
-
-         <Route path="/billing" element={<Sidebar />}>
-          <Route index element={<Billing />} />
-        </Route>
-
-         <Route path="/usage" element={<Sidebar />}>
-          <Route index element={<Usage />} />
-        </Route>
-
-         <Route path="/profile" element={<Sidebar />}>
-          <Route index element={<Profile />} />
-        </Route>
-
-         <Route path="/documentation" element={<Sidebar />}>
-          <Route index element={<Documentation />} />
-        </Route>
-        
-        <Route path="/document" >
-            <Route index element={<Documentation />} />
-        </Route>
-
-  */}
-        <Route path="/pricing">
-          <Route index element={<ComingSoon />} />
-        </Route>
-        <Route path="/about">
-          <Route index element={<ComingSoon />} />
         </Route>
 
         <Route path="/" element={<NewNavbar />}>
