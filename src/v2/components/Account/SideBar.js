@@ -74,10 +74,10 @@ function SideBar() {
               {url}
             </h3>
           </div>
-          <div className="flex items-center ">
-            <div className="flex gap-4 relative ">
+          <div className="flex items-center relative ">
+            <div className="flex gap-4  ">
               <BellOutlined className="cursor-pointer" onClick={() => setNotifyModal(notifyModal === 'hidden' ? '' : 'hidden')} />
-              <div className={"absolute right-0 shadow-lg border border-[#333] shadow-black p-4 bg-[#202022] top-[250%] !z-50 w-[400px] h-[300px] "+notifyModal}>
+              <div className={"absolute right-0 top-[118%] shadow-lg border border-[#333] shadow-black p-4 bg-[#202022] !z-50 w-[400px] h-[300px] "+notifyModal}>
                 <Notification />
               </div>
               {/* <span><MailOutlined /></span> */}
