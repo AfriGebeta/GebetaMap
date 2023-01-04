@@ -344,6 +344,13 @@ tabindex="-1" aria-labelledby="drawer-right-label">
             
                   <div className="flex flex-col mt-[1%]">
                     <Link to="/contact "  > <span className="text-[#A0A0A2]">Contact</span></Link>
+                                                                <div>
+                                                                    <p>Name : Bemnet Yohannes Chefamo</p> 
+                                                                    <p>Phone : +251968755198</p>
+                                                                <p>email :bemnetyohannes4@gmail.com </p>
+                                                                  <p>Loction: Addis Ababa, Koye Feche Condominium Site  </p>
+                                                                
+                                                                </div>
                     <Link to="/about "  > <span className="text-[#A0A0A2]">About</span></Link>
                     <Link to="/contact "  > <span className="text-[#A0A0A2]">Leave Feedback</span></Link>
     
