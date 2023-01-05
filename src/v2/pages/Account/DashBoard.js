@@ -51,7 +51,7 @@ function Cards() {
 function Dashboard() {
   return (
     <div className="w-full text-[#ccc] text-child flex flex-wrap gap-4">
-      <div className="flex-1 flex flex-col gap-6">
+      <div className="flex-1 flex flex-col gap-6 max-w-full">
         <APIToken />
         <ApiDetail />
         <Cards />

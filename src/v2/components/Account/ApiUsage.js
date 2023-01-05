@@ -167,13 +167,13 @@ const datas = {
 
   return (
 <div className="rounded-xl px-4 py-3 bg-[#202022] ">
-<div className='flex justify-between items-center w-full sm:!sw'>
+<div className='flex flex-wrap justify-between items-center w-full '>
   <div>
     <h2 className='m-0'>API Usage</h2>
     <span>Track your api usage here</span>
   </div>
-  <div className='flex gap-4 items-center '>
-    <label className='flex items-center gap-2'><input type='radio' name='filter' className='' value='All' onClick={changeFilter} /> All</label>
+  <div className='flex flex-wrap gap-4 items-center '>
+    <label className='flex items-center gap-2'><input type='radio' name='filter' className='' value='All' checked onClick={changeFilter} /> All</label>
     <label className='flex items-center gap-2'><input type='radio' name='filter' className='' value='ONM' onClick={changeFilter} /> ONM</label>
     <label className='flex items-center gap-2'><input type='radio' name='filter' className='' value='Direction' onClick={changeFilter} /> Direction</label>
     <label className='flex items-center gap-2'><input type='radio' name='filter' className='' value='TSS' onClick={changeFilter} /> Tss</label>

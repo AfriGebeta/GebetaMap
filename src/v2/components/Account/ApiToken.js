@@ -144,8 +144,8 @@ function APIToken() {
         elem={tokenView()}>
       </Modal>
       <Notify value={notify} />
-      {/* <button className="btn-sty1 self-start my-6 bg-black/60 text-[#aaa] " onClick={() => setTokenModal(true)}>+ API Token</button> */}
-      <div className="flex-1 flex items-center gap-4">
+      <button className="btn-sty1 self-start my-6 bg-black/60 text-[#aaa] " onClick={() => setTokenModal(true)}>+ API Token</button>
+      <div className="flex-1 flex flex-wrap xss:flex-nowrap items-center gap-4">
         <input disabled type={textType} ref={inputRef} value={userData.token || ""} className="bg-transparent p-1 flex-1" />
         <div className="flex gap-6">
           <EyeInvisibleFilled className="cursor-pointer" onClick={() => setTextType(textType === 'text' ? 'password' : 'text')} />

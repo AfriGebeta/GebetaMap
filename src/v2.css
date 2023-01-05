@@ -10,6 +10,19 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+.ant-select-selector,
+.ant-select-selection-search-input {
+  background-color: #181818 !important;
+  color: #aaa !important;
+  border: 1px solid transparent !important;
+}
+.ant-select-selection-search-input::placeholder {
+  color: #888  !important;
+}
+::placeholder {
+  color: #888 !important;
+}
+
 .sw {
   width: 90%;
 }
@@ -69,6 +82,9 @@ body {
     background-position: bottom center;
   }
 
+  .hvr_trgtx {
+    @apply !max-w-none !overflow-visible;
+  }
   .w_hvr .hvr_trgt {
     @apply max-w-0 overflow-hidden p-0;
   }
@@ -85,7 +101,7 @@ body {
     @apply border border-secondary rounded-sm px-6 py-2 uppercase text-secondary hover:text-secondary hover:shadow-lg hover:shadow-black;
   }
   .btn_sty2 {
-    @apply border border-secondary bg-secondary rounded-sm px-6 py-2 uppercase text-white hover:text-secondary hover:shadow-lg hover:shadow-black;
+    @apply border border-secondary bg-secondary rounded-sm px-6 py-2 uppercase text-white  hover:shadow-lg hover:shadow-black;
   }
   .btn_sty1.sml,
   .btn_sty2.sml {
