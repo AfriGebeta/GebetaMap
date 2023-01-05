@@ -23,7 +23,7 @@ function Header() {
           <div className="hidden md:flex flex-1 gap-4 text-white text-child uppercase">
             <Link to="/">About</Link>
             <Link to="/v2/documentation">Documentation</Link>
-            <Link to="/">Contact Us</Link>
+            {/* <Link to="/">Contact Us</Link> */}
           </div>
           <Modal open={signupModal} close={() => {setSignupModal(false)}} elem={<Signup 
               footer={
