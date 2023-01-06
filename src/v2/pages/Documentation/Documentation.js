@@ -106,10 +106,10 @@ function Documentation() {
             <h2 className="m-0 text-[#aaa]">Introduction</h2>
             <p>With the GebetaMaps Directions API you can integrate A-to-B route planning, turn-by-turn navigation, route optimization, isochrone calculations, and other tools in your application.</p>
             <div className="py-3 flex gap-4 items-center">
-              <Link to="/#" className="btn_sty1 sml bg-secondary/40">Routing API</Link>
-              <Link to="/#" className="btn_sty1 sml ">Matrix API</Link>
-              <Link to="/#" className="btn_sty1 sml ">Route Optimization API</Link>
-              <Link to="/#" className="btn_sty1 sml ">Geocoding API</Link>
+              <a href="#routeEP" className="btn_sty1 sml bg-secondary/40">Routing API</a>
+              <a href="#matrixEP" className="btn_sty1 sml ">Matrix API</a>
+              <a href="#routeEP" className="btn_sty1 sml ">Route Optimization API</a>
+              <a href="#geoEP" className="btn_sty1 sml ">Geocoding API</a>
             </div>
           </div>
           <hr className="border-[#555] my-1" />

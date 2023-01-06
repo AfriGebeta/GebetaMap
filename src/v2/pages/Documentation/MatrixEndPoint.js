@@ -21,7 +21,7 @@ function MatrixEndPoint() {
 
 
   return (
-    <div className="text-[#aaa] text-child">
+    <section className="text-[#aaa] text-child" id="matrixEP">
       <h2 className=" btn_sty1 bg-secondary/30 sml inline-block">
         Matrix Endpoint
       </h2>
@@ -124,7 +124,7 @@ function MatrixEndPoint() {
           <Matrix matrixStart={matrixStart} matrixCalculate={matrixCalculate} />
         </div> : ""}
 
-    </div>
+    </section>
   )
 }
 

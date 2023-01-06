@@ -46,7 +46,7 @@ function Cards() {
               filterOption={(input, option) =>
                 (option?.label ?? '').toLowerCase().includes(input.toLowerCase())
               }
-              className="flex-1 bg-[#181818] px-3 py-2 border-0" 
+              className="flex-1 bg-[#181818] px-3 py-2 border-0 placeholder:text-white" 
               style={{backgroundColor: '#181818'}}
               options={locationsData}
             />

@@ -26,7 +26,7 @@ function RouteEndPoint() {
 
 
   return (
-    <div className="text-[#aaa] text-child">
+    <section className="text-[#aaa] text-child" id="routeEP">
       <h2 className=" btn_sty1 bg-secondary/30 sml inline-block">
         Route Optimization EndPoint
       </h2>
@@ -71,7 +71,7 @@ function RouteEndPoint() {
           <Tss routeOptimizationStart={routeOptimizationStart} routeOptimizationCalculate={routeOptimizationCalculate} />
         </div> : ""}
 
-    </div>
+    </section>
   )
 }
 

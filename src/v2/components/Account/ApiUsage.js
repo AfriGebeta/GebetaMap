@@ -157,9 +157,8 @@ const datas = {
       // label: "First dataset",
       data: data,
       fill: true,
-      
-      backgroundColor: "rgba(75,192,192,0.2)",
-      borderColor: "rgba(75,192,192,1)"
+      backgroundColor: "rgba(222,117,1,0.2)",
+      borderColor: "rgba(222,117,0,1)"
     },
    
   ]
@@ -173,11 +172,11 @@ const datas = {
     <span>Track your api usage here</span>
   </div>
   <div className='flex flex-wrap gap-4 items-center '>
-    <label className='flex items-center gap-2'><input type='radio' name='filter' className='' value='All' checked onClick={changeFilter} /> All</label>
-    <label className='flex items-center gap-2'><input type='radio' name='filter' className='' value='ONM' onClick={changeFilter} /> ONM</label>
-    <label className='flex items-center gap-2'><input type='radio' name='filter' className='' value='Direction' onClick={changeFilter} /> Direction</label>
-    <label className='flex items-center gap-2'><input type='radio' name='filter' className='' value='TSS' onClick={changeFilter} /> Tss</label>
-    <label className='flex items-center gap-2'><input type='radio' name='filter' className='' value='Matrix' onClick={changeFilter} /> Matrix</label>
+    <label className='flex items-center gap-2'><input type='radio' name='filter' className='' value='All' checked={selectedGraph === 'All'} onChange={changeFilter} /> All</label>
+    <label className='flex items-center gap-2'><input type='radio' name='filter' className='' value='ONM' checked={selectedGraph === 'ONM'} onChange={changeFilter} /> ONM</label>
+    <label className='flex items-center gap-2'><input type='radio' name='filter' className='' value='Direction' checked={selectedGraph === 'Direction'} onChange={changeFilter} /> Direction</label>
+    <label className='flex items-center gap-2'><input type='radio' name='filter' className='' value='TSS' checked={selectedGraph === 'TSS'} onChange={changeFilter} /> Tss</label>
+    <label className='flex items-center gap-2'><input type='radio' name='filter' className='' value='Matrix' checked={selectedGraph === 'Matrix'} onChange={changeFilter} /> Matrix</label>
   </div>
 </div>
 <div>
@@ -248,7 +247,7 @@ const datas = {
         <span className="lowercase mb-4 inline-block">ALL DATES START AT 00:00 ETHIOPIAN LT</span> */}
         <div className="border border-dashed rounded-md border-white p-10 flex items-center justify-center sm:h-[200px] md:h-[200px] lg:h-[600px]">
 
-        {data.length > 0 ?  <Line  options={options} data={datas}  />  : <h3 className="text-white">
+        {data.length > 0 ?  <Line  options={options} data={datas} className="!w-full" />  : <h3 className="text-white">
             You don't have any account activity for the selected period and API key.
           </h3>}
           
