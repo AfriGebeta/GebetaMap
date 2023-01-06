@@ -1,5 +1,4 @@
 import React from "react";
-import { useState } from "react";
 import { useSelector } from "react-redux";
 import { direction, responseSampleForDirection400, responseSampleForDirection500, responseSampleGeocoding } from "../../../data/responsecode";
 import Geocoding from "../../components/Documentation/Geocoding";
@@ -12,7 +11,7 @@ function GeocodingAPI() {
 
 
   return (
-    <div className="text-[#aaa] text-child">
+    <section className="text-[#aaa] text-child" id="geoEP">
       {userData.token != null ?
         <div className="mb-40">
           <h2 className=" btn_sty1 bg-secondary/30 sml inline-block">
@@ -40,7 +39,7 @@ function GeocodingAPI() {
           <Geocoding />
         </div>
         : ""}
-    </div>
+    </section>
   )
 }
 

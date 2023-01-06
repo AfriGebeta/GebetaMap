@@ -1,125 +1,124 @@
 
-import { MapContainer, TileLayer, Polyline , useMapEvents , Marker , Popup , Polygon , FeatureGroup , EditControl} from 'react-leaflet';
+import { MapContainer, TileLayer, Polyline, useMapEvents, Marker, Popup } from 'react-leaflet';
 import { useState } from 'react';
-import red from './red.png';
 import L from 'leaflet';
-import  {tss}  from '../../../data/index'
-import { useSelector, useDispatch } from "react-redux"
+import { tss } from '../../../data/index'
+import { useSelector } from "react-redux"
+
 
 const default_latitude = 9.02151;
 const default_longitude = 38.80115;
 
 
-
- function AddMarkerToClick(props) {
+function AddMarkerToClick(props) {
 
   const [rmarker, redMarker] = useState([]);
   const [gmarker, greenMarker] = useState([]);
-  const [sets , Setter] = useState(false)
+  const [sets, Setter] = useState(false)
   const [l1, setL1] = useState("");
   const [lo1, setLO1] = useState("");
   const [endPoints, setEndPoints] = useState([])
-  const [pos , setPos] = useState([])
-const { userData } = useSelector((state) => state.user)
+  const [pos, setPos] = useState([])
+  const { userData } = useSelector((state) => state.user)
   const RedIcon = L.icon({
-  iconUrl:  require('./red.png'), 
-  iconRetinaUrl:  require('./red.png'),  
-  iconAnchor: null,
-  shadowUrl: null,
-  shadowSize: null,  
-  shadowAnchor: null,
-  iconSize: [35, 35],
-  className: 'leaflet-venue-icon'
+    iconUrl: require('./red.png'),
+    iconRetinaUrl: require('./red.png'),
+    iconAnchor: null,
+    shadowUrl: null,
+    shadowSize: null,
+    shadowAnchor: null,
+    iconSize: [35, 35],
+    className: 'leaflet-venue-icon'
   });
-  
 
-const GreenIcon = L.icon({
-  iconUrl: require('./green.png') , 
-  iconRetinaUrl:  require('./green.png') ,  
-  iconAnchor: null,
-  shadowUrl: null,
-  shadowSize: null,  
-  shadowAnchor: null,
-  iconSize: [35, 35],
-  className: 'leaflet-venue-icon'
+
+  const GreenIcon = L.icon({
+    iconUrl: require('./green.png'),
+    iconRetinaUrl: require('./green.png'),
+    iconAnchor: null,
+    shadowUrl: null,
+    shadowSize: null,
+    shadowAnchor: null,
+    iconSize: [35, 35],
+    className: 'leaflet-venue-icon'
   });
-  
-  
-  
+
+
+
   const map = useMapEvents({
     click(e) {
       const newMarker = e.latlng
-      if (props.start && props.stop != true) { 
-           gmarker.push(e.latlng);
-          Setter(!sets)
+      if (props.start && props.stop != true) {
+        gmarker.push(e.latlng);
+        Setter(!sets)
       }
-      
+
       if (props.stop && props.start != true) {
-        
+
         rmarker.push(e.latlng);
         Setter(!sets)
-         
+
       }
 
-      
 
-        
-        
-         
+
+
+
+
     },
   })
 
   if (props.calculate) {
- 
-      
-      try {
-        async function getData() {
-          console.log(gmarker)
-          const ts = await tss(gmarker , userData.token)
-          console.log(ts)
-          setPos(ts.direction);
-         }
-        getData()
-      } catch (err) {
-          console.log(err)
-      }     
+
+
+    try {
+      async function getData() {
+        console.log(gmarker)
+        const ts = await tss(gmarker, userData.token)
+        console.log(ts)
+        setPos(ts.direction);
+      }
+      getData()
+    } catch (err) {
+      console.log(err)
+    }
   }
-function getRandomColor() {
-  var letters = '0123456789ABCDEF';
-  var color = '#';
-  for (var i = 0; i < 6; i++) {
-    color += letters[Math.floor(Math.random() * 16)];
+  function getRandomColor() {
+    var letters = '0123456789ABCDEF';
+    var color = '#';
+    for (var i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
   }
-  return color;
-}
 
   return (
-    
-      <div>
-          {rmarker.map(marker => 
-        <Marker position={marker} icon={ RedIcon }>
-          <Popup>Marker is at {marker}</Popup>
-        </Marker>
-      )} 
 
-        {gmarker.map(marker => 
-        <Marker position={marker} icon={ GreenIcon }>
+    <div>
+      {rmarker.map(marker =>
+        <Marker position={marker} icon={RedIcon}>
           <Popup>Marker is at {marker}</Popup>
         </Marker>
       )}
-      
-      
-  
+
+      {gmarker.map(marker =>
+        <Marker position={marker} icon={GreenIcon}>
+          <Popup>Marker is at {marker}</Popup>
+        </Marker>
+      )}
 
 
-      
-         <Polyline positions={pos} color={ getRandomColor()} />
-      
-       
-      
-      </div>
-    
-    
+
+
+
+
+      <Polyline positions={pos} color={getRandomColor()} />
+
+
+
+    </div>
+
+
   )
 }
 
@@ -130,17 +129,17 @@ function Tss(props) {
   const [stop, setStop] = useState(false);
   const [calculate, setCalculate] = useState(false);
 
-  
+
   return (
-        <div className='leaflet-container'>
-            <MapContainer center={[default_latitude, default_longitude]} zoom={18}>
-                <TileLayer
-                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-              />
-            <AddMarkerToClick key={0} start={props.routeOptimizationStart} stop={stop} calculate={props.routeOptimizationCalculate}/>
-            </MapContainer>
-        </div>    
+    <div className='leaflet-container'>
+      <MapContainer center={[default_latitude, default_longitude]} zoom={18}>
+        <TileLayer
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        />
+        <AddMarkerToClick key={0} start={props.routeOptimizationStart} stop={stop} calculate={props.routeOptimizationCalculate} />
+      </MapContainer>
+    </div>
   );
 }
 

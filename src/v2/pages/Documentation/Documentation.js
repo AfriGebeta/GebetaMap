@@ -1,15 +1,15 @@
-import { ConfigProvider, Popover, Steps, Switch } from "antd";
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import {ReactComponent as Logo} from '../../../assets/images/maplogo.svg';
-import {ReactComponent as LocTargetIcon} from '../../../assets/icons/locTarget.svg';
-import DirectionEndPoint from "./DirectionEndPoint";
-import MatrixEndPoint from "./MatrixEndPoint";
-import RouteEndPoint from "./RouteEndPoint";
-import GeoCodingAPI from "./GeocodingAPI";
-import ONMEndPoint from "./ONMEndPoint";
-import TrackVisibility from "react-on-screen";
 import { DownOutlined } from "@ant-design/icons";
+import { ConfigProvider, Popover, Steps } from "antd";
+import React, { useEffect, useState } from "react";
+import TrackVisibility from "react-on-screen";
+import { Link } from "react-router-dom";
+import { ReactComponent as LocTargetIcon } from '../../../assets/icons/locTarget.svg';
+import { ReactComponent as Logo } from '../../../assets/images/maplogo.svg';
+import DirectionEndPoint from "./DirectionEndPoint";
+import GeoCodingAPI from "./GeocodingAPI";
+import MatrixEndPoint from "./MatrixEndPoint";
+import ONMEndPoint from "./ONMEndPoint";
+import RouteEndPoint from "./RouteEndPoint";
 
 
 const {Step} = Steps;
@@ -33,7 +33,7 @@ const ScreenView = ({children,setItems,setCurrentView}) => {
   return (
     <div>
       {children.map((child,i) => (
-        <TrackVisibility partialVisibility>
+        <TrackVisibility partialVisibility key={i}>
           {({isVisible}) => (
             <ScreenChange visible={isVisible} index={i} setCurrentView={setCurrentView}>{child}</ScreenChange>
           )}
@@ -94,7 +94,7 @@ function Documentation() {
               }}
             >
               <Steps progressDot={customDot} current={currentView} direction="vertical"  className="!text-white" >
-                {items.map((item) => <Step title={item.title} className="!text-[#aaa] text-child force" />)}
+                {items.map((item,i) => <Step key={i} title={item.title} className="!text-[#aaa] text-child force" />)}
               </Steps>
             </ConfigProvider>
           </div>
@@ -106,10 +106,10 @@ function Documentation() {
             <h2 className="m-0 text-[#aaa]">Introduction</h2>
             <p>With the GebetaMaps Directions API you can integrate A-to-B route planning, turn-by-turn navigation, route optimization, isochrone calculations, and other tools in your application.</p>
             <div className="py-3 flex gap-4 items-center">
-              <Link to="/#" className="btn_sty1 sml bg-secondary/40">Routing API</Link>
-              <Link to="/#" className="btn_sty1 sml ">Matrix API</Link>
-              <Link to="/#" className="btn_sty1 sml ">Route Optimization API</Link>
-              <Link to="/#" className="btn_sty1 sml ">Geocoding API</Link>
+              <a href="#routeEP" className="btn_sty1 sml bg-secondary/40">Routing API</a>
+              <a href="#matrixEP" className="btn_sty1 sml ">Matrix API</a>
+              <a href="#routeEP" className="btn_sty1 sml ">Route Optimization API</a>
+              <a href="#geoEP" className="btn_sty1 sml ">Geocoding API</a>
             </div>
           </div>
           <hr className="border-[#555] my-1" />
