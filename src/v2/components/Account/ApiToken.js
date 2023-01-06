@@ -53,17 +53,9 @@ function APIToken() {
                   Add
 
                 </button>
-
-
             }
-
-
-
           </div>
         </div>
-
-
-
       </div>
     )
   }
@@ -127,14 +119,14 @@ function APIToken() {
   }
 
   const inputRef = createRef();
-  const [notify,setNotify] = useState({visible:false});
+  const [notify, setNotify] = useState({ visible: false });
 
   function copyToClipboard() {
     navigator.clipboard.writeText(inputRef.current.value);
-    setNotify({visible: true,msg: 'Copied',type: 'success'})
+    setNotify({ visible: true, msg: 'Copied', type: 'success' })
   }
 
-  const [textType,setTextType] = useState('text');
+  const [textType, setTextType] = useState('text');
 
 
 

@@ -165,11 +165,6 @@ const datas = {
       <div>
         <h2 className="text-white">Usage Statistics</h2>
         <div className="flex items-center text-white gap-3">
-          {/* <Select defaultValue="All Api Keys" className="btn-sty1 !rounded-full">
-            <Option value="All Api Keys">All Api Keys</Option>
-            <Option value="Free Public Keys">Free Public Keys</Option>
-          </Select>
-          <span>For</span> */}
           <Select defaultValue={selectedGraph}  onSelect={(value, event) => {
         
         setSelected(value)
@@ -185,11 +180,7 @@ const datas = {
     </Select> 
           <span>From</span>
           <RangePicker  onChange={(value, dateString)=>{
-            
-            // const [labels, setLabels] = useState([])
-            // const [data , setData] = useState([])
-
-     
+                 
             let starter = dateString[0].split('-')
             let end = dateString[1].split('-')
 

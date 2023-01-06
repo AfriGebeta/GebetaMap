@@ -20,8 +20,35 @@ body {
   color: #888 !important;
   z-index: 1;
 }
-::placeholder {
-  color: #888 !important;
+input[type='radio'] {
+  width: 10px; height: 10px;
+  cursor: pointer;
+}
+input[type='radio']:after {
+  width: 10px;
+  height: 10px;
+  border-radius: 15px;
+  top: -3px;
+  /* left: -1px; */
+  position: relative;
+  background-color: #d1d3d1;
+  content: '';
+  display: inline-block;
+  visibility: visible;
+  /* border: 2px solid white; */
+}
+input[type='radio']:checked:after {
+  width: 10px;
+  height: 10px;
+  border-radius: 15px;
+  top: -3px;
+  /* left: -1px; */
+  position: relative;
+  background-color: #ffa500;
+  content: '';
+  display: inline-block;
+  visibility: visible;
+  border: 1px solid white;
 }
 
 .sw {

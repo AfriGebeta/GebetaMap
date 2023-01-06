@@ -32,8 +32,8 @@ function Cards() {
 
       <div className="flex-1 flex flex-wrap gap-7 justify-evenly">
         {
-          objs.map((data) => (
-            <div className="p-4 bg-[#202022] flex-wrap flex-1 min-w-[200px] text-[#777] rounded-xl flex justify-between">
+          objs.map((data,i) => (
+            <div key={i} className="p-4 bg-[#202022] flex-wrap flex-1 min-w-[200px] text-[#777] rounded-xl flex justify-between">
               <div className="leading-3">
                 <h2 className="p-0 m-0">{data.package}</h2>
                 <p className="m-0 p-0">endpoint</p>
@@ -64,7 +64,7 @@ function Plan({data}) {
           <h1 className="m-0 inline-block">
             {data.price}
           </h1>
-          <tiny>per 1000 calls</tiny>
+          <small className="text-[12px]">per 1000 calls</small>
         </div>
         <hr className="border-gray-500" />
         <p className="max-w-[300px]">
@@ -127,8 +127,8 @@ function Plans() {
   ]
   return (
     <div className="flex gap-10 flex-wrap ">
-      {list.map((data) => (
-        <Plan data={data} />
+      {list.map((data,i) => (
+        <Plan data={data} key={i} />
       ))}
     </div>
   )
@@ -142,7 +142,7 @@ function PricePlans() {
         <Cards />
         <Plans />
       </div>
-      <div className="">
+      <div className="flex w-full items-start md:w-auto">
         <BillingHistory />
       </div>
     </div>

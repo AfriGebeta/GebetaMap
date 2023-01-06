@@ -55,7 +55,7 @@ function MatrixEndPoint() {
         A simple illustration for a 3x3 matrix with identical from and to
         points:
       </p>
-      <table class="mt-[2%] mb-[2%] table-fixed border border-black">
+      <table className="mt-[2%] mb-[2%] table-fixed border border-black">
         <thead className="border border-black">
           <tr className="border border-black">
             <th className="border border-black">-</th>

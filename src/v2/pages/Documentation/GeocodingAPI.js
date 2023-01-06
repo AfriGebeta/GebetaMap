@@ -1,5 +1,4 @@
 import React from "react";
-import { useState } from "react";
 import { useSelector } from "react-redux";
 import { direction, responseSampleForDirection400, responseSampleForDirection500, responseSampleGeocoding } from "../../../data/responsecode";
 import Geocoding from "../../components/Documentation/Geocoding";

@@ -1,15 +1,15 @@
-import { ConfigProvider, Popover, Steps, Switch } from "antd";
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import {ReactComponent as Logo} from '../../../assets/images/maplogo.svg';
-import {ReactComponent as LocTargetIcon} from '../../../assets/icons/locTarget.svg';
-import DirectionEndPoint from "./DirectionEndPoint";
-import MatrixEndPoint from "./MatrixEndPoint";
-import RouteEndPoint from "./RouteEndPoint";
-import GeoCodingAPI from "./GeocodingAPI";
-import ONMEndPoint from "./ONMEndPoint";
-import TrackVisibility from "react-on-screen";
 import { DownOutlined } from "@ant-design/icons";
+import { ConfigProvider, Popover, Steps } from "antd";
+import React, { useEffect, useState } from "react";
+import TrackVisibility from "react-on-screen";
+import { Link } from "react-router-dom";
+import { ReactComponent as LocTargetIcon } from '../../../assets/icons/locTarget.svg';
+import { ReactComponent as Logo } from '../../../assets/images/maplogo.svg';
+import DirectionEndPoint from "./DirectionEndPoint";
+import GeoCodingAPI from "./GeocodingAPI";
+import MatrixEndPoint from "./MatrixEndPoint";
+import ONMEndPoint from "./ONMEndPoint";
+import RouteEndPoint from "./RouteEndPoint";
 
 
 const {Step} = Steps;
@@ -33,7 +33,7 @@ const ScreenView = ({children,setItems,setCurrentView}) => {
   return (
     <div>
       {children.map((child,i) => (
-        <TrackVisibility partialVisibility>
+        <TrackVisibility partialVisibility key={i}>
           {({isVisible}) => (
             <ScreenChange visible={isVisible} index={i} setCurrentView={setCurrentView}>{child}</ScreenChange>
           )}
@@ -94,7 +94,7 @@ function Documentation() {
               }}
             >
               <Steps progressDot={customDot} current={currentView} direction="vertical"  className="!text-white" >
-                {items.map((item) => <Step title={item.title} className="!text-[#aaa] text-child force" />)}
+                {items.map((item,i) => <Step key={i} title={item.title} className="!text-[#aaa] text-child force" />)}
               </Steps>
             </ConfigProvider>
           </div>

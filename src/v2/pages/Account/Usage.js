@@ -61,7 +61,7 @@ function Usage() {
         <Cards />
         <APIUsage />
       </div>
-      <div className="">
+      <div className="flex w-full items-start md:w-auto">
         <BillingHistory />
       </div>
     </div>

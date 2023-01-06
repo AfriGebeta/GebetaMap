@@ -1,7 +1,7 @@
 import React, { createContext, useState } from "react";
 import { Link, Outlet, useLocation } from "react-router-dom";
 import TextLogo from '../../../assets/images/logowithtext.png';
-import Icon, {BellOutlined,MenuOutlined,HomeOutlined,MailOutlined,EditFilled,UserOutlined,SecurityScanOutlined,DollarCircleFilled, DownOutlined, RightOutlined, SettingFilled, LogoutOutlined} from '@ant-design/icons';
+import Icon, {BellOutlined,MenuOutlined,HomeOutlined,EditFilled,UserOutlined,SecurityScanOutlined,DollarCircleFilled, DownOutlined, RightOutlined, SettingFilled, LogoutOutlined} from '@ant-design/icons';
 import avatar from '../../../assets/images/maleavatar.png';
 import '../../../v2.css';
 import Notification from "./Notification";

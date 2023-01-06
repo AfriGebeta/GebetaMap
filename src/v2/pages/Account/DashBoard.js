@@ -33,12 +33,12 @@ function Cards() {
         <div className="p-6 bg-[#202022]  text-[#777] rounded-xl">
           <div className="flex gap-4 items-center px-5 py-2">
             <SettingsIcon className="" fill="#777" />
-            <h2 className="m-0 uppercase">23,000.00 <tiny>calls</tiny></h2>
+            <h2 className="m-0 uppercase">23,000.00 <small className="text-[12px]">calls</small></h2>
             <DirectionIcon />
           </div>
           <div className="leading-3 py-3">
             <h2>
-              25,000.00 <tiny>calls</tiny>
+              25,000.00 <small className="text-[12px]">calls</small>
             </h2>
             <span className="!m-0 !p-0 ">98.00%</span>
           </div>
@@ -51,13 +51,13 @@ function Cards() {
 function Dashboard() {
   return (
     <div className="w-full text-[#ccc] text-child flex flex-wrap gap-4">
-      <div className="flex-1 flex flex-col gap-6 max-w-full">
+      <div className="flex-1 flex flex-col gap-6 max-w-full ">
         <APIToken />
         <ApiDetail />
         <Cards />
         <APIUsage />
       </div>
-      <div className="">
+      <div className="flex w-full items-start md:w-auto">
         <BillingHistory />
       </div>
     </div>
