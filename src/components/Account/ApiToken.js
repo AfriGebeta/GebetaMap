@@ -1,15 +1,17 @@
-import React, { useState, useEffect } from "react";
-
-import { Link } from "react-router-dom";
-import { setChoosedPlan } from "./../../../redux/reducers/choosedplans";
+import React, { useState } from "react";
+import {
+  CopyOutlined,
+  DeleteFilled,
+  EyeInvisibleFilled,
+} from "@ant-design/icons";
+import { createRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { url } from "./../../../data/url";
-import { setUser } from "./../../../redux/reducers/user";
-import Modal from "./../../../features/Modal/index";
-import { CopyOutlined, DeleteFilled, SyncOutlined } from "@ant-design/icons";
-import { Input } from "antd";
+import { url } from "./../../data/url";
+import { setUser } from "./../../redux/reducers/user";
+import Modal from "../../features/Modal";
+import Notify from "../Notify";
 
-function ApiKeys(props) {
+function APIToken() {
   const { userData } = useSelector((state) => state.user);
   const [showTokenModal, setTokenModal] = useState(false);
   const [showLoading, setShowLoading] = useState(false);
@@ -22,10 +24,10 @@ function ApiKeys(props) {
 
   const tokenView = () => {
     return (
-      <div className="bg shadow w-[300px] rounded-lg  divide-gray-200">
+      <div className="bg-[#aaa] shadow w-[300px] rounded-lg  divide-gray-200">
         <div className="px-5 py-7">
           <p className="text-red-600">{errorMessage}</p>
-          <label className="font-semibold text-sm text-gray-600 pb-1 block">
+          <label className="font-semibold text-sm text-black pb-1 block">
             description
           </label>
           <input
@@ -119,8 +121,18 @@ function ApiKeys(props) {
     }
   };
 
+  const inputRef = createRef();
+  const [notify, setNotify] = useState({ visible: false });
+
+  function copyToClipboard() {
+    navigator.clipboard.writeText(inputRef.current.value);
+    setNotify({ visible: true, msg: "Copied", type: "success" });
+  }
+
+  const [textType, setTextType] = useState("text");
+
   return (
-    <div className={"card2  uppercase " + props.className}>
+    <div className="flex gap-1 sm:gap-4 items-center flex-wrap bg-[#202022] px-4 py-3 text-[#aaa] text-child">
       <Modal
         open={showTokenModal}
         close={() => {
@@ -128,39 +140,35 @@ function ApiKeys(props) {
         }}
         elem={tokenView()}
       ></Modal>
-      <div className="flex flex-col">
-        <h2 className="text-white">Api Keys</h2>
-        <button
-          className="btn-sty1 self-start my-6 "
-          onClick={() => setTokenModal(true)}
-        >
-          + Create Tokens
-        </button>
-        <div>
-          <div className="flex justify-between">
-            <h3 className="text-white">Current Token</h3>
-            <div className="flex gap-3">
-              {/* <SyncOutlined className="!text-blue-500 cursor-pointer" /> */}
-              <DeleteFilled
-                className="!text-red-600 cursor-pointer"
-                onClick={(event) => {
-                  event.preventDefault();
-                  deleteToken();
-                }}
-              />
-            </div>
-          </div>
-        </div>
-        <Input
-          placeholder="API Key"
-          value={userData.token}
-          className="resize-none rounded-md"
-          suffix={<CopyOutlined className="cursor-pointer" />}
-          autoSize
+      <Notify value={notify} />
+      {/* <button className="btn-sty1 self-start my-6 bg-black/60 text-[#aaa] " onClick={() => setTokenModal(true)}>+ API Token</button> */}
+      <div className="flex-1 flex items-center gap-4">
+        <input
+          disabled
+          type={textType}
+          ref={inputRef}
+          value={userData.token || ""}
+          className="bg-transparent p-1 flex-1"
         />
+        <div className="flex gap-6">
+          <EyeInvisibleFilled
+            className="cursor-pointer"
+            onClick={() =>
+              setTextType(textType === "text" ? "password" : "text")
+            }
+          />
+          <CopyOutlined className="cursor-pointer" onClick={copyToClipboard} />
+          <DeleteFilled
+            className="!text-red-600 cursor-pointer"
+            onClick={(event) => {
+              event.preventDefault();
+              deleteToken();
+            }}
+          />
+        </div>
       </div>
     </div>
   );
 }
 
-export default ApiKeys;
+export default APIToken;

@@ -1,4 +1,4 @@
-const url = "https://mapapi.gebeta.app"
+//const url = "https://mapapi.gebeta.app"
 // const url = "http://localhost:8080"
-module.exports = { url: url}
-
+const url = "https://nmapapi.gebeta.app";
+module.exports = { url: url };

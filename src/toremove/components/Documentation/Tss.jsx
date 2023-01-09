@@ -10,10 +10,11 @@ import {
   EditControl,
 } from "react-leaflet";
 import { useState } from "react";
+import red from "./red.png";
 import L from "leaflet";
+import { tss } from "../../../data/index";
 import { useSelector, useDispatch } from "react-redux";
-import { oneToMany } from "../../data/index";
-import { setUser } from "../../redux/reducers/user";
+
 const default_latitude = 9.02151;
 const default_longitude = 38.80115;
 
@@ -48,23 +49,12 @@ function AddMarkerToClick(props) {
     className: "leaflet-venue-icon",
   });
 
-  async function callOnm(start, gmarker) {
-    try {
-      const data = await oneToMany(start, gmarker, userData.token);
-
-      setPos(data.directions);
-    } catch (err) {}
-  }
   const map = useMapEvents({
     click(e) {
       const newMarker = e.latlng;
-
       if (props.start && props.stop != true) {
-        setL1(newMarker.lat);
-        setLO1(newMarker.lng);
-        let _gmarker = [];
-        _gmarker.push(e.latlng);
-        greenMarker(_gmarker);
+        gmarker.push(e.latlng);
+        Setter(!sets);
       }
 
       if (props.stop && props.start != true) {
@@ -75,7 +65,14 @@ function AddMarkerToClick(props) {
   });
 
   if (props.calculate) {
-    callOnm({ lat: l1, lon: lo1 }, rmarker);
+    try {
+      async function getData() {
+        const ts = await tss(gmarker, userData.token);
+
+        setPos(ts.direction);
+      }
+      getData();
+    } catch (err) {}
   }
   function getRandomColor() {
     var letters = "0123456789ABCDEF";
@@ -100,16 +97,18 @@ function AddMarkerToClick(props) {
         </Marker>
       ))}
 
-      {pos.map((position) => (
-        <Polyline positions={position.direction} color={getRandomColor()} />
-      ))}
+      <Polyline positions={pos} color={getRandomColor()} />
     </div>
   );
 }
 
-function OneToMany(props) {
+function Tss(props) {
+  const [start, setStart] = useState(false);
+  const [stop, setStop] = useState(false);
+  const [calculate, setCalculate] = useState(false);
+
   return (
-    <div className="leaflet-container relative">
+    <div className="leaflet-container">
       <MapContainer center={[default_latitude, default_longitude]} zoom={18}>
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -117,13 +116,13 @@ function OneToMany(props) {
         />
         <AddMarkerToClick
           key={0}
-          start={props.start}
-          stop={props.stop}
-          calculate={props.calculate}
+          start={props.routeOptimizationStart}
+          stop={stop}
+          calculate={props.routeOptimizationCalculate}
         />
       </MapContainer>
     </div>
   );
 }
 
-export default OneToMany;
+export default Tss;

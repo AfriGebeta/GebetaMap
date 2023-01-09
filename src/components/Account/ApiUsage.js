@@ -4,18 +4,18 @@ import { Input } from "antd";
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { setUser } from "./../../../redux/reducers/user";
-import { url } from "./../../../data/url";
+import { setUser } from "./../../redux/reducers/user";
+import { url } from "./../../data/url";
 import ClipLoader from "react-spinners/ClipLoader";
-import Modal from "./../../../features/Modal/index";
+import Modal from "./../../features/Modal/index";
 import { CategoryScale } from "chart.js";
 import Chart from "chart.js/auto";
 import { Line } from "react-chartjs-2";
-import { setMetrics } from "./../../../redux/reducers/metrics";
+import { format } from "date-fns";
 const { Option } = Select;
 const { RangePicker } = DatePicker;
 
-function Index() {
+function APIUsage() {
   const dispatch = useDispatch();
   const { userData } = useSelector((state) => state.user);
 
@@ -24,7 +24,9 @@ function Index() {
   const [selectedGraph, setSelected] = useState("All");
 
   useEffect(() => {
-    fetch(`${url}/api/v1/route/apicalls/getDataForGraph?id=${userData.id}`)
+    fetch(
+      `${url}/api/v2/route/apicalls/getMonthlyApiCallForGraph?userid=${userData.id}`
+    )
       .then((data) => {
         return data.json();
       })
@@ -32,19 +34,13 @@ function Index() {
         if (data.msg == "ok") {
           let _data = [];
           let _label = [];
-          console.group(data.data);
-          let dataa = getAll(data.data);
 
-          for (let i = 0; i < dataa.length; i++) {
+          for (let i = 0; i < data.data.length; i++) {
             try {
-              let str =
-                dataa[i][0].substring(0, 4) +
-                "-" +
-                dataa[i][0].substring(4, 6) +
-                "-" +
-                dataa[i][0].substring(6, 8);
-              _label.push(str);
-              _data.push(dataa[i][1]);
+              _label.push(
+                format(new Date(parseInt(data.data[i][0])), "YYY-MM-dd")
+              );
+              _data.push(data.data[i][1]);
             } catch (err) {}
           }
 
@@ -55,7 +51,9 @@ function Index() {
   }, [selectedGraph]);
 
   useEffect(() => {
-    fetch(`${url}/api/v1/route/apicalls/getDataForGraph?id=${userData.id}`)
+    fetch(
+      `${url}/api/v2/route/apicalls/getMonthlyApiCallForGraph?userid=${userData.id}`
+    )
       .then((data) => {
         return data.json();
       })
@@ -64,24 +62,26 @@ function Index() {
           let _data = [];
           let _label = [];
 
-          let dataa = getAll(data.data);
-          for (let i = 0; i < dataa.length; i++) {
+          for (let i = 0; i < data.data.length; i++) {
             try {
-              let str =
-                dataa[i][0].substring(0, 4) +
-                "-" +
-                dataa[i][0].substring(4, 6) +
-                "-" +
-                dataa[i][0].substring(6, 8);
-              _label.push(str);
-              _data.push(dataa[i][1]);
+              _label.push(
+                format(new Date(parseInt(data.data[i][0])), "YYY-MM-dd")
+              );
+              _data.push(data.data[i][1]);
             } catch (err) {}
           }
+
+          console.log(_label);
+          console.log(_data);
           setLabels(_label);
           setData(_data);
         }
       });
   }, []);
+
+  function changeFilter(ev) {
+    setSelected(ev.target.value);
+  }
 
   const getAll = (data) => {
     let Ldata = [];
@@ -148,29 +148,72 @@ function Index() {
   };
 
   return (
-    <div className="sw py-4 flex flex-col gap-10  h-full">
+    <div className="rounded-xl px-4 py-3 bg-[#202022] ">
+      <div className="flex justify-between items-center w-full sm:!sw">
+        <div>
+          <h2 className="m-0">API Usage</h2>
+          <span>Track your api usage here</span>
+        </div>
+        <div className="flex gap-4 items-center ">
+          {/* <label className="flex items-center gap-2">
+            <input
+              type="radio"
+              name="filter"
+              className=""
+              value="All"
+              onClick={changeFilter}
+            />{" "}
+            All
+          </label> */}
+          {/* <label className="flex items-center gap-2">
+            <input
+              type="radio"
+              name="filter"
+              className=""
+              value="ONM"
+              onClick={changeFilter}
+            />{" "}
+            ONM
+          </label> */}
+          {/* <label className="flex items-center gap-2">
+            <input
+              type="radio"
+              name="filter"
+              className=""
+              value="Direction"
+              onClick={changeFilter}
+            />{" "}
+            Direction
+          </label> */}
+          {/* <label className="flex items-center gap-2">
+            <input
+              type="radio"
+              name="filter"
+              className=""
+              value="TSS"
+              onClick={changeFilter}
+            />{" "}
+            Tss
+          </label> */}
+          {/* <label className="flex items-center gap-2">
+            <input
+              type="radio"
+              name="filter"
+              className=""
+              value="Matrix"
+              onClick={changeFilter}
+            />{" "}
+            Matrix
+          </label> */}
+        </div>
+      </div>
       <div>
-        <h2 className="text-white">Usage Statistics</h2>
-        <div className="flex items-center text-white gap-3">
-          {/* <Select defaultValue="All Api Keys" className="btn-sty1 !rounded-full">
-            <Option value="All Api Keys">All Api Keys</Option>
-            <Option value="Free Public Keys">Free Public Keys</Option>
-          </Select>
-          <span>For</span> */}
-          <Select
-            defaultValue={selectedGraph}
-            onSelect={(value, event) => {
-              setSelected(value);
-            }}
-          >
-            <Option value="All">All</Option>
-            <Option value="Direction">Direction</Option>
-            <Option value="ONM">ONM</Option>
-            <Option value="Matrix">Matrix</Option>
-            <Option value="TSS">TSS</Option>
-          </Select>
-          <span>From</span>
+        {/* <div
+          className="py-2 my-4"
+          x="bg-[#ff971d] rounded-lg px-6 py-2 my-4 inline-block"
+        >
           <RangePicker
+            className="!bg-black/40 !border-white/10"
             onChange={(value, dateString) => {
               // const [labels, setLabels] = useState([])
               // const [data , setData] = useState([])
@@ -186,7 +229,7 @@ function Index() {
               var to = new Date(end[0], parseInt(end[1]) - 1, end[2]);
 
               fetch(
-                `${url}/api/v1/route/apicalls/getDataForGraph?id=${userData.id}`
+                `${url}/api/v2/route/apicalls/getMonthlyApiCallForGraph?userid=${userData.id}`
               )
                 .then((data) => {
                   return data.json();
@@ -225,7 +268,7 @@ function Index() {
                 });
             }}
           />
-        </div>
+        </div> */}
       </div>
       <div className="text-white  ">
         {/* <h2 className="text-white mb-0">Sep, 09 - 22 2022</h2>
@@ -245,4 +288,4 @@ function Index() {
   );
 }
 
-export default Index;
+export default APIUsage;
