@@ -30,7 +30,7 @@ function ONMEndPoint() {
   };
 
   return (
-    <div className="text-[#aaa] text-child">
+    <section className="text-[#aaa] text-child" id="ONMEP">
       <h2 className=" btn_sty1 bg-secondary/30 sml inline-block">
         One-to-Many Endpoint
       </h2>
@@ -44,7 +44,7 @@ function ONMEndPoint() {
         A simple illustration for a 3x3 matrix with identical from and to
         points:
       </p>
-      <table class="table-fixed border border-black mt-[2%] mb-[2%]">
+      <table className="table-fixed border border-black mt-[2%] mb-[2%]">
         <thead className="border border-black">
           <tr className="border border-black">
             <th className="border border-black">-</th>
@@ -132,7 +132,7 @@ function ONMEndPoint() {
       ) : (
         ""
       )}
-    </div>
+    </section>
   );
 }
 

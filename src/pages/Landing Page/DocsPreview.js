@@ -15,7 +15,7 @@ function DirectionEndPoint() {
         <p className='text-white'>
           You can find directions to your destination using the Gebeta Directions API. Using the Directions API, you can determine the best route to take.
         </p>
-        <Link to="/documentation" className="btn_sty1">Documentation</Link>
+        <Link to="/v2/documentation#directionEP" className="btn_sty1">Documentation</Link>
       </div>
     </div>
   )
@@ -33,7 +33,7 @@ function GeoCodingEndPoint() {
         <p className='text-white'>
         You can forward geocode using the Gebeta Geocoding API, which converts text queries like "Bole Edna Mall" into longitude and latitude coordinates.
         </p>
-        <Link to="/documentation" className="btn_sty1">Documentation</Link>
+        <Link to="/v2/documentation#geoEP" className="btn_sty1">Documentation</Link>
       </div>
     </div>
   )
@@ -51,7 +51,7 @@ function RouteOptimization() {
         <p className='text-white'>
           The Gebeta Optimization API returns a path between the input coordinates that is optimized. Planning the route for delivery in a city is a common use case for the Optimization API.
         </p>
-        <Link to="/documentation" className="btn_sty1">Documentation</Link>
+        <Link to="/v2/documentation#routeEP" className="btn_sty1">Documentation</Link>
       </div>
     </div>
   )
@@ -69,7 +69,7 @@ function MatrixEndPoint() {
         <p className='text-white'>
           By using the Gebeta Matrix API, you may choose the most efficient path between several places.
         </p>
-        <Link to="/documentation" className="btn_sty1">Documentation</Link>
+        <Link to="/v2/documentation#matrixEP" className="btn_sty1">Documentation</Link>
       </div>
     </div>
   )
@@ -78,7 +78,7 @@ function MatrixEndPoint() {
 
 function DocsPreview() {
   return (
-    <div className="">
+    <section className="" id='docpreview'>
       <div className="flex flex-col bg1 items-center">
         <div className="sw flex justify-center text-white text-child">
           <div className="flex flex-col max-w-full gap-44">
@@ -94,7 +94,7 @@ function DocsPreview() {
           {/* <img src={LocVector} className="inline-flex !w-full !h-full" alt='Location Vector' /> */}
         </div>
       </div>
-    </div>
+    </section>
 )
 }
 

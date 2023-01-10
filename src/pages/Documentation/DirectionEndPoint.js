@@ -14,7 +14,7 @@ function DirectionEndPoint() {
   const { userData } = useSelector((state) => state.user);
 
   return (
-    <div>
+    <section id="directionEP">
       <h2 className=" btn_sty1 bg-secondary/30 sml inline-block">
         Direction API
       </h2>
@@ -55,7 +55,7 @@ function DirectionEndPoint() {
       ) : (
         ""
       )}
-    </div>
+    </section>
   );
 }
 

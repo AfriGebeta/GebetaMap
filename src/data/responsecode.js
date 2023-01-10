@@ -71,7 +71,6 @@ export const responseSampleForDirection500 = [
 ]
 
 
-/////////////////////
 export const tssreponse200 =
   [
     <span>&#123;</span>,
