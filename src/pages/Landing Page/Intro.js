@@ -1,21 +1,15 @@
 import React from "react";
-<<<<<<< HEAD:src/pages/Landing Page/Intro.js
-import { ReactComponent as Running } from "../../assets/images/running.svg";
-import vidPic from "../../assets/images/vidpic.png";
-=======
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import {ReactComponent as Running} from '../../../assets/images/running.svg';
-import vidPic from '../../../assets/images/vidpic.png';
-import Signin from "../../../components/Signin";
-import Signup from "../../../components/Signup";
-import Modal from "../../../features/Modal";
-
->>>>>>> origin/dev:src/v2/pages/Landing Page/Intro.js
+import { ReactComponent as Running } from "../../assets/images/running.svg";
+import vidPic from "../../assets/images/vidpic.png";
+import Signin from "./../../components/Signin";
+import Signup from "./../../components/Signup";
+import Modal from "./../../features/Modal";
 
 function Intro() {
-  const [signupModal,setSignupModal] = useState(false);
-  const [signinModal,setSigninModal] = useState(false);
+  const [signupModal, setSignupModal] = useState(false);
+  const [signinModal, setSigninModal] = useState(false);
 
   return (
     <div className="flex justify-center w-full">
@@ -28,26 +22,59 @@ function Intro() {
             <p className="uppercase text-[#8476AA] m-0">Let us find your way</p>
           </div>
           <div className="flex gap-4 ">
-            <a href="/v2/#docpreview" className="btn_sty2">Learn More</a>
-            <button className="btn_sty1" onClick={() => setSignupModal(true)}>Get Started</button>
+            <a href="/v2/#docpreview" className="btn_sty2">
+              Learn More
+            </a>
+            <button className="btn_sty1" onClick={() => setSignupModal(true)}>
+              Get Started
+            </button>
           </div>
-          <Modal open={signupModal} close={() => {setSignupModal(false)}} elem={<Signup 
-              footer={
-                <div className="px-10 p-2">
-                  <Link to="#" onClick={() => {setSigninModal(true); setSignupModal(false)}}>Already have an account? <span className="text-primary">Login</span></Link>
-                </div>
-              }
-            
-          />}>
-          </Modal>
-          <Modal open={signinModal} close={() => setSigninModal(false)} elem={<Signin
-              footer={
-                <div className="px-10 p-2">
-                  <Link to="#" onClick={() => {setSigninModal(false); setSignupModal(true)}}>Dont Have an account? <span className="text-primary">Create One</span></Link>
-                </div>
-              }
-              />}>
-          </Modal>
+          <Modal
+            open={signupModal}
+            close={() => {
+              setSignupModal(false);
+            }}
+            elem={
+              <Signup
+                footer={
+                  <div className="px-10 p-2">
+                    <Link
+                      to="#"
+                      onClick={() => {
+                        setSigninModal(true);
+                        setSignupModal(false);
+                      }}
+                    >
+                      Already have an account?{" "}
+                      <span className="text-primary">Login</span>
+                    </Link>
+                  </div>
+                }
+              />
+            }
+          ></Modal>
+          <Modal
+            open={signinModal}
+            close={() => setSigninModal(false)}
+            elem={
+              <Signin
+                footer={
+                  <div className="px-10 p-2">
+                    <Link
+                      to="#"
+                      onClick={() => {
+                        setSigninModal(false);
+                        setSignupModal(true);
+                      }}
+                    >
+                      Dont Have an account?{" "}
+                      <span className="text-primary">Create One</span>
+                    </Link>
+                  </div>
+                }
+              />
+            }
+          ></Modal>
           <div className="flex items-center ">
             <img src={vidPic} className="" alt="Preview" />
             <div className="px-2 flex-1">
