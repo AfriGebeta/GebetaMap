@@ -9,7 +9,7 @@ import NewPassword from "./pages/New/Settings/ChangePassword";
 
 import Contact from "./pages/Contact";
 
-import Navbar from "./components/NavBar";
+import Navbar from "./components/Navbar";
 import Index from "./pages/Landing Page/Index";
 import SideBar from "./components/Account/SideBar";
 
