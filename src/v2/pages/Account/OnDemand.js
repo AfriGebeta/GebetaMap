@@ -69,7 +69,6 @@ function ManualLoc() {
             options={locationsData}
           />
           {/* <input type="text" placeholder="enter location name" className="flex-1 bg-[#181818] px-3 py-2 border-0" /> */}
-          <span className="flex items-center bg-[#181818] px-3"><SearchOutlined /></span>
         </div>
       </div>
 
@@ -103,11 +102,12 @@ function Cards() {
   const [manualLocArr,setManualLocArr] = useState([]);
 
   useEffect(() => {
-    setManualLocArr([ManualLoc]);
+    setManualLocArr([ManualLoc,ManualLoc,ManualLoc]);
   },[])
 
   function addLocation() {
-    setManualLocArr([...manualLocArr,ManualLoc]);
+    if(manualLocArr.length < 10)
+      setManualLocArr([...manualLocArr,ManualLoc]);
   }
 
   return (
@@ -132,7 +132,7 @@ function Cards() {
     </div>
     
     {/* Manual Entry */}
-    <div className="flex gap-4 items-start flex-wrap">
+    <div className="flex gap-4 items-start flex-wrap ">
       <div className="flex flex-1 gap-4 items-start flex-wrap">
         <div className="flex flex-col flex-1 gap-4">
           {
@@ -141,11 +141,13 @@ function Cards() {
               ))]
             }
         </div>
-        <input type='submit' value='+' onClick={addLocation} className="btn_sty1 self-end !font-extrabold self-end !text-2xl !px-6 rounded-md !bg-btnprimary/40 !text-btnprimary !border-btnprimary/10" />
+        {manualLocArr.length < 10 ? (
+          <input type='submit' value='+' onClick={addLocation} className="btn_sty1 !font-extrabold self-end !text-2xl !px-6 rounded-md !bg-btnprimary/40 !text-btnprimary !border-btnprimary/10" />
+        ):null}
       </div>
 
 
-      <div className="leading-3 flex gap-3 p-4 rounded-xl bg-[#202022] ">
+      <div className="leading-3 flex gap-3 p-4 rounded-xl bg-[#202022] sticky top-2">
         <div className="">
           <h2 className="p-0 m-0 uppercase ">Driver</h2>
           <p className="m-0 p-0">optional</p>
