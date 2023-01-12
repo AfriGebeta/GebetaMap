@@ -62,7 +62,7 @@ function APIUsage() {
           let _data = [];
           let _label = [];
 
-          for (let i = 0; i < data.data.length; i++) {
+          for (let i = data.data.length; i >= 0; i--) {
             try {
               _label.push(
                 format(new Date(parseInt(data.data[i][0])), "YYY-MM-dd")
@@ -71,8 +71,6 @@ function APIUsage() {
             } catch (err) {}
           }
 
-          console.log(_label);
-          console.log(_data);
           setLabels(_label);
           setData(_data);
         }
@@ -82,41 +80,6 @@ function APIUsage() {
   function changeFilter(ev) {
     setSelected(ev.target.value);
   }
-
-  const getAll = (data) => {
-    let Ldata = [];
-    if (selectedGraph != "All") {
-      var map = new Object();
-
-      for (let i = 0; i < data.length; i++) {
-        if (data[i][0] == selectedGraph) {
-          if (map[data[i][1]] == undefined) {
-            map[data[i][1]] = data[i][2];
-          } else {
-            data[i][1] = data[i][2] + map[data[i][1]];
-          }
-        }
-      }
-      for (const [key, value] of Object.entries(map)) {
-        Ldata.push([key, value]);
-      }
-      return Ldata;
-    } else {
-      var map = new Object();
-      for (let i = 0; i < data.length; i++) {
-        if (map[data[i][1]] == undefined) {
-          map[data[i][1]] = data[i][2];
-        } else {
-          map[data[i][1]] = data[i][2] + map[data[i][1]];
-        }
-      }
-
-      for (const [key, value] of Object.entries(map)) {
-        Ldata.push([key, value]);
-      }
-      return Ldata;
-    }
-  };
 
   const options = {
     responsive: true,

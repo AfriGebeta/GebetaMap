@@ -28,9 +28,9 @@ function ApiDetail() {
 
       if (data[i][0] == "Direction") _data.direction = data[i][1];
 
-      if (data[i][0] == "Tss") _data.tss = data[i][1];
+      if (data[i][0] == "Tss" || data[i][0] == "TSS") _data.tss = data[i][1];
 
-      if (data[i][0] == "Onm") _data.onm = data[i][1];
+      if (data[i][0] == "Onm" || data[i][0] == "ONM") _data.onm = data[i][1];
     }
 
     return _data;
