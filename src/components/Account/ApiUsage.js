@@ -23,6 +23,49 @@ function APIUsage() {
   const [data, setData] = useState([]);
   const [selectedGraph, setSelected] = useState("All");
 
+  // useEffect(() => {
+  //   fetch(
+  //     `${url}/api/v2/route/apicalls/getMonthlyApiCallForGraph?userid=${userData.id}`
+  //   )
+  //     .then((data) => {
+  //       return data.json();
+  //     })
+  //     .then((data) => {
+  //       if (data.msg == "ok") {
+  //         let _data = [];
+  //         let _label = [];
+
+  //         for (let i = 0; i < data.data.length; i++) {
+  //           try {
+  //             _label.push(
+  //               format(new Date(parseInt(data.data[i][0])), "YYY-MM-dd")
+  //             );
+  //             _data.push(data.data[i][1]);
+  //           } catch (err) {}
+  //         }
+
+  //         setLabels(_label);
+  //         setData(_data);
+  //       }
+  //     });
+  // }, [selectedGraph]);
+
+  function sortWithIndeces(toSort) {
+    for (var i = 0; i < toSort.length; i++) {
+      toSort[i] = [toSort[i], i];
+    }
+    toSort.sort(function (left, right) {
+      return left[0] < right[0] ? -1 : 1;
+    });
+    let sortIndices = [];
+    for (var j = 0; j < toSort.length; j++) {
+      sortIndices.push(toSort[j][1]);
+      toSort[j] = toSort[j][0];
+    }
+
+    return sortIndices;
+  }
+
   useEffect(() => {
     fetch(
       `${url}/api/v2/route/apicalls/getMonthlyApiCallForGraph?userid=${userData.id}`
@@ -44,35 +87,12 @@ function APIUsage() {
             } catch (err) {}
           }
 
-          setLabels(_label);
-          setData(_data);
-        }
-      });
-  }, [selectedGraph]);
+          let index = sortWithIndeces(_label);
 
-  useEffect(() => {
-    fetch(
-      `${url}/api/v2/route/apicalls/getMonthlyApiCallForGraph?userid=${userData.id}`
-    )
-      .then((data) => {
-        return data.json();
-      })
-      .then((data) => {
-        if (data.msg == "ok") {
-          let _data = [];
-          let _label = [];
-
-          for (let i = data.data.length; i >= 0; i--) {
-            try {
-              _label.push(
-                format(new Date(parseInt(data.data[i][0])), "YYY-MM-dd")
-              );
-              _data.push(data.data[i][1]);
-            } catch (err) {}
-          }
+          const output = index.map((i) => _data[i]);
 
           setLabels(_label);
-          setData(_data);
+          setData(output);
         }
       });
   }, []);
