@@ -4,45 +4,6 @@ import { geocoding } from "../../data/index";
 import { setUser } from "../../redux/reducers/user";
 import { useSelector, useDispatch } from "react-redux";
 export default function Geocoding() {
-<<<<<<< HEAD
-    const [searchText , setSearchText] = useState("")
-    const [searchResult, setSearchResult] = useState([])
-    const [onSearch , setOnSearch] = useState(false)
-    const handleSearchText = (event) => { setSearchText(event.target.value) };
-    const { userData } = useSelector((state) => state.user)
-    function callSearch() {
-
-         try {
-            setOnSearch(!onSearch)
-            geocoding(searchText, userData.token)
-                .then((data) => {
-                    console.log(data)
-             let _searchResult = []
-                    data.data.map((n, index) => {
-                if (index < 10) {
-                 
-                    _searchResult.push(<p>{n.name}</p>)
-                    }
-                     
-                    })
-                    return _searchResult
-         
-                }).then((_searchResult) => {
-                    if (_searchResult.length == 0) {
-                        _searchResult.push(<p>No result</p>)
-                    }
-                    setSearchResult(_searchResult)
-                    setOnSearch(!onSearch)
-                })
-            
-        } catch (err) {
-            console.log("the error arise from")
-            console.log(err)
-            setOnSearch(!onSearch)
-        }
-
-       
-=======
   const [searchText, setSearchText] = useState("");
   const [searchResult, setSearchResult] = useState([]);
   const [onSearch, setOnSearch] = useState(false);
@@ -73,7 +34,6 @@ export default function Geocoding() {
     } catch (err) {
       setOnSearch(!onSearch);
     }
->>>>>>> integration
   }
 
   return (

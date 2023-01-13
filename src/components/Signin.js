@@ -41,19 +41,11 @@ function Signin({ footer }) {
 
       if (login.status != 200) {
         const data = await login.json();
-<<<<<<< HEAD
-        console.log(data);
-        setMessage(data.msg);
-      } else {
-        const data = await login.json();
-        console.log(data);
-=======
 
         setMessage(data.msg);
       } else {
         const data = await login.json();
 
->>>>>>> integration
         dispatch(setUser(data.data));
         navigate("/v2/account");
       }
