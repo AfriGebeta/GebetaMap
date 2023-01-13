@@ -13,6 +13,10 @@ module.exports = {
       backgroundImage: {
         'full-back': "url('/src/assets/images/full.png')",
       },
+      screens: {
+        xxs: '300px',
+        xs: '500px',
+      },
       colors: {
         transparent: 'transparent',
         current: 'currentColor',

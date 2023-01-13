@@ -30,6 +30,7 @@ function Cards() {
       <DocCard />
 
       <div className="flex-1 flex flex-wrap gap-7 justify-evenly">
+<<<<<<< HEAD
         {objs.map((data) => (
           <div className="p-4 bg-[#202022] flex-wrap flex-1 min-w-[200px] text-[#777] rounded-xl flex justify-between">
             <div className="leading-3">
@@ -39,6 +40,19 @@ function Cards() {
             <div className="flex items-end">
               <h1 className="m-0">{data.calls}</h1>
               <span>Calls</span>
+=======
+        {
+          objs.map((data,i) => (
+            <div key={i} className="p-4 bg-[#202022] flex-wrap flex-1 min-w-[200px] text-[#777] rounded-xl flex justify-between">
+              <div className="leading-3">
+                <h2 className="p-0 m-0">{data.package}</h2>
+                <p className="m-0 p-0">endpoint</p>
+              </div>
+              <div className="flex items-end">
+                <h1 className="m-0">{data.calls}</h1>
+                <span>Calls</span>
+              </div>
+>>>>>>> integration
             </div>
           </div>
         ))}
@@ -61,8 +75,15 @@ function Plan({ data }) {
           <div className="self-stretch pt-2">
             <sup className=" ">$</sup>
           </div>
+<<<<<<< HEAD
           <h1 className="m-0 inline-block">{data.price}</h1>
           <tiny>per 1000 calls</tiny>
+=======
+          <h1 className="m-0 inline-block">
+            {data.price}
+          </h1>
+          <small className="text-[12px]">per 1000 calls</small>
+>>>>>>> integration
         </div>
         <hr className="border-gray-500" />
         <p className="max-w-[300px]">{data.description}</p>
@@ -143,8 +164,8 @@ function Plans() {
   ];
   return (
     <div className="flex gap-10 flex-wrap ">
-      {list.map((data) => (
-        <Plan data={data} />
+      {list.map((data,i) => (
+        <Plan data={data} key={i} />
       ))}
     </div>
   );
@@ -152,13 +173,13 @@ function Plans() {
 function PricePlans() {
   return (
     <div className="w-full text-[#ccc] text-child flex flex-wrap gap-4">
-      <div className="flex-1 flex flex-col gap-6">
+      <div className="flex-1 flex flex-col gap-6 max-w-full">
         <APIToken />
         <ApiDetail />
         {/* <Cards /> */}
         <Plans />
       </div>
-      <div className="">
+      <div className="flex w-full items-start md:w-auto">
         <BillingHistory />
       </div>
     </div>

@@ -21,9 +21,9 @@ function Header() {
             <img src={LogoText} className="min-w-[100px]" alt='logo' />
           </Link>
           <div className="hidden md:flex flex-1 gap-4 text-white text-child uppercase">
-            <Link to="/">About</Link>
+            {/* <Link to="/">About</Link> */}
             <Link to="/v2/documentation">Documentation</Link>
-            <Link to="/">Contact Us</Link>
+            <Link to="/v2/contact">Contact Us</Link>
           </div>
           <Modal open={signupModal} close={() => {setSignupModal(false)}} elem={<Signup 
               footer={

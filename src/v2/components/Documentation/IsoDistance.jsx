@@ -1,9 +1,7 @@
-import { MapContainer, TileLayer, Polyline , useMapEvents , Marker , Popup , Polygon , FeatureGroup , EditControl} from 'react-leaflet';
+import { MapContainer, TileLayer , useMapEvents , Marker , Popup , Polygon , FeatureGroup } from 'react-leaflet';
 import { useState } from 'react';
 import L from 'leaflet';
 import concaveman from 'concaveman';
-import red from './red.png';
-import green from './green.png';
 const default_latitude = 9.02151;
 const default_longitude = 38.80115;
 

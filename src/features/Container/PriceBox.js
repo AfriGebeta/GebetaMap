@@ -42,9 +42,9 @@ function PriceBox(props) {
         {
           obj.features.map((value,i) => {
             return i % 2 === 0 ? (
-              <div className="px-4 p-1 min-h-[35px]">{value}</div>
+              <div key={i} className="px-4 p-1 min-h-[35px]">{value}</div>
             ) : (
-              <div className="px-4 p-1 min-h-[35px] bg-gray-300">{value}</div>
+              <div key={i} className="px-4 p-1 min-h-[35px] bg-gray-300">{value}</div>
             )
           })
         }

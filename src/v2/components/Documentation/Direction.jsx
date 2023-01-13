@@ -1,12 +1,9 @@
 
 
-import { MapContainer, TileLayer, Polyline , useMapEvents , Marker , Popup , Polygon , FeatureGroup , EditControl} from 'react-leaflet';
+import { MapContainer, TileLayer, Polyline , useMapEvents , Marker , Popup } from 'react-leaflet';
 import { useState } from 'react';
 import  {direction}  from '../../../data/index';
-import red from './red.png';
-import green from './green.png';
 import L from 'leaflet';
-import { setUser} from "../../../redux/reducers/user"
 import { useSelector, useDispatch } from "react-redux"
 const default_latitude = 9.02151;
 const default_longitude = 38.80115;
