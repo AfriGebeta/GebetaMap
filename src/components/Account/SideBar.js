@@ -17,7 +17,7 @@ import Icon, {
 import avatar from "./../../assets/images/maleavatar.png";
 import "../../v2.css";
 import Notification from "./Notification";
-
+import { useSelector, useDispatch } from "react-redux";
 const LinkContext = createContext("linkDisp");
 
 function SideLink({ label, iconComp, to, active, children }) {
@@ -87,7 +87,7 @@ function SideBar() {
   const location = useLocation();
   const url = (location.pathname.split("/")[3] || "dashboard").toLowerCase();
   const [notifyModal, setNotifyModal] = useState("hidden");
-
+  const { userData } = useSelector((state) => state.user);
   function handleMenu() {
     setType(type === "hidden" ? "" : "hidden");
   }
@@ -131,7 +131,7 @@ function SideBar() {
                 <img src={avatar} alt="profile" className="w-full h-full" />
               </div>
               <div className="leading-4">
-                <span className="!m-0 !p-0 ">Tikus Tikus</span>
+                <span className="!m-0 !p-0 ">{userData.username}</span>
                 <small className="text-secondary m-0 p-0 block">
                   Standard Client
                 </small>

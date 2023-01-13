@@ -1,6 +1,6 @@
 import { SearchOutlined } from "@ant-design/icons";
 import { Select } from "antd";
-import { tss, geocoding } from "../../data/index";
+import { geocoding, tss } from "../../data/index";
 import React, { useState, useEffect } from "react";
 import ApiDetail from "../../components/Account/ApiDetail";
 import APIToken from "../../components/Account/ApiToken";
@@ -193,7 +193,7 @@ function OnDemand() {
   const [notify, setNotify] = useState({ visible: false });
   const [driverName, setDriverName] = useState("Unknown Driver");
   const { userData } = useSelector((state) => state.user);
-  const [bestOrder, setBestOrder] = useState([]);
+  const [bestOrder, setBestOrder] = useState(null);
   const [selectedGenerated, setSelectedGenerated] = useState("Pdf");
   const dispatch = useDispatch();
 
@@ -251,29 +251,31 @@ function OnDemand() {
             lng: tssData[i].longitude,
           });
         }
+        //call tss
+
+        tss(gmarker, userData.token).then((n) => {
+          setBestOrder(n);
+        });
       }
     }
   };
 
   var generateData = function () {
     var result = [];
-    var data = {
-      placename: "placename",
-      latitude: "latitude",
-      longitude: "longitude",
-    };
-    for (var i = 0; i < tssData.length; i++) {
+    let best = bestOrder.bestorder;
+    for (let i = 0; i < best.length; i++) {
       var data = {
         placename: "placename",
         latitude: "latitude",
         longitude: "longitude",
       };
       data.id = (i + 1).toString();
-      data.placename = tssData[i].placename;
-      data.latitude = tssData[i].latitude;
-      data.longitude = tssData[i].longitude;
+      data.placename = tssData[best[i]].placename;
+      data.latitude = tssData[best[i]].latitude;
+      data.longitude = tssData[best[i]].longitude;
       result.push(Object.assign({}, data));
     }
+
     return result;
   };
 
