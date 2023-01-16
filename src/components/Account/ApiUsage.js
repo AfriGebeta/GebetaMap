@@ -123,9 +123,8 @@ function APIUsage() {
         // label: "First dataset",
         data: data,
         fill: true,
-
-        backgroundColor: "rgba(75,192,192,0.2)",
-        borderColor: "rgba(75,192,192,1)",
+        backgroundColor: "rgba(222,117,1,0.2)",
+        borderColor: "rgba(222,117,0,1)",
       },
     ],
   };
@@ -258,7 +257,7 @@ function APIUsage() {
         <span className="lowercase mb-4 inline-block">ALL DATES START AT 00:00 ETHIOPIAN LT</span> */}
         <div className="border border-dashed rounded-md border-white p-10 flex items-center justify-center sm:h-[200px] md:h-[200px] lg:h-[600px]">
           {data.length > 0 ? (
-            <Line options={options} data={datas} />
+            <Line options={options} data={datas} className="!w-full" />
           ) : (
             <h3 className="text-white">
               You don't have any account activity for the selected period and
