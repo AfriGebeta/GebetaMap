@@ -60,7 +60,7 @@ code {
     @apply bg-white text-black rounded-full p-1 px-4 inline-block !font-bold !text-[13px] !self-center;
   }
   .btn-sty2 {
-    @apply bg-[#6C6AD7] rounded-sm p-1 px-3 uppercase text-white text-center self-center !text-[10px];
+    @apply bg-[#6C6AD7] rounded-md p-1 px-3 uppercase text-white text-center self-center !text-[10px];
   }
 
   h1 {
