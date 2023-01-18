@@ -155,18 +155,18 @@ function APIUsage() {
   };
 
   return (
-    <div className="rounded-xl px-4 py-3 bg-[#202022] ">
+    <div className="rounded-md px-4 py-3 bg-[#202022] ">
       <div className='flex flex-wrap justify-between items-center w-full '>
         <div>
           <h2 className='m-0'>API Usage</h2>
           <span>Track your api usage here</span>
         </div>
         <div className='flex flex-wrap gap-4 items-center '>
-          <label className='flex items-center gap-2'><input type='radio' name='filter' className='' value='All' checked={selectedGraph === 'All'} onChange={changeFilter} /> All</label>
-          <label className='flex items-center gap-2'><input type='radio' name='filter' className='' value='ONM' checked={selectedGraph === 'ONM'} onChange={changeFilter} /> ONM</label>
-          <label className='flex items-center gap-2'><input type='radio' name='filter' className='' value='Direction' checked={selectedGraph === 'Direction'} onChange={changeFilter} /> Direction</label>
-          <label className='flex items-center gap-2'><input type='radio' name='filter' className='' value='TSS' checked={selectedGraph === 'TSS'} onChange={changeFilter} /> Tss</label>
-          <label className='flex items-center gap-2'><input type='radio' name='filter' className='' value='Matrix' checked={selectedGraph === 'Matrix'} onChange={changeFilter} /> Matrix</label>
+          <label className='flex items-center gap-2 cursor-pointer'><input type='radio' name='filter' className='' value='All' checked={selectedGraph === 'All'} onChange={changeFilter} /> All</label>
+          <label className='flex items-center gap-2 cursor-pointer'><input type='radio' name='filter' className='' value='ONM' checked={selectedGraph === 'ONM'} onChange={changeFilter} /> ONM</label>
+          <label className='flex items-center gap-2 cursor-pointer'><input type='radio' name='filter' className='' value='Direction' checked={selectedGraph === 'Direction'} onChange={changeFilter} /> Direction</label>
+          <label className='flex items-center gap-2 cursor-pointer'><input type='radio' name='filter' className='' value='TSS' checked={selectedGraph === 'TSS'} onChange={changeFilter} /> Tss</label>
+          <label className='flex items-center gap-2 cursor-pointer'><input type='radio' name='filter' className='' value='Matrix' checked={selectedGraph === 'Matrix'} onChange={changeFilter} /> Matrix</label>
         </div>
       </div>
       <div>

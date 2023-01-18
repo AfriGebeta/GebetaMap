@@ -95,31 +95,31 @@ function ApiDetail() {
     return min;
   };
   return (
-    <div className="flex flex-wrap md:flex-nowrap gap-10 items-center px-4 py-3 bg-[#202022] ">
-      <div className="leading-3 flex flex-row-rev flex-wrap items-center gap-2 ">
-        <h4 className="m-0">API Token Status</h4>
+    <div className="flex gap-10 items-center px-4 py-3 bg-[#202022] overflow-x-auto snap-x scroll-shadow">
+      <div className="leading-4 pl-2 flex flex-row-rev flex-wrap items-center whitespace-nowrap snap-start">
+        <h4 className="m-0 pr-2">API Token Status</h4>
         <span className="text-green-500">{detail.status}</span>
       </div>
-      <div className="leading-3 flex flex-row-rev flex-wrap items-center gap-2 ">
-        <h4 className="m-0">Subscription Type</h4>
+      <div className="leading-4 pl-2 flex flex-row-rev flex-wrap items-center whitespace-nowrap snap-start">
+        <h4 className="m-0 pr-2">Subscription Type</h4>
         <span className="text-green-500">{detail.type}</span>
       </div>
-      <div className="leading-3 flex flex-row-rev flex-wrap items-center gap-2 ">
-        <h3 className="!text-secondary m-0">{addDate()}</h3>
+      <div className="leading-4 pl-2 flex flex-row-rev flex-wrap items-center whitespace-nowrap snap-start">
+        <h3 className="!text-secondary m-0 pr-2">{addDate()}</h3>
         <h4 className="m-0">Next Billing</h4>
       </div>
-      <div className="leading-3 flex flex-row-rev flex-wrap items-center gap-2 ">
-        <h3 className="!text-secondary m-0">{getTotal()}</h3>
+      <div className="leading-4 pl-2 flex flex-row-rev flex-wrap items-center whitespace-nowrap snap-start">
+        <h3 className="!text-secondary m-0 pr-2">{getTotal()}</h3>
         <h4 className="m-0">Total Usage</h4>
       </div>
-      <div className="leading-3 flex flex-row-rev flex-wrap items-center gap-2 ">
-        <h3 className="!text-secondary m-0">
+      <div className="leading-4 pl-2 flex flex-row-rev flex-wrap items-center whitespace-nowrap snap-start">
+        <h3 className="!text-secondary m-0 pr-2">
           {getMaximum()[0]} Endpoint - {getMaximum()[1]}
         </h3>
         <h4 className="m-0">Max Usage</h4>
       </div>
-      <div className="leading-3 flex flex-row-rev flex-wrap items-center gap-2 ">
-        <h3 className="!text-secondary m-0">
+      <div className="leading-4 pl-2 flex flex-row-rev flex-wrap items-center whitespace-nowrap snap-start">
+        <h3 className="!text-secondary m-0 pr-2">
           {getMinimum()[0]} Endpoint - {getMinimum()[1]}
         </h3>
         <h4 className="m-0">Min Usage</h4>

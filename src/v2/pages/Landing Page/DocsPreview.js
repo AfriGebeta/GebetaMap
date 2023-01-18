@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import GeoImage from '../../assets/images/docs/geocoding.jpg'
-import DEPImage2 from '../../assets/images/docs/direction2.png'
-import MatrixImg from '../../assets/images/docs/matrix.png'
-import RouteImage from '../../assets/images/docs/route.png'
+import DEPImage from '../../../assets/images/docs/direction.png'
+import DEPImage2 from '../../../assets/images/docs/direction2.png'
+import MatrixImg from '../../../assets/images/docs/matrix.png'
+import RouteImage from '../../../assets/images/docs/route.png'
 
 
 
@@ -32,7 +32,7 @@ function GeoCodingEndPoint() {
     <div className="p-4 flex flex-wrap flex-row-reverse gap-3">
       <div className="max-w-full">
         <div className="bg-white max-w-full w-[400px] h-52">
-          <img src={GeoImage} className='w-full h-full' />
+          <img src={DEPImage} className='w-full h-full' />
         </div>
         <h3 className="bg-[#19191a] p-2 !text-gray-400 border border-gray-800">
           GeoCoding Endpoint

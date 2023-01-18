@@ -22,7 +22,7 @@ function Intro() {
             <p className="uppercase text-[#8476AA] m-0">Let us find your way</p>
           </div>
           <div className="flex gap-4 ">
-            <a href="/v2/#docpreview" className="btn_sty2">
+            <a href="/#docpreview" className="btn_sty2">
               Learn More
             </a>
             <button className="btn_sty1" onClick={() => setSignupModal(true)}>

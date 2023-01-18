@@ -13,11 +13,11 @@ function Footer() {
       <div className="flex justify-between color_inherit text-slate-300">
         <div className="flex flex-col">
           <h3 className="uppercase">Products</h3>
-          <Link to="/#">Route Optimzation API</Link>
-          <Link to="/#">Direction API</Link>
-          <Link to="/#">Matrix Endpoint</Link>
-          <Link to="/#">One-to-many Endpoint</Link>
-          <Link to="/#">Geocoding Endpoint</Link>
+          <Link to="/v2/documentation#routeEP">Route Optimzation API</Link>
+          <Link to="/v2/documentation#directionEP">Direction API</Link>
+          <Link to="/v2/documentation#matrixEP">Matrix Endpoint</Link>
+          <Link to="/v2/documentation#ONMEP">One-to-many Endpoint</Link>
+          <Link to="/v2/documentation#geoEP">Geocoding Endpoint</Link>
         </div>
         <div className="flex flex-col ">
           <h3 className="uppercase">Company</h3>
