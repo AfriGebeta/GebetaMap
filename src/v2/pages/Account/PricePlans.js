@@ -27,13 +27,13 @@ function Cards() {
     }
   ]
   return (
-    <div className="flex gap-10 items-center flex-wrap">
+    <div className="flex gap-6 items-stretch flex-wrap">
       <DocCard />
 
       <div className="flex-1 flex flex-wrap gap-7 justify-evenly">
         {
           objs.map((data,i) => (
-            <div key={i} className="p-4 bg-[#202022] flex-wrap flex-1 min-w-[200px] text-[#777] rounded-xl flex justify-between">
+            <div key={i} className="p-4 bg-[#202022] flex-wrap flex-1 min-w-[200px] text-[#777] rounded-md flex justify-between">
               <div className="leading-3">
                 <h2 className="p-0 m-0">{data.package}</h2>
                 <p className="m-0 p-0">endpoint</p>
@@ -52,7 +52,7 @@ function Cards() {
 function Plan({data}) {
   if(!data) return null;
   return (
-    <div className={"card flex-1 py-8 px-4 rounded-lg flex flex-col gap-4 text-white min-w-[200px] max-w-[300px] "+
+    <div className={"card flex-1 py-8 px-4 rounded-md flex flex-col gap-4 text-white min-w-[200px] max-w-[300px] "+
     (data.status !== 'current' ? "bg-[#202022]" : "bg-[#f2994a]/20")
     }>
       <div className="flex-1">
@@ -126,7 +126,7 @@ function Plans() {
 
   ]
   return (
-    <div className="flex gap-10 flex-wrap ">
+    <div className="flex gap-6 flex-wrap ">
       {list.map((data,i) => (
         <Plan data={data} key={i} />
       ))}

@@ -26,13 +26,13 @@ const objs = [
 
 function BillingHistory() {
   return (
-    <div className="rounded-xl p-4 bg-[#202022] ">
+    <div className="rounded-md p-4 bg-[#202022] ">
       <h2>Billing History</h2>
       <div className="mt-10 flex flex-col gap-3">
         {
           objs.map((obj,i) => (
             <div key={i}>
-              <div className="flex gap-3 p-0 items-center ">
+              <div className="flex gap-6 p-0 items-center ">
                 <h2 className="m-0 ">{obj.package}</h2>
                 <p className="m-0">{obj.date}</p>
               </div>
