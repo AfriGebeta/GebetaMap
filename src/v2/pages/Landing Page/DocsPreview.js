@@ -1,13 +1,20 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import DEPImage from '../../../assets/images/docs/direction.png'
+import DEPImage2 from '../../../assets/images/docs/direction2.png'
+import MatrixImg from '../../../assets/images/docs/matrix.png'
+import RouteImage from '../../../assets/images/docs/route.png'
+
 
 
 function DirectionEndPoint() {
   return (
     <div className="p-4 flex flex-wrap gap-3">
-      <div className="max-w-full">
-        <div className="bg-white max-w-full w-[400px] h-52"></div>
-        <h3 className="bg-[#19191a] p-2 !text-gray-400 border border-gray-800">
+      <div className="max-w-full relative">
+        <div className="bg-white max-w-full w-[400px] h-52 flex overflow-x-auto z-0 snap-x snap-mandatory relative">
+          <img src={DEPImage2} className='min-w-full h-full snap-start' />
+        </div>
+        <h3 className="bg-[#19191a] p-2 !text-gray-400 border border-gray-800 ">
           Direction Endpoint
         </h3>
       </div>
@@ -24,7 +31,9 @@ function GeoCodingEndPoint() {
   return (
     <div className="p-4 flex flex-wrap flex-row-reverse gap-3">
       <div className="max-w-full">
-        <div className="bg-white max-w-full w-[400px] h-52"></div>
+        <div className="bg-white max-w-full w-[400px] h-52">
+          <img src={DEPImage} className='w-full h-full' />
+        </div>
         <h3 className="bg-[#19191a] p-2 !text-gray-400 border border-gray-800">
           GeoCoding Endpoint
         </h3>
@@ -42,7 +51,9 @@ function RouteOptimization() {
   return (
     <div className="p-4 flex flex-wrap gap-3">
       <div className="max-w-full">
-        <div className="bg-white max-w-full w-[400px] h-52"></div>
+        <div className="bg-white max-w-full w-[400px] h-52">
+          <img src={RouteImage} className='w-full h-full' />
+        </div>
         <h3 className="bg-[#19191a] p-2 !text-gray-400 border border-gray-800">
           Route Optimization Endpoint
         </h3>
@@ -60,7 +71,9 @@ function MatrixEndPoint() {
   return (
     <div className="p-4 flex flex-wrap flex-row-reverse gap-3">
       <div className="max-w-full">
-        <div className="bg-white max-w-full w-[400px] h-52"></div>
+        <div className="bg-white max-w-full w-[400px] h-52">
+          <img src={MatrixImg} className='w-full h-full' />
+        </div>
         <h3 className="bg-[#19191a] p-2 !text-gray-400 border border-gray-800">
           Matrix Endpoint
         </h3>
