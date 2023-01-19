@@ -1,5 +1,12 @@
 @tailwind base;
 @tailwind components;
+
+
+
+@font-face {
+  font-family: "Rubik";
+  src: url("./assets/fonts/rubik/Rubik-Light.ttf");
+}
 @tailwind utilities;
 
 body {
@@ -60,7 +67,7 @@ code {
     @apply bg-white text-black rounded-full p-1 px-4 inline-block !font-bold !text-[13px] !self-center;
   }
   .btn-sty2 {
-    @apply bg-[#6C6AD7] rounded-md p-1 px-3 uppercase text-white text-center self-center !text-[10px];
+    @apply bg-[#6C6AD7] rounded-sm p-1 px-3 uppercase text-white text-center self-center font-bold;
   }
 
   h1 {
@@ -138,6 +145,10 @@ code {
 
 .card2 {
   @apply border border-[#a3a3a3] p-8 rounded-md min-w-[200px];
+}
+
+.card3 {
+  @apply border border-[#6C6AD7] rounded-lg ;
 }
 
 .icon {
