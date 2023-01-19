@@ -16,11 +16,11 @@ function Cards() {
   const dispatch = useDispatch();
 
   return (
-    <div className="flex gap-10 items-center flex-wrap">
+    <div className="flex gap-6 items-center flex-wrap">
       <DocCard />
 
       <div className="flex-1">
-        <div className="p-6 bg-[#202022]  text-[#777] rounded-xl">
+        <div className="p-6 bg-[#202022]  text-[#777] rounded-md">
           <div className="flex gap-4 items-center px-5 py-2">
             <SettingsIcon className="" fill="#777" />
             <h2 className="m-0 uppercase">Business Pac.</h2>
@@ -33,7 +33,7 @@ function Cards() {
         </div>
       </div>
       <div className="flex-1 ">
-        <div className="p-6 bg-[#202022]  text-[#777] rounded-xl">
+        <div className="p-6 bg-[#202022]  text-[#777] rounded-md">
           <div className="flex gap-4 items-center px-5 py-2">
             <SettingsIcon className="" fill="#777" />
             <h2 className="m-0 uppercase">

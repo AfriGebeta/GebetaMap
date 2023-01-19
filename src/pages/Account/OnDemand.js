@@ -10,13 +10,17 @@ import { useSelector, useDispatch } from "react-redux";
 import { setTssData } from "./../../redux/reducers/tssData";
 import Notify from "./../../components/Notify";
 import { jsPDF } from "jspdf";
+import url from "../../data/url";
 
 const ManualLoc = (props) => {
   const dispatch = useDispatch();
   const { tssData } = useSelector((state) => state.tssData);
   const [locationsData, setLocationData] = useState([]);
   const { userData } = useSelector((state) => state.user);
-  const [searchValue, setSearchValue] = useState("");
+  const [searchValue, setSearchValue] = useState(null);
+  const [lat,setLat] = useState(null);
+  const [long,setLong] = useState(null);
+  const [placeName,setPlaceName] = useState(null);
   //import tssData
 
   let handleTssData = (e, index, type) => {
@@ -86,12 +90,33 @@ const ManualLoc = (props) => {
     });
   };
 
-  const handleChange = (value) => {
-    console.log(value);
+  const geoLocChange = async (value) => {
+    const obj = (locationsData.find(obj => obj.value === value));
+    setPlaceName(obj.value);
+    setLat(obj.lat)
+    setLong(obj.long)
+    searchValue(value);
+    
   };
+  const geoLocSearch = async(value) => {
+    const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjb21wYW55bmFtZSI6ImdlYmV0YSIsImlkIjoiZDIyOWU3YWQtMTkxYS00ODU0LWE4MmEtNmM3NWI1Zjk2MzkwIiwidXNlcm5hbWUiOiJnZWJldGF1c2VyIn0.DCviuf0-xKaHNG8gwlKH6mRbYnzW-NHHj6psK8KWXrg';
+    await geocoding(value, userData.token).then((data) => {
+      if (data.msg == "ok") {
+        let obj = data.data;
+        // console.log("data: ",obj)
+        let temp = [];
+        obj.map((data) => {
+          temp.push(
+            {value: data.name,label: data.name,lat: data.latitude,long: data.longitude}
+          )
+        })
+        setLocationData(temp);
+      }
+    });
+  }
   return (
-    <div className="flex gap-4 flex-wrap">
-      <div className="leading-3 flex flex-1 min-w-[50%] flex-wrap  gap-3 p-4 rounded-xl bg-[#202022] max-w-full">
+    <div className="flex gap-6 flex-wrap">
+      <div className="leading-3 flex flex-1 sm:min-w-[50%] flex-wrap  gap-3 p-4 rounded-md bg-[#202022] max-w-full">
         <div className="">
           <h2 className="p-0 m-0 uppercase ">Geocoding</h2>
           <p className="m-0 p-0">endpoint</p>
@@ -100,13 +125,14 @@ const ManualLoc = (props) => {
           <Select
             showSearch
             placeholder="enter location name"
-            optionFilterProp="children"
-            // onChange={handleChange}
+            // optionFilterProp="children"
+            onChange={geoLocChange}
+            onSearch={geoLocSearch}
             value={searchValue}
-            filterOption={(input, option) => {
-              setSearchValue(input);
-              (option?.name ?? "").toLowerCase().includes(input.toLowerCase());
-            }}
+            // filterOption={(input, option) => {
+            //   setSearchValue(input);
+            //   (option?.name ?? "").toLowerCase().includes(input.toLowerCase());
+            // }}
             className="flex-1 bg-[#181818] px-3 py-2 border-0 placeholder:text-white"
             style={{ backgroundColor: "#181818" }}
             options={locationsData}
@@ -117,7 +143,7 @@ const ManualLoc = (props) => {
           </span>
         </div>
       </div>
-      <div className="leading-3 flex flex-1 flex-wrap  gap-3 p-4 rounded-xl bg-[#202022] max-w-full">
+      <div className="leading-3 flex flex-1 flex-wrap sm:min-w-[47%] gap-3 p-4 rounded-md bg-[#202022] max-w-full">
         <div className="">
           <h2 className="p-0 m-0 uppercase ">Place</h2>
           <p className="m-0 p-0">Name</p>
@@ -125,35 +151,37 @@ const ManualLoc = (props) => {
 
         <input
           type="text"
-          value={returnPlaceName(props.index)}
+          value={placeName}
+          // value={returnPlaceName(props.index)}
           onChange={(e) => {
             handleTssData(e, props.index, "placename");
           }}
           placeholder=""
-          className="flex-1 bg-[#181818] px-3 border-0"
+          className="flex-1 bg-[#181818] px-3 border-0 !min-w-[40px]"
         />
       </div>
 
-      <div className="leading-3 flex-1 flex-wrap flex gap-3 p-4 rounded-xl bg-[#202022]">
+      <div className="leading-3 flex-1 flex-wrap flex gap-3 p-4 rounded-md bg-[#202022] min-w-[47%]">
         <div className="">
           <h2 className="p-0 m-0 uppercase ">Manual</h2>
           <p className="m-0 p-0">entry</p>
         </div>
-        <div className="flex flex-1 items-stretch">
+        <div className="flex flex-1 items-stretch max-w-[100%]">
           <input
             type="text"
-            value={returnLatitude(props.index)}
+            value={lat}
+            // value={returnLatitude(props.index)}
             onChange={(e) => {
               handleTssData(e, props.index, "latitude");
             }}
             placeholder="22.3423421"
-            className="flex-1 bg-[#181818] px-3 border-0"
+            className="flex-1 bg-[#181818] px-3 border-0 !min-w-[40px]"
           />
           <div className="flex items-end p-2">Lat</div>
         </div>
       </div>
 
-      <div className="leading-3 flex-1 flex-wrap flex gap-3 p-4 rounded-xl bg-[#202022]">
+      <div className="leading-3 flex-1 flex-wrap flex gap-3 p-4 rounded-md bg-[#202022]">
         <div className="">
           <h2 className="p-0 m-0 uppercase ">Manual</h2>
           <p className="m-0 p-0">entry</p>
@@ -162,7 +190,8 @@ const ManualLoc = (props) => {
           <input
             type="text"
             placeholder="38.238890"
-            value={returnLongitude(props.index)}
+            value={long}
+            // value={returnLongitude(props.index)}
             onChange={(e) => {
               handleTssData(e, props.index, "longitude");
             }}
@@ -183,7 +212,7 @@ const ManualLoc = (props) => {
         />
       </div>
 
-      <hr className="w-full border-[#333]" />
+      <hr className="w-full border-secondary/40" />
     </div>
   );
 };
@@ -386,6 +415,7 @@ function OnDemand() {
               <input
                 type="submit"
                 value="CSV"
+                disabled
                 onClick={() => {
                   setSelectedGenerated("Csv");
                 }}
@@ -398,6 +428,7 @@ function OnDemand() {
               <input
                 type="submit"
                 value="JSON"
+                disabled
                 onClick={() => {
                   setSelectedGenerated("Json");
                 }}

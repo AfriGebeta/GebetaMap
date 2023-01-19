@@ -122,6 +122,10 @@ function Plan({ data }) {
   );
 }
 function Plans() {
+  const { metrics } = useSelector((state) => state.metrics);
+
+  const Total = metrics.onm + metrics.direction + metrics.matrix + metrics.tss;
+  
   const list = [
     {
       name: "Starter",
@@ -134,6 +138,7 @@ function Plans() {
         "Matrix Endpoint",
         "Route Optimization",
       ],
+      status: Total >= 0 && (Total <= 100000) ? 'current' : ''
     },
     {
       name: "Business",
@@ -146,6 +151,7 @@ function Plans() {
         "Matrix Endpoint",
         "Route Optimization",
       ],
+      status: Total >= 100001 && (Total <= 500000) ? 'current' : ''
     },
     {
       name: "Professional",
@@ -158,7 +164,7 @@ function Plans() {
         "Matrix Endpoint",
         "Route Optimization",
       ],
-      status: "current",
+      status: Total >= 500001 && (Total <= 1000000) ? 'current' : ''
     },
     {
       name: "Premium",
@@ -171,6 +177,7 @@ function Plans() {
         "Matrix Endpoint",
         "Route Optimization",
       ],
+      status: Total >= 1000001 && (Total <= 5000000) ? 'current' : ''
     },
   ];
   return (

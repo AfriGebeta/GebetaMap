@@ -313,7 +313,7 @@ function SideBar() {
               className="py-2 px-4 cursor-pointer"
               onClick={handleMenu}
             />
-            <Link to="/v2">
+            <Link to="/">
               {" "}
               <img src={TextLogo} alt="Gebeta Maps" className="" />
             </Link>

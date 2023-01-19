@@ -43,7 +43,7 @@ export default function Geocoding() {
           <input
             type="search"
             onChange={handleSearchText}
-            class="form-control relative flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+            class="form-control relative flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300  transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
             placeholder="Search"
             aria-label="Search"
             aria-describedby="button-addon2"
@@ -53,7 +53,7 @@ export default function Geocoding() {
             onClick={() => callSearch()}
             type="button"
             id="button-addon2"
-            className="bg-blue-600 px-[3%]"
+            className="bg-secondary text-black border-secondary px-[3%]"
           >
             {" "}
             Search
