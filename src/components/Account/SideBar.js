@@ -232,6 +232,7 @@ import "../../v2.css";
 import Notification from "./Notification";
 import { useDispatch } from "react-redux";
 import { setUser } from "../../redux/reducers/user";
+import { Popover } from "antd";
 
 const LinkContext = createContext("linkDisp");
 
@@ -341,17 +342,29 @@ function SideBar() {
               </div>
               {/* <span><MailOutlined /></span> */}
             </div>
-            <div className="flex items-center  mx-10">
-              <div className="w-12 h-12 overflow-hidden rounded-full ">
-                <img src={avatar} alt="profile" className="w-full h-full" />
+            <Popover
+              placement="bottomRight" trigger="click" content={
+              <Link to="/" className="flex gap-2 items-center text-black"
+                onClick={() => {
+                  dispatch(setUser({}));
+                }}
+              >
+                <LogoutOutlined />
+                <span>Logout</span>
+              </Link>
+            }>
+              <div className="flex items-center  mx-10 cursor-pointer">
+                <div className="w-12 h-12 overflow-hidden rounded-full ">
+                  <img src={avatar} alt="profile" className="w-full h-full" />
+                </div>
+                <div className="leading-4">
+                  <span className="!m-0 !p-0 ">Tikus Tikus</span>
+                  <small className="text-secondary m-0 p-0 block">
+                    Standard Client
+                  </small>
+                </div>
               </div>
-              <div className="leading-4">
-                <span className="!m-0 !p-0 ">Tikus Tikus</span>
-                <small className="text-secondary m-0 p-0 block">
-                  Standard Client
-                </small>
-              </div>
-            </div>
+            </Popover>
           </div>
         </div>
 

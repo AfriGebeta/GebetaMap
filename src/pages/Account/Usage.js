@@ -65,14 +65,14 @@ function Cards() {
     },
   ];
   return (
-    <div className="flex gap-10 items-center flex-wrap">
+    <div className="flex gap-6 items-stretch flex-wrap">
       <DocCard />
 
-      <div className="flex-1 flex flex-wrap gap-7 justify-evenly">
+      <div className="flex-1 flex gridgrid-cols-2 flex-wrap gap-6 justify-evenly xs:min-w-[400px] !max-w-full ">
         {objs.map((data, i) => (
           <div
             key={i}
-            className="p-4 bg-[#202022] flex-1  text-[#777] rounded-xl flex justify-between"
+            className="p-4 bg-[#202022] flex-1 text-[#777] rounded-md flex justify-between min-w-full xs:min-w-[40%]"
           >
             <div className="leading-3">
               <h2 className="p-0 m-0">{data.package}</h2>
@@ -92,13 +92,13 @@ function Cards() {
 function Usage() {
   return (
     <div className="w-full text-[#ccc] text-child flex flex-wrap gap-4">
-      <div className="flex-1 flex flex-col gap-6">
+      <div className="flex-1 flex flex-col gap-6 max-w-full">
         <APIToken />
         <ApiDetail />
         <Cards />
         <APIUsage />
       </div>
-      <div className="">
+      <div className="flex w-full items-start md:w-auto">
         <BillingHistory />
       </div>
     </div>

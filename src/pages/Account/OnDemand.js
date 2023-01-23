@@ -332,17 +332,17 @@ function OnDemand() {
     doc.save("tss.pdf");
   };
   return (
-    <div className="w-full text-[#ccc] text-child flex flex-wrap gap-4">
+    <div className="w-full text-[#ccc] text-child flex flex-wrap gap-6">
       <div className="flex-1 flex flex-col gap-6 max-w-full">
         <APIToken />
         <ApiDetail />
-        <div className="flex flex-col gap-4">
-          <div className="flex gap-10 items-center flex-wrap">
+        <div className="flex flex-col gap-6">
+          <div className="flex gap-6 items-stretch flex-wrap">
             <DocCard />
             <Notify value={notify} />
-            <div className="flex-1 flex flex-col flex-wrap gap-7  text-[#777] max-w-full ">
-              <div className="gap-4 flex-1 flex text-[#777]  max-w-full ">
-                <div className="leading-3 flex-1 flex flex-wrap gap-3 p-4 rounded-xl bg-[#202022] max-w-full">
+            <div className="flex-1 flex flex-col  gap-7 text-[#777] max-w-full ">
+              <div className="gap-4 flex h-1/2 text-[#777]  max-w-full ">
+                <div className="leading-3 flex-1 flex flex-wrap gap-3 p-4 rounded-md bg-[#202022] max-w-full">
                   <div className="">
                     <h2 className="p-0 m-0 uppercase ">Upload File</h2>
                     <p className="m-0 p-0">CSV</p>
@@ -361,7 +361,7 @@ function OnDemand() {
                   </div>
                 </div>
               </div>
-              <div className="leading-3 flex gap-3 p-4 rounded-xl bg-[#202022] ">
+              <div className="leading-3 h-1/2 flex gap-3 p-4  rounded-md bg-[#202022] ">
                 <div className="">
                   <h2 className="p-0 m-0 uppercase ">Driver</h2>
                   <p className="m-0 p-0">optional</p>
@@ -395,7 +395,7 @@ function OnDemand() {
             </div>
           </div>
           <div className="flex gap-4 flex-wrap">
-            <div className="leading-3 flex-1  flex gap-3 p-4 rounded-xl bg-[#202022] ">
+            <div className="leading-3 flex-1  flex gap-3 p-4 rounded-md bg-[#202022] ">
               <div className="">
                 <h2 className="p-0 m-0 uppercase ">Export</h2>
                 <p className="m-0 p-0">Type</p>
