@@ -68,7 +68,7 @@ function Documentation() {
     <div className="bg-dark min-h-screen flex justify-center">
       <div className="sw flex gap-4 py-6">
         <div className="flex flex-col gap-3 sticky top-5 h-screen">
-          <div className="p-6 bg-[#202022] text-[#777] rounded-xl">
+          <div className="p-6 bg-[#202022] text-[#777] rounded-md">
             <div className="flex gap-4 items-center px-5 py-2 text-child">
               <Logo className="" fill="#777" />
               <h2 className="m-0 uppercase">Api<br /> Documentation</h2>

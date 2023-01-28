@@ -8,6 +8,8 @@ import { StarFilled } from "@ant-design/icons";
 import { useSelector, useDispatch } from "react-redux";
 import { setMetrics } from "./../../redux/reducers/metrics";
 import { url } from "./../../data/url";
+
+
 function Cards() {
   const { metrics } = useSelector((state) => state.metrics);
   const { userData } = useSelector((state) => state.user);
@@ -66,12 +68,12 @@ function Cards() {
     },
   ];
   return (
-    <div className="flex gap-10 items-center flex-wrap">
+    <div className="flex gap-6 items-stretch flex-wrap">
       <DocCard />
 
       <div className="flex-1 flex flex-wrap gap-7 justify-evenly">
-        {objs.map((data) => (
-          <div className="p-4 bg-[#202022] flex-wrap flex-1 min-w-[200px] text-[#777] rounded-xl flex justify-between">
+        {objs.map((data,i) => (
+          <div key={i} className="p-4 bg-[#202022] flex-wrap flex-1 min-w-[200px] text-[#777] rounded-md flex justify-between">
             <div className="leading-3">
               <h2 className="p-0 m-0">{data.package}</h2>
               <p className="m-0 p-0">endpoint</p>
@@ -181,7 +183,7 @@ function Plans() {
     },
   ];
   return (
-    <div className="flex gap-10 flex-wrap ">
+    <div className="flex gap-6 flex-wrap ">
       {list.map((data) => (
         <Plan data={data} />
       ))}
@@ -191,13 +193,13 @@ function Plans() {
 function PricePlans() {
   return (
     <div className="w-full text-[#ccc] text-child flex flex-wrap gap-4">
-      <div className="flex-1 flex flex-col gap-6">
+      <div className="flex-1 flex flex-col gap-6 max-w-full">
         <APIToken />
         <ApiDetail />
         <Cards />
         <Plans />
       </div>
-      <div className="">
+      <div className="flex w-full items-start md:w-auto">
         <BillingHistory />
       </div>
     </div>

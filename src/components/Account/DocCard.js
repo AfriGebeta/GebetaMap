@@ -14,7 +14,7 @@ function DocCard() {
       onClick={() => {
         handleClick();
       }}
-      className="p-6 bg-[#202022] text-[#777] rounded-xl"
+      className="p-6 bg-[#202022] text-[#777] self-start rounded-md max-w-full overflow-clip  "
     >
       <div className="flex gap-4 items-center px-5 py-2">
         <Logo className="" fill="#777" />

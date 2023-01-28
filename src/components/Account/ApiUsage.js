@@ -130,7 +130,7 @@ function APIUsage() {
   };
 
   return (
-    <div className="rounded-xl px-4 py-3 bg-[#202022] ">
+    <div className="rounded-md px-4 py-3 bg-[#202022] ">
       <div className="flex justify-between items-center w-full sm:!sw">
         <div>
           <h2 className="m-0">API Usage</h2>
