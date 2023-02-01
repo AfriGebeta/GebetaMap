@@ -22,6 +22,7 @@ import { default as DocDesign } from "./pages/Documentation/Documentation";
 import PrivacyPolicy from "./pages/Account/PrivacyPolicy";
 import TermsOfUse from "./pages/Account/TermsOfUse";
 import Notification from "./pages/Account/Notification";
+import About from "./pages/About";
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
           <Route index element={<Index />} />
         </Route>
         <Route path="/v2/documentation" element={<DocDesign />} />
+        <Route path="/about" element={<About />} />
         <Route path="/v2/account" element={<SideBar />}>
           <Route index element={<Dashboard />} />
           <Route path="usage" element={<Usage />} />
