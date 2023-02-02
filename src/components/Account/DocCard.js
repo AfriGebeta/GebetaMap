@@ -7,7 +7,7 @@ function DocCard() {
   const navigate = useNavigate();
 
   const handleClick = (event) => {
-    navigate("/v2/documentation");
+    navigate("/documentation");
   };
   return (
     <div

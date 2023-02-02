@@ -47,7 +47,7 @@ function Signin({ footer }) {
         const data = await login.json();
 
         dispatch(setUser(data.data));
-        navigate("/v2/account");
+        navigate("/account");
       }
       setShowLoading(false);
     } catch (err) {

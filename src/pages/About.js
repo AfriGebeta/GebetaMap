@@ -10,23 +10,8 @@ import { DownOutlined } from "@ant-design/icons";
 function About() {
   return (
     <div className="bg-dark min-h-screen flex justify-center">
-      <div className="sw flex gap-4 py-6">
-        <div className="flex flex-col gap-3 sticky top-5 h-screen">
-          <div className="p-6 bg-[#202022] text-[#777] rounded-md">
-            <div className="flex gap-4 items-center px-5 py-2 text-child">
-              <Logo className="" fill="#777" />
-              <h2 className="m-0 uppercase">Api<br /> Documentation</h2>
-              <LocTargetIcon />
-            </div>
-            <div className="leading-3 py-3">
-              <Link to="/" className="btn_sty1 float-right bg-secondary/40 hover:text-secondary">Home</Link>
-            </div>
-          </div>
-
-
-        </div>
-
-
+      <div className="sw flex flex-col gap-4 py-6">
+        <h4 className="text-slate-400 "><Link to="/" className="text-slate-200">Home</Link> / Documentation</h4>
         <div className="flex-1 flex flex-col gap-4 p-10 card rounded-md bg-[#202022]">
           <div>
             <h2 className="m-0 text-[#aaa]">Introduction</h2>

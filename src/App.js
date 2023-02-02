@@ -30,10 +30,11 @@ function App() {
       <Routes>
         <Route path="/" element={<Navbar />}>
           <Route index element={<Index />} />
+          <Route path="/contact" element={<Contact />} />
         </Route>
-        <Route path="/v2/documentation" element={<DocDesign />} />
         <Route path="/about" element={<About />} />
-        <Route path="/v2/account" element={<SideBar />}>
+        <Route path="/documentation" element={<DocDesign />} />
+        <Route path="/account" element={<SideBar />}>
           <Route index element={<Dashboard />} />
           <Route path="usage" element={<Usage />} />
           <Route path="tokens" element={<NewTokens />} />
@@ -41,7 +42,6 @@ function App() {
           <Route path="profile" element={<NewProfile />} />
           <Route path="password" element={<NewPassword />} />
           <Route path="ondemand" element={<OnDemand />} />
-          <Route path="contact" element={<Contact />} />
           <Route path="notification" element={<Notification />} />
           <Route path="privacypolicy" element={<PrivacyPolicy />} />
           <Route path="termsofuse" element={<TermsOfUse />} />

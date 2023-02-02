@@ -32,7 +32,7 @@ function Header(props) {
         }
       >
         <Link
-          to="/v2/account"
+          to="/account"
           className={
             " text-white " + (url === "dashboard" ? " active_link " : "")
           }

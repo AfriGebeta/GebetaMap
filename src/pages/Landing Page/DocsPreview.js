@@ -22,7 +22,7 @@ function DirectionEndPoint() {
         <p className='text-white'>
           You can find directions to your destination using the Gebeta Directions API. Using the Directions API, you can determine the best route to take.
         </p>
-        <Link to="/v2/documentation#directionEP" className="btn_sty1">Documentation</Link>
+        <Link to="/documentation#directionEP" className="btn_sty1">Documentation</Link>
       </div>
     </div>
   )
@@ -42,7 +42,7 @@ function GeoCodingEndPoint() {
         <p className='text-white'>
         You can forward geocode using the Gebeta Geocoding API, which converts text queries like "Bole Edna Mall" into longitude and latitude coordinates.
         </p>
-        <Link to="/v2/documentation#geoEP" className="btn_sty1">Documentation</Link>
+        <Link to="/documentation#geoEP" className="btn_sty1">Documentation</Link>
       </div>
     </div>
   )
@@ -62,7 +62,7 @@ function RouteOptimization() {
         <p className='text-white'>
           The Gebeta Optimization API returns a path between the input coordinates that is optimized. Planning the route for delivery in a city is a common use case for the Optimization API.
         </p>
-        <Link to="/v2/documentation#routeEP" className="btn_sty1">Documentation</Link>
+        <Link to="/documentation#routeEP" className="btn_sty1">Documentation</Link>
       </div>
     </div>
   )
@@ -82,7 +82,7 @@ function MatrixEndPoint() {
         <p className='text-white'>
           By using the Gebeta Matrix API, you may choose the most efficient path between several places.
         </p>
-        <Link to="/v2/documentation#matrixEP" className="btn_sty1">Documentation</Link>
+        <Link to="/documentation#matrixEP" className="btn_sty1">Documentation</Link>
       </div>
     </div>
   )
