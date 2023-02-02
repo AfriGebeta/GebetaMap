@@ -14,7 +14,7 @@ function DirectionEndPoint() {
   const { userData } = useSelector((state) => state.user);
 
   return (
-    <section id="directionEP">
+    <section id="directionEP" className="">
       <h2 className=" btn_sty1 bg-secondary/30 sml inline-block">
         Direction API
       </h2>
@@ -27,7 +27,7 @@ function DirectionEndPoint() {
         the URL and you are done. Can be tried directly in every browser.
       </p>
       {/* code component */}
-      <div className="w-full bg-[#263238] text-white mb-[5%] flex flex-col">
+      <div className="w-full bg-[#263238] text-white mb-[5%] flex flex-col max-w-full">
         <div className="bg-[#11171a] mx-[5%] mt-[2%] py-[1%]">
           <p className="mx-[2%] space-x-2 ">
             <span className="bg-green-200 px-2 py-1">GET</span>

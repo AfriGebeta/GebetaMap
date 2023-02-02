@@ -31,7 +31,7 @@ const ResponseSample = ({ responseCodes200, responseCodes400, responseCodes500 }
       </div>
       <div className='bg-[#11171a] mx-[5%] mt-[2%] py-[1%] mb-[1%]'>
 
-        <div className='mx-[2%] mt-[2%] space-x-2 overflow-x-scroll pb-[1%] flex flex-col'>
+        <div className='mx-[2%] mt-[2%] space-x-2 overflow-x-auto pb-[1%] flex flex-col'>
           {returnResponse()}
 
 
