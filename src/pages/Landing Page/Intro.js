@@ -76,9 +76,9 @@ function Intro() {
             }
           ></Modal>
           <div className="flex items-center ">
-          <iframe src="https://www.youtube.com/embed/pTD69UWcH5Q?controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/pTD69UWcH5Q?controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
             <div className="px-2 flex-1">
-              <p className="capitalize m-0 text-[#8476AA]">
+              <p className="capitalize m-0 text-[#8476AA] min-w-[200px]">
                 Geo-Coding, Matrix Endpoint Direction Endpoint, One-to-many
                 Endpoint
               </p>
