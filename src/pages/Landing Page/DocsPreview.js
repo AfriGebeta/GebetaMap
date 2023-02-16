@@ -12,7 +12,7 @@ function DirectionEndPoint() {
     <div className="p-4 flex flex-wrap gap-3">
       <div className="max-w-full relative">
         <div className="bg-white max-w-full w-[400px] h-52 flex overflow-x-auto z-0 snap-x snap-mandatory relative">
-          <img src={DEPImage2} className='min-w-full h-full snap-start' />
+          <img alt="Direction Endpoint" src={DEPImage2} className='min-w-full h-full snap-start' />
         </div>
         <h3 className="bg-[#19191a] p-2 !text-gray-400 border border-gray-800 ">
           Direction Endpoint
@@ -32,7 +32,7 @@ function GeoCodingEndPoint() {
     <div className="p-4 flex flex-wrap flex-row-reverse gap-3">
       <div className="max-w-full">
         <div className="bg-white max-w-full w-[400px] h-52">
-          <img src={GeoImage} className='w-full h-full' />
+          <img alt="Geocoding Endpoint" src={GeoImage} className='w-full h-full' />
         </div>
         <h3 className="bg-[#19191a] p-2 !text-gray-400 border border-gray-800">
           GeoCoding Endpoint
@@ -52,7 +52,7 @@ function RouteOptimization() {
     <div className="p-4 flex flex-wrap gap-3">
       <div className="max-w-full">
         <div className="bg-white max-w-full w-[400px] h-52">
-          <img src={RouteImage} className='w-full h-full' />
+          <img alt="Route Endpoint" src={RouteImage} className='w-full h-full' />
         </div>
         <h3 className="bg-[#19191a] p-2 !text-gray-400 border border-gray-800">
           Route Optimization Endpoint
@@ -72,7 +72,7 @@ function MatrixEndPoint() {
     <div className="p-4 flex flex-wrap flex-row-reverse gap-3">
       <div className="max-w-full">
         <div className="bg-white max-w-full w-[400px] h-52">
-          <img src={MatrixImg} className='w-full h-full' />
+          <img alt="Matrix Endpoint" src={MatrixImg} className='w-full h-full' />
         </div>
         <h3 className="bg-[#19191a] p-2 !text-gray-400 border border-gray-800">
           Matrix Endpoint
@@ -91,7 +91,7 @@ function MatrixEndPoint() {
 
 function DocsPreview() {
   return (
-    <section className="" id='docpreview'>
+    <section className="pt-20" id='docpreview'>
       <div className="flex flex-col bg1 items-center">
         <div className="sw flex justify-center text-white text-child">
           <div className="flex flex-col max-w-full gap-44">

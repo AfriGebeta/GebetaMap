@@ -21,7 +21,7 @@ function Header() {
         <div className="hidden md:flex flex-1 gap-4 text-white text-child uppercase">
           <Link to="/about">About</Link>
           <Link to="/documentation">Documentation</Link>
-          <Link to="/contact">Contact Us</Link>
+          <Link to="/contact" className="whitespace-nowrap">Contact Us</Link>
         </div>
         <Modal
           open={signupModal}
@@ -70,19 +70,19 @@ function Header() {
           }
         ></Modal>
         <div className="hidden md:flex gap-4 items-center">
-          <button className="btn_sty2" onClick={() => setSignupModal(true)}>
+          <button className="btn_sty2 whitespace-nowrap " onClick={() => setSignupModal(true)}>
             Sign up
           </button>
-          <button className="btn_sty1" onClick={() => setSigninModal(true)}>
+          <button className="btn_sty1 whitespace-nowrap " onClick={() => setSigninModal(true)}>
             Sign in
           </button>
         </div>
         <div className="w-full flex gap-4 md:hidden items-center text-white justify-end">
-          <div className="sm:flex md:hidden gap-4 items-center">
-            <button className="btn_sty2" onClick={() => setSignupModal(true)}>
+          <div className="flex md:hidden gap-4 items-center">
+            <button className="btn_sty2 whitespace-nowrap " onClick={() => setSignupModal(true)}>
               Sign up
             </button>
-            <button className="btn_sty1" onClick={() => setSigninModal(true)}>
+            <button className="btn_sty1 whitespace-nowrap " onClick={() => setSigninModal(true)}>
               Sign in
             </button>
           </div>
