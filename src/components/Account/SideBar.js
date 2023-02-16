@@ -138,7 +138,7 @@ function SideBar() {
                 }}
               >
                 <LogoutOutlined />
-                <span>Sign Out</span>
+                <span className="whitespace-nowrap">Sign Out</span>
               </Link>
             }>
               <div className="flex items-center  mx-10 cursor-pointer">
