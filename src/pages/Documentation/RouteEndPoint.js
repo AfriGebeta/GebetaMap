@@ -28,7 +28,7 @@ function RouteEndPoint() {
   };
 
   return (
-    <div className="text-[#aaa] text-child">
+    <div className="text-[#aaa] text-child" id="routeEP">
       <h2 className=" btn_sty1 bg-secondary/30 sml inline-block">
         Route Optimization EndPoint
       </h2>

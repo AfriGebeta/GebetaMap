@@ -14,7 +14,7 @@ function GeocodingAPI() {
   const { userData } = useSelector((state) => state.user);
 
   return (
-    <div className="text-[#aaa] text-child">
+    <div className="text-[#aaa] text-child" id="geoEP">
       {userData.token != null ? (
         <div className="mb-40">
           <h2 className=" btn_sty1 bg-secondary/30 sml inline-block">
