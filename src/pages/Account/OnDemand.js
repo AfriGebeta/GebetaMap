@@ -14,19 +14,21 @@ import url from "../../data/url";
 
 const ManualLoc = (props) => {
   const dispatch = useDispatch();
-  const { tssData } = useSelector((state) => state.tssData);
+  let { tssData } = useSelector((state) => state.tssData);
   const [locationsData, setLocationData] = useState([]);
   const { userData } = useSelector((state) => state.user);
   const [searchValue, setSearchValue] = useState(null);
-  const [lat,setLat] = useState(null);
-  const [long,setLong] = useState(null);
-  const [placeName,setPlaceName] = useState(null);
+  const [lat, setLat] = useState("");
+  const [long, setLong] = useState("");
+  const [placeName, setPlaceName] = useState("");
   //import tssData
 
   let handleTssData = (e, index, type) => {
     let newIndex = returnIndex(index);
 
-    const newData = [...tssData];
+    let newData = tssData.map((obj) => ({
+      ...obj,
+    }));
     const ds = {
       id: newData[newIndex].id,
       longitude:
@@ -37,15 +39,15 @@ const ManualLoc = (props) => {
         type != "placename" ? newData[newIndex].placename : e.target.value,
     };
     newData[newIndex] = ds;
-
     dispatch(setTssData(newData));
   };
 
   let handleDelete = (index) => {
     let newIndex = returnIndex(index);
 
-    const newData = [...tssData];
-
+    let newData = tssData.map((obj) => ({
+      ...obj,
+    }));
     newData.splice(newIndex - 1, 1);
     dispatch(setTssData(newData));
   };
@@ -90,30 +92,49 @@ const ManualLoc = (props) => {
     });
   };
 
-  const geoLocChange = async (value) => {
-    const obj = (locationsData.find(obj => obj.value === value));
-    setPlaceName(obj.value);
-    setLat(obj.lat)
-    setLong(obj.long)
-    searchValue(value);
-    
+  const geoLocChange = async (e, value) => {
+    //const obj = locationsData.find((obj) => obj.value === value);
+    console.log(value.value);
+    setPlaceName(value.value);
+    setLat(value.lat);
+    setLong(value.long);
+    // searchValue(value);
+
+    try {
+      console.log(tssData);
+      let newIndex = returnIndex(props.index);
+
+      let newArray = tssData.map((obj) => ({
+        ...obj,
+      }));
+
+      newArray[newIndex].longitude = value.long;
+      newArray[newIndex].latitude = value.lat;
+      newArray[newIndex].placename = value.value;
+
+      dispatch(setTssData(newArray));
+    } catch (err) {
+      console.log(err);
+    }
   };
-  const geoLocSearch = async(value) => {
-    const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjb21wYW55bmFtZSI6ImdlYmV0YSIsImlkIjoiZDIyOWU3YWQtMTkxYS00ODU0LWE4MmEtNmM3NWI1Zjk2MzkwIiwidXNlcm5hbWUiOiJnZWJldGF1c2VyIn0.DCviuf0-xKaHNG8gwlKH6mRbYnzW-NHHj6psK8KWXrg';
+  const geoLocSearch = async (value) => {
     await geocoding(value, userData.token).then((data) => {
       if (data.msg == "ok") {
         let obj = data.data;
-        // console.log("data: ",obj)
+
         let temp = [];
         obj.map((data) => {
-          temp.push(
-            {value: data.name,label: data.name,lat: data.latitude,long: data.longitude}
-          )
-        })
+          temp.push({
+            value: data.name,
+            label: data.name,
+            lat: data.latitude,
+            long: data.longitude,
+          });
+        });
         setLocationData(temp);
       }
     });
-  }
+  };
   return (
     <div className="flex gap-6 flex-wrap">
       <div className="leading-3 flex flex-1 sm:min-w-[50%] flex-wrap  gap-3 p-4 rounded-md bg-[#202022] max-w-full">
@@ -126,7 +147,9 @@ const ManualLoc = (props) => {
             showSearch
             placeholder="enter location name"
             // optionFilterProp="children"
-            onChange={geoLocChange}
+            onChange={(e, i) => {
+              geoLocChange(e, i);
+            }}
             onSearch={geoLocSearch}
             value={searchValue}
             // filterOption={(input, option) => {
