@@ -8,14 +8,14 @@ function Modal({elem,children,open,close}) {
   }
   
   return (
-    <div>
+    <div className="">
       <div>{children}</div>
       {
         open && 
-        <div style={{overflow: 'auto'}} id='modal' className={"fixed top-0 bottom-0 left-0 w-screen flex flex-col justify-stretch items-center z-40 backdrop-blur-md bg-black/70"}
+        <div style={{overflow: 'auto'}} id='modal' className={"fixed w-full top-0 bottom-0 left-0 flex flex-col justify-stretch items-center z-40 backdrop-blur-md bg-black/70"}
             onClick={handleClick}
           >
-          <div className="h-full overflow-auto p-5">
+          <div className=" overflow-auto p-5 ">
             {elem}
           </div>
         </div>

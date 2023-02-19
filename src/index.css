@@ -9,6 +9,9 @@
 }
 @tailwind utilities;
 
+html {
+  height: 100%;
+}
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -16,6 +19,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+  min-width: 450px;
 }
 
 code {
@@ -38,6 +43,10 @@ code {
 
 @layer base {
 
+  form.sty1 input[type='button'],
+  form.sty1 input[type='submit'] {
+    @apply bg-[#6C6AD76E] border-transparent !important;
+  }
 
   .active_btn {
     @apply bg-opacity-40 bg-black/20 rounded-md p-4 py-1;
@@ -55,8 +64,9 @@ code {
   .btn,
   input[type='button'],
   input[type='submit'] {
-    @apply bg-black p-1 px-3 text-white uppercase text-sm text-center border border-black ;
+    @apply bg-black p-1 px-3 text-white uppercase text-sm text-center border cursor-pointer border-black hover:shadow-lg hover:shadow-black transition-all;
   }
+
 
   .btn-sty1 {
     @apply bg-white text-black rounded-full p-1 px-4 inline-block !font-bold !text-[13px] !self-center;
@@ -66,13 +76,23 @@ code {
   }
 
   h1 {
-    @apply text-4xl font-black !important;
+    @apply !text-4xl !font-black;
   }
   h2 {
-    @apply text-2xl font-black !important;
+    @apply !text-2xl !font-black;
   }
   h3 {
-    @apply text-lg font-black !important;
+    @apply !text-lg !font-black;
+  }
+
+  .color_inherit * {
+    @apply !text-inherit;
+  }
+  .textwhite h1,
+  .textwhite h2,
+  .textwhite h4,
+  .textwhite h3 {
+    @apply text-white !important;
   }
 
   p {
@@ -94,7 +114,11 @@ code {
 
   input,
   textarea {
-    @apply border px-2 py-1 border-grey;
+    @apply border px-2 py-1 border-grey bg-slate-300;
+  }
+
+  textarea {
+    @apply h-40;
   }
 
   

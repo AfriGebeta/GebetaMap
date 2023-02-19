@@ -13,16 +13,21 @@ module.exports = {
       backgroundImage: {
         'full-back': "url('/src/assets/images/full.png')",
       },
+      screens: {
+        xxs: '300px',
+        xs: '500px',
+      },
       colors: {
         transparent: 'transparent',
         current: 'currentColor',
         'primary': '#F3C651',
-        'dark': '#000',
+        'dark': '#111',
         'white': '#fff',
         'grey': '#333',
         'prime': '#219653',
-        'secondary': '#F7B643',
-        'bgprimary': '#1A1F32'
+        'secondary': '#F2994A',
+        'bgprimary': '#1A1F32',
+        'btnprimary': '#e79057'
       },  
     },
   },

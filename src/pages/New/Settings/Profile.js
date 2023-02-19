@@ -80,7 +80,7 @@ function Profile() {
   return (
     <div className='sw py-10'>
       <div className='flex gap-4'>
-        <Nav url='profile' />
+        {/* <Nav url='profile' />  */}
         <div className='flex-1 flex flex-col items-center text-white'>
           <div className='card2 flex flex-col gap-3 w-2/3'>
             <h3 className='text-white'>Profile</h3>
