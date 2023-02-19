@@ -140,7 +140,7 @@ const { userData } = useSelector((state) => state.user)
             </div>
             {/* request sample here */}
             <RequestSample
-              curl='curl https://mapapi.gebeta.app/api/v1/route/bike/direction/?la1=9.022528936095531&lo1=38.80400061607361&la2=9.021755421022991&lo2=38.79883468151093&apiKey=apiKey'
+              curl='curl https://mapapi.gebeta.app/api/v1/route/driving/direction/?la1=9.022528936095531&lo1=38.80400061607361&la2=9.021755421022991&lo2=38.79883468151093&apiKey=apiKey'
               js={direction}
             />
             <ResponseSample responseCodes200={ responseSampleForDirection200} responseCodes400={responseSampleForDirection400 } responseCodes500={responseSampleForDirection500 }      />
