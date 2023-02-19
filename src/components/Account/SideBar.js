@@ -18,7 +18,7 @@ import Icon, {
 
 import "../../v2.css";
 import Notification from "./Notification";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { setUser } from "../../redux/reducers/user";
 import { Popover } from "antd";
 
@@ -26,7 +26,7 @@ const LinkContext = createContext("linkDisp");
 
 function SideLink({ label, iconComp, to, active, children }) {
   const [dropped, setDropped] = useState("hidden");
-  const { userData } = useSelector((state) => state.user);
+
   function handleClick(ev) {
     if (children) {
       ev.preventDefault();
@@ -146,7 +146,7 @@ function SideBar() {
                   <img src={avatar} alt="profile" className="w-full h-full" />
                 </div>
                 <div className="leading-4">
-                  <span className="!m-0 !p-0 ">{userData.username}</span>
+                  <span className="!m-0 !p-0 ">Tikus</span>
                   <small className="text-secondary m-0 p-0 block">
                     Standard Client
                   </small>
