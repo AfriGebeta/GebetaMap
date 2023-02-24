@@ -108,16 +108,16 @@ function Signup({ footer }) {
   };
   return (
     <div className="card bg-full-back self-end flex justify-center content-between p-10  ">
-      <div className="">
-        <div className="p-5 flex flex-col gap-2">
+      <div className="px-5 py-7">
+        <p className="text-red-600">{errorMessage}</p>
+        <div className="flex flex-col gap-2">
           <div className="">Company Name</div>
           <div className="">
             <input
               value={companyname}
               onChange={handleCompanyName}
-              className="w-full"
+              className="w-full px-3 py-2 text-sm"
               type="text"
-              placeholder="company name"
             />
           </div>
           <div className="">username</div>
@@ -125,9 +125,8 @@ function Signup({ footer }) {
             <input
               value={username}
               onChange={handleUsername}
-              className="w-full"
+              className="w-full px-3 py-2 text-sm"
               type="text"
-              placeholder="username"
             />
           </div>
           <div className="">Email</div>
@@ -135,9 +134,8 @@ function Signup({ footer }) {
             <input
               value={email}
               onChange={handleEmail}
-              className="w-full"
+              className="w-full px-3 py-2 text-sm"
               type="email"
-              placeholder="email"
             />
           </div>
           <div className="">Password</div>
@@ -145,9 +143,8 @@ function Signup({ footer }) {
             <input
               value={password}
               onChange={handlePassword}
-              className="w-full"
+              className="w-full px-3 py-2 text-sm"
               type="password"
-              placeholder="password"
             />
           </div>
         </div>
