@@ -1,10 +1,5 @@
-import { ConfigProvider, Steps } from "antd";
 import React from "react";
 import { Link } from "react-router-dom";
-import { ReactComponent as Logo } from "../assets/images/maplogo.svg";
-import { ReactComponent as LocTargetIcon } from "../assets/icons/locTarget.svg";
-import { DownOutlined } from "@ant-design/icons";
-
 
 
 function About() {

@@ -48,3 +48,8 @@
 .menu-btn.open:after {
   transform: rotate(-45deg) ;
 }
+
+
+.social_icon svg {
+  font-size: 20px !important;
+}

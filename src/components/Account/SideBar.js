@@ -1,5 +1,5 @@
-import React, { createContext, useState } from "react";
-import { Link, Outlet, useLocation } from "react-router-dom";
+import React, { createContext, useEffect, useState } from "react";
+import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
 import avatar from "./../../assets/images/maleavatar.png";
 import TextLogo from "./../../assets/images/logowithtext.png";
 import Icon, {
@@ -87,13 +87,19 @@ function SideBar() {
   const [type, setType] = useState("");
   const { userData } = useSelector((state) => state.user);
   const location = useLocation();
-  const url = (location.pathname.split("/")[3] || "dashboard").toLowerCase();
+  const navigate = useNavigate();
+  const url = (location.pathname.split("/")[2] || "dashboard").toLowerCase();
   const [notifyModal, setNotifyModal] = useState("hidden");
   const dispatch = useDispatch();
   
   const { metrics } = useSelector((state) => state.metrics);
 
   const Total = metrics.onm + metrics.direction + metrics.matrix + metrics.tss;
+
+  useEffect(() => {
+    if(!userData.id)
+      navigate('/');
+  },[userData,navigate])
   
   const list = [
     {
@@ -124,7 +130,8 @@ function SideBar() {
   function handleMenu() {
     setType(type === "hidden" ? "" : "hidden");
   }
-  return (
+
+  return !userData.id ? null : (
     <div className="!bg-dark ">
       <div className="flex flex-col ">
         <div className="flex items-center text-white text-child border-b border-gray-700 shadow-md py-2 ">
@@ -133,7 +140,7 @@ function SideBar() {
               className="py-2 px-4 cursor-pointer"
               onClick={handleMenu}
             />
-            <Link to="/">
+            <Link to="/account">
               {" "}
               <img src={TextLogo} alt="Gebeta Maps" className="" />
             </Link>

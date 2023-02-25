@@ -1,4 +1,4 @@
-import { FacebookFilled, LinkedinFilled, TwitterSquareFilled } from "@ant-design/icons";
+import { InstagramFilled, LinkedinFilled, TwitterSquareFilled } from "@ant-design/icons";
 import React from "react";
 import { Link } from "react-router-dom";
 
@@ -6,8 +6,8 @@ import { Link } from "react-router-dom";
 function Footer() {
   return (
     <div className="flex justify-center ">
-      <div className="py-10 my-10 w-full max-w-[1000px]">
-        <h2 className="mr-6 self-start m-0">
+      <div className="py-10 my-10 w-full max-w-[800px]">
+        <h2 className="mr-6 self-start m-0 py-2">
           <span className="text-secondary font-black">gebeta</span>
           <span className="text-white font-black">maps</span>
         </h2>
@@ -21,16 +21,16 @@ function Footer() {
             <Link to="/documentation#geoEP">Geocoding Endpoint</Link>
           </div>
           <div className="flex flex-col ">
+            <div className="flex gap-5 justify-center pb-4 color_inherit text-white">
+              <a href="https://www.linkedin.com/company/gebetamaps/"><LinkedinFilled className='social_icon' /></a>
+              <a href="https://twitter.com/GebetaMaps"><TwitterSquareFilled className='social_icon' /></a>
+              <a href="https://instagram.com/gebetamaps"><InstagramFilled className='social_icon' /></a>
+            </div>
             <h3 className="uppercase">Company</h3>
             <Link to="/contact">Contact Us</Link>
             <Link to="/about" >About</Link>
             {/* <Link to="/contact" >Leave Feedback</Link> */}
           </div>
-        </div>
-        <div className="flex gap-10 justify-center py-4 color_inherit text-white">
-          <Link to="facebook.com/gebetamaps"><FacebookFilled className="text-[20px] " /></Link>
-          <Link to="linkedin.com/gebetamaps"><LinkedinFilled className="text-[20px] " /></Link>
-          <Link to="twitter.com/gebetamaps"><TwitterSquareFilled className="text-[20px] " /></Link>
         </div>
       </div>
     </div>

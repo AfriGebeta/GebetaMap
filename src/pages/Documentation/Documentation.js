@@ -1,4 +1,4 @@
-import { ConfigProvider, Popover, Steps, Switch } from "antd";
+import { ConfigProvider, Popover, Steps } from "antd";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { ReactComponent as Logo } from "../../assets/images/maplogo.svg";
@@ -26,10 +26,10 @@ const ScreenView = ({children,setItems,setCurrentView}) => {
     let temp = [];
     children.map((elem) => {
       temp.push({title: elem.props.title || 'API'});
-      // console.log(elem.props.title);
+      return true;
     })  
     setItems(temp);
-  },[])
+  },[children,setItems])
   return (
     <div>
       {children.map((child,i) => (
@@ -48,19 +48,13 @@ function ScreenChange({children,visible,index,setCurrentView}) {
     if(visible)
       setCurrentView(index);
     console.log(visible);
-  },[visible])
+  },[visible,index,setCurrentView]);
+
   return children;
 }
 
 
 function Documentation() {
-  const itemsx = [
-    {title: 'Direction API'},
-    {title: 'Matrix API'},
-    {title: 'Route Optimization API'},
-    {title: 'Geocoding API'},
-    {title: 'Add tooltips'}
-  ];
   const [items,setItems] = useState([]);
   const [currentView,setCurrentView] = useState(0);
 
