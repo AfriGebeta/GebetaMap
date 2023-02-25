@@ -13,6 +13,7 @@ import Navbar from "./components/Navbar";
 import Index from "./pages/Landing Page/Index";
 import SideBar from "./components/Account/SideBar";
 
+
 import Dashboard from "./pages/Account/DashBoard";
 import Usage from "./pages/Account/Usage";
 import PricePlans from "./pages/Account/PricePlans";
