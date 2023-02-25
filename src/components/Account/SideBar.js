@@ -18,7 +18,7 @@ import Icon, {
 
 import "../../v2.css";
 import Notification from "./Notification";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "../../redux/reducers/user";
 import { Popover } from "antd";
 
@@ -85,10 +85,41 @@ function SideLink({ label, iconComp, to, active, children }) {
 }
 function SideBar() {
   const [type, setType] = useState("");
+  const { userData } = useSelector((state) => state.user);
   const location = useLocation();
   const url = (location.pathname.split("/")[3] || "dashboard").toLowerCase();
   const [notifyModal, setNotifyModal] = useState("hidden");
   const dispatch = useDispatch();
+  
+  const { metrics } = useSelector((state) => state.metrics);
+
+  const Total = metrics.onm + metrics.direction + metrics.matrix + metrics.tss;
+  
+  const list = [
+    {
+      name: "Starter",
+      status: Total >= 0 && (Total <= 100000) ? 'current' : ''
+    },
+    {
+      name: "Business",
+      status: Total >= 100001 && (Total <= 500000) ? 'current' : ''
+    },
+    {
+      name: "Professional",
+      status: Total >= 500001 && (Total <= 1000000) ? 'current' : ''
+    },
+    {
+      name: "Premium",
+      status: Total >= 1000001 && (Total <= 5000000) ? 'current' : ''
+    },
+  ];
+  function getCurrentPlan() {
+    try {
+      return list.find((obj) => obj.status === 'current').name;
+    } catch {
+      return "";
+    }
+  }
 
   function handleMenu() {
     setType(type === "hidden" ? "" : "hidden");
@@ -146,9 +177,10 @@ function SideBar() {
                   <img src={avatar} alt="profile" className="w-full h-full" />
                 </div>
                 <div className="leading-4">
-                  <span className="!m-0 !p-0 ">Tikus Tikus</span>
+                  <span className="!m-0 !p-0 ">{userData.companyname}</span>
                   <small className="text-secondary m-0 p-0 block">
-                    Standard Client
+                    {getCurrentPlan()}
+                    Account
                   </small>
                 </div>
               </div>
