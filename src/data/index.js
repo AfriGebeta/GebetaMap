@@ -1,4 +1,4 @@
-//const urls = "http://localhost:8080"
+//const urls = "http://localhost:8080";
 //const urls = "https://mapapi.gebeta.app"
 const urls = "https://nmapapi.gebeta.app";
 export const direction = async (start, newMarker, apiKey) => {
@@ -108,6 +108,7 @@ export const geocoding = async (name, apiKey) => {
   try {
     const response = await fetch(url);
     const json = await response.json();
+    console.log(json);
     return json;
   } catch (error) {
     return error;
@@ -115,3 +116,5 @@ export const geocoding = async (name, apiKey) => {
 };
 
 //module.exports = { direction: direction,  matrix: matrix,  oneToMany: oneToMany,  tss: tss,  geocoding: geocoding }
+
+//
