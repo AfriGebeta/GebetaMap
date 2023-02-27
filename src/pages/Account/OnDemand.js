@@ -246,6 +246,8 @@ function OnDemand() {
   const [driverName, setDriverName] = useState("Unknown Driver");
   const { userData } = useSelector((state) => state.user);
   const [bestOrder, setBestOrder] = useState(null);
+  const [totalTime, setTotalTime] = useState(null);
+  const [totalDistance, setTotalDistance] = useState(null);
   const [selectedGenerated, setSelectedGenerated] = useState("Pdf");
   const dispatch = useDispatch();
 
@@ -306,6 +308,11 @@ function OnDemand() {
         //call tss
 
         tss(gmarker, userData.token).then((n) => {
+          console.log(n);
+          // timetaken
+          // totalDistance
+          setTotalTime(n.timetaken);
+          setTotalDistance(n.totalDistance);
           setBestOrder(n);
         });
       }
@@ -347,10 +354,15 @@ function OnDemand() {
   }
 
   let handleGenerate = () => {
+    console.log(totalTime);
+    console.log(totalDistance);
     var headers = createHeaders(["id", "placename", "latitude", "longitude"]);
     const doc = new jsPDF({ putOnlyUsedFonts: true, orientation: "portrait" });
     doc.text("Driver Name", 10, 40);
     doc.text(driverName, 60, 40);
+    // doc.text("Total Time", 70, 40);
+    // doc.text(totalTime.toString(), 90, 40);
+
     doc.table(10, 50, generateData(), headers, { autoSize: true });
     doc.save("tss.pdf");
   };
@@ -462,16 +474,17 @@ function OnDemand() {
                 }
               />
             </div>
-            <input
-              type="submit"
-              onClick={handleGenerate}
-              value="Generate"
-              className="btn_sty1 flex-1 !text-2xl font-bold !bg-btnprimary/40 !text-btnprimary !border-btnprimary/10"
-            />
+
             <input
               type="submit"
               onClick={handleCalculate}
               value="Calculate"
+              className="btn_sty1 flex-1 !text-2xl font-bold !bg-btnprimary/40 !text-btnprimary !border-btnprimary/10"
+            />
+            <input
+              type="submit"
+              onClick={handleGenerate}
+              value="Generate"
               className="btn_sty1 flex-1 !text-2xl font-bold !bg-btnprimary/40 !text-btnprimary !border-btnprimary/10"
             />
           </div>
