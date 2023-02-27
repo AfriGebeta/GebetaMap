@@ -1,6 +1,6 @@
 import { SearchOutlined } from "@ant-design/icons";
 import { Select } from "antd";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { geocoding } from "../../data/index";
 import { setTssData } from "../../redux/reducers/tssData";
@@ -10,11 +10,17 @@ const ManualLoc = (props) => {
   const { tssData } = useSelector((state) => state.tssData);
   const [locationsData, setLocationData] = useState([]);
   const { userData } = useSelector((state) => state.user);
-  const [searchValue] = useState(null);
-  const [lat,setLat] = useState(null);
-  const [long,setLong] = useState(null);
-  const [placeName,setPlaceName] = useState(null);
+  const [searchValue] = useState('');
+  const [lat,setLat] = useState('');
+  const [long,setLong] = useState('');
+  const [placeName,setPlaceName] = useState('');
   //import tssData
+
+  useEffect(() => {
+    setLat(props.data.latitude);
+    setLong(props.data.longitude);
+    setPlaceName(props.data.placename);
+  },[props.data]);
 
   let handleTssData = (e, index, type) => {
     let newIndex = returnIndex(index);
@@ -43,31 +49,6 @@ const ManualLoc = (props) => {
     dispatch(setTssData(newData));
   };
 
-  // let returnPlaceName = (id) => {
-  //   for (let i = 0; i < tssData.length; i++) {
-  //     if (tssData[i].id == id) {
-  //       return tssData[i].placename;
-  //     }
-  //   }
-
-  //   return "";
-  // };
-
-  // let returnLatitude = (id) => {
-  //   for (let i = 0; i < tssData.length; i++) {
-  //     if (tssData[i].id == id) return tssData[i].latitude;
-  //   }
-
-  //   return "";
-  // };
-
-  // let returnLongitude = (id) => {
-  //   for (let i = 0; i < tssData.length; i++) {
-  //     if (tssData[i].id == id) return tssData[i].longitude;
-  //   }
-
-  //   return "";
-  // };
 
   let returnIndex = (id) => {
     for (let i = 0; i < tssData.length; i++) {

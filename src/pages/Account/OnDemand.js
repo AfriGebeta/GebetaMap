@@ -18,12 +18,15 @@ function OnDemand() {
   const { userData } = useSelector((state) => state.user);
   const [bestOrder, setBestOrder] = useState(null);
   const [selectedGenerated, setSelectedGenerated] = useState("Pdf");
+  const [csv,setCsv] = useState('');
   const dispatch = useDispatch();
+
+  const tssLimit = 10;
 
   const handleDriverName = (e) => setDriverName(e.target.value);
 
   let addLocation = () => {
-    if (tssData.length < 10) {
+    if (tssData.length < tssLimit) {
       const newData = [...tssData];
       const ds = {
         id: Date.now(),
@@ -125,6 +128,34 @@ function OnDemand() {
     doc.table(10, 50, generateData(), headers, { autoSize: true });
     doc.save("tss.pdf");
   };
+
+  let loadCsv = (ev) => {
+    let fileReader = new FileReader();
+    fileReader.onload=function() {
+      let arr = [];
+      fileReader.result.split("\r\n").map((data,i) => {
+        let row = data.split(",");
+        if(i<tssLimit) {
+          arr.push({
+            id: row[0],
+            longitude: row[1],
+            latitude: row[2],
+            placename: row[3]
+          })
+        }
+        return null;
+      })
+      // console.log(arr);
+      dispatch(setTssData(arr));
+    }
+    let val = ev.target.value.split("\\");
+    
+    setCsv(val[val.length-1]);
+    fileReader.readAsText(ev.target.files[0]);
+  }
+
+  console.log(tssData);
+
   return (
     <div className="w-full text-[#ccc] text-child flex flex-wrap gap-6">
       <div className="flex-1 flex flex-col gap-6 max-w-full">
@@ -138,19 +169,21 @@ function OnDemand() {
               <div className="gap-4 flex h-1/2 text-[#777]  max-w-full ">
                 <div className="leading-3 flex-1 flex flex-wrap gap-3 p-4 rounded-md bg-[#202022] max-w-full">
                   <div className="">
+                    <input type='file' accept="csv" style={{display: 'none'}} id='csvUpl' name='csv' onChange={loadCsv} />
                     <h2 className="p-0 m-0 uppercase ">Upload File</h2>
                     <p className="m-0 p-0">CSV</p>
                   </div>
                   <div className="flex flex-1 items-stretch">
                     <input
                       type="text"
+                      value={csv||""}
                       disabled
-                      placeholder="enter path"
                       className="flex-1 bg-[#181818] px-3 py-2 border-0"
                     />
                     <input
                       type="submit"
                       value="Browse"
+                      onClick={() => document.querySelector("#csvUpl").click()}
                       className="btn_sty1  font-bold !bg-btnprimary/40 !text-btnprimary !border-btnprimary/10"
                     />
                   </div>
@@ -177,9 +210,9 @@ function OnDemand() {
           <div className="flex gap-4 items-start flex-wrap">
             <div className="flex flex-1 gap-4 items-start flex-wrap">
               <div className="flex flex-col flex-1 gap-4">
-                {tssData.map((n, i) => (
-                  <ManualLoc Key={n.id} index={n.id} />
-                ))}
+                {tssData.map((n, i) => n?(
+                  <ManualLoc key={n.id} data={n} index={n.id} />
+                ):null)}
               </div>
               <input
                 type="submit"

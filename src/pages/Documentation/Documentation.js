@@ -10,6 +10,7 @@ import GeoCodingAPI from "./GeocodingAPI";
 import ONMEndPoint from "./ONMEndPoint";
 import TrackVisibility from "react-on-screen";
 import { DownOutlined } from "@ant-design/icons";
+import { useCallback } from "react";
 
 
 const {Step} = Steps;
@@ -47,7 +48,7 @@ function ScreenChange({children,visible,index,setCurrentView}) {
   useEffect(() => {
     if(visible)
       setCurrentView(index);
-    console.log(visible);
+    // console.log(visible);
   },[visible,index,setCurrentView]);
 
   return children;
@@ -57,6 +58,8 @@ function ScreenChange({children,visible,index,setCurrentView}) {
 function Documentation() {
   const [items,setItems] = useState([]);
   const [currentView,setCurrentView] = useState(0);
+
+  const updateItems = useCallback(setItems,[setItems])
 
   return (
     <div className="bg-dark min-h-screen flex justify-center">
@@ -122,7 +125,7 @@ function Documentation() {
                 Each API part has its own documentation. Jump to the desired API part and learn about the API through the given examples and tutorials. In addition, for each API there are specific sample requests that you can send via Insomnia or Postman to see what the requests and responses look like.
               </p>
             </div>
-            <ScreenView setItems={setItems} setCurrentView={setCurrentView} className="flex flex-col gap-24">
+            <ScreenView setItems={updateItems} setCurrentView={setCurrentView} className="flex flex-col gap-24">
               <DirectionEndPoint title="Direction EndPoint" />
               <MatrixEndPoint title="Matrix EndPoint" />
               <RouteEndPoint title="Routing EndPoint" />

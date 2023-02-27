@@ -35,14 +35,14 @@ function Cards() {
           <div className="flex gap-4 items-center px-5 py-2">
             <SettingsIcon className="" fill="#777" />
             <h2 className="m-0 uppercase">
-              Total Calls <tiny>calls</tiny>
+              Total Calls <small>calls</small>
             </h2>
             <DirectionIcon />
           </div>
           <div className="leading-3 py-3">
             <h2>
               {metrics.onm + metrics.direction + metrics.matrix + metrics.tss}{" "}
-              <tiny>calls</tiny>
+              <small>calls</small>
             </h2>
             {/* <span className="!m-0 !p-0 ">98.00%</span> */}
           </div>

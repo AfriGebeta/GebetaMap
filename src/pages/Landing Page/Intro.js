@@ -2,7 +2,6 @@ import React from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { ReactComponent as Running } from "../../assets/images/running.svg";
-import vidPic from "../../assets/images/vidpic.png";
 import Signin from "./../../components/Signin";
 import Signup from "./../../components/Signup";
 import Modal from "./../../features/Modal";
@@ -78,9 +77,9 @@ function Intro() {
             }
           ></Modal>
           <div className="flex items-center w-[calc(100vw-100px)] flex-wrap">
-            <iframe src="https://www.youtube.com/embed/pTD69UWcH5Q?controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            <iframe src="https://www.youtube.com/embed/pTD69UWcH5Q?controls=0" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
               className="bg-black"
-              allowfullscreen></iframe>
+              allowFullScreen></iframe>
             <div className="px-2 flex-1 ">
               <p className="capitalize m-0 text-[#8476AA] min-w-[200px]">
                 Geo-Coding, Matrix Endpoint Direction Endpoint, One-to-many
