@@ -97,8 +97,8 @@ function SideBar() {
   const Total = metrics.onm + metrics.direction + metrics.matrix + metrics.tss;
 
   useEffect(() => {
-    // if(!userData.id)
-    //   navigate('/');
+    if(!userData.id)
+      navigate('/');
   },[userData,navigate])
   
   const list = [
@@ -131,8 +131,8 @@ function SideBar() {
     setType(type === "hidden" ? "" : "hidden");
   }
 
-  // !userData.id ? null : 
-  return (
+   
+  return !userData.id ? null : (
     <div className="!bg-dark ">
       <div className="flex flex-col ">
         <div className="flex items-center text-white text-child border-b border-gray-700 shadow-md py-2 ">
