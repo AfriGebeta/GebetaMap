@@ -154,10 +154,11 @@ function SideBar() {
               </Link>
             }>
               <div className="flex items-center  mx-10 cursor-pointer ">
-                <div className="w-12 h-12 overflow-hidden rounded-full ">
-                  <img src={avatar} alt="profile" className="w-full h-full" />
+                <div className="w-12 h-12 overflow-hidden rounded-full flex justify-center items-center relative ">
+                  {/* <img src={avatar} alt="profile" className="w-full h-full" /> */}
+                  <span className="!m-0 !p-0 uppercase text-[6vh]">{userData.companyname[0] || "A"}</span>
                 </div>
-                <div className="  ">
+                <div className=" px-2 ">
                   <span className="!m-0 !p-0 ">{userData.companyname}</span>
                   <small className="text-secondary m-0 p-0 block ">
                     <CurrentPlan />
