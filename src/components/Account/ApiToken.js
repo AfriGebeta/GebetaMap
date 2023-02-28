@@ -36,7 +36,8 @@ function APIToken() {
             className="border h-auto px-3 py-2 mt-1 mb-5 text-sm w-full text-black"
             placeholder="Token Definition.."
             onChange={handleDescription}
-          >{description}</textarea>
+            defaultValue={description}
+          ></textarea>
 
           <div className=" py-3">
             {showLoading ? (

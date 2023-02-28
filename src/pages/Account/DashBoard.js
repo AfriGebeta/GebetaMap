@@ -8,6 +8,7 @@ import APIUsage from "../../components/Account/ApiUsage";
 import BillingHistory from "../../components/Account/BillingHistory";
 
 import { useSelector } from "react-redux";
+import { CurrentPlan } from "../../components/Account/CurrentPlan";
 
 function Cards() {
   const { metrics } = useSelector((state) => state.metrics);
@@ -26,7 +27,9 @@ function Cards() {
           </div>
           <div className="leading-3 py-3">
             <h2>{userData.username}</h2>
-            <span className="!m-0 !p-0 ">Standard Client</span>
+            <span className="!m-0 !p-0 ">
+              <CurrentPlan />
+            </span>
           </div>
         </div>
       </div>
