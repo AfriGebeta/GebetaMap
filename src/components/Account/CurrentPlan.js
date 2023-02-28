@@ -27,7 +27,7 @@ function CurrentPlan() {
   
   return (
     <>
-      {list.find((obj) => obj.status === 'current').name} Account
+      {list.find((obj) => obj.status === 'current').name} Plan
     </>
   )
 
