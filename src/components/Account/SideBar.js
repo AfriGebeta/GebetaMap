@@ -95,8 +95,8 @@ function SideBar() {
   
 
   useEffect(() => {
-    // if(!userData.id)
-    //   navigate('/');
+    if(!userData.id)
+      navigate('/');
   },[userData,navigate])
   
 
@@ -104,8 +104,8 @@ function SideBar() {
     setType(type === "hidden" ? "" : "hidden");
   }
 
-  // !userData.id ? null :
-  return  (
+  
+  return !userData.id ? null : (
     <div className="!bg-dark ">
       <div className="flex flex-col ">
         <div className="flex items-center text-white text-child border-b border-gray-700 shadow-md py-2 ">
@@ -154,10 +154,11 @@ function SideBar() {
               </Link>
             }>
               <div className="flex items-center  mx-10 cursor-pointer ">
-                <div className="w-12 h-12 overflow-hidden rounded-full ">
-                  <img src={avatar} alt="profile" className="w-full h-full" />
+                <div className="w-12 h-12 overflow-hidden rounded-full flex justify-center items-center relative ">
+                  {/* <img src={avatar} alt="profile" className="w-full h-full" /> */}
+                  <span className="!m-0 !p-0 uppercase text-[6vh]">{userData.companyname[0] || "A"}</span>
                 </div>
-                <div className="  ">
+                <div className=" px-2 ">
                   <span className="!m-0 !p-0 ">{userData.companyname}</span>
                   <small className="text-secondary m-0 p-0 block ">
                     <CurrentPlan />
