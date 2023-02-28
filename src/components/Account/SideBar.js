@@ -18,7 +18,7 @@ import Icon, {
 
 import "../../v2.css";
 import Notification from "./Notification";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "../../redux/reducers/user";
 import { Popover } from "antd";
 
@@ -89,7 +89,7 @@ function SideBar() {
   const url = (location.pathname.split("/")[3] || "dashboard").toLowerCase();
   const [notifyModal, setNotifyModal] = useState("hidden");
   const dispatch = useDispatch();
-
+  const { userData } = useSelector((state) => state.user);
   function handleMenu() {
     setType(type === "hidden" ? "" : "hidden");
   }
@@ -131,22 +131,27 @@ function SideBar() {
               {/* <span><MailOutlined /></span> */}
             </div>
             <Popover
-              placement="bottomRight" trigger="click" content={
-              <Link to="/" className="flex gap-2 items-center text-black"
-                onClick={() => {
-                  dispatch(setUser({}));
-                }}
-              >
-                <LogoutOutlined />
-                <span className="whitespace-nowrap">Sign Out</span>
-              </Link>
-            }>
+              placement="bottomRight"
+              trigger="click"
+              content={
+                <Link
+                  to="/"
+                  className="flex gap-2 items-center text-black"
+                  onClick={() => {
+                    dispatch(setUser({}));
+                  }}
+                >
+                  <LogoutOutlined />
+                  <span className="whitespace-nowrap">Sign Out</span>
+                </Link>
+              }
+            >
               <div className="flex items-center  mx-10 cursor-pointer">
                 <div className="w-12 h-12 overflow-hidden rounded-full ">
                   <img src={avatar} alt="profile" className="w-full h-full" />
                 </div>
                 <div className="leading-4">
-                  <span className="!m-0 !p-0 ">Tikus</span>
+                  <span className="!m-0 !p-0 ">{userData.username}</span>
                   <small className="text-secondary m-0 p-0 block">
                     Standard Client
                   </small>

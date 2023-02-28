@@ -174,8 +174,8 @@ const ManualLoc = (props) => {
 
         <input
           type="text"
-          value={placeName}
-          // value={returnPlaceName(props.index)}
+          // value={placeName}
+          value={returnPlaceName(props.index)}
           onChange={(e) => {
             handleTssData(e, props.index, "placename");
           }}
@@ -192,8 +192,8 @@ const ManualLoc = (props) => {
         <div className="flex flex-1 items-stretch max-w-[100%]">
           <input
             type="text"
-            value={lat}
-            // value={returnLatitude(props.index)}
+            //value={lat}
+            value={returnLatitude(props.index)}
             onChange={(e) => {
               handleTssData(e, props.index, "latitude");
             }}
@@ -213,8 +213,8 @@ const ManualLoc = (props) => {
           <input
             type="text"
             placeholder="38.238890"
-            value={long}
-            // value={returnLongitude(props.index)}
+            //value={long}
+            value={returnLongitude(props.index)}
             onChange={(e) => {
               handleTssData(e, props.index, "longitude");
             }}
@@ -246,6 +246,8 @@ function OnDemand() {
   const [driverName, setDriverName] = useState("Unknown Driver");
   const { userData } = useSelector((state) => state.user);
   const [bestOrder, setBestOrder] = useState(null);
+  const [totalTime, setTotalTime] = useState(null);
+  const [totalDistance, setTotalDistance] = useState(null);
   const [selectedGenerated, setSelectedGenerated] = useState("Pdf");
   const dispatch = useDispatch();
 
@@ -306,6 +308,11 @@ function OnDemand() {
         //call tss
 
         tss(gmarker, userData.token).then((n) => {
+          console.log(n);
+          // timetaken
+          // totalDistance
+          setTotalTime(n.timetaken);
+          setTotalDistance(n.totalDistance);
           setBestOrder(n);
         });
       }
@@ -322,7 +329,10 @@ function OnDemand() {
         longitude: "longitude",
       };
       data.id = (i + 1).toString();
-      data.placename = tssData[best[i]].placename;
+      data.placename =
+        tssData[best[i]].placename.trim() == ""
+          ? "Unknown Place"
+          : tssData[best[i]].placename;
       data.latitude = tssData[best[i]].latitude;
       data.longitude = tssData[best[i]].longitude;
       result.push(Object.assign({}, data));
@@ -351,7 +361,10 @@ function OnDemand() {
     const doc = new jsPDF({ putOnlyUsedFonts: true, orientation: "portrait" });
     doc.text("Driver Name", 10, 40);
     doc.text(driverName, 60, 40);
-    doc.table(10, 50, generateData(), headers, { autoSize: true });
+    doc.text("Total Distance", 10, 60);
+    doc.text(totalDistance.toString(), 60, 60);
+    doc.table(10, 80, generateData(), headers, { autoSize: true });
+
     doc.save("tss.pdf");
   };
   return (
@@ -462,16 +475,17 @@ function OnDemand() {
                 }
               />
             </div>
-            <input
-              type="submit"
-              onClick={handleGenerate}
-              value="Generate"
-              className="btn_sty1 flex-1 !text-2xl font-bold !bg-btnprimary/40 !text-btnprimary !border-btnprimary/10"
-            />
+
             <input
               type="submit"
               onClick={handleCalculate}
               value="Calculate"
+              className="btn_sty1 flex-1 !text-2xl font-bold !bg-btnprimary/40 !text-btnprimary !border-btnprimary/10"
+            />
+            <input
+              type="submit"
+              onClick={handleGenerate}
+              value="Generate"
               className="btn_sty1 flex-1 !text-2xl font-bold !bg-btnprimary/40 !text-btnprimary !border-btnprimary/10"
             />
           </div>
