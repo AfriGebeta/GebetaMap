@@ -354,16 +354,14 @@ function OnDemand() {
   }
 
   let handleGenerate = () => {
-    console.log(totalTime);
-    console.log(totalDistance);
     var headers = createHeaders(["id", "placename", "latitude", "longitude"]);
     const doc = new jsPDF({ putOnlyUsedFonts: true, orientation: "portrait" });
     doc.text("Driver Name", 10, 40);
     doc.text(driverName, 60, 40);
-    // doc.text("Total Time", 70, 40);
-    // doc.text(totalTime.toString(), 90, 40);
+    doc.text("Total Distance", 10, 60);
+    doc.text(totalDistance.toString(), 60, 60);
+    doc.table(10, 80, generateData(), headers, { autoSize: true });
 
-    doc.table(10, 50, generateData(), headers, { autoSize: true });
     doc.save("tss.pdf");
   };
   return (
