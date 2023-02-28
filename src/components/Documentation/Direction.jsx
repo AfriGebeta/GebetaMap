@@ -2,31 +2,25 @@ import {
   MapContainer,
   TileLayer,
   Polyline,
-  useMapEvents,
+  // useMapEvents,
   Marker,
   Popup,
-  Polygon,
-  FeatureGroup,
-  EditControl,
 } from "react-leaflet";
 import { useState } from "react";
-import { direction } from "../../data/index";
-import red from "./red.png";
-import green from "./green.png";
+// import { direction } from "../../data/index";
 import L from "leaflet";
-import { setUser } from "../../redux/reducers/user";
-import { useSelector, useDispatch } from "react-redux";
+// import { useSelector} from "react-redux";
 const default_latitude = 9.02151;
 const default_longitude = 38.80115;
 
 function AddMarkerToClick() {
-  const [rmarker, redMarker] = useState([]);
-  const [gmarker, greenMarker] = useState([]);
+  const [rmarker] = useState([]);
+  const [gmarker] = useState([]);
 
-  const [pos, setPos] = useState([]);
-  const [l1, setL1] = useState("");
-  const [lo1, setLO1] = useState("");
-  const { userData } = useSelector((state) => state.user);
+  const [pos] = useState([]);
+  // const [l1, setL1] = useState("");
+  // const [lo1, setLO1] = useState("");
+  // const { userData } = useSelector((state) => state.user);
   const RedIcon = L.icon({
     iconUrl: require("./red.png"),
     iconRetinaUrl: require("./red.png"),
@@ -49,36 +43,36 @@ function AddMarkerToClick() {
     className: "leaflet-venue-icon",
   });
 
-  const map = useMapEvents({
-    async click(e) {
-      const newMarker = e.latlng;
-      if (l1 == "") {
-        setL1(newMarker.lat);
-        setLO1(newMarker.lng);
-        let _gmarker = [];
-        _gmarker.push(e.latlng);
-        greenMarker(_gmarker);
-      } else {
-        try {
-          let data = await direction(
-            { lat: l1, lon: lo1 },
-            newMarker,
-            userData.token
-          );
-          let _rmarker = [];
+  // const map = useMapEvents({
+  //   async click(e) {
+  //     const newMarker = e.latlng;
+  //     if (l1 == "") {
+  //       setL1(newMarker.lat);
+  //       setLO1(newMarker.lng);
+  //       let _gmarker = [];
+  //       _gmarker.push(e.latlng);
+  //       greenMarker(_gmarker);
+  //     } else {
+  //       try {
+  //         let data = await direction(
+  //           { lat: l1, lon: lo1 },
+  //           newMarker,
+  //           userData.token
+  //         );
+  //         let _rmarker = [];
 
-          _rmarker.push(e.latlng);
-          redMarker(_rmarker);
+  //         _rmarker.push(e.latlng);
+  //         redMarker(_rmarker);
 
-          if (data.msg == "Ok") {
-            setPos(data.direction);
-          }
-        } catch (err) {}
-        setL1("");
-        setLO1("");
-      }
-    },
-  });
+  //         if (data.msg == "Ok") {
+  //           setPos(data.direction);
+  //         }
+  //       } catch (err) {}
+  //       setL1("");
+  //       setLO1("");
+  //     }
+  //   },
+  // });
 
   return (
     <div>

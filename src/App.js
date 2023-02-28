@@ -26,7 +26,7 @@ import About from "./pages/About";
 
 function App() {
   return (
-    <Router>
+    <Router basename="/">
       <Routes>
         <Route path="/" element={<Navbar />}>
           <Route index element={<Index />} />

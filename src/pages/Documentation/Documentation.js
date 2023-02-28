@@ -22,15 +22,16 @@ const customDot = (dot, { status, index }) => (
 );
 
 
-const ScreenView = ({children,setItems,setCurrentView}) => {
+const ScreenView = ({items,children,setItems,setCurrentView}) => {
   useEffect(() => {
     let temp = [];
     children.map((elem) => {
       temp.push({title: elem.props.title || 'API'});
       return true;
-    })  
+    })
+    if(JSON.stringify(temp) !== JSON.stringify(items))
     setItems(temp);
-  },[children,setItems])
+  },[children,setItems,items])
   return (
     <div>
       {children.map((child,i) => (
@@ -125,7 +126,7 @@ function Documentation() {
                 Each API part has its own documentation. Jump to the desired API part and learn about the API through the given examples and tutorials. In addition, for each API there are specific sample requests that you can send via Insomnia or Postman to see what the requests and responses look like.
               </p>
             </div>
-            <ScreenView setItems={updateItems} setCurrentView={setCurrentView} className="flex flex-col gap-24">
+            <ScreenView items={items} setItems={updateItems} setCurrentView={setCurrentView} className="flex flex-col gap-24">
               <DirectionEndPoint title="Direction EndPoint" />
               <MatrixEndPoint title="Matrix EndPoint" />
               <RouteEndPoint title="Routing EndPoint" />

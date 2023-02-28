@@ -107,17 +107,19 @@ function APIToken() {
           return data.json();
         })
         .then((data) => {
-          if (data.msg == "ok") {
+          if (data.msg === "ok") {
             dispatch(setUser(data.data));
             setTokenModal(false);
           } else {
             alert("failed");
+            setErrorMessage('Failed!');
             setTokenModal(false);
           }
         });
 
       setShowLoading(false);
     } catch (err) {
+      setErrorMessage('Failed!');
       setShowLoading(false);
     }
   };
