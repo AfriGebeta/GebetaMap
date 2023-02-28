@@ -21,6 +21,7 @@ import Notification from "./Notification";
 import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "../../redux/reducers/user";
 import { Popover } from "antd";
+import { CurrentPlan } from "./CurrentPlan";
 
 const LinkContext = createContext("linkDisp");
 
@@ -92,47 +93,19 @@ function SideBar() {
   const [notifyModal, setNotifyModal] = useState("hidden");
   const dispatch = useDispatch();
   
-  const { metrics } = useSelector((state) => state.metrics);
-
-  const Total = metrics.onm + metrics.direction + metrics.matrix + metrics.tss;
 
   useEffect(() => {
-    if(!userData.id)
-      navigate('/');
+    // if(!userData.id)
+    //   navigate('/');
   },[userData,navigate])
   
-  const list = [
-    {
-      name: "Starter",
-      status: Total >= 0 && (Total <= 100000) ? 'current' : ''
-    },
-    {
-      name: "Business",
-      status: Total >= 100001 && (Total <= 500000) ? 'current' : ''
-    },
-    {
-      name: "Professional",
-      status: Total >= 500001 && (Total <= 1000000) ? 'current' : ''
-    },
-    {
-      name: "Premium",
-      status: Total >= 1000001 && (Total <= 5000000) ? 'current' : ''
-    },
-  ];
-  function getCurrentPlan() {
-    try {
-      return list.find((obj) => obj.status === 'current').name;
-    } catch {
-      return "";
-    }
-  }
 
   function handleMenu() {
     setType(type === "hidden" ? "" : "hidden");
   }
 
-   
-  return !userData.id ? null : (
+  // !userData.id ? null :
+  return  (
     <div className="!bg-dark ">
       <div className="flex flex-col ">
         <div className="flex items-center text-white text-child border-b border-gray-700 shadow-md py-2 ">
@@ -180,15 +153,14 @@ function SideBar() {
                 <span className="whitespace-nowrap">Sign Out</span>
               </Link>
             }>
-              <div className="flex items-center  mx-10 cursor-pointer">
+              <div className="flex items-center  mx-10 cursor-pointer ">
                 <div className="w-12 h-12 overflow-hidden rounded-full ">
                   <img src={avatar} alt="profile" className="w-full h-full" />
                 </div>
-                <div className="leading-4">
+                <div className="  ">
                   <span className="!m-0 !p-0 ">{userData.companyname}</span>
-                  <small className="text-secondary m-0 p-0 block">
-                    {getCurrentPlan()}
-                    Account
+                  <small className="text-secondary m-0 p-0 block ">
+                    <CurrentPlan />
                   </small>
                 </div>
               </div>
