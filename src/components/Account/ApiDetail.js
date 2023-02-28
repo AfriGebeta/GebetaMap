@@ -4,12 +4,7 @@ import { setMetrics } from "./../../redux/reducers/metrics";
 import { url } from "./../../data/url";
 import {
   add,
-  eachDayOfInterval,
-  endOfMonth,
   format,
-  isEqual,
-  parse,
-  startOfToday,
 } from "date-fns";
 function ApiDetail() {
   const { metrics } = useSelector((state) => state.metrics);
@@ -24,13 +19,13 @@ function ApiDetail() {
     };
     // let data
     for (let i = 0; i < data.length; i++) {
-      if (data[i][0] == "Matrix") _data.matrix = data[i][1];
+      if (data[i][0] === "Matrix") _data.matrix = data[i][1];
 
-      if (data[i][0] == "Direction") _data.direction = data[i][1];
+      if (data[i][0] === "Direction") _data.direction = data[i][1];
 
-      if (data[i][0] == "Tss" || data[i][0] == "TSS") _data.tss = data[i][1];
+      if (data[i][0] === "Tss" || data[i][0] === "TSS") _data.tss = data[i][1];
 
-      if (data[i][0] == "Onm" || data[i][0] == "ONM") _data.onm = data[i][1];
+      if (data[i][0] === "Onm" || data[i][0] === "ONM") _data.onm = data[i][1];
     }
 
     return _data;
@@ -42,11 +37,11 @@ function ApiDetail() {
         return data.json();
       })
       .then((data) => {
-        if (data.msg == "ok") {
+        if (data.msg === "ok") {
           dispatch(setMetrics(prepareData(data.data)));
         }
       });
-  }, []);
+  }, [dispatch,userData.id]);
 
   const [detail] = useState({
     status: "active",

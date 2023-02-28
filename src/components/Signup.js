@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 
 import { setUser } from "./../redux/reducers/user";
 import { useNavigate } from "react-router-dom";
 import { url } from "./../data/url";
 
-import ClipLoader from "react-spinners/ClipLoader";
+// import ClipLoader from "react-spinners/ClipLoader";
 
 function Signup({ footer }) {
   const [username, setUsername] = useState("");
@@ -14,7 +14,7 @@ function Signup({ footer }) {
   const [email, setEmail] = useState("");
   const [errorMessage, setMessage] = useState("");
   const [showLoading, setShowLoading] = useState(false);
-  const { userData } = useSelector((state) => state.user);
+  // const { userData } = useSelector((state) => state.user);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -54,31 +54,30 @@ function Signup({ footer }) {
         Object.assign(data, { username: username });
       } else {
         setMessage("username should not be empty");
-        throw "username should not be empty!";
+        throw new Error( "username should not be empty!");
       }
       if (!empty(password)) {
         Object.assign(data, { password: password });
       } else {
         setMessage("password should not be empty");
-        throw "username should not be empty!";
+        throw new Error("username should not be empty!");
       }
       if (!empty(companyname)) {
         Object.assign(data, { companyname: companyname });
       } else {
         setMessage("companyname should not be empty");
-        throw "username should not be empty!";
+        throw new Error("username should not be empty!");
       }
       if (!empty(email)) {
         Object.assign(data, { email: email });
-        let regEmail =
-          /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        let regEmail = /^\b[A-Z0-9._%-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b$/i;
         if (!regEmail.test(email)) {
           setMessage("Invalid Email Address");
-          throw "Parameter is not a number!";
+          throw new Error("Parameter is not a number!");
         }
       } else {
         setMessage("email should not be empty");
-        throw "username should not be empty!";
+        throw new Error("username should not be empty!");
       }
       const login = await fetch(`${url}/api/v1/users/signup`, {
         method: "POST",
@@ -89,7 +88,7 @@ function Signup({ footer }) {
         body: JSON.stringify(data),
       });
 
-      if (login.status != 200) {
+      if (login.status !== 200) {
         const data = await login.json();
 
         setMessage(data.msg);

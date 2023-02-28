@@ -4,7 +4,6 @@ import APIToken from "../../components/Account/ApiToken";
 import BillingHistory from "../../components/Account/BillingHistory";
 import DocCard from "../../components/Account/DocCard";
 import { ReactComponent as ListIcon } from "../../assets/icons/Polygon-icon.svg";
-import { StarFilled } from "@ant-design/icons";
 import { useSelector, useDispatch } from "react-redux";
 import { setMetrics } from "./../../redux/reducers/metrics";
 import { url } from "./../../data/url";
@@ -24,13 +23,13 @@ function Cards() {
     };
     // let data
     for (let i = 0; i < data.length; i++) {
-      if (data[i][0] == "Matrix") _data.matrix = data[i][1];
+      if (data[i][0] === "Matrix") _data.matrix = data[i][1];
 
-      if (data[i][0] == "Direction") _data.direction = data[i][1];
+      if (data[i][0] === "Direction") _data.direction = data[i][1];
 
-      if (data[i][0] == "Tss" || data[i][0] == "TSS") _data.tss = data[i][1];
+      if (data[i][0] === "Tss" || data[i][0] === "TSS") _data.tss = data[i][1];
 
-      if (data[i][0] == "Onm" || data[i][0] == "ONM") _data.onm = data[i][1];
+      if (data[i][0] === "Onm" || data[i][0] === "ONM") _data.onm = data[i][1];
     }
 
     return _data;
@@ -42,13 +41,13 @@ function Cards() {
         return data.json();
       })
       .then((data) => {
-        if (data.msg == "ok") {
+        if (data.msg === "ok") {
           // console.log("data ", data.data);
           // console.log("metrics ", metrics);
           dispatch(setMetrics(prepareData(data.data)));
         }
       });
-  }, []);
+  },[dispatch,userData]);
   const objs = [
     {
       package: "ONM",

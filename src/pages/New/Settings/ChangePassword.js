@@ -1,9 +1,7 @@
 import { Input } from 'antd';
 import React , {useState} from 'react'
-import Nav from './Nav';
-import ClipLoader from "react-spinners/ClipLoader";
 import {url} from "./../../../data/url"
-import { useSelector, useDispatch } from "react-redux"
+import { useSelector } from "react-redux"
 
 //gebetausertest
 function ChangePassword() {
@@ -29,7 +27,7 @@ function ChangePassword() {
     }
     
     
-    else if(password == confirmPassword){
+    else if(password === confirmPassword){
         try{
           setShowLoading(true)
      
@@ -48,10 +46,10 @@ function ChangePassword() {
                              },
                              body: JSON.stringify(data)
      
-                         }).
-                         then((data) => { return data.json() })
+                         })
+                         .then((data) => { return data.json() })
                          .then((data) => {
-                         if(data.msg == "ok"){
+                         if(data.msg === "ok"){
                                  alert("password updated")
                          }else{
      
@@ -98,7 +96,7 @@ function ChangePassword() {
             <div className='py-5'>
               <button  className='btn-sty1 w-24 theme-light' onClick={()=>{
                 update()
-              }}>Save</button>
+              }}>{showLoading? 'Saving...' : 'Save'}</button>
             </div>
           </div>
         </div>

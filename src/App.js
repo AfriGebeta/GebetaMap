@@ -18,7 +18,6 @@ import Dashboard from "./pages/Account/DashBoard";
 import Usage from "./pages/Account/Usage";
 import PricePlans from "./pages/Account/PricePlans";
 import OnDemand from "./pages/Account/OnDemand";
-import { default as DocIndex } from "./pages/Documentation/Index";
 import { default as DocDesign } from "./pages/Documentation/Documentation";
 import PrivacyPolicy from "./pages/Account/PrivacyPolicy";
 import TermsOfUse from "./pages/Account/TermsOfUse";
@@ -27,7 +26,7 @@ import About from "./pages/About";
 
 function App() {
   return (
-    <Router>
+    <Router basename="/">
       <Routes>
         <Route path="/" element={<Navbar />}>
           <Route index element={<Index />} />

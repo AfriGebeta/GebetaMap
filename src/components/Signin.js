@@ -1,18 +1,18 @@
-import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 
 import { setUser } from "./../redux/reducers/user";
 import { useNavigate } from "react-router-dom";
 import { url } from "./../data/url";
 
-import ClipLoader from "react-spinners/ClipLoader";
+// import ClipLoader from "react-spinners/ClipLoader";
 
 function Signin({ footer }) {
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setMessage] = useState("");
   const [showLoading, setShowLoading] = useState(false);
-  const { userData } = useSelector((state) => state.user);
+  // const { userData } = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -39,7 +39,7 @@ function Signin({ footer }) {
         }),
       });
 
-      if (login.status != 200) {
+      if (login.status !== 200) {
         const data = await login.json();
 
         setMessage(data.msg);

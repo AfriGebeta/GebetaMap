@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 import { geocoding } from "../../data/index";
-import { setUser } from "../../redux/reducers/user";
-import { useSelector, useDispatch } from "react-redux";
+// import { setUser } from "../../redux/reducers/user";
+import { useSelector } from "react-redux";
 export default function Geocoding() {
   const [searchText, setSearchText] = useState("");
   const [searchResult, setSearchResult] = useState([]);
@@ -21,11 +21,12 @@ export default function Geocoding() {
             if (index < 10) {
               _searchResult.push(<p>{n.name}</p>);
             }
+            return null
           });
           return _searchResult;
         })
         .then((_searchResult) => {
-          if (_searchResult.length == 0) {
+          if (_searchResult.length === 0) {
             _searchResult.push(<p>No result</p>);
           }
           setSearchResult(_searchResult);

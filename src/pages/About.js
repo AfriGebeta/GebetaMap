@@ -1,16 +1,11 @@
-import { ConfigProvider, Steps } from "antd";
 import React from "react";
 import { Link } from "react-router-dom";
-import { ReactComponent as Logo } from "../assets/images/maplogo.svg";
-import { ReactComponent as LocTargetIcon } from "../assets/icons/locTarget.svg";
-import { DownOutlined } from "@ant-design/icons";
-
 
 
 function About() {
   return (
     <div className="bg-dark min-h-screen flex justify-center">
-      <div className="sw flex flex-col gap-4 py-6 max-w-[600px]">
+      <div className="sw flex flex-col gap-4 py-6 max-w-[700px]">
         <h4 className="text-slate-400 "><Link to="/" className="text-slate-200">Home</Link> / About</h4>
         <div className="flex-1 flex flex-col gap-4 p-10 card rounded-md bg-[#202022]">
           <div>

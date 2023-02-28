@@ -1,7 +1,5 @@
 import { Input } from 'antd';
 import React , {useState} from 'react'
-import Nav from './Nav';
-import ClipLoader from "react-spinners/ClipLoader";
 import {url} from "./../../../data/url"
 import { useSelector, useDispatch } from "react-redux"
 import { setUser } from "./../../../redux/reducers/user"
@@ -36,10 +34,13 @@ function Profile() {
                }
                if(!empty(_email)){
                    Object.assign(data, {"email":_email})
-                   let regEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                   let regEmail = /^\b[A-Z0-9._%-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b$/i;
                    if (!regEmail.test(_email)) {
-                           alert('Invalid Email Address')
-                            throw 'Parameter is not a number!'
+                      alert('Invalid Email Address')
+                      throw Object.assign(
+                        new Error('Parameter is not a number!'),
+                        { code: 402 }
+                      );
                    }
                }
                fetch(`${url}/api/v1/users/updateprofile` , {
@@ -49,10 +50,10 @@ function Profile() {
                            },
                            body: JSON.stringify(data)
    
-                       }).
-                       then((data) => { return data.json() })
+                       })
+                       .then((data) => { return data.json() })
                        .then((data) => {
-                       if(data.msg == "ok"){
+                       if(data.msg === "ok"){
                          alert("profile updated")
                                dispatch(setUser(data.data))
                        }else{
@@ -99,7 +100,7 @@ function Profile() {
             <div className='py-5'>
               <button  className='btn-sty1 w-24 theme-light' onClick={()=>{
                 update()
-              }}>Save </button>
+              }}>{showLoading ? 'Saving...' : 'Save'}</button>
             </div>
           </div>
         </div>
