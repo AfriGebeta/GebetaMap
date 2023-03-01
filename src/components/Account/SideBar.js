@@ -92,14 +92,8 @@ function SideBar() {
   const url = (location.pathname.split("/")[2] || "dashboard").toLowerCase();
   const [notifyModal, setNotifyModal] = useState("hidden");
   const dispatch = useDispatch();
-  
 
-  useEffect(() => {
-    if(!userData.id)
-      navigate('/');
-  },[userData,navigate])
-  
-
+  const { userData } = useSelector((state) => state.user);
   function handleMenu() {
     setType(type === "hidden" ? "" : "hidden");
   }
@@ -143,6 +137,7 @@ function SideBar() {
               {/* <span><MailOutlined /></span> */}
             </div>
             <Popover
+
               placement="bottomRight" trigger="click" content={
               <Link to="/" className="flex gap-2 items-center text-black"
                 onClick={() => {
@@ -162,6 +157,7 @@ function SideBar() {
                   <span className="!m-0 !p-0 ">{userData.companyname}</span>
                   <small className="text-secondary m-0 p-0 block ">
                     <CurrentPlan />
+
                   </small>
                 </div>
               </div>

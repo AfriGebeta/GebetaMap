@@ -57,7 +57,7 @@ Gebeta Map API collects information about your location when you use our service
 us offer attributes likedriving directions. Your location can be determined with varying degrees
 of accuracy by GPS and other sensor data from your device IP address.
 </p>
-<p className='text-red-500'>
+<p className='text-[#ccc]'>
 Gebeta Map API use numerous technologies to gather and store information, including cookies,
 pixel tags, local storage, such as browser web storage or application data caches, databases and
 server logs.
@@ -71,7 +71,7 @@ To manage your registration as a user of our service, the personal data you prov
 access to different functionalities of the Service that are available to you as a registered user.
 <h4>For The Performance of a Contract</h4>
 </p>
-<p className="text-red-500">
+<p className="text-[#ccc]">
 The development, compliance and undertaking of the purchase contract for the products, items or
 services you have purchased or of any other contract with us through the Service.
 </p>
