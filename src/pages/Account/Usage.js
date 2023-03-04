@@ -40,9 +40,19 @@ function Cards() {
         return data.json();
       })
       .then((data) => {
-        if (data.msg === "ok") {
-          console.log(data.data);
-          dispatch(setMetrics(prepareData(data.data)));
+
+        if (data.msg == "ok") {
+          //console.log(data.data);
+          //dispatch(setMetrics(prepareData(data.data)));
+          dispatch(
+            setMetrics({
+              tss: data.data.TSS,
+              matrix: data.data.Matrix,
+              direction: data.data.Direction,
+              onm: data.data.ONM,
+            })
+          );
+
         }
       });
   },[userData,dispatch]);

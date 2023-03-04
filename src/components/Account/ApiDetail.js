@@ -18,15 +18,11 @@ function ApiDetail() {
       onm: 0,
     };
     // let data
-    for (let i = 0; i < data.length; i++) {
-      if (data[i][0] === "Matrix") _data.matrix = data[i][1];
 
-      if (data[i][0] === "Direction") _data.direction = data[i][1];
-
-      if (data[i][0] === "Tss" || data[i][0] === "TSS") _data.tss = data[i][1];
-
-      if (data[i][0] === "Onm" || data[i][0] === "ONM") _data.onm = data[i][1];
-    }
+    _data.matrix = data.Matrix;
+    _data.direction = data.Direction;
+    _data.tss = data.TSS;
+    _data.onm = data.ONM;
 
     return _data;
   };
@@ -37,8 +33,18 @@ function ApiDetail() {
         return data.json();
       })
       .then((data) => {
-        if (data.msg === "ok") {
-          dispatch(setMetrics(prepareData(data.data)));
+
+        if (data.msg == "ok") {
+          //dispatch(setMetrics(prepareData(data.data)));
+          dispatch(
+            setMetrics({
+              tss: data.data.TSS,
+              matrix: data.data.Matrix,
+              direction: data.data.Direction,
+              onm: data.data.ONM,
+            })
+          );
+
         }
       });
   }, [dispatch,userData.id]);
