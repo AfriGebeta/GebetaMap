@@ -9,7 +9,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { setMetrics } from "./../../redux/reducers/metrics";
 import { url } from "./../../data/url";
 
-
 function Cards() {
   const { metrics } = useSelector((state) => state.metrics);
   const { userData } = useSelector((state) => state.user);
@@ -45,7 +44,14 @@ function Cards() {
         if (data.msg == "ok") {
           // console.log("data ", data.data);
           // console.log("metrics ", metrics);
-          dispatch(setMetrics(prepareData(data.data)));
+          dispatch(
+            setMetrics({
+              tss: data.data.TSS,
+              matrix: data.data.Matrix,
+              direction: data.data.Direction,
+              onm: data.data.ONM,
+            })
+          );
         }
       });
   }, []);
@@ -72,8 +78,11 @@ function Cards() {
       <DocCard />
 
       <div className="flex-1 flex flex-wrap gap-7 justify-evenly">
-        {objs.map((data,i) => (
-          <div key={i} className="p-4 bg-[#202022] flex-wrap flex-1 min-w-[200px] text-[#777] rounded-md flex justify-between">
+        {objs.map((data, i) => (
+          <div
+            key={i}
+            className="p-4 bg-[#202022] flex-wrap flex-1 min-w-[200px] text-[#777] rounded-md flex justify-between"
+          >
             <div className="leading-3">
               <h2 className="p-0 m-0">{data.package}</h2>
               <p className="m-0 p-0">endpoint</p>
@@ -127,7 +136,7 @@ function Plans() {
   const { metrics } = useSelector((state) => state.metrics);
 
   const Total = metrics.onm + metrics.direction + metrics.matrix + metrics.tss;
-  
+
   const list = [
     {
       name: "Starter",
@@ -140,7 +149,7 @@ function Plans() {
         "Matrix Endpoint",
         "Route Optimization",
       ],
-      status: Total >= 0 && (Total <= 100000) ? 'current' : ''
+      status: Total >= 0 && Total <= 100000 ? "current" : "",
     },
     {
       name: "Business",
@@ -153,7 +162,7 @@ function Plans() {
         "Matrix Endpoint",
         "Route Optimization",
       ],
-      status: Total >= 100001 && (Total <= 500000) ? 'current' : ''
+      status: Total >= 100001 && Total <= 500000 ? "current" : "",
     },
     {
       name: "Professional",
@@ -166,7 +175,7 @@ function Plans() {
         "Matrix Endpoint",
         "Route Optimization",
       ],
-      status: Total >= 500001 && (Total <= 1000000) ? 'current' : ''
+      status: Total >= 500001 && Total <= 1000000 ? "current" : "",
     },
     {
       name: "Premium",
@@ -179,7 +188,7 @@ function Plans() {
         "Matrix Endpoint",
         "Route Optimization",
       ],
-      status: Total >= 1000001 && (Total <= 5000000) ? 'current' : ''
+      status: Total >= 1000001 && Total <= 5000000 ? "current" : "",
     },
   ];
   return (

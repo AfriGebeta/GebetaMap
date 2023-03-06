@@ -23,33 +23,6 @@ function APIUsage() {
   const [data, setData] = useState([]);
   const [selectedGraph, setSelected] = useState("All");
 
-  // useEffect(() => {
-  //   fetch(
-  //     `${url}/api/v2/route/apicalls/getMonthlyApiCallForGraph?userid=${userData.id}`
-  //   )
-  //     .then((data) => {
-  //       return data.json();
-  //     })
-  //     .then((data) => {
-  //       if (data.msg == "ok") {
-  //         let _data = [];
-  //         let _label = [];
-
-  //         for (let i = 0; i < data.data.length; i++) {
-  //           try {
-  //             _label.push(
-  //               format(new Date(parseInt(data.data[i][0])), "YYY-MM-dd")
-  //             );
-  //             _data.push(data.data[i][1]);
-  //           } catch (err) {}
-  //         }
-
-  //         setLabels(_label);
-  //         setData(_data);
-  //       }
-  //     });
-  // }, [selectedGraph]);
-
   function sortWithIndeces(toSort) {
     for (var i = 0; i < toSort.length; i++) {
       toSort[i] = [toSort[i], i];
@@ -74,16 +47,15 @@ function APIUsage() {
         return data.json();
       })
       .then((data) => {
+        console.log(data);
         if (data.msg == "ok") {
           let _data = [];
           let _label = [];
 
-          for (let i = 0; i < data.data.length; i++) {
+          for (var prop in data.data) {
             try {
-              _label.push(
-                format(new Date(parseInt(data.data[i][0])), "YYY-MM-dd")
-              );
-              _data.push(data.data[i][1]);
+              _label.push(prop);
+              _data.push(data.data[prop]);
             } catch (err) {}
           }
 
@@ -189,69 +161,7 @@ function APIUsage() {
           </label> */}
         </div>
       </div>
-      <div>
-        {/* <div
-          className="py-2 my-4"
-          x="bg-[#ff971d] rounded-lg px-6 py-2 my-4 inline-block"
-        >
-          <RangePicker
-            className="!bg-black/40 !border-white/10"
-            onChange={(value, dateString) => {
-              // const [labels, setLabels] = useState([])
-              // const [data , setData] = useState([])
-
-              let starter = dateString[0].split("-");
-              let end = dateString[1].split("-");
-
-              var from = new Date(
-                starter[0],
-                parseInt(starter[1]) - 1,
-                starter[2]
-              ); // -1 because months are from 0 to 11
-              var to = new Date(end[0], parseInt(end[1]) - 1, end[2]);
-
-              fetch(
-                `${url}/api/v2/route/apicalls/getMonthlyApiCallForGraph?userid=${userData.id}`
-              )
-                .then((data) => {
-                  return data.json();
-                })
-                .then((data) => {
-                  if (data.msg == "ok") {
-                    let _data = [];
-                    let _label = [];
-
-                    let dataa = getAll(data.data);
-
-                    for (let i = 0; i < dataa.length; i++) {
-                      try {
-                        let str =
-                          dataa[i][0].substring(0, 4) +
-                          "-" +
-                          dataa[i][0].substring(4, 6) +
-                          "-" +
-                          dataa[i][0].substring(6, 8);
-                        let dateFromData = str.split("-");
-                        var check = new Date(
-                          dateFromData[0],
-                          parseInt(dateFromData[1]) - 1,
-                          dateFromData[2]
-                        );
-                        if (check > from && check < to) {
-                          _label.push(str);
-                          _data.push(dataa[1]);
-                        }
-                      } catch (err) {}
-                    }
-
-                    setLabels(_label);
-                    setData(_data);
-                  }
-                });
-            }}
-          />
-        </div> */}
-      </div>
+      <div></div>
       <div className="text-white  ">
         {/* <h2 className="text-white mb-0">Sep, 09 - 22 2022</h2>
         <span className="lowercase mb-4 inline-block">ALL DATES START AT 00:00 ETHIOPIAN LT</span> */}

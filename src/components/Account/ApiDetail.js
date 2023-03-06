@@ -43,7 +43,14 @@ function ApiDetail() {
       })
       .then((data) => {
         if (data.msg == "ok") {
-          dispatch(setMetrics(prepareData(data.data)));
+          dispatch(
+            setMetrics({
+              tss: data.data.TSS,
+              matrix: data.data.Matrix,
+              direction: data.data.Direction,
+              onm: data.data.ONM,
+            })
+          );
         }
       });
   }, []);
