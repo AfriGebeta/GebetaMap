@@ -2,29 +2,25 @@ import {
   MapContainer,
   TileLayer,
   Polyline,
-  useMapEvents,
+  // useMapEvents,
   Marker,
   Popup,
-  Polygon,
-  FeatureGroup,
-  EditControl,
 } from "react-leaflet";
 import { useState } from "react";
-import red from "./red.png";
 import L from "leaflet";
 import { tss } from "../../data/index";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 const default_latitude = 9.02151;
 const default_longitude = 38.80115;
 
 function AddMarkerToClick(props) {
-  const [rmarker, redMarker] = useState([]);
-  const [gmarker, greenMarker] = useState([]);
-  const [sets, Setter] = useState(false);
-  const [l1, setL1] = useState("");
-  const [lo1, setLO1] = useState("");
-  const [endPoints, setEndPoints] = useState([]);
+  const [rmarker] = useState([]);
+  const [gmarker] = useState([]);
+  // const [sets, Setter] = useState(false);
+  // const [l1, setL1] = useState("");
+  // const [lo1, setLO1] = useState("");
+  // const [endPoints, setEndPoints] = useState([]);
   const [pos, setPos] = useState([]);
   const { userData } = useSelector((state) => state.user);
   const RedIcon = L.icon({
@@ -49,20 +45,20 @@ function AddMarkerToClick(props) {
     className: "leaflet-venue-icon",
   });
 
-  const map = useMapEvents({
-    click(e) {
-      const newMarker = e.latlng;
-      if (props.start && props.stop != true) {
-        gmarker.push(e.latlng);
-        Setter(!sets);
-      }
+  // const map = useMapEvents({
+  //   click(e) {
+  //     const newMarker = e.latlng;
+  //     if (props.start && props.stop != true) {
+  //       gmarker.push(e.latlng);
+  //       Setter(!sets);
+  //     }
 
-      if (props.stop && props.start != true) {
-        rmarker.push(e.latlng);
-        Setter(!sets);
-      }
-    },
-  });
+  //     if (props.stop && props.start != true) {
+  //       rmarker.push(e.latlng);
+  //       Setter(!sets);
+  //     }
+  //   },
+  // });
 
   if (props.calculate) {
     try {
@@ -103,9 +99,9 @@ function AddMarkerToClick(props) {
 }
 
 function Tss(props) {
-  const [start, setStart] = useState(false);
-  const [stop, setStop] = useState(false);
-  const [calculate, setCalculate] = useState(false);
+  // const [start, setStart] = useState(false);
+  const [stop] = useState(false);
+  // const [calculate, setCalculate] = useState(false);
 
   return (
     <div className="leaflet-container">

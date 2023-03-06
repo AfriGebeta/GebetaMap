@@ -1,5 +1,5 @@
-import React, { createContext, useState } from "react";
-import { Link, Outlet, useLocation } from "react-router-dom";
+import React, { createContext, useEffect, useState } from "react";
+import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
 import avatar from "./../../assets/images/maleavatar.png";
 import TextLogo from "./../../assets/images/logowithtext.png";
 import Icon, {
@@ -21,6 +21,7 @@ import Notification from "./Notification";
 import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "../../redux/reducers/user";
 import { Popover } from "antd";
+import { CurrentPlan } from "./CurrentPlan";
 
 const LinkContext = createContext("linkDisp");
 
@@ -85,15 +86,22 @@ function SideLink({ label, iconComp, to, active, children }) {
 }
 function SideBar() {
   const [type, setType] = useState("");
+  const { userData } = useSelector((state) => state.user);
   const location = useLocation();
-  const url = (location.pathname.split("/")[3] || "dashboard").toLowerCase();
+  const navigate = useNavigate();
+  const url = (location.pathname.split("/")[2] || "dashboard").toLowerCase();
   const [notifyModal, setNotifyModal] = useState("hidden");
   const dispatch = useDispatch();
-  const { userData } = useSelector((state) => state.user);
+
+  useEffect(() => {
+    if (!userData.id) navigate("/");
+  }, [userData, navigate]);
+
   function handleMenu() {
     setType(type === "hidden" ? "" : "hidden");
   }
-  return (
+
+  return !userData.id ? null : (
     <div className="!bg-dark ">
       <div className="flex flex-col ">
         <div className="flex items-center text-white text-child border-b border-gray-700 shadow-md py-2 ">
@@ -102,7 +110,7 @@ function SideBar() {
               className="py-2 px-4 cursor-pointer"
               onClick={handleMenu}
             />
-            <Link to="/">
+            <Link to="/account">
               {" "}
               <img src={TextLogo} alt="Gebeta Maps" className="" />
             </Link>
@@ -146,14 +154,17 @@ function SideBar() {
                 </Link>
               }
             >
-              <div className="flex items-center  mx-10 cursor-pointer">
-                <div className="w-12 h-12 overflow-hidden rounded-full ">
-                  <img src={avatar} alt="profile" className="w-full h-full" />
+              <div className="flex items-center  mx-10 cursor-pointer ">
+                <div className="w-12 h-12 overflow-hidden rounded-full flex justify-center items-center relative ">
+                  {/* <img src={avatar} alt="profile" className="w-full h-full" /> */}
+                  <span className="!m-0 !p-0 uppercase text-[6vh]">
+                    {userData.companyname[0] || "A"}
+                  </span>
                 </div>
-                <div className="leading-4">
-                  <span className="!m-0 !p-0 ">{userData.username}</span>
-                  <small className="text-secondary m-0 p-0 block">
-                    Standard Client
+                <div className=" px-2 ">
+                  <span className="!m-0 !p-0 ">{userData.companyname}</span>
+                  <small className="text-secondary m-0 p-0 block ">
+                    <CurrentPlan />
                   </small>
                 </div>
               </div>

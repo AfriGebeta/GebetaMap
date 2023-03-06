@@ -1,27 +1,17 @@
-import { DatePicker, Select } from "antd";
-import { CopyOutlined, DeleteFilled, SyncOutlined } from "@ant-design/icons";
-import { Input } from "antd";
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import { setUser } from "./../../redux/reducers/user";
+import { useSelector } from "react-redux";
 import { url } from "./../../data/url";
-import ClipLoader from "react-spinners/ClipLoader";
-import Modal from "./../../features/Modal/index";
+
+import { format } from "date-fns";
 import { CategoryScale } from "chart.js";
 import Chart from "chart.js/auto";
 import { Line } from "react-chartjs-2";
-import { format } from "date-fns";
-const { Option } = Select;
-const { RangePicker } = DatePicker;
-
 function APIUsage() {
-  const dispatch = useDispatch();
   const { userData } = useSelector((state) => state.user);
 
   const [labels, setLabels] = useState([]);
   const [data, setData] = useState([]);
-  const [selectedGraph, setSelected] = useState("All");
+  // const [selectedGraph, setSelected] = useState("All");
 
   function sortWithIndeces(toSort) {
     for (var i = 0; i < toSort.length; i++) {
@@ -67,11 +57,11 @@ function APIUsage() {
           setData(output);
         }
       });
-  }, []);
+  }, [userData.id]);
 
-  function changeFilter(ev) {
-    setSelected(ev.target.value);
-  }
+  // function changeFilter(ev) {
+  //   setSelected(ev.target.value);
+  // }
 
   const options = {
     responsive: true,

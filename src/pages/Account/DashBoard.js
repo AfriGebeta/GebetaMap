@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { ReactComponent as DirectionIcon } from "../../assets/icons/direct.svg";
 import { ReactComponent as SettingsIcon } from "../../assets/icons/settings.svg";
 import ApiDetail from "../../components/Account/ApiDetail";
@@ -7,20 +7,19 @@ import APIToken from "../../components/Account/ApiToken";
 import APIUsage from "../../components/Account/ApiUsage";
 import BillingHistory from "../../components/Account/BillingHistory";
 
-import { useSelector, useDispatch } from "react-redux";
-import { setMetrics } from "./../../redux/reducers/metrics";
-import { url } from "./../../data/url";
+import { useSelector } from "react-redux";
+import { CurrentPlan } from "../../components/Account/CurrentPlan";
+
 function Cards() {
   const { metrics } = useSelector((state) => state.metrics);
   const { userData } = useSelector((state) => state.user);
-  const dispatch = useDispatch();
 
   return (
-    <div className="flex gap-6 items-center flex-wrap">
+    <div className="flex gap-6 items-stretch flex-wrap">
       <DocCard />
 
-      <div className="flex-1">
-        <div className="p-6 bg-[#202022]  text-[#777] rounded-md">
+      <div className="flex-1 ">
+        <div className="p-6 bg-[#202022] h-full text-[#777] rounded-md">
           <div className="flex gap-4 items-center px-5 py-2">
             <SettingsIcon className="" fill="#777" />
             <h2 className="m-0 uppercase">Business Pac.</h2>
@@ -28,23 +27,25 @@ function Cards() {
           </div>
           <div className="leading-3 py-3">
             <h2>{userData.username}</h2>
-            <span className="!m-0 !p-0 ">Standard Client</span>
+            <span className="!m-0 !p-0 ">
+              <CurrentPlan />
+            </span>
           </div>
         </div>
       </div>
-      <div className="flex-1 ">
+      <div className="">
         <div className="p-6 bg-[#202022]  text-[#777] rounded-md">
           <div className="flex gap-4 items-center px-5 py-2">
             <SettingsIcon className="" fill="#777" />
             <h2 className="m-0 uppercase">
-              Total Calls <tiny>calls</tiny>
+              Total Calls <small>calls</small>
             </h2>
             <DirectionIcon />
           </div>
           <div className="leading-3 py-3">
             <h2>
               {metrics.onm + metrics.direction + metrics.matrix + metrics.tss}{" "}
-              <tiny>calls</tiny>
+              <small>calls</small>
             </h2>
             {/* <span className="!m-0 !p-0 ">98.00%</span> */}
           </div>

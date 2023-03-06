@@ -25,19 +25,21 @@ function APIToken() {
   const tokenView = () => {
     return (
       <div className="bg-[#aaa] shadow w-[300px] rounded-lg  divide-gray-200">
-        <div className="px-5 py-7">
+        <div className="px-5 py-3">
           <p className="text-red-600">{errorMessage}</p>
           <label className="font-semibold text-sm text-black pb-1 block">
-            description
+            Description
           </label>
-          <input
-            type="text"
-            className="border  px-3 py-2 mt-1 mb-5 text-sm w-full text-black"
-            value={description}
+          <textarea
+            type="textarea"
+            rows={4}
+            className="border h-auto px-3 py-2 mt-1 mb-5 text-sm w-full text-black"
+            placeholder="Token Definition.."
             onChange={handleDescription}
-          />
+            defaultValue={description}
+          ></textarea>
 
-          <div className=" py-7">
+          <div className=" py-3">
             {showLoading ? (
               <button
                 type="button"
@@ -106,17 +108,19 @@ function APIToken() {
           return data.json();
         })
         .then((data) => {
-          if (data.msg == "ok") {
+          if (data.msg === "ok") {
             dispatch(setUser(data.data));
             setTokenModal(false);
           } else {
             alert("failed");
+            setErrorMessage('Failed!');
             setTokenModal(false);
           }
         });
 
       setShowLoading(false);
     } catch (err) {
+      setErrorMessage('Failed!');
       setShowLoading(false);
     }
   };
@@ -141,7 +145,7 @@ function APIToken() {
         elem={tokenView()}
       ></Modal>
       <Notify value={notify} />
-      {/* <button className="btn-sty1 self-start my-6 bg-black/60 text-[#aaa] " onClick={() => setTokenModal(true)}>+ API Token</button> */}
+      <button className="btn-sty1 self-start my-6 bg-black/60 text-[#aaa] " onClick={() => setTokenModal(true)}>+ API Token</button>
       <div className="flex-1 flex items-center gap-4">
         <input
           disabled

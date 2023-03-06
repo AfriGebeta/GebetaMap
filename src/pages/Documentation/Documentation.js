@@ -1,4 +1,4 @@
-import { ConfigProvider, Popover, Steps, Switch } from "antd";
+import { ConfigProvider, Popover, Steps } from "antd";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { ReactComponent as Logo } from "../../assets/images/maplogo.svg";
@@ -10,6 +10,7 @@ import GeoCodingAPI from "./GeocodingAPI";
 import ONMEndPoint from "./ONMEndPoint";
 import TrackVisibility from "react-on-screen";
 import { DownOutlined } from "@ant-design/icons";
+import { useCallback } from "react";
 
 
 const {Step} = Steps;
@@ -21,15 +22,16 @@ const customDot = (dot, { status, index }) => (
 );
 
 
-const ScreenView = ({children,setItems,setCurrentView}) => {
+const ScreenView = ({items,children,setItems,setCurrentView}) => {
   useEffect(() => {
     let temp = [];
     children.map((elem) => {
       temp.push({title: elem.props.title || 'API'});
-      // console.log(elem.props.title);
-    })  
+      return true;
+    })
+    if(JSON.stringify(temp) !== JSON.stringify(items))
     setItems(temp);
-  },[])
+  },[children,setItems,items])
   return (
     <div>
       {children.map((child,i) => (
@@ -47,22 +49,18 @@ function ScreenChange({children,visible,index,setCurrentView}) {
   useEffect(() => {
     if(visible)
       setCurrentView(index);
-    console.log(visible);
-  },[visible])
+    // console.log(visible);
+  },[visible,index,setCurrentView]);
+
   return children;
 }
 
 
 function Documentation() {
-  const itemsx = [
-    {title: 'Direction API'},
-    {title: 'Matrix API'},
-    {title: 'Route Optimization API'},
-    {title: 'Geocoding API'},
-    {title: 'Add tooltips'}
-  ];
   const [items,setItems] = useState([]);
   const [currentView,setCurrentView] = useState(0);
+
+  const updateItems = useCallback(setItems,[setItems])
 
   return (
     <div className="bg-dark min-h-screen flex justify-center">
@@ -128,7 +126,7 @@ function Documentation() {
                 Each API part has its own documentation. Jump to the desired API part and learn about the API through the given examples and tutorials. In addition, for each API there are specific sample requests that you can send via Insomnia or Postman to see what the requests and responses look like.
               </p>
             </div>
-            <ScreenView setItems={setItems} setCurrentView={setCurrentView} className="flex flex-col gap-24">
+            <ScreenView items={items} setItems={updateItems} setCurrentView={setCurrentView} className="flex flex-col gap-24">
               <DirectionEndPoint title="Direction EndPoint" />
               <MatrixEndPoint title="Matrix EndPoint" />
               <RouteEndPoint title="Routing EndPoint" />

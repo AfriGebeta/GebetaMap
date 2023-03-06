@@ -2,15 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { setMetrics } from "./../../redux/reducers/metrics";
 import { url } from "./../../data/url";
-import {
-  add,
-  eachDayOfInterval,
-  endOfMonth,
-  format,
-  isEqual,
-  parse,
-  startOfToday,
-} from "date-fns";
+import { add, format } from "date-fns";
 function ApiDetail() {
   const { metrics } = useSelector((state) => state.metrics);
   const { userData } = useSelector((state) => state.user);
@@ -24,13 +16,13 @@ function ApiDetail() {
     };
     // let data
     for (let i = 0; i < data.length; i++) {
-      if (data[i][0] == "Matrix") _data.matrix = data[i][1];
+      if (data[i][0] === "Matrix") _data.matrix = data[i][1];
 
-      if (data[i][0] == "Direction") _data.direction = data[i][1];
+      if (data[i][0] === "Direction") _data.direction = data[i][1];
 
-      if (data[i][0] == "Tss" || data[i][0] == "TSS") _data.tss = data[i][1];
+      if (data[i][0] === "Tss" || data[i][0] === "TSS") _data.tss = data[i][1];
 
-      if (data[i][0] == "Onm" || data[i][0] == "ONM") _data.onm = data[i][1];
+      if (data[i][0] === "Onm" || data[i][0] === "ONM") _data.onm = data[i][1];
     }
 
     return _data;
@@ -53,7 +45,7 @@ function ApiDetail() {
           );
         }
       });
-  }, []);
+  }, [dispatch, userData.id]);
 
   const [detail] = useState({
     status: "active",

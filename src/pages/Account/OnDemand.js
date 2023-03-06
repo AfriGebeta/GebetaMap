@@ -1,7 +1,5 @@
-import { SearchOutlined } from "@ant-design/icons";
-import { Select } from "antd";
-import { geocoding, tss } from "../../data/index";
-import React, { useState, useEffect } from "react";
+import { tss } from "../../data/index";
+import React, { useState } from "react";
 import ApiDetail from "../../components/Account/ApiDetail";
 import APIToken from "../../components/Account/ApiToken";
 import BillingHistory from "../../components/Account/BillingHistory";
@@ -10,235 +8,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { setTssData } from "./../../redux/reducers/tssData";
 import Notify from "./../../components/Notify";
 import { jsPDF } from "jspdf";
-import url from "../../data/url";
-
-const ManualLoc = (props) => {
-  const dispatch = useDispatch();
-  let { tssData } = useSelector((state) => state.tssData);
-  const [locationsData, setLocationData] = useState([]);
-  const { userData } = useSelector((state) => state.user);
-  const [searchValue, setSearchValue] = useState(null);
-  const [lat, setLat] = useState("");
-  const [long, setLong] = useState("");
-  const [placeName, setPlaceName] = useState("");
-  //import tssData
-
-  let handleTssData = (e, index, type) => {
-    let newIndex = returnIndex(index);
-
-    let newData = tssData.map((obj) => ({
-      ...obj,
-    }));
-    const ds = {
-      id: newData[newIndex].id,
-      longitude:
-        type != "longitude" ? newData[newIndex].longitude : e.target.value,
-      latitude:
-        type != "latitude" ? newData[newIndex].latitude : e.target.value,
-      placename:
-        type != "placename" ? newData[newIndex].placename : e.target.value,
-    };
-    newData[newIndex] = ds;
-    dispatch(setTssData(newData));
-  };
-
-  let handleDelete = (index) => {
-    let newIndex = returnIndex(index);
-
-    let newData = tssData.map((obj) => ({
-      ...obj,
-    }));
-    newData.splice(newIndex - 1, 1);
-    dispatch(setTssData(newData));
-  };
-
-  let returnPlaceName = (id) => {
-    for (let i = 0; i < tssData.length; i++) {
-      if (tssData[i].id == id) {
-        return tssData[i].placename;
-      }
-    }
-
-    return "";
-  };
-
-  let returnLatitude = (id) => {
-    for (let i = 0; i < tssData.length; i++) {
-      if (tssData[i].id == id) return tssData[i].latitude;
-    }
-
-    return "";
-  };
-
-  let returnLongitude = (id) => {
-    for (let i = 0; i < tssData.length; i++) {
-      if (tssData[i].id == id) return tssData[i].longitude;
-    }
-
-    return "";
-  };
-
-  let returnIndex = (id) => {
-    for (let i = 0; i < tssData.length; i++) {
-      if (tssData[i].id == id) return i;
-    }
-  };
-
-  let handleSearch = () => {
-    geocoding(searchValue, userData.token).then((data) => {
-      if (data.msg == "ok") {
-        setLocationData(data.data);
-      }
-    });
-  };
-
-  const geoLocChange = async (e, value) => {
-    //const obj = locationsData.find((obj) => obj.value === value);
-    console.log(value.value);
-    setPlaceName(value.value);
-    setLat(value.lat);
-    setLong(value.long);
-    // searchValue(value);
-
-    try {
-      console.log(tssData);
-      let newIndex = returnIndex(props.index);
-
-      let newArray = tssData.map((obj) => ({
-        ...obj,
-      }));
-
-      newArray[newIndex].longitude = value.long;
-      newArray[newIndex].latitude = value.lat;
-      newArray[newIndex].placename = value.value;
-
-      dispatch(setTssData(newArray));
-    } catch (err) {
-      console.log(err);
-    }
-  };
-  const geoLocSearch = async (value) => {
-    await geocoding(value, userData.token).then((data) => {
-      if (data.msg == "ok") {
-        let obj = data.data;
-
-        let temp = [];
-        obj.map((data) => {
-          temp.push({
-            value: data.name,
-            label: data.name,
-            lat: data.latitude,
-            long: data.longitude,
-          });
-        });
-        setLocationData(temp);
-      }
-    });
-  };
-  return (
-    <div className="flex gap-6 flex-wrap">
-      <div className="leading-3 flex flex-1 sm:min-w-[50%] flex-wrap  gap-3 p-4 rounded-md bg-[#202022] max-w-full">
-        <div className="">
-          <h2 className="p-0 m-0 uppercase ">Geocoding</h2>
-          <p className="m-0 p-0">endpoint</p>
-        </div>
-        <div className="flex flex-1 items-stretch">
-          <Select
-            showSearch
-            placeholder="enter location name"
-            // optionFilterProp="children"
-            onChange={(e, i) => {
-              geoLocChange(e, i);
-            }}
-            onSearch={geoLocSearch}
-            value={searchValue}
-            // filterOption={(input, option) => {
-            //   setSearchValue(input);
-            //   (option?.name ?? "").toLowerCase().includes(input.toLowerCase());
-            // }}
-            className="flex-1 bg-[#181818] px-3 py-2 border-0 placeholder:text-white"
-            style={{ backgroundColor: "#181818" }}
-            options={locationsData}
-          />
-          {/* <input type="text" placeholder="enter location name" className="flex-1 bg-[#181818] px-3 py-2 border-0" /> */}
-          <span className="flex items-center bg-[#181818] px-3">
-            <SearchOutlined onClick={handleSearch} />
-          </span>
-        </div>
-      </div>
-      <div className="leading-3 flex flex-1 flex-wrap sm:min-w-[47%] gap-3 p-4 rounded-md bg-[#202022] max-w-full">
-        <div className="">
-          <h2 className="p-0 m-0 uppercase ">Place</h2>
-          <p className="m-0 p-0">Name</p>
-        </div>
-
-        <input
-          type="text"
-          // value={placeName}
-          value={returnPlaceName(props.index)}
-          onChange={(e) => {
-            handleTssData(e, props.index, "placename");
-          }}
-          placeholder=""
-          className="flex-1 bg-[#181818] px-3 border-0 !min-w-[40px]"
-        />
-      </div>
-
-      <div className="leading-3 flex-1 flex-wrap flex gap-3 p-4 rounded-md bg-[#202022] min-w-[47%]">
-        <div className="">
-          <h2 className="p-0 m-0 uppercase ">Manual</h2>
-          <p className="m-0 p-0">entry</p>
-        </div>
-        <div className="flex flex-1 items-stretch max-w-[100%]">
-          <input
-            type="text"
-            //value={lat}
-            value={returnLatitude(props.index)}
-            onChange={(e) => {
-              handleTssData(e, props.index, "latitude");
-            }}
-            placeholder="22.3423421"
-            className="flex-1 bg-[#181818] px-3 border-0 !min-w-[40px]"
-          />
-          <div className="flex items-end p-2">Lat</div>
-        </div>
-      </div>
-
-      <div className="leading-3 flex-1 flex-wrap flex gap-3 p-4 rounded-md bg-[#202022]">
-        <div className="">
-          <h2 className="p-0 m-0 uppercase ">Manual</h2>
-          <p className="m-0 p-0">entry</p>
-        </div>
-        <div className="flex flex-1 items-stretch">
-          <input
-            type="text"
-            placeholder="38.238890"
-            //value={long}
-            value={returnLongitude(props.index)}
-            onChange={(e) => {
-              handleTssData(e, props.index, "longitude");
-            }}
-            className="flex-1 bg-[#181818] px-3 border-0"
-          />
-          <div className="flex items-end p-2">Long</div>
-        </div>
-      </div>
-      <div className="leading-3 flex-2 flex-wrap flex gap-3 p-4 ">
-        <input
-          type="submit"
-          onClick={(e) => {
-            e.preventDefault();
-            handleDelete(props.index);
-          }}
-          value="Remove"
-          className="btn_sty1 flex-1 !text-2xl font-bold !bg-btnprimary/40 !text-btnprimary !border-btnprimary/10"
-        />
-      </div>
-
-      <hr className="w-full border-secondary/40" />
-    </div>
-  );
-};
+import ManualLoc from "../../components/Account/ManualLoc";
 
 function OnDemand() {
   const { tssData } = useSelector((state) => state.tssData);
@@ -249,12 +19,15 @@ function OnDemand() {
   const [totalTime, setTotalTime] = useState(null);
   const [totalDistance, setTotalDistance] = useState(null);
   const [selectedGenerated, setSelectedGenerated] = useState("Pdf");
+  const [csv, setCsv] = useState("");
   const dispatch = useDispatch();
+
+  const tssLimit = 10;
 
   const handleDriverName = (e) => setDriverName(e.target.value);
 
   let addLocation = () => {
-    if (tssData.length < 10) {
+    if (tssData.length < tssLimit) {
       const newData = [...tssData];
       const ds = {
         id: Date.now(),
@@ -285,8 +58,8 @@ function OnDemand() {
       let error = false;
       for (let i = 0; i < tssData.length; i++) {
         if (
-          tssData[i].latitude.trim() == "" ||
-          tssData[i].longitude.trim() == ""
+          tssData[i].latitude.trim() === "" ||
+          tssData[i].longitude.trim() === ""
         ) {
           error = true;
         }
@@ -367,6 +140,34 @@ function OnDemand() {
 
     doc.save("tss.pdf");
   };
+
+  let loadCsv = (ev) => {
+    let fileReader = new FileReader();
+    fileReader.onload = function () {
+      let arr = [];
+      fileReader.result.split("\r\n").map((data, i) => {
+        let row = data.split(",");
+        if (i < tssLimit) {
+          arr.push({
+            id: row[0],
+            longitude: row[1],
+            latitude: row[2],
+            placename: row[3],
+          });
+        }
+        return null;
+      });
+      // console.log(arr);
+      dispatch(setTssData(arr));
+    };
+    let val = ev.target.value.split("\\");
+
+    setCsv(val[val.length - 1]);
+    fileReader.readAsText(ev.target.files[0]);
+  };
+
+  console.log(tssData);
+
   return (
     <div className="w-full text-[#ccc] text-child flex flex-wrap gap-6">
       <div className="flex-1 flex flex-col gap-6 max-w-full">
@@ -380,18 +181,28 @@ function OnDemand() {
               <div className="gap-4 flex h-1/2 text-[#777]  max-w-full ">
                 <div className="leading-3 flex-1 flex flex-wrap gap-3 p-4 rounded-md bg-[#202022] max-w-full">
                   <div className="">
+                    <input
+                      type="file"
+                      accept="csv"
+                      style={{ display: "none" }}
+                      id="csvUpl"
+                      name="csv"
+                      onChange={loadCsv}
+                    />
                     <h2 className="p-0 m-0 uppercase ">Upload File</h2>
                     <p className="m-0 p-0">CSV</p>
                   </div>
                   <div className="flex flex-1 items-stretch">
                     <input
                       type="text"
-                      placeholder="enter path"
+                      value={csv || ""}
+                      disabled
                       className="flex-1 bg-[#181818] px-3 py-2 border-0"
                     />
                     <input
                       type="submit"
                       value="Browse"
+                      onClick={() => document.querySelector("#csvUpl").click()}
                       className="btn_sty1  font-bold !bg-btnprimary/40 !text-btnprimary !border-btnprimary/10"
                     />
                   </div>
@@ -418,9 +229,9 @@ function OnDemand() {
           <div className="flex gap-4 items-start flex-wrap">
             <div className="flex flex-1 gap-4 items-start flex-wrap">
               <div className="flex flex-col flex-1 gap-4">
-                {tssData.map((n, i) => (
-                  <ManualLoc Key={n.id} index={n.id} />
-                ))}
+                {tssData.map((n, i) =>
+                  n ? <ManualLoc key={n.id} data={n} index={n.id} /> : null
+                )}
               </div>
               <input
                 type="submit"
@@ -443,7 +254,7 @@ function OnDemand() {
                   setSelectedGenerated("Pdf");
                 }}
                 className={
-                  selectedGenerated == "Pdf"
+                  selectedGenerated === "Pdf"
                     ? "btn_sty1 !bg-btnprimary !border-btnprimary"
                     : "btn_sty1 !bg-[#181818] !border-[#181818]"
                 }
@@ -456,7 +267,7 @@ function OnDemand() {
                   setSelectedGenerated("Csv");
                 }}
                 className={
-                  selectedGenerated == "Csv"
+                  selectedGenerated === "Csv"
                     ? "btn_sty1 !bg-btnprimary !border-btnprimary"
                     : "btn_sty1 !bg-[#181818] !border-[#181818]"
                 }
@@ -469,7 +280,7 @@ function OnDemand() {
                   setSelectedGenerated("Json");
                 }}
                 className={
-                  selectedGenerated == "Json"
+                  selectedGenerated === "Json"
                     ? "btn_sty1 !bg-btnprimary !border-btnprimary"
                     : "btn_sty1 !bg-[#181818] !border-[#181818]"
                 }

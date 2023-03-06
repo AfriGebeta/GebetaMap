@@ -15,7 +15,7 @@ function Header() {
   return (
     <div className="w-full py-3">
       <div className={"flex gap-10"}>
-        <Link to="/account">
+        <Link to="/">
           <img src={LogoText} className="min-w-[100px]" alt="logo" />
         </Link>
         <div className="hidden md:flex flex-1 gap-4 text-white text-child uppercase">

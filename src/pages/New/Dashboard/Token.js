@@ -115,50 +115,6 @@ function ApiKeys(props) {
 
       setShowLoading(false);
     } catch (err) {
-<<<<<<< HEAD
-        console.log(err)
-                setShowLoading(false)
-             }
-
-}
-
-const copyToClipBoard = async copyMe => {
-  try {
-    await navigator.clipboard.writeText(copyMe);
-    alert('Copied!');
-    
-  } catch (err) {
-    alert('Failed T Copy');
-  }
-};
-
-    return (
-      <div className={"card2  uppercase "+props.className}>
-         <Modal open={showTokenModal} close={() => { setTokenModal(false) }} elem={
-                          
-                          tokenView()
-                       }>
-               
-                     </Modal>
-        <div className="flex flex-col">
-          <h2 className="text-white">Api Keys</h2>
-          <button className="btn-sty1 self-start my-6 " onClick={() => setTokenModal(true)}>+ Create Tokens</button>
-          <div>
-            <div className="flex justify-between">
-              <h3 className="text-white">Current Token</h3>
-              <div className="flex gap-3">
-                {/* <SyncOutlined className="!text-blue-500 cursor-pointer" /> */}
-                <DeleteFilled className="!text-red-600 cursor-pointer"  onClick={(event) => { event.preventDefault();  deleteToken()}} />
-              </div>
-            </div>
-          </div>
-          <Input placeholder="API Key"
-            value={userData.token}
-            className="resize-none rounded-md"
-            suffix={<CopyOutlined className="cursor-pointer" onClick={() => copyToClipBoard(userData.token)}/>}
-            autoSize
-          />
-=======
       setShowLoading(false);
     }
   };
@@ -194,7 +150,6 @@ const copyToClipBoard = async copyMe => {
               />
             </div>
           </div>
->>>>>>> integration
         </div>
         <Input
           placeholder="API Key"
