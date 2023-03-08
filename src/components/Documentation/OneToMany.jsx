@@ -2,24 +2,28 @@ import {
   MapContainer,
   TileLayer,
   Polyline,
+  useMapEvents,
   Marker,
   Popup,
+  Polygon,
+  FeatureGroup,
+  EditControl,
 } from "react-leaflet";
 import { useState } from "react";
 import L from "leaflet";
-import { useSelector } from "react-redux";
-import { oneToMany } from "../../data/index";
-// import { setUser } from "../../redux/reducers/user";
+import { useSelector, useDispatch } from "react-redux";
+import { oneToMany } from "./../../data/index";
+import { setUser } from "./../../redux/reducers/user";
 const default_latitude = 9.02151;
 const default_longitude = 38.80115;
 
 function AddMarkerToClick(props) {
-  const [rmarker] = useState([]);
-  const [gmarker] = useState([]);
-  // const [sets, Setter] = useState(false);
-  const [l1] = useState("");
-  const [lo1] = useState("");
-  // const [endPoints, setEndPoints] = useState([]);
+  const [rmarker, redMarker] = useState([]);
+  const [gmarker, greenMarker] = useState([]);
+  const [sets, Setter] = useState(false);
+  const [l1, setL1] = useState("");
+  const [lo1, setLO1] = useState("");
+  const [endPoints, setEndPoints] = useState([]);
   const [pos, setPos] = useState([]);
   const { userData } = useSelector((state) => state.user);
   const RedIcon = L.icon({
@@ -49,26 +53,28 @@ function AddMarkerToClick(props) {
       const data = await oneToMany(start, gmarker, userData.token);
 
       setPos(data.directions);
-    } catch (err) {}
+    } catch (err) {
+      console.log(err);
+    }
   }
-  // const map = useMapEvents({
-  //   click(e) {
-  //     const newMarker = e.latlng;
+  const map = useMapEvents({
+    click(e) {
+      const newMarker = e.latlng;
 
-  //     if (props.start && props.stop != true) {
-  //       setL1(newMarker.lat);
-  //       setLO1(newMarker.lng);
-  //       let _gmarker = [];
-  //       _gmarker.push(e.latlng);
-  //       greenMarker(_gmarker);
-  //     }
+      if (props.start && props.stop != true) {
+        setL1(newMarker.lat);
+        setLO1(newMarker.lng);
+        let _gmarker = [];
+        _gmarker.push(e.latlng);
+        greenMarker(_gmarker);
+      }
 
-  //     if (props.stop && props.start != true) {
-  //       rmarker.push(e.latlng);
-  //       Setter(!sets);
-  //     }
-  //   },
-  // });
+      if (props.stop && props.start != true) {
+        rmarker.push(e.latlng);
+        Setter(!sets);
+      }
+    },
+  });
 
   if (props.calculate) {
     callOnm({ lat: l1, lon: lo1 }, rmarker);
