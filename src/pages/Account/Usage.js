@@ -52,7 +52,7 @@ function Cards() {
           );
         }
       });
-  },[userData,dispatch]);
+  }, [userData, dispatch]);
   const objs = [
     {
       package: "ONM",
@@ -71,6 +71,7 @@ function Cards() {
       calls: metrics.tss,
     },
   ];
+
   return (
     <div className="flex gap-6 items-stretch flex-wrap">
       <DocCard />

@@ -10,22 +10,22 @@ const ManualLoc = (props) => {
   const { tssData } = useSelector((state) => state.tssData);
   const [locationsData, setLocationData] = useState([]);
   const { userData } = useSelector((state) => state.user);
-  const [searchValue] = useState('');
-  const [lat,setLat] = useState('');
-  const [long,setLong] = useState('');
-  const [placeName,setPlaceName] = useState('');
+  const [searchValue] = useState("");
+  const [lat, setLat] = useState("");
+  const [long, setLong] = useState("");
+  const [placeName, setPlaceName] = useState("");
   //import tssData
 
   useEffect(() => {
     setLat(props.data.latitude);
     setLong(props.data.longitude);
     setPlaceName(props.data.placename);
-  },[props.data]);
+  }, [props.data]);
 
   let handleTssData = (e, index, type) => {
     let newIndex = returnIndex(index);
 
-    const newData = [...tssData];
+    let newData = tssData.map((a) => Object.assign({}, a));
     const ds = {
       id: newData[newIndex].id,
       longitude:
@@ -49,7 +49,6 @@ const ManualLoc = (props) => {
     dispatch(setTssData(newData));
   };
 
-
   let returnIndex = (id) => {
     for (let i = 0; i < tssData.length; i++) {
       if (tssData[i].id === id) return i;
@@ -65,30 +64,37 @@ const ManualLoc = (props) => {
   };
 
   const geoLocChange = async (value) => {
-    const obj = (locationsData.find(obj => obj.value === value));
-    setPlaceName(obj.value);
-    setLat(obj.lat)
-    setLong(obj.long)
-    searchValue(value);
-    
+    console.log(tssData);
+    const obj = locationsData.find((obj) => obj.value === value);
+
+    const newObj = tssData.map((a) => Object.assign({}, a));
+    for (let i = 0; i < newObj.length; i++) {
+      if (newObj[i].id == props.index) {
+        newObj[i].latitude = obj.lat;
+        newObj[i].longitude = obj.long;
+        newObj[i].placename = obj.value;
+      }
+    }
+    dispatch(setTssData(newObj));
   };
-  const geoLocSearch = async(value) => {
-    // const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjb21wYW55bmFtZSI6ImdlYmV0YSIsImlkIjoiZDIyOWU3YWQtMTkxYS00ODU0LWE4MmEtNmM3NWI1Zjk2MzkwIiwidXNlcm5hbWUiOiJnZWJldGF1c2VyIn0.DCviuf0-xKaHNG8gwlKH6mRbYnzW-NHHj6psK8KWXrg';
+  const geoLocSearch = async (value) => {
     await geocoding(value, userData.token).then((data) => {
       if (data.msg === "ok") {
         let obj = data.data;
-        // console.log("data: ",obj)
         let temp = [];
         obj.map((data) => {
-          temp.push(
-            {value: data.name,label: data.name,lat: data.latitude,long: data.longitude}
-          )
-          return null
-        })
+          temp.push({
+            value: data.name,
+            label: data.name,
+            lat: data.latitude,
+            long: data.longitude,
+          });
+          return null;
+        });
         setLocationData(temp);
       }
     });
-  }
+  };
   return (
     <div className="flex gap-6 flex-wrap">
       <div className="leading-3 flex flex-1 sm:min-w-[50%] flex-wrap  gap-3 p-4 rounded-md bg-[#202022] max-w-full">
@@ -100,19 +106,14 @@ const ManualLoc = (props) => {
           <Select
             showSearch
             placeholder="enter location name"
-            // optionFilterProp="children"
             onChange={geoLocChange}
             onSearch={geoLocSearch}
             value={searchValue}
-            // filterOption={(input, option) => {
-            //   setSearchValue(input);
-            //   (option?.name ?? "").toLowerCase().includes(input.toLowerCase());
-            // }}
             className="flex-1 bg-[#181818] px-3 py-2 border-0 placeholder:text-white"
             style={{ backgroundColor: "#181818" }}
             options={locationsData}
           />
-          {/* <input type="text" placeholder="enter location name" className="flex-1 bg-[#181818] px-3 py-2 border-0" /> */}
+
           <span className="flex items-center bg-[#181818] px-3">
             <SearchOutlined onClick={handleSearch} />
           </span>
@@ -127,7 +128,6 @@ const ManualLoc = (props) => {
         <input
           type="text"
           value={placeName}
-          // value={returnPlaceName(props.index)}
           onChange={(e) => {
             handleTssData(e, props.index, "placename");
           }}
@@ -145,7 +145,6 @@ const ManualLoc = (props) => {
           <input
             type="text"
             value={lat}
-            // value={returnLatitude(props.index)}
             onChange={(e) => {
               handleTssData(e, props.index, "latitude");
             }}
@@ -166,7 +165,6 @@ const ManualLoc = (props) => {
             type="text"
             placeholder="38.238890"
             value={long}
-            // value={returnLongitude(props.index)}
             onChange={(e) => {
               handleTssData(e, props.index, "longitude");
             }}

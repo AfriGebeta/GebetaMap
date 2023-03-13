@@ -1,5 +1,5 @@
 import { tss } from "../../data/index";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ApiDetail from "../../components/Account/ApiDetail";
 import APIToken from "../../components/Account/ApiToken";
 import BillingHistory from "../../components/Account/BillingHistory";
@@ -20,12 +20,20 @@ function OnDemand() {
   const [totalDistance, setTotalDistance] = useState(null);
   const [selectedGenerated, setSelectedGenerated] = useState("Pdf");
   const [csv, setCsv] = useState("");
+  const [showModal, setShowModal] = React.useState(false);
+  const [message, setMessage] = React.useState("Failed");
+
   const dispatch = useDispatch();
 
   const tssLimit = 10;
 
   const handleDriverName = (e) => setDriverName(e.target.value);
 
+  useEffect(() => {
+    document.addEventListener("click", () => {
+      setShowModal(false);
+    });
+  });
   let addLocation = () => {
     if (tssData.length < tssLimit) {
       const newData = [...tssData];
@@ -56,6 +64,7 @@ function OnDemand() {
       });
     } else {
       let error = false;
+
       for (let i = 0; i < tssData.length; i++) {
         if (
           tssData[i].latitude.trim() === "" ||
@@ -80,14 +89,20 @@ function OnDemand() {
         }
         //call tss
 
-        tss(gmarker, userData.token).then((n) => {
-          console.log(n);
-          // timetaken
-          // totalDistance
-          setTotalTime(n.timetaken);
-          setTotalDistance(n.totalDistance);
-          setBestOrder(n);
-        });
+        tss(gmarker, userData.token)
+          .then((n) => {
+            // timetaken
+            // totalDistance
+            setShowModal(true);
+            setMessage("Success");
+            setTotalTime(n.timetaken);
+            setTotalDistance(n.totalDistance);
+            setBestOrder(n);
+          })
+          .catch((err) => {
+            setShowModal(true);
+            setMessage("Failed");
+          });
       }
     }
   };
@@ -139,6 +154,7 @@ function OnDemand() {
     doc.table(10, 80, generateData(), headers, { autoSize: true });
 
     doc.save("tss.pdf");
+    setShowModal(false);
   };
 
   let loadCsv = (ev) => {
@@ -165,8 +181,6 @@ function OnDemand() {
     setCsv(val[val.length - 1]);
     fileReader.readAsText(ev.target.files[0]);
   };
-
-  console.log(tssData);
 
   return (
     <div className="w-full text-[#ccc] text-child flex flex-wrap gap-6">
@@ -224,6 +238,48 @@ function OnDemand() {
               </div>
             </div>
           </div>
+
+          {showModal ? (
+            <>
+              <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
+                <div className="relative w-auto my-6 mx-auto max-w-3xl ">
+                  {/*content*/}
+                  <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+                    {/*header*/}
+
+                    {/*body*/}
+                    <div className="relative p-6 flex-auto bg-[#1a1f32]">
+                      {message == "Success" ? (
+                        <p className="text-center my-4 text-green-500 text-lg leading-relaxed">
+                          {message}
+                        </p>
+                      ) : (
+                        <p className="text-center my-4 text-red-500 text-lg leading-relaxed">
+                          {message}
+                        </p>
+                      )}
+
+                      {/* <button
+                  className=" text-white-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                  type="button"
+                  onClick={() => setShowModal(false)}
+                >
+                  Generate Result
+                </button> */}
+
+                      <input
+                        type="submit"
+                        onClick={handleGenerate}
+                        value="Generate"
+                        className="btn_sty1 flex-1 !text-2xl font-bold !bg-btnprimary/40 !text-btnprimary !border-btnprimary/10"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
+            </>
+          ) : null}
 
           {/* Manual Entry */}
           <div className="flex gap-4 items-start flex-wrap">
@@ -291,12 +347,6 @@ function OnDemand() {
               type="submit"
               onClick={handleCalculate}
               value="Calculate"
-              className="btn_sty1 flex-1 !text-2xl font-bold !bg-btnprimary/40 !text-btnprimary !border-btnprimary/10"
-            />
-            <input
-              type="submit"
-              onClick={handleGenerate}
-              value="Generate"
               className="btn_sty1 flex-1 !text-2xl font-bold !bg-btnprimary/40 !text-btnprimary !border-btnprimary/10"
             />
           </div>
