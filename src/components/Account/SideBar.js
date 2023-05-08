@@ -224,6 +224,12 @@ function SideBar() {
                 to="/account/ondemand"
                 active={url === "ondemand"}
               />
+              <SideLink
+                label="One Time Location"
+                iconComp={SettingFilled}
+                to="/account/onetimesms"
+                active={url === "onetimesms"}
+              />
             </div>
             <div className="flex-1 overflow-hidden relative ">
               <div className="p-5 flex flex-1 flex-col items-center mb-10 ">

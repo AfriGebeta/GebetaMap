@@ -23,7 +23,8 @@ import PrivacyPolicy from "./pages/Account/PrivacyPolicy";
 import TermsOfUse from "./pages/Account/TermsOfUse";
 import Notification from "./pages/Account/Notification";
 import About from "./pages/About";
-
+// import GpsData from "./pages/GpsPhone/GpsData";
+import OneTimeSms from "./pages/Account/OneTimeSms";
 function App() {
   return (
     <Router basename="/">
@@ -32,6 +33,7 @@ function App() {
           <Route index element={<Index />} />
           <Route path="/contact" element={<Contact />} />
         </Route>
+        {/* <Route path="/gpsdata" element = {<GpsData/>} /> */}
         <Route path="/about" element={<About />} />
         <Route path="/documentation" element={<DocDesign />} />
         <Route path="/account" element={<SideBar />}>
@@ -45,6 +47,7 @@ function App() {
           <Route path="notification" element={<Notification />} />
           <Route path="privacypolicy" element={<PrivacyPolicy />} />
           <Route path="termsofuse" element={<TermsOfUse />} />
+          <Route path="onetimesms" element={<OneTimeSms/>} />
         </Route>
       </Routes>
     </Router>
