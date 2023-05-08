@@ -49,44 +49,43 @@ function OneTimeSms() {
 
   //get token from localstrage if expired dont update uniquetoken
   useEffect(()=>{
-    axios.get('https://www.google.com')
+
   },[])
 
  
-  // useEffect(() => {
+  useEffect(() => {
    
-  //   const source = new EventSource(`http://20.163.190.93/gpsgate/push-notification/${uniquetoken}`);
+    const source = new EventSource(`http://20.163.190.93/gpsgate/push-notification/${uniquetoken}`);
 
-  //   source.addEventListener('open', () => {
-  //     console.log('SSE opened!');
-  //   });
+    source.addEventListener('open', () => {
+      console.log('SSE opened!');
+    });
 
-  //   source.addEventListener('message', (e) => {
+    source.addEventListener('message', (e) => {
       
-  //     const data = JSON.parse(e.data);
-  //     try{
-  //       console.log(data)
-  //       const jsondata = JSON.parse(e.data)
-  //       if(jsondata.latitude != null && jsondata.longitude != null){
-  //         setGpsLatitude(jsondata.latitude)
-  //         setGpsLongitude(jsondata.longitude)
-  //       }
+      const data = JSON.parse(e.data);
+      try{
+        const jsondata = JSON.parse(e.data)
+        if(jsondata.latitude != null && jsondata.longitude != null){
+          setGpsLatitude(jsondata.latitude)
+          setGpsLongitude(jsondata.longitude)
+        }
       
-  //     }catch(err){
-  //       console.log("err")
-  //     }
+      }catch(err){
+        console.log("err")
+      }
     
    
-  //   });
+    });
 
-  //   source.addEventListener('error', (e) => {
-  //     console.error('Error: ',  e);
-  //   });
+    source.addEventListener('error', (e) => {
+      console.error('Error: ',  e);
+    });
 
-  //   return () => {
-  //     source.close();
-  //   };
-  // }, [uniquetoken]);
+    return () => {
+      source.close();
+    };
+  }, [uniquetoken]);
 
   const sendtophone = () => {
     //generate uuid and send it with the phone
