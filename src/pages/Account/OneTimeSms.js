@@ -55,38 +55,45 @@ function OneTimeSms() {
 
  
   useEffect(() => {
+    console.log(uniquetoken)
    if(uniquetoken != null){
-    const source = new EventSource(`${baseurl}/push-notification/${uniquetoken}`);
+try{
+  console.log("after update" +uniquetoken)
+  const source = new EventSource(`${baseurl}/push-notification/${uniquetoken}`);
 
-    source.addEventListener('open', () => {
-      console.log('SSE opened!');
-    });
+  source.addEventListener('open', () => {
+    console.log('SSE opened!');
+  });
 
-    source.addEventListener('message', (e) => {
-      
-      const data = JSON.parse(e.data);
-      try{
-        const jsondata = JSON.parse(e.data)
-        if(jsondata.latitude != null && jsondata.longitude != null){
-          console.log(jsondata)
-          setGpsLatitude(jsondata.latitude)
-          setGpsLongitude(jsondata.longitude)
-        }
-      
-      }catch(err){
-        console.log("err")
+  source.addEventListener('message', (e) => {
+    
+    const data = JSON.parse(e.data);
+    try{
+      const jsondata = JSON.parse(e.data)
+      if(jsondata.latitude != null && jsondata.longitude != null){
+        console.log(jsondata)
+        setGpsLatitude(jsondata.latitude)
+        setGpsLongitude(jsondata.longitude)
       }
     
-   
-    });
+    }catch(err){
+      console.log("err")
+    }
+  
+ 
+  });
 
-    source.addEventListener('error', (e) => {
-      console.error('Error: ',  e);
-    });
+  source.addEventListener('error', (e) => {
+    console.error('Error: ',  e);
+  });
 
-    return () => {
-      source.close();
-    };
+  return () => {
+    source.close();
+  };
+}catch(err){
+  console.log(err)
+}
+    
    }
     
   }, [uniquetoken]);
