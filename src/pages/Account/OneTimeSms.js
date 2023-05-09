@@ -52,11 +52,11 @@ function OneTimeSms() {
   useEffect(()=>{
     console.log("hello there")
     console.log(uniquetoken)
-   if(uniquetoken != null){
+
 
         console.log("after update" +uniquetoken)
         const source = new EventSource(`${baseurl}/push-notification/${uniquetoken}` );
-
+        console.log("hello therjhdsfhk;sadfjkdsfjk;sdaf")
         source.addEventListener('open', () => {
           console.log('SSE opened!');
         });
@@ -79,19 +79,18 @@ function OneTimeSms() {
       
         });
 
-        source.addEventListener('error', (e) => {
-          console.error('Error: ',  e);
-        });
+        sse.onerror = (e) => {
+          // error log here 
+          console.log("the error is here")
+          sse.close();
+        }
 
         return () => {
           source.close();
         };
 
     
-   }
-   else{
-    console.log("still non")
-   }
+ 
     
   }, []);
 
