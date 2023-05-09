@@ -55,7 +55,7 @@ function OneTimeSms() {
    if(uniquetoken != null){
 try{
   console.log("after update" +uniquetoken)
-  const source = new EventSource(`${baseurl}/push-notification/${uniquetoken}`);
+  const source = new EventSource(`${baseurl}/push-notification/${uniquetoken}` ,  { withCredentials: true });
 
   source.addEventListener('open', () => {
     console.log('SSE opened!');
@@ -104,6 +104,7 @@ try{
       token: small_id
     })
     .then((response) => {
+      console.log("hello there what is going on")
       localStorage.setItem('token', JSON.stringify({id : small_id , createdAt : Date.now()}));
       setUniqueToken(small_id)
     }, (error) => {
