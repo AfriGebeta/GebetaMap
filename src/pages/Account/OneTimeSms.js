@@ -54,40 +54,43 @@ function OneTimeSms() {
     console.log(uniquetoken)
    if(uniquetoken != null){
 
-  console.log("after update" +uniquetoken)
-  const source = new EventSource(`${baseurl}/push-notification/${uniquetoken}` ,  { withCredentials: true });
+        console.log("after update" +uniquetoken)
+        const source = new EventSource(`${baseurl}/push-notification/${uniquetoken}` );
 
-  source.addEventListener('open', () => {
-    console.log('SSE opened!');
-  });
+        source.addEventListener('open', () => {
+          console.log('SSE opened!');
+        });
 
-  source.addEventListener('message', (e) => {
+        source.addEventListener('message', (e) => {
+          
+          const data = JSON.parse(e.data);
+          try{
+            const jsondata = JSON.parse(e.data)
+            if(jsondata.latitude != null && jsondata.longitude != null){
+              console.log(jsondata)
+              setGpsLatitude(jsondata.latitude)
+              setGpsLongitude(jsondata.longitude)
+            }
+          
+          }catch(err){
+            console.log("err")
+          }
+        
+      
+        });
+
+        source.addEventListener('error', (e) => {
+          console.error('Error: ',  e);
+        });
+
+        return () => {
+          source.close();
+        };
+
     
-    const data = JSON.parse(e.data);
-    try{
-      const jsondata = JSON.parse(e.data)
-      if(jsondata.latitude != null && jsondata.longitude != null){
-        console.log(jsondata)
-        setGpsLatitude(jsondata.latitude)
-        setGpsLongitude(jsondata.longitude)
-      }
-    
-    }catch(err){
-      console.log("err")
-    }
-  
- 
-  });
-
-  source.addEventListener('error', (e) => {
-    console.error('Error: ',  e);
-  });
-
-  return () => {
-    source.close();
-  };
-
-    
+   }
+   else{
+    console.log("still non")
    }
     
   }, []);
