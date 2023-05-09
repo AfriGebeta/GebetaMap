@@ -53,7 +53,7 @@ function OneTimeSms() {
     console.log("hello there")
     console.log(uniquetoken)
    if(uniquetoken != null){
-try{
+
   console.log("after update" +uniquetoken)
   const source = new EventSource(`${baseurl}/push-notification/${uniquetoken}` ,  { withCredentials: true });
 
@@ -86,31 +86,34 @@ try{
   return () => {
     source.close();
   };
-}catch(err){
-  console.log(err)
-}
+
     
    }
     
   }, []);
 
   const sendtophone = () => {
+    console.log("sending sms")
     //generate uuid and send it with the phone
     const unique_id = uuid();
     const small_id = unique_id.slice(0,10)
+try{
+  axios.post(`${baseurl}/sendsms`, {
+    phone: phone  ,
+    token: small_id
+  })
+  .then((response) => {
+    console.log("hello there what is going on")
+    localStorage.setItem('token', JSON.stringify({id : small_id , createdAt : Date.now()}));
+    setUniqueToken(small_id)
+  }, (error) => {
+    alert("can not send")
+  });
 
-    axios.post(`${baseurl}/sendsms`, {
-      phone: phone  ,
-      token: small_id
-    })
-    .then((response) => {
-      console.log("hello there what is going on")
-      localStorage.setItem('token', JSON.stringify({id : small_id , createdAt : Date.now()}));
-      setUniqueToken(small_id)
-    }, (error) => {
-      alert("can not send")
-    });
-
+}catch(err){
+  console.log(err)
+}
+  
 
 
     
