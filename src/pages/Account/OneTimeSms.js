@@ -50,11 +50,7 @@ function OneTimeSms() {
 
   //get token from localstrage if expired dont update uniquetoken
   useEffect(()=>{
-
-  },[])
-
- 
-  useEffect(() => {
+    console.log("hello there")
     console.log(uniquetoken)
    if(uniquetoken != null){
 try{
@@ -96,7 +92,7 @@ try{
     
    }
     
-  }, [uniquetoken]);
+  }, []);
 
   const sendtophone = () => {
     //generate uuid and send it with the phone
