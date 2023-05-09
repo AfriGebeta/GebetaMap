@@ -55,7 +55,7 @@ function OneTimeSms() {
  
   useEffect(() => {
    
-    const source = new EventSource(`http://20.163.190.93/gpsgate/push-notification/${uniquetoken}`);
+    const source = new EventSource(`https://sms.gebeta.app/push-notification/${uniquetoken}`);
 
     source.addEventListener('open', () => {
       console.log('SSE opened!');
@@ -92,7 +92,7 @@ function OneTimeSms() {
     const unique_id = uuid();
     const small_id = unique_id.slice(0,10)
 
-    axios.post('http://20.163.190.93/gpsgate/sendsms', {
+    axios.post('https://sms.gebeta.app/sendsms', {
       phone: phone  ,
       token: small_id
     })
@@ -134,7 +134,7 @@ function OneTimeSms() {
                   e.preventDefault()
                   sendtophone()
                   }
-                }>Submit</button>
+                }>Send</button>
          
                  </div>
                  
