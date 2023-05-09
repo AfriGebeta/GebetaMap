@@ -33,7 +33,8 @@ function OneTimeSms() {
   const [gpslongitude, setGpsLongitude] = React.useState(null);
   const [uniquetoken , setUniqueToken] = React.useState(null)
   const [phone , setPhone] = React.useState("")
-
+  //const baseurl = "http://localhost:4650"
+  const baseurl = "https://sms.gebeta.app"
   const RedIcon = L.icon({
     iconUrl: require("./../../components/Documentation/red.png"),
     iconRetinaUrl: require("./../../components/Documentation/red.png"),
@@ -54,8 +55,8 @@ function OneTimeSms() {
 
  
   useEffect(() => {
-   
-    const source = new EventSource(`https://sms.gebeta.app/push-notification/${uniquetoken}`);
+   if(uniquetoken != null){
+    const source = new EventSource(`${baseurl}/push-notification/${uniquetoken}`);
 
     source.addEventListener('open', () => {
       console.log('SSE opened!');
@@ -67,6 +68,7 @@ function OneTimeSms() {
       try{
         const jsondata = JSON.parse(e.data)
         if(jsondata.latitude != null && jsondata.longitude != null){
+          console.log(jsondata)
           setGpsLatitude(jsondata.latitude)
           setGpsLongitude(jsondata.longitude)
         }
@@ -85,6 +87,8 @@ function OneTimeSms() {
     return () => {
       source.close();
     };
+   }
+    
   }, [uniquetoken]);
 
   const sendtophone = () => {
@@ -92,7 +96,7 @@ function OneTimeSms() {
     const unique_id = uuid();
     const small_id = unique_id.slice(0,10)
 
-    axios.post('https://sms.gebeta.app/sendsms', {
+    axios.post(`${baseurl}/sendsms`, {
       phone: phone  ,
       token: small_id
     })
