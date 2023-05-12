@@ -7,6 +7,8 @@ import DocCard from "../../components/Account/DocCard";
 import L from "leaflet";
 import axios from "axios";
 import "./phonestyle.css"
+import socketIO from "socket.io-client";
+import {socket} from "./../../socket/socket"
 
 import {
   MapContainer,
@@ -33,8 +35,12 @@ function OneTimeSms() {
   const [gpslongitude, setGpsLongitude] = React.useState(null);
   const [uniquetoken , setUniqueToken] = React.useState(null)
   const [phone , setPhone] = React.useState("")
-  //const baseurl = "http://localhost:4650"
-  const baseurl = "https://sms.gebeta.app"
+  
+  const baseurl = "http://localhost:8080"
+  // //const baseurl = "https://sms.gebeta.app"
+  // const socket = socketIO.connect(baseurl);
+   
+
   const RedIcon = L.icon({
     iconUrl: require("./../../components/Documentation/red.png"),
     iconRetinaUrl: require("./../../components/Documentation/red.png"),
@@ -50,72 +56,55 @@ function OneTimeSms() {
 
   //get token from localstrage if expired dont update uniquetoken
   useEffect(()=>{
-    console.log("hello there")
-    console.log(uniquetoken)
+      console.log(uniquetoken)
+      socket.on( 'sendLatLng', function( data ) {
+        console.log(data)
+          if(data.status == "success"){
+            if(data.token == uniquetoken){
+              setGpsLatitude(data.latitude)
+              setGpsLongitude(data.longitude)
+         
+              socket.close()
+            }else{
+              console.log('the socket')
+              console.log(data.token)
+              console.log(uniquetoken)
 
-
-        console.log("after update" +uniquetoken)
-        const source = new EventSource(`${baseurl}/push-notification/${uniquetoken}` );
-        console.log("hello therjhdsfhk;sadfjkdsfjk;sdaf")
-        source.addEventListener('open', () => {
-          console.log('SSE opened!');
-        });
-
-        source.addEventListener('message', (e) => {
-          
-          const data = JSON.parse(e.data);
-          try{
-            const jsondata = JSON.parse(e.data)
-            if(jsondata.latitude != null && jsondata.longitude != null){
-              console.log(jsondata)
-              setGpsLatitude(jsondata.latitude)
-              setGpsLongitude(jsondata.longitude)
             }
-          
-          }catch(err){
-            console.log("err")
           }
-        
-      
-        });
-
-        sse.onerror = (e) => {
-          // error log here 
-          console.log("the error is here")
-          sse.close();
-        }
-
-        return () => {
-          source.close();
-        };
-
+      })
     
- 
+  
     
-  }, []);
+  }, [uniquetoken]);
 
   const sendtophone = () => {
     console.log("sending sms")
     //generate uuid and send it with the phone
     const unique_id = uuid();
     const small_id = unique_id.slice(0,10)
-try{
-  axios.post(`${baseurl}/sendsms`, {
-    phone: phone  ,
-    token: small_id
-  })
-  .then((response) => {
-    console.log("hello there what is going on")
+
+    socket.emit('sendsms' , {
+    
+      phone: phone  ,
+      token: small_id
+     
+    })
+
     localStorage.setItem('token', JSON.stringify({id : small_id , createdAt : Date.now()}));
     setUniqueToken(small_id)
-  }, (error) => {
-    alert("can not send")
-  });
+    console.log(small_id)  
+    // axios.post(`${baseurl}/sendsms`, {
+    //   phone: phone  ,
+    //   token: small_id
+    // })
+    // .then((response) => {
+    
+      
+    // }, (error) => {
+    //   alert("can not send")
+    // });
 
-}catch(err){
-  console.log(err)
-}
-  
 
 
     
