@@ -189,7 +189,7 @@ function Mapviewer(){
        
 
 
-          <CustomMarker isActive={true} data={{ position: [default_latitude , default_longitude] }} />
+          <CustomMarker isActive={true} data={{ position: [default_latitude , default_longitude] }} icon={RedIcon} />
        
         </MapContainer>
       </div>
@@ -200,12 +200,12 @@ function Mapviewer(){
 }
 
 
-const CustomMarker = ({ isActive, data, map }) => {
+const CustomMarker = ({ isActive, data, icon }) => {
 
 
 
   return (
-    <Marker position={data.position}>
+    <Marker icon={icon} position={data.position}>
       <Popup>
         Yupperz
       </Popup>
