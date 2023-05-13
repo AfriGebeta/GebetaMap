@@ -56,60 +56,51 @@ function OneTimeSms() {
 
   //get token from localstrage if expired dont update uniquetoken
   useEffect(()=>{
-      console.log(uniquetoken)
+    
       socket.on( 'sendLatLng', function( data ) {
-        console.log(data)
-          if(data.status == "success"){
-            if(data.token == uniquetoken){
-              setGpsLatitude(data.latitude)
-              setGpsLongitude(data.longitude)
-         
-              socket.close()
-            }else{
-              console.log('the socket')
-              console.log(data.token)
-              console.log(uniquetoken)
 
-            }
+        try{
+          let internalToken = localStorage.getItem('token')
+          if(internalToken != null){
+            let jsondata = JSON.parse(internalToken)
+             if(data.status == "success"){
+                  if(data.token == jsondata.id){
+                    setGpsLatitude(data.latitude)
+                    setGpsLongitude(data.longitude)
+                    localStorage.removeItem('token')
+                    //destroy the localstorage
+                  }else{
+                    // console.log('the socket')
+                  }
+              }
           }
+          
+         
+          
+        }catch(err){
+
+        }
+         
       })
     
   
     
-  }, [uniquetoken]);
+  }, []);
 
   const sendtophone = () => {
     console.log("sending sms")
     //generate uuid and send it with the phone
     const unique_id = uuid();
     const small_id = unique_id.slice(0,10)
-
+    setUniqueToken(small_id)
+    localStorage.setItem('token', JSON.stringify({id : small_id , createdAt : Date.now()}));
     socket.emit('sendsms' , {
-    
       phone: phone  ,
       token: small_id
-     
     })
-
-    localStorage.setItem('token', JSON.stringify({id : small_id , createdAt : Date.now()}));
-    setUniqueToken(small_id)
-    console.log(small_id)  
-    // axios.post(`${baseurl}/sendsms`, {
-    //   phone: phone  ,
-    //   token: small_id
-    // })
-    // .then((response) => {
-    
-      
-    // }, (error) => {
-    //   alert("can not send")
-    // });
-
-
-
-    
-
   }
+
+
   const handlephone = (e) => {
     e.preventDefault()
     setPhone(e.target.value)
@@ -176,3 +167,22 @@ function OneTimeSms() {
 }
 
 export default OneTimeSms;
+
+
+
+
+
+
+  // 
+    
+   
+    // axios.post(`${baseurl}/sendsms`, {
+    //   phone: phone  ,
+    //   token: small_id
+    // })
+    // .then((response) => {
+    
+      
+    // }, (error) => {
+    //   alert("can not send")
+    // });
