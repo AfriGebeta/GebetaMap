@@ -155,7 +155,7 @@ function Mapviewer(){
   const [gpslatitude, setGpsLatitude] = React.useState(null);
   const [gpslongitude, setGpsLongitude] = React.useState(null);
   const RedIcon = L.icon({
-    iconUrl: require("./../../components/Documentation/re"),
+    iconUrl: require("./../../components/Documentation/red.png"),
     iconRetinaUrl: require("./../../components/Documentation/red.png"),
     iconAnchor: null,
     shadowUrl: null,
@@ -185,14 +185,12 @@ function Mapviewer(){
             attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           />
 
-          {latlng.latitude != null && latlng.longitude != null ? (
-            <Marker
+       
+          <Marker
               icon={RedIcon}
               position={[default_latitude , default_longitude]}
             />
-          ) : (
-            ""
-          )}
+       
         </MapContainer>
       </div>
     </div>
