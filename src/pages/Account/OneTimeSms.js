@@ -25,17 +25,16 @@ import {
 const uuidv4 = require("uuid").v4;
 
 function OneTimeSms() {
-  const [latitude, setLatitude] = useState(null);
-  const [longitude, setLongitude] = useState(null);
+
 
   const [time, setTime] = React.useState("fetching");
   const [default_latitude, setDefaultLatitude] = React.useState(9.02151);
   const [default_longitude, setDefaultLongitude] = React.useState(38.80115);
-  const [gpslatitude, setGpsLatitude] = React.useState(null);
-  const [gpslongitude, setGpsLongitude] = React.useState(null);
+
   const [uniquetoken , setUniqueToken] = React.useState(null)
   const [phone , setPhone] = React.useState("")
-  
+  const [gpslatitude, setGpsLatitude] = React.useState(null);
+  const [gpslongitude, setGpsLongitude] = React.useState(null);
   const baseurl = "http://localhost:8080"
   // //const baseurl = "https://sms.gebeta.app"
   // const socket = socketIO.connect(baseurl);
@@ -56,7 +55,8 @@ function OneTimeSms() {
 
   //get token from localstrage if expired dont update uniquetoken
   useEffect(()=>{
-    
+      console.log(gpslatitude)
+      console.log(gpslongitude)
       socket.on( 'sendLatLng', function( data ) {
 
         try{
@@ -69,10 +69,11 @@ function OneTimeSms() {
             let jsondata = JSON.parse(internalToken)
             console.log(jsondata)
              if(data.status == "success"){
-                  console.log(" the json data " + jsondata.id)
-                  console.log(" the data token is " + data.token)
+ 
                   console.log(data.token == jsondata.id)
                   if(data.token.trim() == jsondata.id.trim()){
+                    console.log("setting the latitude and longitude")
+                 
                     setGpsLatitude(data.latitude)
                     setGpsLongitude(data.longitude)
                    
