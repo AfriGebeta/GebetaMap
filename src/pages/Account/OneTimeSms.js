@@ -129,7 +129,7 @@ function OneTimeSms() {
                   e.preventDefault()
                   sendtophone()
                   }
-                }>Sendssss</button>
+                }>Send</button>
          
                  </div>
                  
