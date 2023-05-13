@@ -28,33 +28,16 @@ const uuidv4 = require("uuid").v4;
 
 function OneTimeSms() {
   const dispatch = useDispatch();
-  const { latlng } = useSelector((state) => state.latlng);
+
   const [time, setTime] = React.useState("fetching");
-  const [default_latitude, setDefaultLatitude] = React.useState(9.02151);
-  const [default_longitude, setDefaultLongitude] = React.useState(38.80115);
 
   const [uniquetoken , setUniqueToken] = React.useState(null)
   const [phone , setPhone] = React.useState("")
-  const [gpslatitude, setGpsLatitude] = React.useState(null);
-  const [gpslongitude, setGpsLongitude] = React.useState(null);
+
   
   const baseurl = "http://localhost:8080"
   // //const baseurl = "https://sms.gebeta.app"
   // const socket = socketIO.connect(baseurl);
-   
-
-  const RedIcon = L.icon({
-    iconUrl: require("./../../components/Documentation/red.png"),
-    iconRetinaUrl: require("./../../components/Documentation/red.png"),
-    iconAnchor: null,
-    shadowUrl: null,
-    shadowSize: null,
-    shadowAnchor: null,
-    iconSize: [35, 35],
-    className: "leaflet-venue-icon",
-  });
-
-
 
   //get token from localstrage if expired dont update uniquetoken
   useEffect(()=>{
@@ -70,7 +53,7 @@ function OneTimeSms() {
          
              if(data.status == "success"){
 
-                  console.log(latlng)
+                 
 
                   if(data.token.trim() == jsondata.id.trim()){
                     console.log("setting the latitude and longitude")
@@ -153,35 +136,68 @@ function OneTimeSms() {
             </div>
           </div>
 
-          {/* Manual Entry */}
-          <div className=" w-full">
-            <div className=" w-full h-[600px] bg-red-200 mx-auto">
-              <div className="leaflet-container">
-                <MapContainer
-                  center={[default_latitude, default_longitude]}
-                  zoom={10}
-                >
-                  <TileLayer
-                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                    attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-                  />
-
-                  {latlng.latitude != null && latlng.longitude != null ? (
-                    <Marker
-                      icon={RedIcon}
-                      position={[latlng.latitude , latlng.longitude]}
-                    />
-                  ) : (
-                    ""
-                  )}
-                </MapContainer>
-              </div>
-            </div>
-          </div>
+          {/* Map Entry */}
+          <Mapviewer/>    
         </div>
       </div>
     </div>
   );
+}
+
+
+function Mapviewer(){
+
+
+  const { latlng } = useSelector((state) => state.latlng);
+  const [default_latitude, setDefaultLatitude] = React.useState(9.02151);
+  const [default_longitude, setDefaultLongitude] = React.useState(38.80115);
+
+  const [gpslatitude, setGpsLatitude] = React.useState(null);
+  const [gpslongitude, setGpsLongitude] = React.useState(null);
+  const RedIcon = L.icon({
+    iconUrl: require("./../../components/Documentation/red.png"),
+    iconRetinaUrl: require("./../../components/Documentation/red.png"),
+    iconAnchor: null,
+    shadowUrl: null,
+    shadowSize: null,
+    shadowAnchor: null,
+    iconSize: [35, 35],
+    className: "leaflet-venue-icon",
+  });
+
+  useEffect(()=> {
+
+    console.log("the state is " , latlng)
+  } , [latlng])
+
+  return (
+
+    <div className=" w-full">
+    <div className=" w-full h-[600px] bg-red-200 mx-auto">
+      <div className="leaflet-container">
+        <MapContainer
+          center={[default_latitude, default_longitude]}
+          zoom={10}
+        >
+          <TileLayer
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+          />
+
+          {latlng.latitude != null && latlng.longitude != null ? (
+            <Marker
+              icon={RedIcon}
+              position={[latlng.latitude , latlng.longitude]}
+            />
+          ) : (
+            ""
+          )}
+        </MapContainer>
+      </div>
+    </div>
+  </div>
+
+  )
 }
 
 export default OneTimeSms;
