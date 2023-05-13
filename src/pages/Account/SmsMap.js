@@ -27,6 +27,18 @@ import {
   const uuidv4 = require("uuid").v4;
 
 
+delete L.Icon.Default.prototype._getIconUrl;
+
+L.Icon.Default.mergeOptions({
+    iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png'),
+    iconUrl: require('leaflet/dist/images/marker-icon.png'),
+    shadowUrl: require('leaflet/dist/images/marker-shadow.png')
+});
+
+
+
+
+
 function SmsMap(){
 
     const { latlng } = useSelector((state) => state.latlng);
@@ -81,7 +93,7 @@ const CustomMarker = ({  data }) => {
     });
   
     return (
-      <Marker icon={RedIcon} position={data.position}>
+      <Marker  position={data.position}>
         <Popup>
           <p>{data.position[0]}</p>
           <p>{data.position[1]}</p>
