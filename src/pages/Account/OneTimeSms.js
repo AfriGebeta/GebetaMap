@@ -173,6 +173,7 @@ function Mapviewer(){
   return (
 
     <div className=" w-full">
+      <p>{latlng.latitude + ')()()())()' + latlng.longitude}</p>
     <div className=" w-full h-[600px] bg-red-200 mx-auto">
       <div className="leaflet-container">
         <MapContainer
@@ -190,7 +191,10 @@ function Mapviewer(){
               position={[latlng.latitude , latlng.longitude]}
             />
           ) : (
-            ""
+            <Marker
+              icon={RedIcon}
+              position={[latlng.latitude , latlng.longitude]}
+            />
           )}
         </MapContainer>
       </div>
