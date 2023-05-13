@@ -58,7 +58,7 @@ function SmsMap(){
     return (
 
 
-      // <div className=" w-full h-[600px]  mx-auto">
+
             <div className="leaflet-container">
                 <MapContainer
                     center={[default_latitude, default_longitude]}
@@ -67,8 +67,14 @@ function SmsMap(){
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                     attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                     />
+
+                    {
+                      (latlng.latitude != null) ?
+                      <CustomMarker  data={{ position: [default_latitude , default_longitude] }}  /> :
+                      ("")
+                    }
         
-                    <CustomMarker  data={{ position: [default_latitude , default_longitude] }}  /> 
+                   
             
                 </MapContainer>
             </div>
