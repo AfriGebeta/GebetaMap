@@ -58,17 +58,19 @@ function OneTimeSms() {
 
                   if(data.token.trim() == jsondata.id.trim()){
                     console.log("setting the latitude and longitude")
-                 
+                    console.log(data)
+                    console.log(jsondata.id)
                     dispatch(
                       setLatLng({
-                        latitude: parseFloat(data.latitude),
-                        longitude: parseFloat(data.longitude),
+                        latitude: data.latitude,
+                        longitude: data.longitude,
                         date: Date.now(),
                        
                       })
                     );
                    
                     //destroy the localstorage
+                    localStorage.removeItem("token")
                   }else{
                     // console.log('the socket')
                   }

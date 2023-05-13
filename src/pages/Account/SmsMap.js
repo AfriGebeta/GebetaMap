@@ -70,7 +70,7 @@ function SmsMap(){
 
                     {
                       (latlng.latitude != null) ?
-                      <CustomMarker  data={{ position: [default_latitude , default_longitude] }}  /> :
+                      <CustomMarker  data={{ position: [latlng.latitude , latlng.longitude] }}  /> :
                       ("")
                     }
         
