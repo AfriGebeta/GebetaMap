@@ -65,6 +65,7 @@ function OneTimeSms() {
           let internalToken = localStorage.getItem('token')
           console.log(internalToken)
           if(internalToken != null){
+            console.log("before parsing")
             let jsondata = JSON.parse(internalToken)
             console.log(jsondata)
              if(data.status == "success"){
@@ -84,7 +85,7 @@ function OneTimeSms() {
          
           
         }catch(err){
-
+          console.log(err)
         }
          
       })
