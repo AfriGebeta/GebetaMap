@@ -88,7 +88,7 @@ function OneTimeSms() {
   }, []);
 
   const sendtophone = () => {
-    console.log("sending sms")
+    console.log("sending sms and setting localstorage filess")
     //generate uuid and send it with the phone
     const unique_id = uuid();
     const small_id = unique_id.slice(0,10)
