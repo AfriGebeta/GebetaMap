@@ -71,7 +71,8 @@ function OneTimeSms() {
              if(data.status == "success"){
                   console.log(" the json data " + jsondata.id)
                   console.log(" the data token is " + data.token)
-                  if(data.token == jsondata.id){
+                  console.log(data.token == jsondata.id)
+                  if(data.token.trim() == jsondata.id.trim()){
                     setGpsLatitude(data.latitude)
                     setGpsLongitude(data.longitude)
                    
