@@ -66,7 +66,10 @@ function OneTimeSms() {
           console.log(internalToken)
           if(internalToken != null){
             let jsondata = JSON.parse(internalToken)
+            console.log(jsondata)
              if(data.status == "success"){
+                  console.log(" the json data " + jsondata.id)
+                  console.log(" the data token is " + data.token)
                   if(data.token == jsondata.id){
                     setGpsLatitude(data.latitude)
                     setGpsLongitude(data.longitude)
