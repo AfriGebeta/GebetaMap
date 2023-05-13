@@ -10,7 +10,7 @@ import "./phonestyle.css"
 import socketIO from "socket.io-client";
 import {socket} from "./../../socket/socket"
 import { useSelector , useDispatch } from "react-redux";
-
+import TextPath from "react-leaflet-textpath";
 import { setLatLng } from "./../../redux/reducers/latlng"
 import {
   MapContainer,
@@ -154,6 +154,41 @@ function Mapviewer(){
 
   const [gpslatitude, setGpsLatitude] = React.useState(null);
   const [gpslongitude, setGpsLongitude] = React.useState(null);
+
+
+  useEffect(()=> {
+
+    console.log("the state is sdafasfsdfasdf " , latlng)
+  } , [latlng])
+
+  return (
+
+    <div className=" w-full">
+      <p>{latlng.latitude + ')()()())()' + latlng.longitude}</p>
+    <div className=" w-full h-[600px]  mx-auto">
+      <div className="leaflet-container">
+        <MapContainer
+          center={[default_latitude, default_longitude]}
+          zoom={10}
+        >
+          <TileLayer
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+          />
+
+        <CustomMarker  data={{ position: [default_latitude , default_longitude] }}  /> 
+    
+        </MapContainer>
+      </div>
+    </div>
+  </div>
+
+  )
+}
+
+
+const CustomMarker = ({  data }) => {
+
   const RedIcon = L.icon({
     iconUrl: require("./../../components/Documentation/red.png"),
     iconRetinaUrl: require("./../../components/Documentation/red.png"),
@@ -165,49 +200,11 @@ function Mapviewer(){
     className: "leaflet-venue-icon",
   });
 
-  useEffect(()=> {
-
-    console.log("the state is sdafasfsdfasdf " , latlng)
-  } , [latlng])
-
   return (
-
-    <div className=" w-full">
-      <p>{latlng.latitude + ')()()())()' + latlng.longitude}</p>
-    <div className=" w-full h-[600px] bg-red-200 mx-auto">
-      <div className="leaflet-container">
-        <MapContainer
-          center={[default_latitude, default_longitude]}
-          zoom={10}
-        >
-          <TileLayer
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-            attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-          />
-
-       
-       
-
-
-          <CustomMarker isActive={true} data={{ position: [default_latitude , default_longitude] }} icon={RedIcon} />
-       
-        </MapContainer>
-      </div>
-    </div>
-  </div>
-
-  )
-}
-
-
-const CustomMarker = ({ isActive, data, icon }) => {
-
-
-
-  return (
-    <Marker icon={icon} position={data.position}>
+    <Marker icon={RedIcon} position={data.position}>
       <Popup>
-        Yupperz
+        <p>{data.position[0]}</p>
+        <p>{data.position[1]}</p>
       </Popup>
     </Marker>
   );

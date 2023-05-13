@@ -7099,6 +7099,11 @@ language-tags@^1.0.5:
   dependencies:
     language-subtag-registry "~0.3.2"
 
+leaflet-textpath@^1.2.3:
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/leaflet-textpath/-/leaflet-textpath-1.2.3.tgz#0adef3a2d438c1c781f4e1154b8fa2f963cfd8a7"
+  integrity sha512-mPb5m2MlihNkLlo762j8S8FJCUyLvDU2fJTjjmDWKfqqyUQkV3ca3IzrxwsfzYz2DXrV2ytCVHb5+DjQymF+8w==
+
 leaflet@^1.9.1:
   version "1.9.1"
   resolved "https://registry.npmjs.org/leaflet/-/leaflet-1.9.1.tgz"
@@ -9094,6 +9099,13 @@ react-is@^18.0.0, react-is@^18.2.0:
   version "18.2.0"
   resolved "https://registry.npmjs.org/react-is/-/react-is-18.2.0.tgz"
   integrity sha512-xWGDIW6x921xtzPkhiULtthJHoJvBbF3q26fzloPCK0hsvxtPVelvftw3zjbHWSkR2km9Z+4uxbDDK/6Zw9B8w==
+
+react-leaflet-textpath@^2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/react-leaflet-textpath/-/react-leaflet-textpath-2.1.1.tgz#e43ab49e8f9395a9d50dd58d7be3888a8a36b1cc"
+  integrity sha512-GeIetwbjB/Jcj2ORwfWynM3LzmJSvaOmb/qIaVkPTAw+rZfBmQZAVKNVm/ethg5MoUX/4ZJy4wvzbsDGKahTMw==
+  dependencies:
+    leaflet-textpath "^1.2.3"
 
 react-leaflet@^4.1.0:
   version "4.1.0"
