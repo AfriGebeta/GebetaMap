@@ -33,7 +33,7 @@ function App() {
           <Route index element={<Index />} />
           <Route path="/contact" element={<Contact />} />
         </Route>
-        <Route path="/gpsdata" element = {<GpsData/>} /> 
+        {/* <Route path="/gpsdata" element = {<GpsData/>} /> */}
         <Route path="/about" element={<About />} />
         <Route path="/documentation" element={<DocDesign />} />
         <Route path="/account" element={<SideBar />}>

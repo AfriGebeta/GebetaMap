@@ -44,9 +44,9 @@ function SmsMap(){
 
 
     return (
-    <div className=" w-full">
 
-      <div className=" w-full h-[600px]  mx-auto">
+
+      // <div className=" w-full h-[600px]  mx-auto">
             <div className="leaflet-container">
                 <MapContainer
                     center={[default_latitude, default_longitude]}
@@ -60,8 +60,8 @@ function SmsMap(){
             
                 </MapContainer>
             </div>
-      </div>
-    </div>
+    
+   
     )
 }
 
