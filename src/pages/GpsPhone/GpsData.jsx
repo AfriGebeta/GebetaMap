@@ -106,11 +106,8 @@ return  (
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         />
 
-        {
-            gpslatitude != null && gpslongitude != null ?
-            <Marker icon={RedIcon} position={[default_latitude ,default_longitude ]}/> : ""
-
-        }
+        
+            <Marker icon={RedIcon} position={[default_latitude ,default_longitude ]}/>
       
       </MapContainer>
         </div>
