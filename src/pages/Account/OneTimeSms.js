@@ -155,7 +155,7 @@ function Mapviewer(){
   const [gpslatitude, setGpsLatitude] = React.useState(null);
   const [gpslongitude, setGpsLongitude] = React.useState(null);
   const RedIcon = L.icon({
-    iconUrl: require("./../../components/Documentation/red.png"),
+    iconUrl: require("./../../components/Documentation/re"),
     iconRetinaUrl: require("./../../components/Documentation/red.png"),
     iconAnchor: null,
     shadowUrl: null,
@@ -188,13 +188,10 @@ function Mapviewer(){
           {latlng.latitude != null && latlng.longitude != null ? (
             <Marker
               icon={RedIcon}
-              position={[latlng.latitude , latlng.longitude]}
+              position={[default_latitude , default_longitude]}
             />
           ) : (
-            <Marker
-              icon={RedIcon}
-              position={[latlng.latitude , latlng.longitude]}
-            />
+            ""
           )}
         </MapContainer>
       </div>
