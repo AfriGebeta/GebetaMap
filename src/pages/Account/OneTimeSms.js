@@ -167,7 +167,7 @@ function Mapviewer(){
 
   useEffect(()=> {
 
-    console.log("the state is " , latlng)
+    console.log("the state is sdaf " , latlng)
   } , [latlng])
 
   return (
