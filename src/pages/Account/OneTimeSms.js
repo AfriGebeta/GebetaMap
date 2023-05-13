@@ -9,7 +9,9 @@ import axios from "axios";
 import "./phonestyle.css"
 import socketIO from "socket.io-client";
 import {socket} from "./../../socket/socket"
+import { useSelector , useDispatch } from "react-redux";
 
+import { setLatLng } from "./../../redux/reducers/latlng"
 import {
   MapContainer,
   TileLayer,
@@ -25,8 +27,8 @@ import {
 const uuidv4 = require("uuid").v4;
 
 function OneTimeSms() {
-
-
+  const dispatch = useDispatch();
+  const { latlng } = useSelector((state) => state.latlng);
   const [time, setTime] = React.useState("fetching");
   const [default_latitude, setDefaultLatitude] = React.useState(9.02151);
   const [default_longitude, setDefaultLongitude] = React.useState(38.80115);
@@ -35,6 +37,7 @@ function OneTimeSms() {
   const [phone , setPhone] = React.useState("")
   const [gpslatitude, setGpsLatitude] = React.useState(null);
   const [gpslongitude, setGpsLongitude] = React.useState(null);
+  
   const baseurl = "http://localhost:8080"
   // //const baseurl = "https://sms.gebeta.app"
   // const socket = socketIO.connect(baseurl);
@@ -55,27 +58,31 @@ function OneTimeSms() {
 
   //get token from localstrage if expired dont update uniquetoken
   useEffect(()=>{
-      console.log(gpslatitude)
-      console.log(gpslongitude)
+     
       socket.on( 'sendLatLng', function( data ) {
-
         try{
-          console.log("ok get the message here")
-          console.log(data)
+     
           let internalToken = localStorage.getItem('token')
-          console.log(internalToken)
+     
           if(internalToken != null){
-            console.log("before parsing")
+    
             let jsondata = JSON.parse(internalToken)
-            console.log(jsondata)
+         
              if(data.status == "success"){
- 
-                  console.log(data.token == jsondata.id)
+
+                  console.log(latlng)
+
                   if(data.token.trim() == jsondata.id.trim()){
                     console.log("setting the latitude and longitude")
                  
-                    setGpsLatitude(data.latitude)
-                    setGpsLongitude(data.longitude)
+                    dispatch(
+                      setLatLng({
+                        latitude:data.latitude,
+                        longitude: data.longitude,
+                        date: Date.now(),
+                       
+                      })
+                    );
                    
                     //destroy the localstorage
                   }else{
@@ -125,6 +132,8 @@ function OneTimeSms() {
           <div className="flex gap-6 items-stretch flex-wrap">
             <DocCard />
           </div>
+
+        
           <div className="w-full">
             <div className="flex flex-row justify-between">
               <div className="flex flex-row w-[50%] ">
@@ -150,17 +159,17 @@ function OneTimeSms() {
               <div className="leaflet-container">
                 <MapContainer
                   center={[default_latitude, default_longitude]}
-                  zoom={12}
+                  zoom={10}
                 >
                   <TileLayer
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                     attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                   />
 
-                  {gpslatitude != null && gpslongitude != null ? (
+                  {latlng.latitude != null && latlng.longitude != null ? (
                     <Marker
                       icon={RedIcon}
-                      position={[default_latitude, default_longitude]}
+                      position={[latlng.latitude , latlng.longitude]}
                     />
                   ) : (
                     ""

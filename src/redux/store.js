@@ -7,6 +7,7 @@ import billing from "./reducers/billing";
 import plan from "./reducers/plan";
 import metrics from "./reducers/metrics";
 import tssData from "./reducers/tssData";
+import latlng from "./reducers/latlng";
 
 import { combineReducers } from "redux";
 import storage from "redux-persist/lib/storage";
@@ -38,6 +39,7 @@ const reducers = combineReducers({
   plan: plan,
   metrics: metrics,
   tssData: tssData,
+  latlng : latlng
 });
 
 const _persistedReducer = persistReducer(persistConfig, reducers);
