@@ -53,3 +53,8 @@
 .social_icon svg {
   font-size: 20px !important;
 }
+
+
+.leaflet-default-icon-path {
+  background-image: url(https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png);
+}
