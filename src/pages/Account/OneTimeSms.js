@@ -60,14 +60,17 @@ function OneTimeSms() {
       socket.on( 'sendLatLng', function( data ) {
 
         try{
+          console.log("ok get the message here")
+          console.log(data)
           let internalToken = localStorage.getItem('token')
+          console.log(internalToken)
           if(internalToken != null){
             let jsondata = JSON.parse(internalToken)
              if(data.status == "success"){
                   if(data.token == jsondata.id){
                     setGpsLatitude(data.latitude)
                     setGpsLongitude(data.longitude)
-                    localStorage.removeItem('token')
+                   
                     //destroy the localstorage
                   }else{
                     // console.log('the socket')
