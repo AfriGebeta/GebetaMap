@@ -60,8 +60,8 @@ function OneTimeSms() {
                  
                     dispatch(
                       setLatLng({
-                        latitude:data.latitude,
-                        longitude: data.longitude,
+                        latitude: parseFloat(data.latitude),
+                        longitude: parseFloat(data.longitude),
                         date: Date.now(),
                        
                       })
