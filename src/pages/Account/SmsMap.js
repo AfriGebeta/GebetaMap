@@ -15,14 +15,10 @@ import { setLatLng } from "./../../redux/reducers/latlng"
 import {
     MapContainer,
     TileLayer,
-    useMap,
-    Polyline,
-    useMapEvents,
+
     Marker,
     Popup,
-    Polygon,
-    FeatureGroup,
-    EditControl,
+
   } from "react-leaflet";
   const uuidv4 = require("uuid").v4;
 
@@ -39,7 +35,7 @@ L.Icon.Default.mergeOptions({
 
 
 
-function SmsMap(){
+function SmsMap(props){
 
     const { latlng } = useSelector((state) => state.latlng);
     const [default_latitude, setDefaultLatitude] = React.useState(9.02151);
@@ -70,7 +66,7 @@ function SmsMap(){
 
                     {
                       (latlng.latitude != null) ?
-                      <CustomMarker  data={{ position: [latlng.latitude , latlng.longitude] }}  /> :
+                      <CustomMarker phone={props.phone} data={{ position: [latlng.latitude , latlng.longitude] }}  /> :
                       ("")
                     }
         
@@ -85,7 +81,7 @@ function SmsMap(){
 
 
 
-const CustomMarker = ({  data }) => {
+const CustomMarker = ({ phone, data }) => {
 
     const RedIcon = L.icon({
       iconUrl: require("./../../components/Documentation/red.png"),
@@ -101,8 +97,9 @@ const CustomMarker = ({  data }) => {
     return (
       <Marker  position={data.position}>
         <Popup>
-          <p>{data.position[0]}</p>
-          <p>{data.position[1]}</p>
+          <p>0{phone}</p>
+          <p>{data.position[0]}, {data.position[1]}</p>
+        
         </Popup>
       </Marker>
 

@@ -140,7 +140,7 @@ function OneTimeSms() {
           </div>
 
           <div className=" w-[90%] h-[500px] mb-[50px] bg-red-200">
-          <SmsMap/>  
+          <SmsMap phone={phone}/>  
         </div>
            
         </div>
