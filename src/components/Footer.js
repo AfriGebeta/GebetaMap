@@ -28,6 +28,8 @@ function Footer() {
             </div>
             <h3 className="uppercase">Company</h3>
             <Link to="/contact">Contact Us</Link>
+              <p className="ml-10" > info@gebeta.app</p>
+              <p className="ml-10 mt-[-20px]"> +251912629132 </p>
             <Link to="/about" >About</Link>
             {/* <Link to="/contact" >Leave Feedback</Link> */}
           </div>
