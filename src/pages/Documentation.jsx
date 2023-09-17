@@ -133,14 +133,19 @@ const { userData } = useSelector((state) => state.user)
               <p className="mx-[2%] space-x-2 ">
                 <span className="bg-green-200 px-2 py-1">GET</span>
                 <span className="mx-[2%]">
-                  http://mapapi.gebeta.app/api/v1/route/driving/route
+                  https://mapapi.gebeta.app/api/route/direction
                   
                 </span>
               </p>
             </div>
             {/* request sample here */}
             <RequestSample
-              curl='curl https://mapapi.gebeta.app/api/v1/route/driving/direction/?la1=9.022528936095531&lo1=38.80400061607361&la2=9.021755421022991&lo2=38.79883468151093&apiKey=apiKey'
+
+
+
+
+              curl='curl https://mapapi.gebeta.app/api/route/direction/?origin=8.15215,77.41803&destination=8.1552,77.3763&traffic=0&instruction=0&apiKey=yourapikey'
+              
               js={direction}
             />
             <ResponseSample responseCodes200={ responseSampleForDirection200} responseCodes400={responseSampleForDirection400 } responseCodes500={responseSampleForDirection500 }      />
@@ -168,13 +173,18 @@ const { userData } = useSelector((state) => state.user)
               <p className="mx-[2%] space-x-2 ">
                 <span className="bg-green-200 px-2 py-1">GET</span>
                 <span className="mx-[2%]">
-                  http://mapapi.gebeta.app/api/v1/route/driving/route
+                     https://mapapi.gebeta.app/api/route/tss
                 </span>
               </p>
             </div>
+
+
+            
+
+
             {/* request sample here */}
             <RequestSample
-                curl='curl http://mapapi.gebeta.app/api/v1/route/driving/tss/?start=[[19.23,38.232],[19.23,38.232]]&apiKey=key'
+                curl='curl https://mapapi.gebeta.app/api/route/tss/?json=[[8.9972,38.7033],[9.0655,38.7877],[9.43,38.534]]&apiKey=yourapikey'
               
            
               js={direction}
@@ -263,6 +273,8 @@ The most simple example is a people trying to decide which bus restoursant is cl
             </tbody>
           </table>
        
+
+         
       
           {/* code component */}
           <div className="w-full bg-[#263238] text-white mb-[5%] flex flex-col">
@@ -270,14 +282,14 @@ The most simple example is a people trying to decide which bus restoursant is cl
               <p className="mx-[2%] space-x-2 ">
                 <span className="bg-green-200 px-2 py-1">GET</span>
                 <span className="mx-[2%]">
-                  http://mapapi.gebeta.app/api/v1/route/driving/matrix
+                  https://mapapi.gebeta.app/api/route/matrix
                 </span>
               </p>
             </div>
             {/* request sample here */}
             <RequestSample
               
-             curl='curl http://mapapi.gebeta.app/api/v1/route/driving/tss/?start=[[19.23,38.232],[19.23,38.232]]&apiKey=key'
+             curl='curl  https://mapapi.gebeta.app/api/route/matrix/?json=[[8.9972,38.7033],[9.0655,38.7877],[9.43,38.534]]&apiKey=yourapikey'
               js={direction}
             />
             <ResponseSample responseCodes200={matrixResponse200} responseCodes400={responseSampleForDirection400} responseCodes500={responseSampleForDirection500} />
@@ -341,14 +353,16 @@ The most simple example is a people trying to decide which bus restoursant is cl
               <p className="mx-[2%] space-x-2 ">
                 <span className="bg-green-200 px-2 py-1">GET</span>
                 <span className="mx-[2%]">
-                  http://mapapi.gebeta.app/api/v1/route/driving/onm
-                  
+                    https://mapapi.gebeta.app/api/route/onm
                 </span>
               </p>
             </div>
+
+
+            
             {/* request sample here */}
             <RequestSample
-              curl='curl  https://mapapi.gebeta.app/api/v1/route/driving/onm/?la1=9.022528936095531&lo1=38.80400061607361&json=[[9.005980058445639,38.785734616513466],[9.01166345564756,38.789008246478424]]&apiKey=token'
+              curl='curl  https://mapapi.gebeta.app/api/route/onm/?origin=9.022528936095531,38.80400061607361&json=[[9.005980058445639,38.785734616513466],[9.01166345564756,38.789008246478424]]&apiKey=yourapikey'
               js={direction}
             />
             <ResponseSample responseCodes200={ responseSampleForOnm} responseCodes400={responseSampleForDirection400 } responseCodes500={responseSampleForDirection500 }      />
