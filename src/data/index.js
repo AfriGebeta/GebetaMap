@@ -1,6 +1,4 @@
-const urls = "http://localhost:8080";
-//const urls = "https://mapapi.gebeta.app";
-//const urls = "https://nmapapi.gebeta.app";
+const urls = "https://mapapi.gebeta.app";
 export const direction = async (start, newMarker, apiKey) => {
   const url =
     urls +
