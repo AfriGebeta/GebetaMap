@@ -78,14 +78,14 @@ function ONMEndPoint() {
           <p className="mx-[2%] space-x-2 ">
             <span className="bg-green-200 px-2 py-1">GET</span>
             <span className="mx-[2%]">
-              http://mapapi.gebeta.app/api/v1/route/driving/onm
+            https://mapapi.gebeta.app/api/route/onm
             </span>
           </p>
         </div>
         {/* request sample here */}
         <RequestSample
-          curl="curl  https://mapapi.gebeta.app/api/v1/route/driving/onm/?la1=9.022528936095531&lo1=38.80400061607361&json=[[9.005980058445639,38.785734616513466],[9.01166345564756,38.789008246478424]]&apiKey=token"
-          js={direction}
+         curl='curl  https://mapapi.gebeta.app/api/route/onm/?origin=9.022528936095531,38.80400061607361&json=[[9.005980058445639,38.785734616513466],[9.01166345564756,38.789008246478424]]&apiKey=yourapikey'
+         js={direction}
         />
         <ResponseSample
           responseCodes200={responseSampleForOnm}

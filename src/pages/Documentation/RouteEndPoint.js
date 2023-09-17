@@ -43,13 +43,13 @@ function RouteEndPoint() {
           <p className="mx-[2%] space-x-2 ">
             <span className="bg-green-200 px-2 py-1">GET</span>
             <span className="mx-[2%]">
-              http://mapapi.gebeta.app/api/v1/route/driving/route
+            https://mapapi.gebeta.app/api/route/tss
             </span>
           </p>
         </div>
         {/* request sample here */}
         <RequestSample
-          curl="curl http://mapapi.gebeta.app/api/v1/route/driving/tss/?start=[[19.23,38.232],[19.23,38.232]]&apiKey=key"
+            curl='curl https://mapapi.gebeta.app/api/route/tss/?json=[[8.9972,38.7033],[9.0655,38.7877],[9.43,38.534]]&apiKey=yourapikey'
           js={direction}
         />
         <ResponseSample

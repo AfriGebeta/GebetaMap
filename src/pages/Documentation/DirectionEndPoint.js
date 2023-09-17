@@ -32,14 +32,14 @@ function DirectionEndPoint() {
           <p className="mx-[2%] space-x-2 ">
             <span className="bg-green-200 px-2 py-1">GET</span>
             <span className="mx-[2%]">
-              http://mapapi.gebeta.app/api/v1/route/driving/route
+            https://mapapi.gebeta.app/api/route/direction
             </span>
           </p>
         </div>
         {/* request sample here */}
         <RequestSample
-          curl="curl https://mapapi.gebeta.app/api/v1/route/bike/direction/?la1=9.022528936095531&lo1=38.80400061607361&la2=9.021755421022991&lo2=38.79883468151093&apiKey=apiKey"
-          js={direction}
+        curl='curl https://mapapi.gebeta.app/api/route/direction/?origin=8.15215,77.41803&destination=8.1552,77.3763&traffic=0&instruction=0&apiKey=yourapikey'
+        js={direction}
         />
         <ResponseSample
           responseCodes200={responseSampleForDirection200}
