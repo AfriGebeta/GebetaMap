@@ -44,7 +44,7 @@ function Cards() {
           </div>
           <div className="leading-3 py-3">
             <h2>
-              {metrics.onm + metrics.direction + metrics.matrix + metrics.tss}{" "}
+              {metrics.onm + metrics.direction + metrics.matrix + metrics.tss + metrics.Geocoding}{" "}
               <small>calls</small>
             </h2>
             {/* <span className="!m-0 !p-0 ">98.00%</span> */}

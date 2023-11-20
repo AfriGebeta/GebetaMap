@@ -13,27 +13,7 @@ function Cards() {
   const { userData } = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
-  const prepareData = (data) => {
-    let _data = {
-      tss: 0,
-      matrix: 0,
-      direction: 0,
-      onm: 0,
-    };
-    // let data
-    for (let i = 0; i < data.length; i++) {
-      if (data[i][0] === "Matrix") _data.matrix = data[i][1];
-
-      if (data[i][0] === "Direction") _data.direction = data[i][1];
-
-      if (data[i][0] === "Tss" || data[i][0] === "TSS") _data.tss = data[i][1];
-
-      if (data[i][0] === "Onm" || data[i][0] === "ONM") _data.onm = data[i][1];
-    }
-
-    return _data;
-  };
-
+  
   useEffect(() => {
     fetch(`${url}/api/v2/route/apicalls/getMonthlyMatrix?userid=${userData.id}`)
       .then((data) => {
@@ -48,6 +28,7 @@ function Cards() {
               matrix: data.data.Matrix,
               direction: data.data.Direction,
               onm: data.data.ONM,
+              Geocoding : data.data.Geocoding
             })
           );
         }
@@ -70,6 +51,14 @@ function Cards() {
       package: "Tss",
       calls: metrics.tss,
     },
+
+    {
+      package: "Geocoding",
+      calls: metrics.Geocoding,
+    },
+
+
+    
   ];
 
   return (
